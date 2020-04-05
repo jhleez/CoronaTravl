@@ -1,5 +1,6 @@
 package com.example.coronatravel;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -54,7 +55,8 @@ public class MainActivity extends AppCompatActivity {
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(navigationView, navController);
 
-
+        Intent intent = new Intent(getApplicationContext(), LocationBasedList.class);
+        startActivity(intent);
     }
 
     @Override
