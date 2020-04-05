@@ -14,6 +14,7 @@ import org.w3c.dom.Text;
 
 public class LocationBasedList extends AppCompatActivity {
     TextView url;
+    String totalcount;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,6 +37,7 @@ public class LocationBasedList extends AppCompatActivity {
                 "&radius=" + radius +
                 "&listYN=Y" +
                 "&arrange=" + arrange +
+                "&numOfRows=5&pageNo=1"+ //한 페이지 몇개씩 가져올껀지, 뒤에는 페이지 수
                 "&MobileOS=AND&MobileApp=AppTest&_type=json";
 
         String JSONFromLocationBasedListaddr = "";
@@ -45,16 +47,20 @@ public class LocationBasedList extends AppCompatActivity {
             Log.d("TAG", "jsonparsing error");
         }
         url = (TextView)findViewById(R.id.url);
+        LocationBasedList_Db.LocationBasedList_ArrayList.clear();
         JSONParsing( JSONFromLocationBasedListaddr);
 
         //DB의 첫번째 데이터 하나 textview에 띄우기
         LocationBasedList_Class asd = LocationBasedList_Db.LocationBasedList_ArrayList.get(1);
-        url.setText("주소 :"+ asd.getAddr1() +"\n"+
+        url.setText("조회된 관광지 개수 : " + totalcount +"\n\n" +
+                "첫번째 데이터의 정보\n" +
+                "주소 :"+ asd.getAddr1() +"\n"+
         "컨텐츠 id : " +asd.getContentid() +"\n"+
         "컨텐츠 타입 : "+asd.getContenttypeid() + "\n"+
         "내 위치로부터의 거리 : "+asd.getDist() + "\n"+
                 "제목 : " + asd.getTitle() + "\n" +
-                "썸네일 주소 : " + asd.getFirstimage());
+                "썸네일 주소 : " + asd.getFirstimage() +"\n\n"+
+                "Arraylist 속의 데이터 개수 " + String.valueOf(LocationBasedList_Db.LocationBasedList_ArrayList.size()));
     }
 
 
@@ -68,7 +74,7 @@ public class LocationBasedList extends AppCompatActivity {
             String body = jsonObject_response.getString("body");
             JSONObject jsonObject_body = new JSONObject(body);
 
-            String totalcount = jsonObject_body.getString("totalCount");
+            totalcount = jsonObject_body.getString("totalCount");
 
             String items = jsonObject_body.getString("items");
             JSONObject jsonObject_items = new JSONObject(items);
