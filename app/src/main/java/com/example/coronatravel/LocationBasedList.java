@@ -26,8 +26,8 @@ public class LocationBasedList extends AppCompatActivity {
         String id = "2YHyxt5iKCnOzEiYHMcML%2FgiOywB9tnJeL6D%2BHqsL48iMsSOXwPxQHTjCHq5dA1zAEcNIdcQUXnvFMN0aIdLsQ%3D%3D";
       //임의의 샘플데이터를 그냥 대충 설정해놨음
         String contentTypeId = "12"; //컨텐츠 타입
-        String mapX = "126.981611"; // scale
-        String mapY = "37.568477"; //scale
+        String mapX = "126.981611"; // 경도 소숫점자리 무조건 이렇게 맞춰야함
+        String mapY = "37.568477"; //위도 소숫점자리 무조건 이렇게 맞춰야함
         String radius = "1000"; // 반경 m단위
         String arrange = "A"; //정렬 (A=제목순, B=조회순,C=수정일순, D=생성일순, E=거리순)
 
