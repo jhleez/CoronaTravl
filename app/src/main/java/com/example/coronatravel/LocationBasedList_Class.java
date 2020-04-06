@@ -1,6 +1,7 @@
 package com.example.coronatravel;
 
 public class LocationBasedList_Class {
+
     LocationBasedList_Class(String addr1,String contentid,String contenttypeid,String dist,String firstimage,String title)
     {
         this.addr1 =addr1;
