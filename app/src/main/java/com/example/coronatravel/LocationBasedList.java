@@ -34,14 +34,14 @@ public class LocationBasedList extends AppCompatActivity {
 
 
         String LocationBasedListaddr = "http://api.visitkorea.or.kr/openapi/service/rest/KorService/locationBasedList?ServiceKey=" + id +
-                "&contentTypeId=" + contentTypeId +
-                "&mapX=" + mapX +
-                "&mapY=" + mapY +
-                "&radius=" + radius +
-                "&listYN=Y" +
-                "&arrange=" + arrange +
-                "&numOfRows=5&pageNo=1"+ //한 페이지 몇개씩 가져올껀지, 뒤에는 페이지 수
-                "&MobileOS=AND&MobileApp=AppTest&_type=json";
+                                        "&contentTypeId=" + contentTypeId +
+                                        "&mapX=" + mapX +
+                                        "&mapY=" + mapY +
+                                        "&radius=" + radius +
+                                        "&listYN=Y" +
+                                        "&arrange=" + arrange +
+                                        "&numOfRows=5&pageNo=1"+ //한 페이지 몇개씩 가져올껀지, 뒤에는 페이지 수
+                                        "&MobileOS=AND&MobileApp=AppTest&_type=json";
 
         String JSONFromLocationBasedListaddr = "";
         try {
@@ -56,14 +56,14 @@ public class LocationBasedList extends AppCompatActivity {
         //DB의 첫번째 데이터 하나 textview에 띄우기
         LocationBasedList_Class asd = LocationBasedList_ArrayList.get(1);
         url.setText("조회된 관광지 개수 : " + totalcount +"\n\n" +
-                "첫번째 데이터의 정보\n" +
-                "주소 :"+ asd.getAddr1() +"\n"+
-        "컨텐츠 id : " +asd.getContentid() +"\n"+
-        "컨텐츠 타입 : "+asd.getContenttypeid() + "\n"+
-        "내 위치로부터의 거리 : "+asd.getDist() + "\n"+
-                "제목 : " + asd.getTitle() + "\n" +
-                "썸네일 주소 : " + asd.getFirstimage() +"\n\n"+
-                "Arraylist 속의 데이터 개수 " + String.valueOf(LocationBasedList_ArrayList.size()));
+                    "첫번째 데이터의 정보\n" +
+                    "주소 :"+ asd.getAddr1() +"\n"+
+                    "컨텐츠 id : " +asd.getContentid() +"\n"+
+                    "컨텐츠 타입 : "+asd.getContenttypeid() + "\n"+
+                    "내 위치로부터의 거리 : "+asd.getDist() + "\n"+
+                    "제목 : " + asd.getTitle() + "\n" +
+                    "썸네일 주소 : " + asd.getFirstimage() +"\n\n"+
+                    "Arraylist 속의 데이터 개수 " + String.valueOf(LocationBasedList_ArrayList.size()));
     }
 
 
