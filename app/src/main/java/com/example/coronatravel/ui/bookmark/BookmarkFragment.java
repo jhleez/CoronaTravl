@@ -23,13 +23,13 @@ public class BookmarkFragment extends Fragment {
         bookmarkViewModel =
                 ViewModelProviders.of(this).get(BookmarkViewModel.class);
         View root = inflater.inflate(R.layout.fragment_around, container, false);
-        final TextView textView = root.findViewById(R.id.text_around);
+       /* final TextView textView = root.findViewById(R.id.text_around);
         bookmarkViewModel.getText().observe(this, new Observer<String>() {
             @Override
             public void onChanged(@Nullable String s) {
                 textView.setText(s);
             }
-        });
+        });*/
         return root;
     }
 }

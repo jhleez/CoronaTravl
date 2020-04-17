@@ -18,16 +18,17 @@ public class AroundFragment extends Fragment {
 
     private AroundViewModel aroundViewModel;
 
+
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         aroundViewModel =
                 ViewModelProviders.of(this).get(AroundViewModel.class);
         View root = inflater.inflate(R.layout.fragment_around, container, false);
-        final TextView textView = root.findViewById(R.id.text_around);
+        //final TextView textView = root.findViewById(R.id.text_around);
         aroundViewModel.getText().observe(this, new Observer<String>() {
             @Override
             public void onChanged(@Nullable String s) {
-                textView.setText(s);
+                //textView.setText(s);
             }
         });
         return root;
