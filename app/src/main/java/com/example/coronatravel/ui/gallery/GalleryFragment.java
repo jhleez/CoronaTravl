@@ -32,5 +32,6 @@ public class GalleryFragment extends Fragment {
         });
         return root;
         //바보
+        //멍청이
     }
 }
