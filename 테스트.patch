@@ -1,0 +1,15 @@
+Index: app/src/main/java/com/example/coronatravel/ui/gallery/GalleryFragment.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/java/com/example/coronatravel/ui/gallery/GalleryFragment.java	(date 1587118766000)
++++ app/src/main/java/com/example/coronatravel/ui/gallery/GalleryFragment.java	(date 1587118833434)
+@@ -32,5 +32,6 @@
+         });
+         return root;
+         //바보
++        //멍청이
+     }
+ }
+\ No newline at end of file

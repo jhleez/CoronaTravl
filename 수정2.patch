@@ -1,0 +1,152 @@
+Index: app/src/main/java/com/example/coronatravel/ui/gallery/GalleryFragment.java
+===================================================================
+--- app/src/main/java/com/example/coronatravel/ui/gallery/GalleryFragment.java	(revision ceb22a9670879764c90114ab0881b624d93eb6f7)
++++ app/src/main/java/com/example/coronatravel/ui/gallery/GalleryFragment.java	(revision ceb22a9670879764c90114ab0881b624d93eb6f7)
+@@ -1,37 +0,0 @@
+-package com.example.coronatravel.ui.gallery;
+-
+-import android.os.Bundle;
+-import android.view.LayoutInflater;
+-import android.view.View;
+-import android.view.ViewGroup;
+-import android.widget.TextView;
+-
+-import androidx.annotation.Nullable;
+-import androidx.annotation.NonNull;
+-import androidx.fragment.app.Fragment;
+-import androidx.lifecycle.Observer;
+-import androidx.lifecycle.ViewModelProviders;
+-
+-import com.example.coronatravel.R;
+-
+-public class GalleryFragment extends Fragment {
+-
+-    private GalleryViewModel galleryViewModel;
+-
+-    public View onCreateView(@NonNull LayoutInflater inflater,
+-                             ViewGroup container, Bundle savedInstanceState) {
+-        galleryViewModel =
+-                ViewModelProviders.of(this).get(GalleryViewModel.class);
+-        View root = inflater.inflate(R.layout.fragment_gallery, container, false);
+-        final TextView textView = root.findViewById(R.id.text_gallery);
+-        galleryViewModel.getText().observe(this, new Observer<String>() {
+-            @Override
+-            public void onChanged(@Nullable String s) {
+-                textView.setText(s);
+-            }
+-        });
+-        return root;
+-        //바보
+-        //멍청이
+-    }
+-}
+\ No newline at end of file
+Index: app/src/main/java/com/example/coronatravel/ui/slideshow/SlideshowFragment.java
+===================================================================
+--- app/src/main/java/com/example/coronatravel/ui/slideshow/SlideshowFragment.java	(revision ceb22a9670879764c90114ab0881b624d93eb6f7)
++++ app/src/main/java/com/example/coronatravel/ui/slideshow/SlideshowFragment.java	(revision ceb22a9670879764c90114ab0881b624d93eb6f7)
+@@ -1,35 +0,0 @@
+-package com.example.coronatravel.ui.slideshow;
+-
+-import android.os.Bundle;
+-import android.view.LayoutInflater;
+-import android.view.View;
+-import android.view.ViewGroup;
+-import android.widget.TextView;
+-
+-import androidx.annotation.Nullable;
+-import androidx.annotation.NonNull;
+-import androidx.fragment.app.Fragment;
+-import androidx.lifecycle.Observer;
+-import androidx.lifecycle.ViewModelProviders;
+-
+-import com.example.coronatravel.R;
+-
+-public class SlideshowFragment extends Fragment {
+-
+-    private SlideshowViewModel slideshowViewModel;
+-
+-    public View onCreateView(@NonNull LayoutInflater inflater,
+-                             ViewGroup container, Bundle savedInstanceState) {
+-        slideshowViewModel =
+-                ViewModelProviders.of(this).get(SlideshowViewModel.class);
+-        View root = inflater.inflate(R.layout.fragment_slideshow, container, false);
+-        final TextView textView = root.findViewById(R.id.text_slideshow);
+-        slideshowViewModel.getText().observe(this, new Observer<String>() {
+-            @Override
+-            public void onChanged(@Nullable String s) {
+-                textView.setText(s);
+-            }
+-        });
+-        return root;
+-    }
+-}
+\ No newline at end of file
+Index: app/src/main/java/com/example/coronatravel/ui/slideshow/SlideshowViewModel.java
+===================================================================
+--- app/src/main/java/com/example/coronatravel/ui/slideshow/SlideshowViewModel.java	(revision ceb22a9670879764c90114ab0881b624d93eb6f7)
++++ app/src/main/java/com/example/coronatravel/ui/slideshow/SlideshowViewModel.java	(revision ceb22a9670879764c90114ab0881b624d93eb6f7)
+@@ -1,19 +0,0 @@
+-package com.example.coronatravel.ui.slideshow;
+-
+-import androidx.lifecycle.LiveData;
+-import androidx.lifecycle.MutableLiveData;
+-import androidx.lifecycle.ViewModel;
+-
+-public class SlideshowViewModel extends ViewModel {
+-
+-    private MutableLiveData<String> mText;
+-
+-    public SlideshowViewModel() {
+-        mText = new MutableLiveData<>();
+-        mText.setValue("This is slideshow fragment");
+-    }
+-
+-    public LiveData<String> getText() {
+-        return mText;
+-    }
+-}
+\ No newline at end of file
+Index: app/src/main/java/com/example/coronatravel/ui/tools/ToolsViewModel.java
+===================================================================
+--- app/src/main/java/com/example/coronatravel/ui/tools/ToolsViewModel.java	(revision ceb22a9670879764c90114ab0881b624d93eb6f7)
++++ app/src/main/java/com/example/coronatravel/ui/tools/ToolsViewModel.java	(revision ceb22a9670879764c90114ab0881b624d93eb6f7)
+@@ -1,19 +0,0 @@
+-package com.example.coronatravel.ui.tools;
+-
+-import androidx.lifecycle.LiveData;
+-import androidx.lifecycle.MutableLiveData;
+-import androidx.lifecycle.ViewModel;
+-
+-public class ToolsViewModel extends ViewModel {
+-
+-    private MutableLiveData<String> mText;
+-
+-    public ToolsViewModel() {
+-        mText = new MutableLiveData<>();
+-        mText.setValue("This is tools fragment");
+-    }
+-
+-    public LiveData<String> getText() {
+-        return mText;
+-    }
+-}
+\ No newline at end of file
+Index: app/src/main/java/com/example/coronatravel/ui/bookmark/BookmarkViewModel.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/java/com/example/coronatravel/ui/bookmark/BookmarkViewModel.java	(revision ceb22a9670879764c90114ab0881b624d93eb6f7)
++++ app/src/main/java/com/example/coronatravel/ui/bookmark/BookmarkViewModel.java	(date 1587121897925)
+@@ -10,8 +10,8 @@
+ 
+     public BookmarkViewModel() {
+         mText = new MutableLiveData<>();
+-        mText.setValue("This is gallery fragment");
+-    }
++        mText.setValue("This is bookmark fragment");
++    }//
+ 
+     public LiveData<String> getText() {
+         return mText;
