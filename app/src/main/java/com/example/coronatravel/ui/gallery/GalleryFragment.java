@@ -31,5 +31,6 @@ public class GalleryFragment extends Fragment {
             }
         });
         return root;
+        //바보
     }
 }
