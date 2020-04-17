@@ -23,7 +23,7 @@ public class LocalFragment extends Fragment {
         localViewModel =
                 ViewModelProviders.of(this).get(LocalViewModel.class);
         View root = inflater.inflate(R.layout.fragment_local, container, false);
-        final TextView textView = root.findViewById(R.id.text_bookmark);
+        final TextView textView = root.findViewById(R.id.text_local);
         localViewModel.getText().observe(this, new Observer<String>() {
             @Override
             public void onChanged(@Nullable String s) {
