@@ -38,10 +38,11 @@
             android:textSize="15sp" />
 
         <EditText
+            android:maxLength="5"
             android:id="@+id/edittext_around_distance"
             android:layout_width="100dp"
             android:layout_height="wrap_content"
-            android:hint="(입력)"
+            android:hint="(거리 입력)"
             android:inputType="number"
             android:textSize="15sp" />
 
@@ -53,6 +54,19 @@
             android:text="m  (20km 까지 가능합니다)"
             android:textSize="15sp" />
     </LinearLayout>
+
+    <GridLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <ListView
+            android:id="@+id/listview_around_dataview"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+
+        </ListView>
+
+    </GridLayout>
 
 
 </LinearLayout>

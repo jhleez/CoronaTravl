@@ -1,30 +1,28 @@
 package com.example.coronatravel.ui.around;
 
-import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.EditText;
+import android.widget.ListView;
+import android.widget.ScrollView;
 import android.widget.Spinner;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
 import com.example.coronatravel.R;
+import com.example.coronatravel.data.AroundData;
+
+import java.util.ArrayList;
 
 public class AroundFragment extends Fragment implements AdapterView.OnItemSelectedListener {
 
     private AroundViewModel aroundViewModel;
-    private Context content;
-
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -37,15 +35,14 @@ public class AroundFragment extends Fragment implements AdapterView.OnItemSelect
 
         EditText editText =root.findViewById(R.id.edittext_around_distance);
 
+        //데이터 선언
+        ListView listView = root.findViewById(R.id.listview_around_dataview);
+        ArrayList<AroundData> arrayList = new ArrayList<>();
+        /*List*/
 
 
-        //final TextView textView = root.findViewById(R.id.text_around);
-        /*aroundViewModel.getText().observe(this, new Observer<String>() {
-            @Override
-            public void onChanged(@Nullable String s) {
-                //textView.setText(s);
-            }
-        });*/
+
+
         return root;
     }
 
