@@ -16,13 +16,14 @@ import org.json.JSONObject;
 
 public class Detail_view extends AppCompatActivity {
 
-    TextView testCommon;
+    TextView testCommon,testInfo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail_view);
-
+        testCommon = (TextView) findViewById(R.id.testCommon);
+        testInfo = (TextView)findViewById(R.id.testInfo);
         // 리스트뷰에서 넘길 때 contenttype , contentid를 같이 넘겨줘야되는데 일단 그냥 테스트케이스로 잡고했음
         String contentTypeId = "12";
         String contentId = "127480";
@@ -42,7 +43,7 @@ public class Detail_view extends AppCompatActivity {
         } catch (Exception e) {
             Log.d("TAG", "jsonparsing error");
         }
-        testCommon = (TextView) findViewById(R.id.testCommon);
+
         detail_C = detail_C.JSONParsing(JSONFromdetailCommonUrl);
 
         //모든 데이터가 다들어 있는게 아님 이 케이스의 경우 홈페이지, 전화번호, 전화번호 명이없음
@@ -51,11 +52,8 @@ public class Detail_view extends AppCompatActivity {
                 "\n이름 : "+ detail_C.getTitle()+
                 "\n홈페이지 : "+detail_C.getHomepage()+
                 "\n주소 : "+detail_C.getAddr1()+
-                "\n우편번호 : "+detail_C.getZipcode()+
-                "\n개요 : "+detail_C.getOverview()
+                "\n우편번호 : "+detail_C.getZipcode()
         );
-
-
 
 
         String detailInfoUrl = "http://api.visitkorea.or.kr/openapi/service/rest/KorService/detailIntro?" +
@@ -64,5 +62,17 @@ public class Detail_view extends AppCompatActivity {
                 "&contentId=" +contentId+
                 "&MobileOS=AND&MobileApp=CoronaInfo&introYN=Y";
 
+        String JSONFromdetailInfoURL="";
+        try {
+            JSONFromdetailInfoURL = new HttpReqTask().execute(detailInfoUrl).get();
+        } catch (Exception e) {
+            Log.d("TAG", "jsonparsing error");
+        }
+
+        if(contentTypeId.equals("12")){
+            detailInfo_12 detail_I_12 = new detailInfo_12();
+            detail_I_12.JSONParsing(JSONFromdetailInfoURL);
+            testInfo.setText(detail_I_12.getInfocenter());
+        }
     }
 }
