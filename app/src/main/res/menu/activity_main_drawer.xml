@@ -9,17 +9,23 @@
             android:icon="@drawable/ic_menu_camera"
             android:title="@string/menu_home" />
         <item
-            android:id="@+id/nav_gallery"
+            android:id="@+id/nav_around"
             android:icon="@drawable/ic_menu_gallery"
             android:title="@string/menu_around" />
         <item
-            android:id="@+id/nav_slideshow"
+            android:id="@+id/nav_annual"
             android:icon="@drawable/ic_menu_slideshow"
             android:title="@string/menu_Annual" />
         <item
             android:id="@+id/nav_local"
             android:icon="@drawable/ic_menu_manage"
             android:title="@string/menu_local" />
+
+        <item
+            android:id="@+id/nav_bookmark"
+            android:icon="@drawable/ic_menu_star"
+            android:title="@string/menu_bookmark" />
+
     </group>
 
     <item android:title="Communicate">

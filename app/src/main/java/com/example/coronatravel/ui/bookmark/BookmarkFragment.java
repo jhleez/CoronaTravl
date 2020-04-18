@@ -22,7 +22,7 @@ public class BookmarkFragment extends Fragment {
                              ViewGroup container, Bundle savedInstanceState) {
         bookmarkViewModel =
                 ViewModelProviders.of(this).get(BookmarkViewModel.class);
-        View root = inflater.inflate(R.layout.fragment_around, container, false);
+        View root = inflater.inflate(R.layout.fragment_bookmark, container, false);
        /* final TextView textView = root.findViewById(R.id.text_around);
         bookmarkViewModel.getText().observe(this, new Observer<String>() {
             @Override
