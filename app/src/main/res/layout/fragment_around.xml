@@ -55,17 +55,18 @@
             android:textSize="15sp" />
     </LinearLayout>
 
-    <LinearLayout
+    <GridLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-        <ScrollView
+        <ListView
+            android:id="@+id/listview_around_dataview"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
 
-        </ScrollView>
+        </ListView>
 
-    </LinearLayout>
+    </GridLayout>
 
 
 </LinearLayout>
