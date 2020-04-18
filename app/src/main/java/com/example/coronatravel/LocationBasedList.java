@@ -32,7 +32,6 @@ public class LocationBasedList extends AppCompatActivity {
         String arrange = "A"; //정렬 (A=제목순, B=조회순,C=수정일순, D=생성일순, E=거리순)
 
 
-
         String LocationBasedListaddr = "http://api.visitkorea.or.kr/openapi/service/rest/KorService/locationBasedList?ServiceKey=" + id +
                                         "&contentTypeId=" + contentTypeId +
                                         "&mapX=" + mapX +
