@@ -27,6 +27,8 @@ import java.util.ArrayList;
 public class AroundFragment extends Fragment implements AdapterView.OnItemSelectedListener {
 
     private AroundViewModel aroundViewModel;
+    String abc;
+    int select_spinner;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -34,13 +36,17 @@ public class AroundFragment extends Fragment implements AdapterView.OnItemSelect
                 ViewModelProviders.of(this).get(AroundViewModel.class);
         View root = inflater.inflate(R.layout.fragment_around, container, false);
 
-        Spinner spinner = root.findViewById(R.id.spinner_around_traveltype);
-        spinner.setOnItemSelectedListener(this);
-        EditText editText =root.findViewById(R.id.edittext_around_distance);
-        Button button=root.findViewById(R.id.button_around_search);
+        final Spinner spinner = root.findViewById(R.id.spinner_around_traveltype);
+        final EditText editText = root.findViewById(R.id.edittext_around_distance);
+
+
+        Button button = root.findViewById(R.id.button_around_search);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                abc = editText.getText().toString();
+                select_spinner = spinner.getSelectedItemPosition();
+                Toast.makeText(getActivity(), select_spinner + "선택 " + abc + "거리", Toast.LENGTH_SHORT).show();
 
             }
         });
@@ -54,7 +60,7 @@ public class AroundFragment extends Fragment implements AdapterView.OnItemSelect
 
     @Override
     public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-        Toast.makeText(getActivity(), i+"", Toast.LENGTH_SHORT).show();
+        Toast.makeText(getActivity(), i + "", Toast.LENGTH_SHORT).show();
     }
 
     @Override
