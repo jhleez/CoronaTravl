@@ -12,22 +12,28 @@
         tools:layout="@layout/fragment_home" />
 
     <fragment
-        android:id="@+id/nav_gallery"
-        android:name="com.example.coronatravel.ui.gallery.GalleryFragment"
-        android:label="@string/menu_gallery"
-        tools:layout="@layout/fragment_gallery" />
+        android:id="@+id/nav_around"
+        android:name="com.example.coronatravel.ui.around.AroundFragment"
+        android:label="@string/menu_around"
+        tools:layout="@layout/fragment_around" />
 
     <fragment
-        android:id="@+id/nav_slideshow"
-        android:name="com.example.coronatravel.ui.slideshow.SlideshowFragment"
-        android:label="@string/menu_slideshow"
-        tools:layout="@layout/fragment_slideshow" />
+        android:id="@+id/nav_annual"
+        android:name="com.example.coronatravel.ui.annual.AnnualFragment"
+        android:label="@string/menu_Annual"
+        tools:layout="@layout/fragment_annual" />
 
     <fragment
-        android:id="@+id/nav_tools"
-        android:name="com.example.coronatravel.ui.tools.ToolsFragment"
-        android:label="@string/menu_tools"
-        tools:layout="@layout/fragment_tools" />
+        android:id="@+id/nav_local"
+        android:name="com.example.coronatravel.ui.local.LocalFragment"
+        android:label="@string/menu_local"
+        tools:layout="@layout/fragment_local" />
+
+    <fragment
+        android:id="@+id/nav_bookmark"
+        android:name="com.example.coronatravel.ui.bookmark.BookmarkFragment"
+        android:label="@string/menu_bookmark"
+        tools:layout="@layout/fragment_bookmark" />
 
     <fragment
         android:id="@+id/nav_share"
