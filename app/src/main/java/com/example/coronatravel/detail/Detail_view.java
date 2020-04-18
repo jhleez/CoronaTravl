@@ -13,4 +13,7 @@ public class Detail_view extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail_view);
     }
+
+
+
 }
