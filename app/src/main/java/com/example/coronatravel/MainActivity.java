@@ -21,8 +21,11 @@ import androidx.appcompat.widget.Toolbar;
 
 import android.view.Menu;
 
+import java.util.ArrayList;
+
 public class MainActivity extends AppCompatActivity {
 
+    public static ArrayList<LocationBasedList_Class> LocationBasedList_ArrayList = new ArrayList<>();
     private AppBarConfiguration mAppBarConfiguration;
 
     @Override
