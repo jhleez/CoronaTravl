@@ -5,7 +5,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.ScrollView;
 import android.widget.Spinner;
@@ -15,6 +17,8 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProviders;
 
+import com.example.coronatravel.ItemAdapter;
+import com.example.coronatravel.MainActivity;
 import com.example.coronatravel.R;
 import com.example.coronatravel.data.AroundData;
 
@@ -32,16 +36,18 @@ public class AroundFragment extends Fragment implements AdapterView.OnItemSelect
 
         Spinner spinner = root.findViewById(R.id.spinner_around_traveltype);
         spinner.setOnItemSelectedListener(this);
-
         EditText editText =root.findViewById(R.id.edittext_around_distance);
+        Button button=root.findViewById(R.id.button_around_search);
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
 
-        //데이터 선언
+            }
+        });
+
         ListView listView = root.findViewById(R.id.listview_around_dataview);
-        ArrayList<AroundData> arrayList = new ArrayList<>();
-        /*List*/
-
-
-
+        ItemAdapter itemAdapter = new ItemAdapter(MainActivity.LocationBasedList_ArrayList);
+        listView.setAdapter(itemAdapter);
 
         return root;
     }
