@@ -185,7 +185,7 @@ public class detailInfo_12 {
                 expagerange="";
             }
             try {
-                expguide = jsonObject_item.getString(" expguide");
+                expguide = jsonObject_item.getString("expguide");
             }catch (JSONException e){
                 expguide="";
             }

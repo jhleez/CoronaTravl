@@ -74,5 +74,9 @@ public class Detail_view extends AppCompatActivity {
             detail_I_12.JSONParsing(JSONFromdetailInfoURL);
             testInfo.setText(detail_I_12.getInfocenter());
         }
+        else if(contentTypeId.equals("14")) {
+            detailInfo_14 detail_I_14 = new detailInfo_14();
+            detail_I_14 = detail_I_14.JSONParsing(detailInfoUrl);
+        }
     }
 }
