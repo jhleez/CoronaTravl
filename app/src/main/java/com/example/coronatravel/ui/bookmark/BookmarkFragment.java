@@ -1,9 +1,12 @@
 package com.example.coronatravel.ui.bookmark;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.QuickContactBadge;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -13,6 +16,7 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
 import com.example.coronatravel.R;
+import com.example.coronatravel.detail.Detail_view;
 
 public class BookmarkFragment extends Fragment {
 
@@ -30,6 +34,15 @@ public class BookmarkFragment extends Fragment {
                 textView.setText(s);
             }
         });*/
+       Button button=root.findViewById(R.id.test_button);
+       button.setOnClickListener(new View.OnClickListener() {
+           @Override
+           public void onClick(View view) {
+               Intent intent = new Intent(getActivity().getApplicationContext(),Detail_view.class);
+               startActivity(intent);
+           }
+       });
+
         return root;
     }
 }

@@ -15,7 +15,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".LocationBasedList"></activity>
+        <activity android:name=".detail.Detail_view"></activity>
+        <activity android:name=".LocationBasedList" />
         <activity android:name=".ui.LocationBasedList" />
         <activity
             android:name=".MainActivity"
