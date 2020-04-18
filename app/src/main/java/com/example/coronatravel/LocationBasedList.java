@@ -68,7 +68,6 @@ public class LocationBasedList extends AppCompatActivity {
 
 
     public void JSONParsing(String JSONFromLocationBasedListaddr) {
-        String result = "";
         try {
             JSONObject jsonObject = new JSONObject(JSONFromLocationBasedListaddr);
             String  response = jsonObject.getString("response");
@@ -97,7 +96,6 @@ public class LocationBasedList extends AppCompatActivity {
             }
         } catch (JSONException e) {
             Log.d("TAG","parsing error");
-            e.printStackTrace();
         }
     }
 }
