@@ -1,4 +1,4 @@
-package com.example.coronatravel.ui.annual;
+package com.example.coronatravel.ui.festival;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -14,17 +14,17 @@ import androidx.lifecycle.ViewModelProviders;
 
 import com.example.coronatravel.R;
 
-public class AnnualFragment extends Fragment {
+public class FestivalFragment extends Fragment {
 
-    private AnnualViewModel annualViewModel;
+    private FestivalViewModel festivalViewModel;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        annualViewModel =
-                ViewModelProviders.of(this).get(AnnualViewModel.class);
-        View root = inflater.inflate(R.layout.fragment_annual, container, false);
-        final TextView textView = root.findViewById(R.id.text_annual);
-        annualViewModel.getText().observe(this, new Observer<String>() {
+        festivalViewModel =
+                ViewModelProviders.of(this).get(FestivalViewModel.class);
+        View root = inflater.inflate(R.layout.fragment_festival, container, false);
+        final TextView textView = root.findViewById(R.id.text_festival);
+        festivalViewModel.getText().observe(this, new Observer<String>() {
             @Override
             public void onChanged(@Nullable String s) {
                 textView.setText(s);

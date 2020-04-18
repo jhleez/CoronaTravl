@@ -1,6 +1,5 @@
 package com.example.coronatravel;
 
-import android.content.Intent;
 import android.os.Bundle;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -45,7 +44,7 @@ public class MainActivity extends AppCompatActivity {
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
         mAppBarConfiguration = new AppBarConfiguration.Builder(
-                R.id.nav_home, R.id.nav_around, R.id.nav_annual,
+                R.id.nav_home, R.id.nav_around, R.id.nav_festival,
                 R.id.nav_local, R.id.nav_share, R.id.nav_send,R.id.nav_bookmark)
                 .setDrawerLayout(drawer)
                 .build();
