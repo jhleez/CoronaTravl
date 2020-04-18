@@ -9,25 +9,49 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="5dp">
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="관광타입"
-            android:textSize="15sp"
             android:gravity="center"
-            />
+            android:text="관광타입"
+            android:textSize="15sp" />
+
+        <Spinner
+            android:id="@+id/spinner_around_traveltype"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:entries="@array/around_traveltype"
+            android:gravity="center" />
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="5dp">
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginRight="5dp"
             android:text="거리"
-            android:textSize="15sp"
-            />
+            android:textSize="15sp" />
+
+        <EditText
+            android:id="@+id/edittext_around_distance"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:hint="(입력)"
+            android:inputType="number"
+            android:textSize="15sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:text="m  (20km 까지 가능합니다)"
+            android:textSize="15sp" />
     </LinearLayout>
 
 

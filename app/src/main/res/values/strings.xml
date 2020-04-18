@@ -14,4 +14,16 @@
     <string name="menu_bookmark">Bookmark</string>
     <string name="menu_share">Share</string>
     <string name="menu_send">Send</string>
+
+    <string-array name="around_traveltype">
+        <item>타입 선택</item>
+        <item>관광지</item>
+        <item>축제 공연 행사</item>
+        <item>여행코스</item>
+        <item>레포츠</item>
+        <item>숙박</item>
+        <item>쇼핑</item>
+        <item>음식점</item>
+    </string-array>
+
 </resources>
