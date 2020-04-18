@@ -15,7 +15,6 @@ import org.w3c.dom.Text;
 import java.util.ArrayList;
 
 public class LocationBasedList extends AppCompatActivity {
-    public static ArrayList<LocationBasedList_Class> LocationBasedList_ArrayList = new ArrayList<>();
     TextView url;
     String totalcount;
     @Override
@@ -49,11 +48,11 @@ public class LocationBasedList extends AppCompatActivity {
             Log.d("TAG", "jsonparsing error");
         }
         url = (TextView)findViewById(R.id.url);
-        LocationBasedList_ArrayList.clear();
+        MainActivity.LocationBasedList_ArrayList.clear();
         JSONParsing( JSONFromLocationBasedListaddr);
 
         //DB의 첫번째 데이터 하나 textview에 띄우기
-        LocationBasedList_Class asd = LocationBasedList_ArrayList.get(1);
+        LocationBasedList_Class asd = MainActivity.LocationBasedList_ArrayList.get(1);
         url.setText("조회된 관광지 개수 : " + totalcount +"\n\n" +
                     "첫번째 데이터의 정보\n" +
                     "주소 :"+ asd.getAddr1() +"\n"+
@@ -62,7 +61,7 @@ public class LocationBasedList extends AppCompatActivity {
                     "내 위치로부터의 거리 : "+asd.getDist() + "\n"+
                     "제목 : " + asd.getTitle() + "\n" +
                     "썸네일 주소 : " + asd.getFirstimage() +"\n\n"+
-                    "Arraylist 속의 데이터 개수 " + String.valueOf(LocationBasedList_ArrayList.size()));
+                    "Arraylist 속의 데이터 개수 " + String.valueOf(MainActivity.LocationBasedList_ArrayList.size()));
     }
 
 
@@ -91,7 +90,7 @@ public class LocationBasedList extends AppCompatActivity {
                 String firstimage = subJsonObject.getString("firstimage");
                 String title = subJsonObject.getString("title");
                 LocationBasedList_Class subclass = new LocationBasedList_Class(addr1,contentid,contenttypeid,dist,firstimage,title);
-                LocationBasedList_ArrayList.add(subclass);
+                MainActivity.LocationBasedList_ArrayList.add(subclass);
             }
         } catch (JSONException e) {
             Log.d("TAG","parsing error");

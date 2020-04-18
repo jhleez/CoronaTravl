@@ -4,12 +4,12 @@ public class LocationBasedList_Class {
 
     LocationBasedList_Class(String addr1,String contentid,String contenttypeid,String dist,String firstimage,String title)
     {
-        this.addr1 =addr1;
+        this.addr1 =addr1; //주소
         this.contentid=contentid;
         this.contenttypeid=contenttypeid;
-        this.dist=dist;
-        this.firstimage=firstimage;
-        this.title=title;
+        this.dist=dist; //내위치에서 거리
+        this.firstimage=firstimage; // 사진
+        this.title=title; //제목
     }
 
     private String addr1;
