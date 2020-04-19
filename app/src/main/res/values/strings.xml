@@ -53,10 +53,6 @@
         <item>인기순</item>
         <item>최근수정순</item>
         <item>등록순</item>
-        <item>제목순(이미지)</item>
-        <item>인기순(이미지)</item>
-        <item>최근수정순(이미지)</item>
-        <item>등록순(이미지)</item>
     </string-array>
 
 </resources>

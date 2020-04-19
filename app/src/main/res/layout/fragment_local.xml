@@ -16,6 +16,7 @@
             android:gravity="center"
             android:text="관광타입"
             android:textSize="15sp" />
+
         <Spinner
             android:id="@+id/spinner_local_traveltype"
             android:layout_width="wrap_content"
@@ -23,18 +24,13 @@
             android:entries="@array/around_traveltype"
             android:gravity="center" />
 
-        <Button
-            android:id="@+id/button_local_search"
-            android:layout_marginLeft="20dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="검색"/>
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="5dp">
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -66,9 +62,10 @@
     </LinearLayout>
 
     <LinearLayout
-        android:padding="5dp"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:padding="5dp">
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -89,6 +86,35 @@
             android:layout_height="wrap_content"
             android:entries="@array/smallcity"
             android:gravity="center" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="5dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="검색"
+            android:textSize="15sp" />
+
+        <Spinner
+            android:id="@+id/spinner_local_searchtype"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="8dp"
+            android:entries="@array/searchtype"
+            android:gravity="center" />
+
+        <Button
+            android:id="@+id/button_local_search"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="25dp"
+            android:text="검색" />
 
     </LinearLayout>
 

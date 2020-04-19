@@ -36,7 +36,7 @@ public class TotalsearchFragment extends Fragment implements AdapterView.OnItemS
                              ViewGroup container, Bundle savedInstanceState) {
         totalsearchViewModel =
                 ViewModelProviders.of(this).get(TotalsearchViewModel.class);
-        View root = inflater.inflate(R.layout.fragment_around, container, false);
+        View root = inflater.inflate(R.layout.fragment_totalsearch, container, false);
 
         final Spinner spinner_hightype, spinner_middletype,spinner_lowtype,
                 spinner_bigcity, spinner_smallcity;
