@@ -10,6 +10,8 @@ import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.Spinner;
 import android.widget.Toast;
 
@@ -25,7 +27,10 @@ import com.example.coronatravel.detail.Detail_view;
 public class SleepingFragment extends Fragment implements AdapterView.OnItemSelectedListener {
 
     private SleepingViewModel sleepingViewModel;
-
+    int radiocheck=0;
+    int city_big, city_small;
+    ListView listView;
+    int searchtype;
 
 
     public View onCreateView(@NonNull LayoutInflater inflater,
@@ -33,6 +38,51 @@ public class SleepingFragment extends Fragment implements AdapterView.OnItemSele
         sleepingViewModel =
                 ViewModelProviders.of(this).get(SleepingViewModel.class);
         View root = inflater.inflate(R.layout.fragment_sleeping, container, false);
+
+        final Spinner spinner_bigcity, spinner_smallcity,spinner_searchtype;
+
+        RadioGroup group =root.findViewById(R.id.radiogroup);
+
+        spinner_bigcity = root.findViewById(R.id.spinner_sleeping_bigcity);
+        spinner_smallcity = root.findViewById(R.id.spinner_sleeping_smallcity);
+
+        spinner_searchtype=root.findViewById(R.id.spinner_sleeping_searchtype);
+
+        listView=root.findViewById(R.id.listview_sleeping_dataview);
+
+        Button button =root.findViewById(R.id.button_sleeping_search);
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                city_big = spinner_bigcity.getSelectedItemPosition();//지역선택
+                city_small = spinner_smallcity.getSelectedItemPosition();//시군구선택
+
+                searchtype = spinner_searchtype.getSelectedItemPosition(); // 정렬 방법
+
+                Toast.makeText(getContext().getApplicationContext(), radiocheck+"", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+
+        group.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup radioGroup, int i) {
+                switch (i){
+                    case R.id.sleeping_radiobt0:
+                        radiocheck=0;
+                        break;
+                    case R.id.sleeping_radiobt1:
+                        radiocheck=1;
+                        break;
+                    case R.id.sleeping_radiobt2:
+                        radiocheck=2;
+                        break;
+                    case R.id.sleeping_radiobt3:
+                        radiocheck=3;
+                        break;
+                }
+            }
+        });
 
 
         return root;
