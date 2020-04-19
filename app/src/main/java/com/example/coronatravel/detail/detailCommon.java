@@ -17,10 +17,9 @@ public class detailCommon {
         this.overview=overview; // 개요
         this.title=title; // 이름
         this.zipcode=zipcode; // 우편번호
-        this.homepage = homepage;
-        this.tel = tel;
-        this.telname = telname;
-
+        this.homepage = homepage; // 홈페이지
+        this.tel = tel; // 전화번호
+        this.telname = telname; // 전화번호명명
     }
     private String homepage;
     private String tel;
