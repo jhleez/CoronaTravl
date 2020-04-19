@@ -8,10 +8,13 @@
     <string name="action_settings">Settings</string>
 
     <string name="menu_home">Home</string>
-    <string name="menu_around">Around</string>
-    <string name="menu_festival">Festival</string>
-    <string name="menu_local">Local</string>
-    <string name="menu_bookmark">Bookmark</string>
+
+    <string name="menu_around">내 주변 관광검색</string>
+    <string name="menu_festival">행사 검색</string>
+    <string name="menu_local">지역별 관광검색</string>
+    <string name="menu_bookmark">즐겨 찾기</string>
+    <string name="menu_sleeping">숙박 검색</string>
+    <string name="menu_totalsearch">통합 검색</string>
     <string name="menu_share">Share</string>
     <string name="menu_send">Send</string>
 

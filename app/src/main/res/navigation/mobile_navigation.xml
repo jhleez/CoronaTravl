@@ -12,16 +12,17 @@
         tools:layout="@layout/fragment_home" />
 
     <fragment
+        android:id="@+id/nav_festival"
+        android:name="com.example.coronatravel.ui.festival.FestivalFragment"
+        android:label="@string/menu_festival"
+        tools:layout="@layout/fragment_festival" />
+
+    <fragment
         android:id="@+id/nav_around"
         android:name="com.example.coronatravel.ui.around.AroundFragment"
         android:label="@string/menu_around"
         tools:layout="@layout/fragment_around" />
 
-    <fragment
-        android:id="@+id/nav_festival"
-        android:name="com.example.coronatravel.ui.festival.FestivalFragment"
-        android:label="@string/menu_festival"
-        tools:layout="@layout/fragment_festival" />
 
     <fragment
         android:id="@+id/nav_local"
