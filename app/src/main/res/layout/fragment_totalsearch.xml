@@ -5,8 +5,30 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <LinearLayout
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="5dp">
+
+        <EditText
+            android:id="@+id/edittext_totalsearch_input"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="4"
+            android:gravity="center"
+            android:hint="(입력)"
+            android:textSize="15sp" />
+
+        <Button
+            android:id="@+id/button_totalsearch_search"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:text="검색" />
+    </LinearLayout>
+
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="5dp">
@@ -15,25 +37,30 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:text="관광타입"
+            android:text="서비스 분류"
             android:textSize="15sp" />
 
-
         <Spinner
-
-            android:id="@+id/spinner_around_traveltype"
+            android:id="@+id/spinner_totalsearch_hightype"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:entries="@array/around_traveltype"
+            android:entries="@array/hightype"
             android:gravity="center" />
 
-
-        <Button
-            android:id="@+id/button_around_search"
-            android:layout_marginLeft="20dp"
+        <Spinner
+            android:id="@+id/spinner_totalsearch_middletype"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="검색"/>
+            android:entries="@array/middletype"
+            android:gravity="center" />
+
+        <Spinner
+            android:id="@+id/spinner_totalsearch_lowtype"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:entries="@array/lowtype"
+            android:gravity="center" />
+
     </LinearLayout>
 
     <LinearLayout
@@ -44,26 +71,24 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginRight="5dp"
-            android:text="거리"
+            android:gravity="center"
+            android:text="지역"
             android:textSize="15sp" />
 
-        <EditText
-            android:id="@+id/edittext_around_distance"
-            android:layout_width="100dp"
-            android:layout_height="wrap_content"
-            android:hint="(거리 입력)"
-            android:inputType="number"
-            android:maxLength="5"
-            android:textSize="15sp" />
-
-        <TextView
+        <Spinner
+            android:id="@+id/spinner_totalsearch_bigcity"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="5dp"
-            android:layout_marginRight="5dp"
-            android:text="m  (20km 까지 가능합니다)"
-            android:textSize="15sp" />
+            android:entries="@array/bigcity"
+            android:gravity="center" />
+
+        <Spinner
+            android:id="@+id/spinner_totalsearch_smallcity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:entries="@array/smallcity"
+            android:gravity="center" />
+
     </LinearLayout>
 
     <LinearLayout
@@ -71,7 +96,7 @@
         android:layout_height="match_parent">
 
         <ListView
-            android:id="@+id/listview_around_dataview"
+            android:id="@+id/listview_totalsearch_dataview"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_row="0"

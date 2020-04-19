@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Spinner;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -23,13 +24,22 @@ public class LocalFragment extends Fragment {
         localViewModel =
                 ViewModelProviders.of(this).get(LocalViewModel.class);
         View root = inflater.inflate(R.layout.fragment_local, container, false);
-        final TextView textView = root.findViewById(R.id.text_local);
-        localViewModel.getText().observe(this, new Observer<String>() {
-            @Override
-            public void onChanged(@Nullable String s) {
-                textView.setText(s);
-            }
-        });
+
+        final Spinner spinner_traveltype,spinner_hightype, spinner_middletype,spinner_lowtype,
+                spinner_bigcity, spinner_smallcity;
+
+        spinner_traveltype = root.findViewById(R.id.spinner_local_traveltype);
+
+        spinner_hightype = root.findViewById(R.id.spinner_local_hightype);
+        spinner_middletype = root.findViewById(R.id.spinner_local_middletype);
+        spinner_lowtype = root.findViewById(R.id.spinner_local_lowtype);
+
+        spinner_bigcity = root.findViewById(R.id.spinner_local_bigcity);
+        spinner_smallcity = root.findViewById(R.id.spinner_local_smallcity);
+
+
+
+
         return root;
     }
 }

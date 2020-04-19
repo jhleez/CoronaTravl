@@ -29,4 +29,34 @@
         <item>음식점</item>
     </string-array>
 
+    <string-array name="hightype">
+        <item>대분류</item>
+    </string-array>
+
+    <string-array name="middletype">
+        <item>중분류</item>
+    </string-array>
+
+    <string-array name="lowtype">
+        <item>소분류</item>
+    </string-array>
+
+    <string-array name="bigcity">
+        <item>지역 선택</item>
+    </string-array>
+    <string-array name="smallcity">
+        <item>시군구 선택</item>
+    </string-array>
+
+    <string-array name="searchtype">
+        <item>제목순</item>
+        <item>인기순</item>
+        <item>최근수정순</item>
+        <item>등록순</item>
+        <item>제목순(이미지)</item>
+        <item>인기순(이미지)</item>
+        <item>최근수정순(이미지)</item>
+        <item>등록순(이미지)</item>
+    </string-array>
+
 </resources>
