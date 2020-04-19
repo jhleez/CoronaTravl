@@ -18,6 +18,7 @@
     <string-array name="around_traveltype">
         <item>타입 선택</item>
         <item>관광지</item>
+        <item>문화 시설</item>
         <item>축제 공연 행사</item>
         <item>여행코스</item>
         <item>레포츠</item>
