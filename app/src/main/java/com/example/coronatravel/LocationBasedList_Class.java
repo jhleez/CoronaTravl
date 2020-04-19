@@ -75,6 +75,15 @@ public class LocationBasedList_Class {
     }
 
     public static void JSONParsing(String JSONFromLocationBasedListaddr) {
+        String addr1;
+        String contentid;
+        String contenttypeid;
+        String dist;
+        String firstimage;
+        String title;
+
+
+
         try {
             JSONObject jsonObject = new JSONObject(JSONFromLocationBasedListaddr);
             String  response = jsonObject.getString("response");
@@ -92,12 +101,26 @@ public class LocationBasedList_Class {
             JSONArray jsonArray_item = new JSONArray(item);
             for(int i=0;i<jsonArray_item.length();i++){
                 JSONObject subJsonObject = jsonArray_item.getJSONObject(i);
-                String addr1 = subJsonObject.getString("addr1");
-                String contentid =subJsonObject.getString("contentid");
-                String contenttypeid = subJsonObject.getString("contenttypeid");
-                String dist = subJsonObject.getString("dist");
-                String firstimage = subJsonObject.getString("firstimage");
-                String title = subJsonObject.getString("title");
+                try{
+                    addr1 = subJsonObject.getString("addr1");
+                }catch (JSONException e){
+                    addr1="";
+                }
+
+                try{
+                    dist = subJsonObject.getString("dist");
+                }catch (JSONException e){
+                    dist="";
+                }
+                try{
+                    firstimage = subJsonObject.getString("firstimage");
+                }catch (JSONException e){
+                    firstimage="";
+                }
+                contentid =subJsonObject.getString("contentid");
+                contenttypeid = subJsonObject.getString("contenttypeid");
+                firstimage = subJsonObject.getString("firstimage");
+                title = subJsonObject.getString("title");
 
                 LocationBasedList_Class subclass = new LocationBasedList_Class(addr1,contentid,contenttypeid,dist,firstimage,title);
                 MainActivity.LocationBasedList_ArrayList.add(subclass);
