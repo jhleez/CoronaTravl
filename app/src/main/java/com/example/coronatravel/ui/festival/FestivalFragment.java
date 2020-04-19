@@ -35,7 +35,7 @@ public class FestivalFragment extends Fragment {
 
         final Spinner spinner_hightype, spinner_middletype, spinner_lowtype,
                 spinner_bigcity, spinner_smallcity, spinner_searchtype;
-        listView = root.findViewById(R.id.listview_festival_dataview);
+       /* listView = root.findViewById(R.id.listview_festival_dataview);
 
         spinner_hightype=root.findViewById(R.id.spinner_festival_hightype);
         spinner_middletype=root.findViewById(R.id.spinner_festival_middletype);
@@ -61,7 +61,7 @@ public class FestivalFragment extends Fragment {
                 ItemAdapter itemAdapter = new ItemAdapter(MainActivity.LocationBasedList_ArrayList);
                 listView.setAdapter(itemAdapter);
             }
-        });
+        });*/
 
         return root;
     }
