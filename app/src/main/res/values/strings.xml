@@ -7,8 +7,7 @@
     <string name="nav_header_desc">Navigation header</string>
     <string name="action_settings">Settings</string>
 
-    <string name="menu_home">Home</string>
-
+    <string name="menu_home">코로나 현황</string>
     <string name="menu_around">내 주변 관광검색</string>
     <string name="menu_festival">행사 검색</string>
     <string name="menu_local">지역별 관광검색</string>
