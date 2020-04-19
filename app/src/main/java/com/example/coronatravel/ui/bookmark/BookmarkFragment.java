@@ -27,13 +27,13 @@ public class BookmarkFragment extends Fragment {
         bookmarkViewModel =
                 ViewModelProviders.of(this).get(BookmarkViewModel.class);
         View root = inflater.inflate(R.layout.fragment_bookmark, container, false);
-       /* final TextView textView = root.findViewById(R.id.text_around);
+      /* *//* final TextView textView = root.findViewById(R.id.text_around);
         bookmarkViewModel.getText().observe(this, new Observer<String>() {
             @Override
             public void onChanged(@Nullable String s) {
                 textView.setText(s);
             }
-        });*/
+        });*//*
        Button button=root.findViewById(R.id.test_button);
        button.setOnClickListener(new View.OnClickListener() {
            @Override
@@ -42,7 +42,7 @@ public class BookmarkFragment extends Fragment {
                startActivity(intent);
            }
        });
-
+*/
         return root;
     }
 }
