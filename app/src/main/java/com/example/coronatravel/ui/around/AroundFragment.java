@@ -27,7 +27,7 @@ import com.example.coronatravel.detail.Detail_view;
 
 import java.util.ArrayList;
 
-public class AroundFragment extends Fragment implements AdapterView.OnItemSelectedListener {
+public class AroundFragment extends Fragment  {
 
     private AroundViewModel aroundViewModel;
     String radius;
@@ -35,6 +35,7 @@ public class AroundFragment extends Fragment implements AdapterView.OnItemSelect
     ListView listView;
     long mLastClickTime = 0;
     String contentTypeId;
+    int searchtype;
 
 
     public View onCreateView(@NonNull LayoutInflater inflater,
@@ -45,6 +46,7 @@ public class AroundFragment extends Fragment implements AdapterView.OnItemSelect
 
         final Spinner spinner = root.findViewById(R.id.spinner_around_traveltype);
         final EditText editText = root.findViewById(R.id.edittext_around_distance);
+        final Spinner spinner_searchtype = root.findViewById(R.id.spinner_around_searchtype);
         listView = root.findViewById(R.id.listview_around_dataview);
 
         Button button = root.findViewById(R.id.button_around_search);
@@ -54,6 +56,7 @@ public class AroundFragment extends Fragment implements AdapterView.OnItemSelect
                 spinner_item_position = spinner.getSelectedItemPosition();
                 contentTypeId = positionToContenttypeid(spinner_item_position);
                 radius = editText.getText().toString();
+                searchtype= spinner_searchtype.getSelectedItemPosition(); // 검색타입 선택 변수
 
                 ((MainActivity)getActivity()).aroundSearch("12","1000","A","126.981611","37.568477","1");
                 //변수에 우리가 선택한 스피너, 위도경도, 정렬이 드가면 됨
@@ -81,16 +84,6 @@ public class AroundFragment extends Fragment implements AdapterView.OnItemSelect
         return root;
     }
 
-
-    @Override
-    public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-        Toast.makeText(getActivity(), i + "", Toast.LENGTH_SHORT).show();
-    }
-
-    @Override
-    public void onNothingSelected(AdapterView<?> adapterView) {
-
-    }
 
     public String positionToContenttypeid(int position){
         if(position == 0){

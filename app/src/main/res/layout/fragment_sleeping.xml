@@ -48,20 +48,29 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="horizontal">
+            <RadioButton
+                android:layout_marginLeft="3dp"
+                android:id="@+id/sleeping_radiobt0"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="전체" />
 
             <RadioButton
+                android:layout_marginLeft="3dp"
                 android:id="@+id/sleeping_radiobt1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="굿스테이" />
 
             <RadioButton
+                android:layout_marginLeft="3dp"
                 android:id="@+id/sleeping_radiobt2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="한옥" />
 
             <RadioButton
+                android:layout_marginLeft="3dp"
                 android:id="@+id/sleeping_radiobt3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

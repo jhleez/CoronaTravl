@@ -25,11 +25,7 @@ import com.example.coronatravel.detail.Detail_view;
 public class SleepingFragment extends Fragment implements AdapterView.OnItemSelectedListener {
 
     private SleepingViewModel sleepingViewModel;
-    String radius;
-    int spinner_item_position;
-    ListView listView;
-    long mLastClickTime = 0;
-    String contentTypeId;
+
 
 
     public View onCreateView(@NonNull LayoutInflater inflater,
