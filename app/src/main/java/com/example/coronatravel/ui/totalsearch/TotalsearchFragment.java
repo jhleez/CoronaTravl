@@ -22,14 +22,14 @@ import com.example.coronatravel.MainActivity;
 import com.example.coronatravel.R;
 import com.example.coronatravel.detail.Detail_view;
 
-public class TotalsearchFragment extends Fragment implements AdapterView.OnItemSelectedListener {
+public class TotalsearchFragment extends Fragment {
 
     private TotalsearchViewModel totalsearchViewModel;
+    int searchtype;
+    int service_typehigh, service_typemiddle, service_typelow;
+    int city_big, city_small;
     String input;
-    int spinner_item_position;
     ListView listView;
-    long mLastClickTime = 0;
-    String contentTypeId;
 
 
     public View onCreateView(@NonNull LayoutInflater inflater,
@@ -39,7 +39,7 @@ public class TotalsearchFragment extends Fragment implements AdapterView.OnItemS
         View root = inflater.inflate(R.layout.fragment_totalsearch, container, false);
 
         final Spinner spinner_hightype, spinner_middletype,spinner_lowtype,
-                spinner_bigcity, spinner_smallcity;
+                spinner_bigcity, spinner_smallcity,spinner_searchtype;
         final EditText editText_input;
 
         editText_input = root.findViewById(R.id.edittext_totalsearch_input);
@@ -51,23 +51,33 @@ public class TotalsearchFragment extends Fragment implements AdapterView.OnItemS
         spinner_bigcity = root.findViewById(R.id.spinner_totalsearch_bigcity);
         spinner_smallcity = root.findViewById(R.id.spinner_totalsearch_smallcity);
 
+        spinner_searchtype=root.findViewById(R.id.spinner_totalsearch_searchtype);
+
         listView = root.findViewById(R.id.listview_totalsearch_dataview);
         Button button = root.findViewById(R.id.button_totalsearch_search);
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                service_typehigh = spinner_hightype.getSelectedItemPosition();//대분류
+                service_typemiddle = spinner_middletype.getSelectedItemPosition();//중분류
+                service_typelow = spinner_lowtype.getSelectedItemPosition();//소분류
 
+                city_big = spinner_bigcity.getSelectedItemPosition();//지역선택
+                city_small = spinner_smallcity.getSelectedItemPosition();//시군구선택
+
+                input= editText_input.getText().toString(); // 검색 내용
+
+                searchtype = spinner_searchtype.getSelectedItemPosition(); // 정렬 방법
+
+                ((MainActivity)getActivity()).aroundSearch("12","1000","A","126.981611","37.568477","1");
+                ItemAdapter itemAdapter = new ItemAdapter(MainActivity.LocationBasedList_ArrayList);
+                listView.setAdapter(itemAdapter);
+            }
+        });
 
         return root;
     }
 
-
-    @Override
-    public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-        Toast.makeText(getActivity(), i + "", Toast.LENGTH_SHORT).show();
-    }
-
-    @Override
-    public void onNothingSelected(AdapterView<?> adapterView) {
-
-    }
 
     public String positionToContenttypeid(int position){
         if(position == 0){
