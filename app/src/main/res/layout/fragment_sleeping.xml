@@ -45,35 +45,38 @@
             android:textSize="15sp" />
 
         <RadioGroup
+            android:id="@+id/radiogroup"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="horizontal">
+
             <RadioButton
-                android:layout_marginLeft="3dp"
                 android:id="@+id/sleeping_radiobt0"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginLeft="3dp"
+                android:checked="true"
                 android:text="전체" />
 
             <RadioButton
-                android:layout_marginLeft="3dp"
                 android:id="@+id/sleeping_radiobt1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginLeft="3dp"
                 android:text="굿스테이" />
 
             <RadioButton
-                android:layout_marginLeft="3dp"
                 android:id="@+id/sleeping_radiobt2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginLeft="3dp"
                 android:text="한옥" />
 
             <RadioButton
-                android:layout_marginLeft="3dp"
                 android:id="@+id/sleeping_radiobt3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginLeft="3dp"
                 android:text="배니키아" />
         </RadioGroup>
     </LinearLayout>
@@ -112,7 +115,7 @@
         android:layout_height="match_parent">
 
         <ListView
-            android:id="@+id/listview_around_dataview"
+            android:id="@+id/listview_sleeping_dataview"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_row="0"
