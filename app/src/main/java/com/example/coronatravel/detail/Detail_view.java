@@ -2,12 +2,14 @@ package com.example.coronatravel.detail;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.TextView;
 
 import com.example.coronatravel.HttpReqTask;
 import com.example.coronatravel.LocationBasedList_Class;
+import com.example.coronatravel.MainActivity;
 import com.example.coronatravel.R;
 
 import org.json.JSONArray;
@@ -25,8 +27,12 @@ public class Detail_view extends AppCompatActivity {
         testCommon = (TextView) findViewById(R.id.testCommon);
         testInfo = (TextView) findViewById(R.id.testInfo);
         // 리스트뷰에서 넘길 때 contenttype , contentid를 같이 넘겨줘야되는데 일단 그냥 테스트케이스로 잡고했음
-        String contentTypeId = "12";
-        String contentId = "127480";
+
+
+        Intent intent = getIntent();
+        int position = intent.getExtras().getInt("position");
+        String contentTypeId = MainActivity.LocationBasedList_ArrayList.get(position).getContenttypeid();
+        String contentId = MainActivity.LocationBasedList_ArrayList.get(position).getContentid();
         String ServiceKey = "2YHyxt5iKCnOzEiYHMcML%2FgiOywB9tnJeL6D%2BHqsL48iMsSOXwPxQHTjCHq5dA1zAEcNIdcQUXnvFMN0aIdLsQ%3D%3D";
         detailCommon detail_C = new detailCommon();
         String detailCommonUrl = "http://api.visitkorea.or.kr/openapi/service/rest/KorService/detailCommon?" +

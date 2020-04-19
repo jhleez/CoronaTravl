@@ -1,5 +1,11 @@
 package com.example.coronatravel;
 
+import android.util.Log;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 public class LocationBasedList_Class {
 
     LocationBasedList_Class(String addr1,String contentid,String contenttypeid,String dist,String firstimage,String title)
@@ -68,4 +74,37 @@ public class LocationBasedList_Class {
         this.title = title;
     }
 
+    public static void JSONParsing(String JSONFromLocationBasedListaddr) {
+        try {
+            JSONObject jsonObject = new JSONObject(JSONFromLocationBasedListaddr);
+            String  response = jsonObject.getString("response");
+            JSONObject jsonObject_response = new JSONObject(response);
+
+            String body = jsonObject_response.getString("body");
+            JSONObject jsonObject_body = new JSONObject(body);
+
+            //totalcount = jsonObject_body.getString("totalCount");
+
+            String items = jsonObject_body.getString("items");
+            JSONObject jsonObject_items = new JSONObject(items);
+
+            String item = jsonObject_items.getString("item");
+            JSONArray jsonArray_item = new JSONArray(item);
+            for(int i=0;i<jsonArray_item.length();i++){
+                JSONObject subJsonObject = jsonArray_item.getJSONObject(i);
+                String addr1 = subJsonObject.getString("addr1");
+                String contentid =subJsonObject.getString("contentid");
+                String contenttypeid = subJsonObject.getString("contenttypeid");
+                String dist = subJsonObject.getString("dist");
+                String firstimage = subJsonObject.getString("firstimage");
+                String title = subJsonObject.getString("title");
+
+                LocationBasedList_Class subclass = new LocationBasedList_Class(addr1,contentid,contenttypeid,dist,firstimage,title);
+                MainActivity.LocationBasedList_ArrayList.add(subclass);
+            }
+        } catch (JSONException e) {
+            Log.d("TAG","parsing error");
+        }
+    }
 }
+
