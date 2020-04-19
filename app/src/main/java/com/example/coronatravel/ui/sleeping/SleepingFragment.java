@@ -36,42 +36,8 @@ public class SleepingFragment extends Fragment implements AdapterView.OnItemSele
                              ViewGroup container, Bundle savedInstanceState) {
         sleepingViewModel =
                 ViewModelProviders.of(this).get(SleepingViewModel.class);
-        View root = inflater.inflate(R.layout.fragment_around, container, false);
+        View root = inflater.inflate(R.layout.fragment_sleeping, container, false);
 
-        final Spinner spinner = root.findViewById(R.id.spinner_around_traveltype);
-        final EditText editText = root.findViewById(R.id.edittext_around_distance);
-        listView = root.findViewById(R.id.listview_around_dataview);
-
-        Button button = root.findViewById(R.id.button_around_search);
-        button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                spinner_item_position = spinner.getSelectedItemPosition();
-                contentTypeId = positionToContenttypeid(spinner_item_position);
-                radius = editText.getText().toString();
-
-                ((MainActivity)getActivity()).aroundSearch("12","1000","A","126.981611","37.568477","1");
-                //변수에 우리가 선택한 스피너, 위도경도, 정렬이 드가면 됨
-                ItemAdapter itemAdapter = new ItemAdapter(MainActivity.LocationBasedList_ArrayList);
-                listView.setAdapter(itemAdapter);
-
-            }
-        });
-
-
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView parent, View v, int position, long id) {
-                if (SystemClock.elapsedRealtime() - mLastClickTime < 1000){
-                    return;
-                }
-                mLastClickTime = SystemClock.elapsedRealtime();
-
-                Intent intent = new Intent(getActivity(), Detail_view.class);
-                intent.putExtra("position", position);
-                startActivity(intent);
-            }
-        });
 
         return root;
     }

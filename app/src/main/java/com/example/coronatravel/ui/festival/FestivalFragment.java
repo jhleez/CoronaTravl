@@ -23,13 +23,7 @@ public class FestivalFragment extends Fragment {
         festivalViewModel =
                 ViewModelProviders.of(this).get(FestivalViewModel.class);
         View root = inflater.inflate(R.layout.fragment_festival, container, false);
-        final TextView textView = root.findViewById(R.id.text_festival);
-        festivalViewModel.getText().observe(this, new Observer<String>() {
-            @Override
-            public void onChanged(@Nullable String s) {
-                textView.setText(s);
-            }
-        });
+
         return root;
     }
 }

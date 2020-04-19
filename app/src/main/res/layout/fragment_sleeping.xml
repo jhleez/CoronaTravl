@@ -6,7 +6,6 @@
     android:orientation="vertical">
 
     <LinearLayout
-
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="5dp">
@@ -15,25 +14,23 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:text="관광타입"
+            android:text="지역"
             android:textSize="15sp" />
 
-
         <Spinner
-
-            android:id="@+id/spinner_around_traveltype"
+            android:id="@+id/spinner_sleeping_bigcity"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:entries="@array/around_traveltype"
+            android:entries="@array/bigcity"
             android:gravity="center" />
 
-
-        <Button
-            android:id="@+id/button_around_search"
-            android:layout_marginLeft="20dp"
+        <Spinner
+            android:id="@+id/spinner_sleeping_smallcity"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="검색"/>
+            android:entries="@array/smallcity"
+            android:gravity="center" />
+
     </LinearLayout>
 
     <LinearLayout
@@ -44,26 +41,61 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginRight="5dp"
-            android:text="거리"
+            android:text="숙박선택"
             android:textSize="15sp" />
 
-        <EditText
-            android:id="@+id/edittext_around_distance"
-            android:layout_width="100dp"
-            android:layout_height="wrap_content"
-            android:hint="(거리 입력)"
-            android:inputType="number"
-            android:maxLength="5"
-            android:textSize="15sp" />
+        <RadioGroup
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <RadioButton
+                android:id="@+id/sleeping_radiobt1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="굿스테이" />
+
+            <RadioButton
+                android:id="@+id/sleeping_radiobt2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="한옥" />
+
+            <RadioButton
+                android:id="@+id/sleeping_radiobt3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="배니키아" />
+        </RadioGroup>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="5dp">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="5dp"
-            android:layout_marginRight="5dp"
-            android:text="m  (20km 까지 가능합니다)"
+            android:gravity="center"
+            android:text="검색"
             android:textSize="15sp" />
+
+        <Spinner
+            android:id="@+id/spinner_sleeping_searchtype"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="8dp"
+            android:entries="@array/searchtype"
+            android:gravity="center" />
+
+        <Button
+            android:id="@+id/button_sleeping_search"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="25dp"
+            android:text="검색" />
+
     </LinearLayout>
 
     <LinearLayout
