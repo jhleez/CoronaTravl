@@ -131,11 +131,11 @@ public class detailCommon {
         this.telname = tel_name;
     }
 
-    public detailCommon JSONParsing(String JSONFromLocationBasedListaddr) {
+    public detailCommon JSONParsing(String JSONFromdetailCommonUrl) {
         detailCommon subclass=null;
         String addr1,booktour, firstimage,mapx,mapy,mlevel,overview,title,zipcode,homepage,tel,telname;
         try {
-            JSONObject jsonObject = new JSONObject(JSONFromLocationBasedListaddr);
+            JSONObject jsonObject = new JSONObject(JSONFromdetailCommonUrl);
             String response = jsonObject.getString("response");
             JSONObject jsonObject_response = new JSONObject(response);
 
