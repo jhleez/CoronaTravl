@@ -13,13 +13,24 @@
             android:icon="@drawable/ic_menu_gallery"
             android:title="@string/menu_around" />
         <item
-            android:id="@+id/nav_festival"
-            android:icon="@drawable/ic_menu_slideshow"
-            android:title="@string/menu_festival" />
-        <item
             android:id="@+id/nav_local"
             android:icon="@drawable/ic_menu_manage"
             android:title="@string/menu_local" />
+        <item
+            android:id="@+id/nav_totalsearch"
+            android:icon="@drawable/ic_menu_manage"
+            android:title="@string/menu_totalsearch" />
+
+        <item
+            android:id="@+id/nav_festival"
+            android:icon="@drawable/ic_menu_slideshow"
+            android:title="@string/menu_festival" />
+
+        <item
+            android:id="@+id/nav_sleeping"
+            android:icon="@drawable/ic_menu_slideshow"
+            android:title="@string/menu_sleeping" />
+
 
         <item
             android:id="@+id/nav_bookmark"
