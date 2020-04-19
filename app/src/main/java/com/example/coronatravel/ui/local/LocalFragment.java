@@ -48,6 +48,8 @@ public class LocalFragment extends Fragment {
 
         spinner_searchtype=root.findViewById(R.id.spinner_local_searchtype);
 
+        listView=root.findViewById(R.id.listview_local_dataview);
+
         Button button = root.findViewById(R.id.button_local_search);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -63,6 +65,7 @@ public class LocalFragment extends Fragment {
 
                 searchtype = spinner_searchtype.getSelectedItemPosition(); // 정렬 방법
 
+                ((MainActivity)getActivity()).aroundSearch("12","1000","A","126.981611","37.568477","1");
                 ItemAdapter itemAdapter = new ItemAdapter(MainActivity.LocationBasedList_ArrayList);
                 listView.setAdapter(itemAdapter);
             }

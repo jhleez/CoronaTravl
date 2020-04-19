@@ -57,6 +57,7 @@ public class FestivalFragment extends Fragment {
 
                 searchtype = spinner_searchtype.getSelectedItemPosition(); // 정렬 방법
 
+                ((MainActivity)getActivity()).aroundSearch("12","1000","A","126.981611","37.568477","1");
                 ItemAdapter itemAdapter = new ItemAdapter(MainActivity.LocationBasedList_ArrayList);
                 listView.setAdapter(itemAdapter);
             }
