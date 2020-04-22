@@ -16,11 +16,13 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProviders;
+import androidx.viewpager.widget.ViewPager;
 
 import com.example.coronatravel.ItemAdapter;
 import com.example.coronatravel.MainActivity;
 import com.example.coronatravel.R;
 import com.example.coronatravel.detail.Detail_view;
+import com.example.coronatravel.ui.SwipeAdapter;
 
 public class TotalsearchFragment extends Fragment {
 
@@ -41,6 +43,8 @@ public class TotalsearchFragment extends Fragment {
         final Spinner spinner_hightype, spinner_middletype,spinner_lowtype,
                 spinner_bigcity, spinner_smallcity,spinner_searchtype;
         final EditText editText_input;
+        final ViewPager viewPager = root.findViewById(R.id.viewpager_totalsearch_page);
+        final SwipeAdapter swipeAdapter= new SwipeAdapter(getChildFragmentManager());
 
         editText_input = root.findViewById(R.id.edittext_totalsearch_input);
 
@@ -53,7 +57,6 @@ public class TotalsearchFragment extends Fragment {
 
         spinner_searchtype=root.findViewById(R.id.spinner_totalsearch_searchtype);
 
-        listView = root.findViewById(R.id.listview_totalsearch_dataview);
         Button button = root.findViewById(R.id.button_totalsearch_search);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -69,9 +72,9 @@ public class TotalsearchFragment extends Fragment {
 
                 searchtype = spinner_searchtype.getSelectedItemPosition(); // 정렬 방법
 
-                ((MainActivity)getActivity()).aroundSearch("12","1000","A","126.981611","37.568477","1");
-                ItemAdapter itemAdapter = new ItemAdapter(MainActivity.LocationBasedList_ArrayList);
-                listView.setAdapter(itemAdapter);
+                viewPager.setOffscreenPageLimit(1);
+                viewPager.setAdapter(swipeAdapter);
+                viewPager.setCurrentItem(0);
             }
         });
 

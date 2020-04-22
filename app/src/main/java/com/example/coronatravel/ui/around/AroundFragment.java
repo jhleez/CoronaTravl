@@ -47,6 +47,7 @@ public class AroundFragment extends Fragment  {
 
         final SwipeAdapter swipeAdapter= new SwipeAdapter(getChildFragmentManager());
         final View root = inflater.inflate(R.layout.fragment_around, container, false);
+        final ViewPager viewPager = root.findViewById(R.id.viewpager_around_page);
 
         final Spinner spinner = root.findViewById(R.id.spinner_around_traveltype);
         final EditText editText = root.findViewById(R.id.edittext_around_distance);
@@ -61,18 +62,10 @@ public class AroundFragment extends Fragment  {
                 radius = editText.getText().toString();
                 searchtype= spinner_searchtype.getSelectedItemPosition(); // 검색타입 선택 변수
 
-
-                ViewPager viewPager = root.findViewById(R.id.viewpager_around_page);
                 viewPager.setOffscreenPageLimit(1);
                 viewPager.setAdapter(swipeAdapter);
                 viewPager.setCurrentItem(0);
 
-
-               /* ((MainActivity)getActivity()).aroundSearch("12","1000","A","126.981611","37.568477","1");
-                //변수에 우리가 선택한 스피너, 위도경도, 정렬이 드가면 됨
-                ItemAdapter itemAdapter = new ItemAdapter(MainActivity.LocationBasedList_ArrayList);
-                listView.setAdapter(itemAdapter);
-*/
             }
         });
 

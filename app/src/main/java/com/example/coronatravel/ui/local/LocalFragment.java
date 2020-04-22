@@ -14,10 +14,12 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
+import androidx.viewpager.widget.ViewPager;
 
 import com.example.coronatravel.ItemAdapter;
 import com.example.coronatravel.MainActivity;
 import com.example.coronatravel.R;
+import com.example.coronatravel.ui.SwipeAdapter;
 
 public class LocalFragment extends Fragment {
 
@@ -31,11 +33,14 @@ public class LocalFragment extends Fragment {
                              ViewGroup container, Bundle savedInstanceState) {
         localViewModel =
                 ViewModelProviders.of(this).get(LocalViewModel.class);
-        View root = inflater.inflate(R.layout.fragment_local, container, false);
+
+        final SwipeAdapter swipeAdapter= new SwipeAdapter(getChildFragmentManager());
+        final View root = inflater.inflate(R.layout.fragment_local, container, false);
 
         final Spinner spinner_traveltype,spinner_hightype, spinner_middletype,spinner_lowtype,
                 spinner_bigcity, spinner_smallcity,spinner_searchtype;
 
+        final ViewPager viewPager = root.findViewById(R.id.viewpager_local_page);
 
         spinner_traveltype = root.findViewById(R.id.spinner_local_traveltype);
 
@@ -48,9 +53,8 @@ public class LocalFragment extends Fragment {
 
         spinner_searchtype=root.findViewById(R.id.spinner_local_searchtype);
 
-        listView=root.findViewById(R.id.listview_local_dataview);
-
         Button button = root.findViewById(R.id.button_local_search);
+
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -65,9 +69,11 @@ public class LocalFragment extends Fragment {
 
                 searchtype = spinner_searchtype.getSelectedItemPosition(); // 정렬 방법
 
-                ((MainActivity)getActivity()).aroundSearch("12","1000","A","126.981611","37.568477","1");
-                ItemAdapter itemAdapter = new ItemAdapter(MainActivity.LocationBasedList_ArrayList);
-                listView.setAdapter(itemAdapter);
+                viewPager.setOffscreenPageLimit(1);
+                viewPager.setAdapter(swipeAdapter);
+                viewPager.setCurrentItem(0);
+
+
             }
         });
 

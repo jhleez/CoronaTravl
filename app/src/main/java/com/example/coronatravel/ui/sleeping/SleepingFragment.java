@@ -18,11 +18,13 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProviders;
+import androidx.viewpager.widget.ViewPager;
 
 import com.example.coronatravel.ItemAdapter;
 import com.example.coronatravel.MainActivity;
 import com.example.coronatravel.R;
 import com.example.coronatravel.detail.Detail_view;
+import com.example.coronatravel.ui.SwipeAdapter;
 
 public class SleepingFragment extends Fragment implements AdapterView.OnItemSelectedListener {
 
@@ -37,7 +39,11 @@ public class SleepingFragment extends Fragment implements AdapterView.OnItemSele
                              ViewGroup container, Bundle savedInstanceState) {
         sleepingViewModel =
                 ViewModelProviders.of(this).get(SleepingViewModel.class);
-        View root = inflater.inflate(R.layout.fragment_sleeping, container, false);
+
+        final SwipeAdapter swipeAdapter= new SwipeAdapter(getChildFragmentManager());
+        final View root = inflater.inflate(R.layout.fragment_sleeping, container, false);
+        final ViewPager viewPager = root.findViewById(R.id.viewpager_sleeping_page);
+
 
         final Spinner spinner_bigcity, spinner_smallcity,spinner_searchtype;
 
@@ -48,8 +54,6 @@ public class SleepingFragment extends Fragment implements AdapterView.OnItemSele
 
         spinner_searchtype=root.findViewById(R.id.spinner_sleeping_searchtype);
 
-        listView=root.findViewById(R.id.listview_sleeping_dataview);
-
         Button button =root.findViewById(R.id.button_sleeping_search);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -59,7 +63,9 @@ public class SleepingFragment extends Fragment implements AdapterView.OnItemSele
 
                 searchtype = spinner_searchtype.getSelectedItemPosition(); // 정렬 방법
 
-                Toast.makeText(getContext().getApplicationContext(), radiocheck+"", Toast.LENGTH_SHORT).show();
+                viewPager.setOffscreenPageLimit(1);
+                viewPager.setAdapter(swipeAdapter);
+                viewPager.setCurrentItem(0);
             }
         });
 

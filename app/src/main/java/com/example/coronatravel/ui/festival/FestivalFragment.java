@@ -14,10 +14,12 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
+import androidx.viewpager.widget.ViewPager;
 
 import com.example.coronatravel.ItemAdapter;
 import com.example.coronatravel.MainActivity;
 import com.example.coronatravel.R;
+import com.example.coronatravel.ui.SwipeAdapter;
 
 public class FestivalFragment extends Fragment {
 
@@ -31,11 +33,14 @@ public class FestivalFragment extends Fragment {
                              ViewGroup container, Bundle savedInstanceState) {
         festivalViewModel =
                 ViewModelProviders.of(this).get(FestivalViewModel.class);
-        View root = inflater.inflate(R.layout.fragment_festival, container, false);
-
+        final View root = inflater.inflate(R.layout.fragment_festival, container, false);
+        final SwipeAdapter swipeAdapter= new SwipeAdapter(getChildFragmentManager());
+        final ViewPager viewPager = root.findViewById(R.id.viewpager_festival_page);
         final Spinner spinner_hightype, spinner_middletype, spinner_lowtype,
                 spinner_bigcity, spinner_smallcity, spinner_searchtype;
-       /* listView = root.findViewById(R.id.listview_festival_dataview);
+
+
+        /* listView = root.findViewById(R.id.listview_festival_dataview);
 
         spinner_hightype=root.findViewById(R.id.spinner_festival_hightype);
         spinner_middletype=root.findViewById(R.id.spinner_festival_middletype);
@@ -44,24 +49,29 @@ public class FestivalFragment extends Fragment {
         spinner_smallcity=root.findViewById(R.id.spinner_festival_smallcity);
         spinner_searchtype=root.findViewById(R.id.spinner_festival_searchtype);
 
+       */
         Button button = root.findViewById(R.id.button_festival_search);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                service_typehigh = spinner_hightype.getSelectedItemPosition();//대분류
+              /*  service_typehigh = spinner_hightype.getSelectedItemPosition();//대분류
                 service_typemiddle = spinner_middletype.getSelectedItemPosition();//중분류
                 service_typelow = spinner_lowtype.getSelectedItemPosition();//소분류
 
                 city_big = spinner_bigcity.getSelectedItemPosition();//지역선택
                 city_small = spinner_smallcity.getSelectedItemPosition();//시군구선택
 
-                searchtype = spinner_searchtype.getSelectedItemPosition(); // 정렬 방법
+                searchtype = spinner_searchtype.getSelectedItemPosition(); // 정렬 방법*/
 
-                ((MainActivity)getActivity()).aroundSearch("12","1000","A","126.981611","37.568477","1");
+                viewPager.setOffscreenPageLimit(1);
+                viewPager.setAdapter(swipeAdapter);
+                viewPager.setCurrentItem(0);
+
+        /*        ((MainActivity)getActivity()).aroundSearch("12","1000","A","126.981611","37.568477","1");
                 ItemAdapter itemAdapter = new ItemAdapter(MainActivity.LocationBasedList_ArrayList);
-                listView.setAdapter(itemAdapter);
+                listView.setAdapter(itemAdapter);*/
             }
-        });*/
+        });
 
         return root;
     }
