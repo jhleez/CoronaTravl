@@ -114,15 +114,10 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <ListView
-            android:id="@+id/listview_sleeping_dataview"
+        <androidx.viewpager.widget.ViewPager
+            android:id="@+id/viewpager_sleeping_page"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_row="0"
-            android:layout_column="0">
-
-
-        </ListView>
+            android:layout_height="wrap_content"/>
 
     </LinearLayout>
 

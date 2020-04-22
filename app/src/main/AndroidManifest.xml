@@ -15,14 +15,16 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".detail.Detail_view"></activity>
+        <activity android:name=".ui.ListViewFragment"></activity>
+        <activity android:name=".detail.Detail_view" />
         <activity android:name=".LocationBasedList" />
         <activity android:name=".ui.LocationBasedList" />
         <activity
             android:name=".MainActivity"
             android:label="@string/app_name"
             android:theme="@style/AppTheme.NoActionBar">
-          <!--  android:windowSoftInputMode="stateAlwaysHidden"-->
+
+            <!-- android:windowSoftInputMode="stateAlwaysHidden" -->
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
