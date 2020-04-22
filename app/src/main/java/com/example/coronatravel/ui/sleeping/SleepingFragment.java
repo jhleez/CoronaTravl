@@ -1,16 +1,12 @@
 package com.example.coronatravel.ui.sleeping;
 
-import android.content.Intent;
 import android.os.Bundle;
-import android.os.SystemClock;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ListView;
-import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Spinner;
 import android.widget.Toast;
@@ -20,11 +16,8 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.viewpager.widget.ViewPager;
 
-import com.example.coronatravel.ItemAdapter;
-import com.example.coronatravel.MainActivity;
 import com.example.coronatravel.R;
-import com.example.coronatravel.detail.Detail_view;
-import com.example.coronatravel.ui.SwipeAdapter;
+import com.example.coronatravel.Adapter.SwipeAdapter;
 
 public class SleepingFragment extends Fragment implements AdapterView.OnItemSelectedListener {
 

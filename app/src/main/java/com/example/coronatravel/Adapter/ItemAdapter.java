@@ -1,4 +1,4 @@
-package com.example.coronatravel;
+package com.example.coronatravel.Adapter;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -6,6 +6,9 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.example.coronatravel.LocationBasedList_Class;
+import com.example.coronatravel.R;
 
 import org.w3c.dom.Text;
 

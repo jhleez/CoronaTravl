@@ -1,4 +1,4 @@
-package com.example.coronatravel.ui;
+package com.example.coronatravel.Adapter;
 
 import android.os.Bundle;
 
@@ -6,6 +6,8 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 import androidx.fragment.app.FragmentStatePagerAdapter;
+
+import com.example.coronatravel.ui.ListViewFragment;
 
 public class SwipeAdapter extends FragmentStatePagerAdapter {
     public SwipeAdapter(FragmentManager fm) {

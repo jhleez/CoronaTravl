@@ -7,19 +7,14 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Spinner;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.viewpager.widget.ViewPager;
 
-import com.example.coronatravel.ItemAdapter;
-import com.example.coronatravel.MainActivity;
 import com.example.coronatravel.R;
-import com.example.coronatravel.ui.SwipeAdapter;
+import com.example.coronatravel.Adapter.SwipeAdapter;
 
 public class LocalFragment extends Fragment {
 
