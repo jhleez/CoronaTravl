@@ -17,13 +17,6 @@
         android:label="@string/menu_around"
         tools:layout="@layout/fragment_around" />
 
-
-    <fragment
-        android:id="@+id/nav_local"
-        android:name="com.example.coronatravel.ui.local.LocalFragment"
-        android:label="@string/menu_local"
-        tools:layout="@layout/fragment_local" />
-
     <fragment
         android:id="@+id/nav_totalsearch"
         android:name="com.example.coronatravel.ui.totalsearch.TotalsearchFragment"
@@ -36,11 +29,6 @@
         android:label="@string/menu_festival"
         tools:layout="@layout/fragment_festival" />
 
-    <fragment
-        android:id="@+id/nav_sleeping"
-        android:name="com.example.coronatravel.ui.sleeping.SleepingFragment"
-        android:label="@string/menu_sleeping"
-        tools:layout="@layout/fragment_sleeping" />
     <fragment
         android:id="@+id/nav_bookmark"
         android:name="com.example.coronatravel.ui.bookmark.BookmarkFragment"

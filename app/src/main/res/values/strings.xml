@@ -10,9 +10,7 @@
     <string name="menu_home">코로나 현황</string>
     <string name="menu_around">내 주변 관광검색</string>
     <string name="menu_festival">행사 추천</string>
-    <string name="menu_local">지역별 관광검색</string>
     <string name="menu_bookmark">즐겨찾기</string>
-    <string name="menu_sleeping">숙박 검색</string>
     <string name="menu_totalsearch">통합 검색</string>
     <string name="menu_share">Share</string>
     <string name="menu_send">Send</string>
@@ -40,10 +38,6 @@
 
     <string-array name="middletype">
         <item>중분류</item>
-    </string-array>
-
-    <string-array name="lowtype">
-        <item>소분류</item>
     </string-array>
 
     <string-array name="bigcity">

@@ -43,7 +43,6 @@ public class TotalsearchFragment extends Fragment {
 
         spinner_hightype = root.findViewById(R.id.spinner_totalsearch_hightype);
         spinner_middletype = root.findViewById(R.id.spinner_totalsearch_middletype);
-        spinner_lowtype = root.findViewById(R.id.spinner_totalsearch_lowtype);
 
         spinner_bigcity = root.findViewById(R.id.spinner_totalsearch_bigcity);
         spinner_smallcity = root.findViewById(R.id.spinner_totalsearch_smallcity);
@@ -56,7 +55,6 @@ public class TotalsearchFragment extends Fragment {
             public void onClick(View view) {
                 service_typehigh = spinner_hightype.getSelectedItemPosition();//대분류
                 service_typemiddle = spinner_middletype.getSelectedItemPosition();//중분류
-                service_typelow = spinner_lowtype.getSelectedItemPosition();//소분류
 
                 city_big = spinner_bigcity.getSelectedItemPosition();//지역선택
                 city_small = spinner_smallcity.getSelectedItemPosition();//시군구선택
