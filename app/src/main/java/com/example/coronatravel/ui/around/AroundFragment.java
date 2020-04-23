@@ -16,6 +16,7 @@ import androidx.viewpager.widget.ViewPager;
 
 import com.example.coronatravel.R;
 import com.example.coronatravel.Adapter.SwipeAdapter;
+import com.example.coronatravel.TypeId;
 
 public class AroundFragment extends Fragment  {
 
@@ -46,7 +47,7 @@ public class AroundFragment extends Fragment  {
             @Override
             public void onClick(View view) {
                 spinner_item_position = spinner.getSelectedItemPosition();
-                contentTypeId = positionToContenttypeid(spinner_item_position);
+                contentTypeId = TypeId.ContentTypeId(spinner_item_position);
                 radius = editText.getText().toString();
                 searchtype= spinner_searchtype.getSelectedItemPosition(); // 검색타입 선택 변수
 
@@ -61,35 +62,4 @@ public class AroundFragment extends Fragment  {
         return root;
     }
 
-
-    public String positionToContenttypeid(int position){
-        if(position == 0){
-            return "";
-        }
-        else if (position == 1){
-            return "12";
-        }
-        else if (position == 2){
-            return "14";
-        }
-        else if (position == 3){
-            return "15";
-        }
-        else if (position == 4){
-            return "25";
-        }
-        else if (position == 5){
-            return "25";
-        }
-        else if (position == 6){
-            return "32";
-        }
-        else if (position == 7){
-            return "38";
-        }
-        else if (position == 8){
-            return "39";
-        }
-        return "";
-    }
 }

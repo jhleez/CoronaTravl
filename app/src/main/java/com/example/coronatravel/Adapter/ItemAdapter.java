@@ -54,8 +54,6 @@ public class ItemAdapter extends BaseAdapter {
         distance.setText(data.getDist());
 
 
-
-
         return convertView;
     }
 }

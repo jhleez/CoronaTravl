@@ -119,7 +119,6 @@ public class LocationBasedList_Class {
                 }
                 contentid =subJsonObject.getString("contentid");
                 contenttypeid = subJsonObject.getString("contenttypeid");
-                firstimage = subJsonObject.getString("firstimage");
                 title = subJsonObject.getString("title");
 
                 LocationBasedList_Class subclass = new LocationBasedList_Class(addr1,contentid,contenttypeid,dist,firstimage,title);

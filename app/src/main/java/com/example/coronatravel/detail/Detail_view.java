@@ -83,10 +83,39 @@ public class Detail_view extends AppCompatActivity {
                     "\n애완동물동반 가능 : " + detail_I_12.getChkpet());
         }
 
-
         else if(contentTypeId.equals("14")) {
             detailInfo_14 detail_I_14 = new detailInfo_14();
             detail_I_14 = detail_I_14.JSONParsing(detailInfoUrl);
+        }
+
+        else if(contentTypeId.equals("15")) {
+            detailInfo_15 detail_I_15 = new detailInfo_15();
+            detail_I_15 = detail_I_15.JSONParsing(detailInfoUrl);
+        }
+
+        else if(contentTypeId.equals("15")) {
+            detailInfo_15 detail_I_15 = new detailInfo_15();
+            detail_I_15 = detail_I_15.JSONParsing(detailInfoUrl);
+        }
+        else if(contentTypeId.equals("25")) {
+            detailInfo_25 detail_I_25 = new detailInfo_25();
+            detail_I_25 = detail_I_25.JSONParsing(detailInfoUrl);
+        }
+        else if(contentTypeId.equals("28")) {
+            detailInfo_28 detail_I_28 = new detailInfo_28();
+            detail_I_28 = detail_I_28.JSONParsing(detailInfoUrl);
+        }
+        else if(contentTypeId.equals("32")) {
+            detailInfo_32 detail_I_32 = new detailInfo_32();
+            detail_I_32 = detail_I_32.JSONParsing(detailInfoUrl);
+        }
+        else if(contentTypeId.equals("38")) {
+            detailInfo_38 detail_I_38 = new detailInfo_38();
+            detail_I_38 = detail_I_38.JSONParsing(detailInfoUrl);
+        }
+        else if(contentTypeId.equals("39")) {
+            detailInfo_39 detail_I_39 = new detailInfo_39();
+            detail_I_39 = detail_I_39.JSONParsing(detailInfoUrl);
         }
     }
 

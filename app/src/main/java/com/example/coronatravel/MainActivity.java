@@ -33,8 +33,8 @@ import java.util.ArrayList;
 public class MainActivity extends AppCompatActivity {
 
     public static ArrayList<LocationBasedList_Class> LocationBasedList_ArrayList = new ArrayList<>();
-
     private AppBarConfiguration mAppBarConfiguration;
+    String id = "2YHyxt5iKCnOzEiYHMcML%2FgiOywB9tnJeL6D%2BHqsL48iMsSOXwPxQHTjCHq5dA1zAEcNIdcQUXnvFMN0aIdLsQ%3D%3D";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,8 +63,7 @@ public class MainActivity extends AppCompatActivity {
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(navigationView, navController);
 
-//       Intent intent = new Intent(getApplicationContext(), LocationBasedList.class);
-//       startActivity(intent);
+
     }
 
     @Override
@@ -83,9 +82,9 @@ public class MainActivity extends AppCompatActivity {
 
 
     public void aroundSearch(String contentTypeId, String radius, String arrange, String mapX, String mapY, String pageNo) {
-
-        String id = "2YHyxt5iKCnOzEiYHMcML%2FgiOywB9tnJeL6D%2BHqsL48iMsSOXwPxQHTjCHq5dA1zAEcNIdcQUXnvFMN0aIdLsQ%3D%3D";
-        String LocationBasedListaddr = "http://api.visitkorea.or.kr/openapi/service/rest/KorService/locationBasedList?ServiceKey=" + id +
+        LocationBasedList_ArrayList.clear();
+        String AroundSearchAddr = "http://api.visitkorea.or.kr/openapi/service/rest/KorService/locationBasedList?" +
+                "ServiceKey=" + id +
                 "&contentTypeId=" + contentTypeId +
                 "&mapX=" + mapX +
                 "&mapY=" + mapY +
@@ -94,15 +93,39 @@ public class MainActivity extends AppCompatActivity {
                 "&arrange=" + arrange +
                 "&numOfRows=5" +
                 "&pageNo=" + pageNo + //한 페이지 몇개씩 가져올껀지, 뒤에는 페이지 수
-                "&MobileOS=AND&MobileApp=AppTest&_type=json";
+                "&MobileOS=AND&MobileApp=CoronaTravel&_type=json";
 
-        String JSONFromLocationBasedListaddr = "";
+        String JSONFromAroundSearch = "";
         try {
-            JSONFromLocationBasedListaddr = new HttpReqTask().execute(LocationBasedListaddr).get();
+            JSONFromAroundSearch = new HttpReqTask().execute(AroundSearchAddr).get();
         } catch (Exception e) {
             Log.d("TAG", "jsonparsing error");
         }
-        MainActivity.LocationBasedList_ArrayList.clear();
-        LocationBasedList_Class.JSONParsing(JSONFromLocationBasedListaddr);
+        LocationBasedList_Class.JSONParsing(JSONFromAroundSearch);
+    }
+
+    public void localSearch(String contentTypeId,String areaCode, String sigunguCode, String cat1, String cat2, String cat3,String arrage, String pageNo){
+        LocationBasedList_ArrayList.clear();
+        String LocalSearchAddr = "http://api.visitkorea.or.kr/openapi/service/rest/KorService/areaBasedList?" +
+                "ServiceKey="+id+
+                "&contentTypeId="+contentTypeId+
+                "&areaCode="+areaCode+
+                "&sigunguCode="+sigunguCode+
+                "&cat1="+cat1+
+                "&cat2="+cat2+
+                "&cat3="+cat3+
+                "&listYN=Y&MobileOS=AND&MobileApp=CoronaTravel" +
+                "&arrange=" +arrage+
+                "&numOfRows=3" +
+                "&pageNo=" +pageNo+
+                "&_type=json";
+
+        String JSONFromLocalSearch = "";
+        try {
+            JSONFromLocalSearch = new HttpReqTask().execute(LocalSearchAddr).get();
+        } catch (Exception e) {
+            Log.d("TAG", "jsonparsing error");
+        }
+        LocationBasedList_Class.JSONParsing(JSONFromLocalSearch);
     }
 }
