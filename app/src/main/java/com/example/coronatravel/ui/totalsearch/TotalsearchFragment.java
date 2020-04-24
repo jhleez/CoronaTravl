@@ -37,7 +37,7 @@ public class TotalsearchFragment extends Fragment {
                 spinner_bigcity, spinner_smallcity,spinner_searchtype;
         final EditText editText_input;
         final ViewPager viewPager = root.findViewById(R.id.viewpager_totalsearch_page);
-        final SwipeAdapter swipeAdapter= new SwipeAdapter(getChildFragmentManager());
+        final SwipeAdapter swipeAdapter= new SwipeAdapter(getChildFragmentManager(),1);
 
         editText_input = root.findViewById(R.id.edittext_totalsearch_input);
 

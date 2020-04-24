@@ -29,7 +29,7 @@ public class FestivalFragment extends Fragment {
         festivalViewModel =
                 ViewModelProviders.of(this).get(FestivalViewModel.class);
         final View root = inflater.inflate(R.layout.fragment_festival, container, false);
-        final SwipeAdapter swipeAdapter= new SwipeAdapter(getChildFragmentManager());
+        final SwipeAdapter swipeAdapter= new SwipeAdapter(getChildFragmentManager(),1);
         final ViewPager viewPager = root.findViewById(R.id.viewpager_festival_page);
         final Spinner spinner_hightype, spinner_middletype, spinner_lowtype,
                 spinner_bigcity, spinner_smallcity, spinner_searchtype;

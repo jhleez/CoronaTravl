@@ -69,8 +69,6 @@ public class AroundFragment extends Fragment implements ViewPager.OnPageChangeLi
                              ViewGroup container, Bundle savedInstanceState) {
         aroundViewModel =
                 ViewModelProviders.of(this).get(AroundViewModel.class);
-
-        swipeAdapter = new SwipeAdapter(getChildFragmentManager());
         root = inflater.inflate(R.layout.fragment_around, container, false);
         viewPager = root.findViewById(R.id.viewpager_around_page);
         viewPager.addOnPageChangeListener(this);
@@ -153,19 +151,22 @@ public class AroundFragment extends Fragment implements ViewPager.OnPageChangeLi
         radius = editText.getText().toString();
         searchtype = spinner_searchtype.getSelectedItemPosition(); // 검색타입 선택 변수
 
-        ((MainActivity) getActivity()).aroundSearch("12", "20000", "A",  String.valueOf(longitude),String.valueOf(latitude), "1");
+        ((MainActivity) getActivity()).aroundSearch("12", "1000", "A",  String.valueOf(longitude),String.valueOf(latitude), "1");
         Log.d("totalcount", LocationBasedList_Class.totalcount);
-        viewPager.setOffscreenPageLimit(1);
-        viewPager.setAdapter(swipeAdapter);
-        viewPager.setCurrentItem(0);
+        if(Integer.parseInt(LocationBasedList_Class.totalcount)!=0) {
+            swipeAdapter = new SwipeAdapter(getChildFragmentManager(), (Integer.parseInt(LocationBasedList_Class.totalcount) / 5)+1);
 
-        //변수에 우리가 선택한 스피너, 위도경도, 정렬이 드가면 됨
+            viewPager.setOffscreenPageLimit(1);
+            viewPager.setAdapter(swipeAdapter);
+            viewPager.setCurrentItem(0);
 
-        ItemAdapter itemAdapter = new ItemAdapter(MainActivity.LocationBasedList_ArrayList);
-        ListViewFragment.listView.setAdapter(itemAdapter);
+            //변수에 우리가 선택한 스피너, 위도경도, 정렬이 드가면 됨
 
-        Toast.makeText(getActivity(), "현재위치 \n위도 " + latitude + "\n경도 " + longitude + "\n" + address, Toast.LENGTH_LONG).show();
+            ItemAdapter itemAdapter = new ItemAdapter(MainActivity.LocationBasedList_ArrayList);
+            ListViewFragment.listView.setAdapter(itemAdapter);
 
+            Toast.makeText(getActivity(), Integer.parseInt(LocationBasedList_Class.totalcount) + "\n" + "현재위치 \n위도 " + latitude + "\n경도 " + longitude + "\n" + address, Toast.LENGTH_LONG).show();
+        }
     }
 
     @Override

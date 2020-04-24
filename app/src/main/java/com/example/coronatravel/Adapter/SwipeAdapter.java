@@ -12,8 +12,9 @@ import com.example.coronatravel.ui.ListViewFragment;
 public class SwipeAdapter extends FragmentStatePagerAdapter {
 
     int pagenumber;
-    public SwipeAdapter(FragmentManager fm) {
+    public SwipeAdapter(FragmentManager fm,int pagenumber) {
         super(fm);
+        this.pagenumber=pagenumber;
     }
 
     @Override
@@ -27,11 +28,9 @@ public class SwipeAdapter extends FragmentStatePagerAdapter {
     }
 
 
-    public void setPagenumber(int pagenumber) {
-        this.pagenumber = pagenumber;
-    }
+
     @Override
     public int getCount() {
-        return 100;
+        return pagenumber;
     }
 }
