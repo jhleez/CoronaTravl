@@ -20,6 +20,8 @@ import androidx.core.content.ContextCompat;
 
 public class GpsTracker extends Service implements LocationListener {
 
+    //준봉이형 바보
+
     private final Context mContext;
     Location location;
     double latitude;
