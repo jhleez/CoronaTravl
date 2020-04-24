@@ -37,7 +37,7 @@
     </string-array>
 
     <string-array name="middletype">
-        <item>중분류</item>
+        <item>소분류</item>
     </string-array>
 
     <string-array name="bigcity">
