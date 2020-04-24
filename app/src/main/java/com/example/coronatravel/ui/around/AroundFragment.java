@@ -30,6 +30,7 @@ import androidx.lifecycle.ViewModelProviders;
 import androidx.viewpager.widget.ViewPager;
 
 import com.example.coronatravel.Adapter.ItemAdapter;
+import com.example.coronatravel.LocationBasedList_Class;
 import com.example.coronatravel.MainActivity;
 import com.example.coronatravel.R;
 import com.example.coronatravel.Adapter.SwipeAdapter;
@@ -152,11 +153,12 @@ public class AroundFragment extends Fragment implements ViewPager.OnPageChangeLi
         radius = editText.getText().toString();
         searchtype = spinner_searchtype.getSelectedItemPosition(); // 검색타입 선택 변수
 
+        ((MainActivity) getActivity()).aroundSearch("12", "20000", "A",  String.valueOf(longitude),String.valueOf(latitude), "1");
+        Log.d("totalcount", LocationBasedList_Class.totalcount);
         viewPager.setOffscreenPageLimit(1);
         viewPager.setAdapter(swipeAdapter);
         viewPager.setCurrentItem(0);
 
-        ((MainActivity) getActivity()).aroundSearch("12", "20000", "A",  String.valueOf(longitude),String.valueOf(latitude), "1");
         //변수에 우리가 선택한 스피너, 위도경도, 정렬이 드가면 됨
 
         ItemAdapter itemAdapter = new ItemAdapter(MainActivity.LocationBasedList_ArrayList);

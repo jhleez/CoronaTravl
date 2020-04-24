@@ -33,7 +33,7 @@ public class ListViewFragment extends Fragment {
         view= inflater.inflate(R.layout.activity_list_view,container,false);
         listView = view.findViewById(R.id.list_view);
 
-        ((MainActivity)getActivity()).aroundSearch("12","1000","A","126.981611","37.568477","1");
+      //  ((MainActivity)getActivity()).aroundSearch("12","1000","A","126.981611","37.568477","1");
         //변수에 우리가 선택한 스피너, 위도경도, 정렬이 드가면 됨
         ItemAdapter itemAdapter = new ItemAdapter(MainActivity.LocationBasedList_ArrayList);
         listView.setAdapter(itemAdapter);

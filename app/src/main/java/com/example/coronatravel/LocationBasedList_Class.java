@@ -2,12 +2,14 @@ package com.example.coronatravel;
 
 import android.util.Log;
 
+import com.example.coronatravel.Adapter.SwipeAdapter;
+import com.example.coronatravel.ui.around.AroundFragment;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 public class LocationBasedList_Class {
-
     LocationBasedList_Class(String addr1,String contentid,String contenttypeid,String dist,String firstimage,String title)
     {
         this.addr1 =addr1; //주소
@@ -17,7 +19,7 @@ public class LocationBasedList_Class {
         this.firstimage=firstimage; // 사진
         this.title=title; //제목
     }
-
+    public static String totalcount;
     private String addr1;
     private String contentid;
     private String contenttypeid;
@@ -74,6 +76,7 @@ public class LocationBasedList_Class {
         this.title = title;
     }
 
+
     public static void JSONParsing(String JSONFromLocationBasedListaddr) {
         String addr1;
         String contentid;
@@ -81,8 +84,6 @@ public class LocationBasedList_Class {
         String dist;
         String firstimage;
         String title;
-
-
 
         try {
             JSONObject jsonObject = new JSONObject(JSONFromLocationBasedListaddr);
@@ -92,7 +93,7 @@ public class LocationBasedList_Class {
             String body = jsonObject_response.getString("body");
             JSONObject jsonObject_body = new JSONObject(body);
 
-            //totalcount = jsonObject_body.getString("totalCount");
+            totalcount = jsonObject_body.getString("totalCount");
 
             String items = jsonObject_body.getString("items");
             JSONObject jsonObject_items = new JSONObject(items);
