@@ -151,7 +151,7 @@ public class AroundFragment extends Fragment implements ViewPager.OnPageChangeLi
         radius = editText.getText().toString();
         searchtype = spinner_searchtype.getSelectedItemPosition(); // 검색타입 선택 변수
 
-        ((MainActivity) getActivity()).aroundSearch("12", "1000", "A",  String.valueOf(longitude),String.valueOf(latitude), "1");
+        ((MainActivity) getActivity()).aroundSearch("12", "20000", "A",  String.valueOf(longitude),String.valueOf(latitude), "1");
         Log.d("totalcount", LocationBasedList_Class.totalcount);
         if(Integer.parseInt(LocationBasedList_Class.totalcount)!=0) {
             swipeAdapter = new SwipeAdapter(getChildFragmentManager(), (Integer.parseInt(LocationBasedList_Class.totalcount) / 5)+1);

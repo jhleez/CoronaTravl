@@ -32,6 +32,8 @@ import org.jsoup.select.Elements;
 import java.io.IOException;
 import java.util.ArrayList;
 
+//우리가 봐야할 거는 initView 랑 getData Class. 이 두개만 수정하면 될거야 형
+
 public class HomeFragment extends Fragment {
 
     TextView totalView, dischargedView, curingView, deathView, patientView;
@@ -92,8 +94,10 @@ public class HomeFragment extends Fragment {
     }
 
     private void initView() {
+        //연결 원하는 링크 문자열로 저장해주기
         String path2 = "http://ncov.mohw.go.kr/";
         String path1 = "http://ncov.mohw.go.kr/bdBoardList_Real.do?brdId=1&brdGubun=11&ncvContSeq=&contSeq=&board_id=&gubun=";
+        //execute하면 자동으로 doInBackground 랑 onPostExecute가 실행되는거같아 내 생각에는
         new getData1().execute(path2);
         new getData2().execute(path2);
         new getData3().execute(path2);
@@ -107,13 +111,17 @@ public class HomeFragment extends Fragment {
         protected String doInBackground(String... params) {
             try {
                 Document document = Jsoup.connect(params[0].toString()).get(); // Web에서 내용을 가져온다.
+                //자식으로 타고 간다고 생각하면 돼 <div class="liveNumOuter"> 에 있는 <ul class="liveNum"> 에 있는 <span class="num">을 elements에 저장
                 Elements elements = document.select("div.liveNumOuter").select("ul.liveNum").select("span.num");
+                //elements에 있는 첫번째(0번 index) 값을 string 으로 받아오기
                 String now = elements.get(0).text();
+                //이거는 문자열 자르는거야
                 now = now.substring(4,10);
                 Elements elements1 = document.select("div.liveNumOuter").select("ul.liveNum").select("span.before");
                 String compare = elements1.get(0).text();
                 compare = compare.substring(5,10);
                 return "확진환자\n\n" + now + "\n" + compare;
+                //잘 이해가 안되면 저 링크 url 소스코드 열어보고 확인해보면 이해가 빠를거야
             } catch (IOException e) {
                 e.printStackTrace();
             }
