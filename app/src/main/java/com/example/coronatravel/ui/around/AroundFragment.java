@@ -48,11 +48,13 @@ public class AroundFragment extends Fragment implements ViewPager.OnPageChangeLi
     int spinner_item_position;
     String contentTypeId;
     int searchtype;
+    double latitude,longitude;
+    String address;
 
 
     private static final int GPS_ENABLE_REQUEST_CODE = 2001;
     private static final int PERMISSIONS_REQUEST_CODE = 100;
-    String[] REQUIRED_PERMISSIONS  = {Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION};
+    String[] REQUIRED_PERMISSIONS = {Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION};
     private GpsTracker gpsTracker;
 
     private SwipeAdapter swipeAdapter;
@@ -61,7 +63,6 @@ public class AroundFragment extends Fragment implements ViewPager.OnPageChangeLi
     private Spinner spinner;
     private EditText editText;
     private Spinner spinner_searchtype;
-    private LocationManager lm;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -72,12 +73,11 @@ public class AroundFragment extends Fragment implements ViewPager.OnPageChangeLi
         root = inflater.inflate(R.layout.fragment_around, container, false);
         viewPager = root.findViewById(R.id.viewpager_around_page);
         viewPager.addOnPageChangeListener(this);
-        lm = (LocationManager) getActivity().getSystemService(LOCATION_SERVICE);
 
         if (!checkLocationServicesStatus()) {
 
             showDialogForLocationServiceSetting();
-        }else {
+        } else {
             checkRunTimePermission();
         }
 
@@ -87,6 +87,11 @@ public class AroundFragment extends Fragment implements ViewPager.OnPageChangeLi
 
         Button button = root.findViewById(R.id.button_around_search);
         button.setOnClickListener(this);
+
+        gpsTracker = new GpsTracker(getActivity());
+        latitude = gpsTracker.getLatitude();
+        longitude = gpsTracker.getLongitude();
+        address = getCurrentAddress(latitude, longitude);
 
 
         return root;
@@ -126,7 +131,7 @@ public class AroundFragment extends Fragment implements ViewPager.OnPageChangeLi
     public void onPageSelected(int position) {
         Log.d("ITPANGPANG", "onPageSelected : " + position);
 
-        ((MainActivity) getActivity()).aroundSearch("12", "1000", "A", "126.981611", "37.568477", String.valueOf(position + 1));
+        ((MainActivity) getActivity()).aroundSearch("12", "1000", "A", String.valueOf(latitude), String.valueOf(longitude), String.valueOf(position + 1));
         //변수에 우리가 선택한 스피너, 위도경도, 정렬이 드가면 됨
         ItemAdapter itemAdapter = new ItemAdapter(MainActivity.LocationBasedList_ArrayList);
         ListViewFragment.listView.setAdapter(itemAdapter);
@@ -151,23 +156,16 @@ public class AroundFragment extends Fragment implements ViewPager.OnPageChangeLi
         viewPager.setAdapter(swipeAdapter);
         viewPager.setCurrentItem(0);
 
-        gpsTracker = new GpsTracker(getActivity());
-
-        double latitude = gpsTracker.getLatitude();
-        double longitude = gpsTracker.getLongitude();
-
-        String address = getCurrentAddress(latitude, longitude);
-
-
-        Toast.makeText(getActivity(), "현재위치 \n위도 " + latitude + "\n경도 " + longitude+"\n"+address, Toast.LENGTH_LONG).show();
+        Toast.makeText(getActivity(), "현재위치 \n위도 " + latitude + "\n경도 " + longitude + "\n" + address, Toast.LENGTH_LONG).show();
 
     }
+
     @Override
     public void onRequestPermissionsResult(int permsRequestCode,
                                            @NonNull String[] permissions,
                                            @NonNull int[] grandResults) {
 
-        if ( permsRequestCode == PERMISSIONS_REQUEST_CODE && grandResults.length == REQUIRED_PERMISSIONS.length) {
+        if (permsRequestCode == PERMISSIONS_REQUEST_CODE && grandResults.length == REQUIRED_PERMISSIONS.length) {
 
             // 요청 코드가 PERMISSIONS_REQUEST_CODE 이고, 요청한 퍼미션 개수만큼 수신되었다면
 
@@ -184,12 +182,11 @@ public class AroundFragment extends Fragment implements ViewPager.OnPageChangeLi
             }
 
 
-            if ( check_result ) {
+            if (check_result) {
 
                 //위치 값을 가져올 수 있음
                 ;
-            }
-            else {
+            } else {
                 // 거부한 퍼미션이 있다면 앱을 사용할 수 없는 이유를 설명해주고 앱을 종료합니다.2 가지 경우가 있습니다.
 
                 if (ActivityCompat.shouldShowRequestPermissionRationale(getActivity(), REQUIRED_PERMISSIONS[0])
@@ -198,8 +195,7 @@ public class AroundFragment extends Fragment implements ViewPager.OnPageChangeLi
                     Toast.makeText(getActivity(), "퍼미션이 거부되었습니다. 앱을 다시 실행하여 퍼미션을 허용해주세요.", Toast.LENGTH_LONG).show();
 
 
-
-                }else {
+                } else {
 
                     Toast.makeText(getActivity(), "퍼미션이 거부되었습니다. 설정(앱 정보)에서 퍼미션을 허용해야 합니다. ", Toast.LENGTH_LONG).show();
 
@@ -209,7 +205,7 @@ public class AroundFragment extends Fragment implements ViewPager.OnPageChangeLi
         }
     }
 
-    void checkRunTimePermission(){
+    void checkRunTimePermission() {
 
         //런타임 퍼미션 처리
         // 1. 위치 퍼미션을 가지고 있는지 체크합니다.
@@ -227,7 +223,6 @@ public class AroundFragment extends Fragment implements ViewPager.OnPageChangeLi
 
 
             // 3.  위치 값을 가져올 수 있음
-
 
 
         } else {  //2. 퍼미션 요청을 허용한 적이 없다면 퍼미션 요청이 필요합니다. 2가지 경우(3-1, 4-1)가 있습니다.
@@ -254,7 +249,7 @@ public class AroundFragment extends Fragment implements ViewPager.OnPageChangeLi
     }
 
 
-    public String getCurrentAddress( double latitude, double longitude) {
+    public String getCurrentAddress(double latitude, double longitude) {
 
         //지오코더... GPS를 주소로 변환
         Geocoder geocoder = new Geocoder(getActivity(), Locale.getDefault());
@@ -278,7 +273,6 @@ public class AroundFragment extends Fragment implements ViewPager.OnPageChangeLi
         }
 
 
-
         if (addresses == null || addresses.size() == 0) {
             Toast.makeText(getActivity(), "주소 미발견", Toast.LENGTH_LONG).show();
             return "주소 미발견";
@@ -286,7 +280,7 @@ public class AroundFragment extends Fragment implements ViewPager.OnPageChangeLi
         }
 
         Address address = addresses.get(0);
-        return address.getAddressLine(0).toString()+"\n";
+        return address.getAddressLine(0).toString() + "\n";
 
     }
 
@@ -340,7 +334,7 @@ public class AroundFragment extends Fragment implements ViewPager.OnPageChangeLi
     }
 
     public boolean checkLocationServicesStatus() {
-        LocationManager locationManager = (LocationManager)getActivity().getSystemService(LOCATION_SERVICE);
+        LocationManager locationManager = (LocationManager) getActivity().getSystemService(LOCATION_SERVICE);
 
         return locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER)
                 || locationManager.isProviderEnabled(LocationManager.NETWORK_PROVIDER);
