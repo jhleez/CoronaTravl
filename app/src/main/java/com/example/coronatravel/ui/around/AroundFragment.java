@@ -131,7 +131,7 @@ public class AroundFragment extends Fragment implements ViewPager.OnPageChangeLi
     public void onPageSelected(int position) {
         Log.d("ITPANGPANG", "onPageSelected : " + position);
 
-        ((MainActivity) getActivity()).aroundSearch("12", "1000", "A", String.valueOf(latitude), String.valueOf(longitude), String.valueOf(position + 1));
+        ((MainActivity) getActivity()).aroundSearch("12", "20000", "A",  String.valueOf(longitude),String.valueOf(latitude), String.valueOf(position + 1));
         //변수에 우리가 선택한 스피너, 위도경도, 정렬이 드가면 됨
         ItemAdapter itemAdapter = new ItemAdapter(MainActivity.LocationBasedList_ArrayList);
         ListViewFragment.listView.setAdapter(itemAdapter);
