@@ -28,6 +28,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.net.URLEncoder;
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
@@ -127,5 +128,36 @@ public class MainActivity extends AppCompatActivity {
             Log.d("TAG", "jsonparsing error");
         }
         LocationBasedList_Class.JSONParsing(JSONFromLocalSearch);
+    }
+
+    public void totalSearch(String keyword,String areaCode, String sigunguCode, String cat1, String cat2, String cat3,String arrage, String pageNo){
+        LocationBasedList_ArrayList.clear();
+        String encodeStr="";
+        try{
+            encodeStr = URLEncoder.encode(keyword, "UTF-8");
+        }catch (Exception e){
+            Log.d("TAG","Encoding error");
+        }
+        String TotalSearchAddr = "http://api.visitkorea.or.kr/openapi/service/rest/KorService/searchKeyword?" +
+                "ServiceKey="+id+
+                "keyword="+ encodeStr +
+                "&areaCode=" + areaCode+
+                "&sigunguCode="+sigunguCode+
+                "&cat1="+cat1+
+                "&cat2="+cat2+
+                "&cat3="+cat3+
+                "&listYN=Y&MobileOS=AND&MobileApp=CoronaTravel" +
+                "&arrange="+arrage+
+                "&numOfRows=5&" +
+                "pageNo="+pageNo+
+                "&_type=json";
+
+        String JSONFromTotalSearch = "";
+        try {
+            JSONFromTotalSearch = new HttpReqTask().execute(TotalSearchAddr).get();
+        } catch (Exception e) {
+            Log.d("TAG", "jsonparsing error");
+        }
+        LocationBasedList_Class.JSONParsing(JSONFromTotalSearch);
     }
 }
