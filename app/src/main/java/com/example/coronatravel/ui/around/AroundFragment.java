@@ -158,6 +158,7 @@ public class AroundFragment extends Fragment implements ViewPager.OnPageChangeLi
 
         ((MainActivity) getActivity()).aroundSearch("12", "20000", "A",  String.valueOf(longitude),String.valueOf(latitude), "1");
         //변수에 우리가 선택한 스피너, 위도경도, 정렬이 드가면 됨
+
         ItemAdapter itemAdapter = new ItemAdapter(MainActivity.LocationBasedList_ArrayList);
         ListViewFragment.listView.setAdapter(itemAdapter);
 
