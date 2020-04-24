@@ -44,13 +44,11 @@ import static android.content.Context.LOCATION_SERVICE;
 public class AroundFragment extends Fragment implements ViewPager.OnPageChangeListener, View.OnClickListener {
 
     private AroundViewModel aroundViewModel;
-    private final int PERMISSIONS_REQUEST_RESULT= 100;
     String radius;
     int spinner_item_position;
     String contentTypeId;
     int searchtype;
-    double longitude , latitude , altitude;
-    String result;
+
 
     private static final int GPS_ENABLE_REQUEST_CODE = 2001;
     private static final int PERMISSIONS_REQUEST_CODE = 100;
@@ -75,8 +73,6 @@ public class AroundFragment extends Fragment implements ViewPager.OnPageChangeLi
         viewPager = root.findViewById(R.id.viewpager_around_page);
         viewPager.addOnPageChangeListener(this);
         lm = (LocationManager) getActivity().getSystemService(LOCATION_SERVICE);
-
-        //requestpermissionLocation();
 
         if (!checkLocationServicesStatus()) {
 
