@@ -24,6 +24,22 @@ public class TypeId {
         }
         return "";
     }
+
+    public static String arrange(int position){
+        if(position==0){
+            return "A";
+        }
+        else if(position==1){
+            return "B";
+        }
+        else  if(position ==2){
+            return "C";
+        }
+        else  if(position == 3){
+            return "D";
+        }
+        return "";
+    }
 }
 
 //    public static String cat1(String ContentTypeId, int position){

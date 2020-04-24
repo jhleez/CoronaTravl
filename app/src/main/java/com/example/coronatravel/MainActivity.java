@@ -140,7 +140,7 @@ public class MainActivity extends AppCompatActivity {
         }
         String TotalSearchAddr = "http://api.visitkorea.or.kr/openapi/service/rest/KorService/searchKeyword?" +
                 "ServiceKey="+id+
-                "keyword="+ encodeStr +
+                "&keyword="+encodeStr+
                 "&areaCode=" + areaCode+
                 "&sigunguCode="+sigunguCode+
                 "&cat1="+cat1+
