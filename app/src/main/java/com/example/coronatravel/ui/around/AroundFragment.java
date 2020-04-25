@@ -74,7 +74,6 @@ public class AroundFragment extends Fragment implements ViewPager.OnPageChangeLi
         viewPager.addOnPageChangeListener(this);
 
         if (!checkLocationServicesStatus()) {
-
             showDialogForLocationServiceSetting();
         } else {
             checkRunTimePermission();

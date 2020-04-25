@@ -109,7 +109,7 @@ public class HomeFragment extends Fragment {
         // String 으로 값을 전달받은 값을 처리하고, Boolean 으로 doInBackground 결과를 넘겨준다.
         @Override
         protected String doInBackground(String... params) {
-            try {
+                try {
                 Document document = Jsoup.connect(params[0].toString()).get(); // Web에서 내용을 가져온다.
                 //자식으로 타고 간다고 생각하면 돼 <div class="liveNumOuter"> 에 있는 <ul class="liveNum"> 에 있는 <span class="num">을 elements에 저장
                 Elements elements = document.select("div.liveNumOuter").select("ul.liveNum").select("span.num");
