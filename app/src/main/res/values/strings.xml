@@ -34,6 +34,63 @@
 
     <string-array name="hightype">
         <item>대분류</item>
+        <item>자연</item>
+        <item>인문</item>
+        <item>레포츠</item>
+        <item>쇼핑</item>
+        <item>음식</item>
+        <item>숙박</item>
+        <item>추천 코스</item>
+    </string-array>
+
+    <string-array name="middle_1">
+        <item>중분류</item>
+        <item>자연관광지</item>
+        <item>관광자원</item>
+    </string-array>
+
+    <string-array name="middle_2">
+        <item>중분류</item>
+        <item>역사</item>
+        <item>휴양</item>
+        <item>체험</item>
+        <item>산업</item>
+        <item>건축/조형물</item>
+        <item>문화시설</item>
+        <item>축제</item>
+        <item>공연/행사</item>
+    </string-array>
+
+    <string-array name="middle_3">
+        <item>중분류</item>
+        <item>레포츠소개</item>
+        <item>육상 레포츠</item>
+        <item>수상 레포츠</item>
+        <item>항공 레포츠</item>
+        <item>복합 레포츠</item>
+    </string-array>
+    <string-array name="middle_4">
+        <item>중분류</item>
+        <item>쇼핑</item>
+
+    </string-array>
+    <string-array name="middle_5">
+        <item>중분류</item>
+        <item>음식점</item>
+    </string-array>
+
+    <string-array name="middle_6">
+        <item>중분류</item>
+        <item>숙박 시설</item>
+    </string-array>
+    <string-array name="middle_7">
+        <item>중분류</item>
+        <item>가족코스</item>
+        <item>나홀로코스</item>
+        <item>힐링코스</item>
+        <item>도보코스</item>
+        <item>캠핑코스</item>
+        <item>맛코스</item>
     </string-array>
 
     <string-array name="middletype">

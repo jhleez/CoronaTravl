@@ -9,6 +9,7 @@ import android.widget.TextView;
 
 import com.example.coronatravel.LocationBasedList_Class;
 import com.example.coronatravel.R;
+import com.squareup.picasso.Picasso;
 
 import org.w3c.dom.Text;
 
@@ -47,11 +48,17 @@ public class ItemAdapter extends BaseAdapter {
         TextView title = convertView.findViewById(R.id.textview_listitem_title);
         TextView addreess = convertView.findViewById(R.id.textview_listitem_address);
         TextView distance = convertView.findViewById(R.id.textview_listitem_distance);
-        //ImageView imageView =convertView.findViewById(R.id.imageview_listitem);
+        ImageView imageView =convertView.findViewById(R.id.imageview_listitem);
+
+        String URI = data.getFirstimage();
+        if(URI=="") URI="http://";
+
+        Picasso.get().load(URI).placeholder(R.drawable.ic_launcher_background).into(imageView);
 
         title.setText(data.getTitle());
         addreess.setText(data.getAddr1());
         distance.setText(data.getDist());
+
 
 
         return convertView;
