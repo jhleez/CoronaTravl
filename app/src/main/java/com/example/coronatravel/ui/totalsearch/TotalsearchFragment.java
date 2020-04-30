@@ -28,10 +28,8 @@ public class TotalsearchFragment extends Fragment implements AdapterView.OnItemS
     int city_big, city_small;
     String input;
     ListView listView;
-    Spinner spinner_hightype, spinner_middletype, spinner_lowtype,
+    Spinner spinner_hightype, spinner_middletype,
             spinner_bigcity, spinner_smallcity, spinner_searchtype;
-
-    ArrayAdapter<CharSequence> arrayAdapter;
 
 
     public View onCreateView(@NonNull LayoutInflater inflater,
