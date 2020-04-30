@@ -117,6 +117,28 @@ public class Detail_view extends AppCompatActivity {
             detailInfo_39 detail_I_39 = new detailInfo_39();
             detail_I_39 = detail_I_39.JSONParsing(detailInfoUrl);
         }
-    }
 
+//        String detailImageUrl = "http://api.visitkorea.or.kr/openapi/service/rest/KorService/detailImage?" +
+//                "ServiceKey="+ServiceKey+
+//                "&contentId="+contentId+
+//                "&imageYN=N&MobileOS=AND&MobileApp=CoronaTravel&_type=json";
+
+        String detailImageUrl = "http://api.visitkorea.or.kr/openapi/service/rest/KorService/detailImage?" +
+                "ServiceKey="+ServiceKey+
+                "&contentTypeId=" +contentTypeId +
+                "&MobileOS=AND&MobileApp=CoronaTravel" +
+                "&contentId=" +contentId+
+                "&imageYN=Y&_type=json";
+
+        String JSONFromdetailImageUrl = "";
+        String image;
+        try {
+            JSONFromdetailImageUrl = new HttpReqTask().execute(detailInfoUrl).get();
+        } catch (Exception e) {;
+            Log.d("TAG", "jsonparsing error");
+        }
+        detailImage.JSONParsing(JSONFromdetailImageUrl);
+//        //image = detailImage.Images.get(0);
+//        Log.d("TAG",image);
+    }
 }

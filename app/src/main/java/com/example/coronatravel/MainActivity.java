@@ -117,7 +117,7 @@ public class MainActivity extends AppCompatActivity {
                 "&cat3="+cat3+
                 "&listYN=Y&MobileOS=AND&MobileApp=CoronaTravel" +
                 "&arrange=" +arrage+
-                "&numOfRows=3" +
+                "&numOfRows=5" +
                 "&pageNo=" +pageNo+
                 "&_type=json";
 

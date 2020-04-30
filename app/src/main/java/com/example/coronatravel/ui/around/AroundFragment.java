@@ -34,6 +34,7 @@ import com.example.coronatravel.LocationBasedList_Class;
 import com.example.coronatravel.MainActivity;
 import com.example.coronatravel.R;
 import com.example.coronatravel.Adapter.SwipeAdapter;
+import com.example.coronatravel.TypeId;
 import com.example.coronatravel.ui.ListViewFragment;
 
 import java.io.IOException;
@@ -48,7 +49,7 @@ public class AroundFragment extends Fragment implements ViewPager.OnPageChangeLi
     String radius;
     int spinner_item_position;
     String contentTypeId;
-    int searchtype;
+    String searchtype;
     double latitude,longitude;
     String address;
 
@@ -96,29 +97,6 @@ public class AroundFragment extends Fragment implements ViewPager.OnPageChangeLi
     }
 
 
-    public String positionToContenttypeid(int position) {
-        if (position == 0) {
-            return "";
-        } else if (position == 1) {
-            return "12";
-        } else if (position == 2) {
-            return "14";
-        } else if (position == 3) {
-            return "15";
-        } else if (position == 4) {
-            return "25";
-        } else if (position == 5) {
-            return "25";
-        } else if (position == 6) {
-            return "32";
-        } else if (position == 7) {
-            return "38";
-        } else if (position == 8) {
-            return "39";
-        }
-        return "";
-    }
-
     @Override
     public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
         Log.d("ITPANGPANG", "onPageScrolled : " + position);
@@ -129,7 +107,11 @@ public class AroundFragment extends Fragment implements ViewPager.OnPageChangeLi
     public void onPageSelected(int position) {
         Log.d("ITPANGPANG", "onPageSelected : " + position);
 
-        ((MainActivity) getActivity()).aroundSearch("12", "20000", "A",  String.valueOf(longitude),String.valueOf(latitude), String.valueOf(position + 1));
+        contentTypeId = TypeId.ContentTypeId(spinner.getSelectedItemPosition());
+        radius = editText.getText().toString();
+        searchtype = TypeId .arrange(spinner_searchtype.getSelectedItemPosition()); // 검색타입 선택 변수
+
+        ((MainActivity) getActivity()).aroundSearch(contentTypeId, radius, searchtype,  String.valueOf(longitude),String.valueOf(latitude), String.valueOf(position + 1));
         //변수에 우리가 선택한 스피너, 위도경도, 정렬이 드가면 됨
         ItemAdapter itemAdapter = new ItemAdapter(MainActivity.LocationBasedList_ArrayList);
         ListViewFragment.listView.setAdapter(itemAdapter);
@@ -145,12 +127,11 @@ public class AroundFragment extends Fragment implements ViewPager.OnPageChangeLi
     @Override
     public void onClick(View view) {
 
-        spinner_item_position = spinner.getSelectedItemPosition();
-        contentTypeId = positionToContenttypeid(spinner_item_position);
+        contentTypeId = TypeId.ContentTypeId(spinner.getSelectedItemPosition());
         radius = editText.getText().toString();
-        searchtype = spinner_searchtype.getSelectedItemPosition(); // 검색타입 선택 변수
+        searchtype = TypeId .arrange(spinner_searchtype.getSelectedItemPosition()); // 검색타입 선택 변수
 
-        ((MainActivity) getActivity()).aroundSearch("12", "20000", "A",  String.valueOf(longitude),String.valueOf(latitude), "1");
+        ((MainActivity) getActivity()).aroundSearch(contentTypeId, radius, searchtype,  String.valueOf(longitude),String.valueOf(latitude), "1");
         Log.d("totalcount", LocationBasedList_Class.totalcount);
         if(Integer.parseInt(LocationBasedList_Class.totalcount)!=0) {
             swipeAdapter = new SwipeAdapter(getChildFragmentManager(), (Integer.parseInt(LocationBasedList_Class.totalcount) / 5)+1);
@@ -188,7 +169,6 @@ public class AroundFragment extends Fragment implements ViewPager.OnPageChangeLi
                     break;
                 }
             }
-
 
             if (check_result) {
 

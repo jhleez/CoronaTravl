@@ -19,6 +19,7 @@ public class LocationBasedList_Class {
         this.firstimage=firstimage; // 사진
         this.title=title; //제목
     }
+
     public static String totalcount;
     private String addr1;
     private String contentid;
