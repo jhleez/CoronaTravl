@@ -4,6 +4,9 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Adapter;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
@@ -17,7 +20,7 @@ import androidx.viewpager.widget.ViewPager;
 import com.example.coronatravel.R;
 import com.example.coronatravel.Adapter.SwipeAdapter;
 
-public class TotalsearchFragment extends Fragment {
+public class TotalsearchFragment extends Fragment implements AdapterView.OnItemSelectedListener {
 
     private TotalsearchViewModel totalsearchViewModel;
     int searchtype;
@@ -25,6 +28,10 @@ public class TotalsearchFragment extends Fragment {
     int city_big, city_small;
     String input;
     ListView listView;
+    Spinner spinner_hightype, spinner_middletype, spinner_lowtype,
+            spinner_bigcity, spinner_smallcity, spinner_searchtype;
+
+    ArrayAdapter<CharSequence> arrayAdapter;
 
 
     public View onCreateView(@NonNull LayoutInflater inflater,
@@ -33,21 +40,22 @@ public class TotalsearchFragment extends Fragment {
                 ViewModelProviders.of(this).get(TotalsearchViewModel.class);
         View root = inflater.inflate(R.layout.fragment_totalsearch, container, false);
 
-        final Spinner spinner_hightype, spinner_middletype,spinner_lowtype,
-                spinner_bigcity, spinner_smallcity,spinner_searchtype;
+
         final EditText editText_input;
         final ViewPager viewPager = root.findViewById(R.id.viewpager_totalsearch_page);
-        final SwipeAdapter swipeAdapter= new SwipeAdapter(getChildFragmentManager(),1);
+        final SwipeAdapter swipeAdapter = new SwipeAdapter(getChildFragmentManager(), 1);
 
         editText_input = root.findViewById(R.id.edittext_totalsearch_input);
 
         spinner_hightype = root.findViewById(R.id.spinner_totalsearch_hightype);
         spinner_middletype = root.findViewById(R.id.spinner_totalsearch_middletype);
+        spinner_hightype.setOnItemSelectedListener(this);
+
 
         spinner_bigcity = root.findViewById(R.id.spinner_totalsearch_bigcity);
         spinner_smallcity = root.findViewById(R.id.spinner_totalsearch_smallcity);
 
-        spinner_searchtype=root.findViewById(R.id.spinner_totalsearch_searchtype);
+        spinner_searchtype = root.findViewById(R.id.spinner_totalsearch_searchtype);
 
         Button button = root.findViewById(R.id.button_totalsearch_search);
         button.setOnClickListener(new View.OnClickListener() {
@@ -59,7 +67,7 @@ public class TotalsearchFragment extends Fragment {
                 city_big = spinner_bigcity.getSelectedItemPosition();//지역선택
                 city_small = spinner_smallcity.getSelectedItemPosition();//시군구선택
 
-                input= editText_input.getText().toString(); // 검색 내용
+                input = editText_input.getText().toString(); // 검색 내용
 
                 searchtype = spinner_searchtype.getSelectedItemPosition(); // 정렬 방법
 
@@ -73,34 +81,65 @@ public class TotalsearchFragment extends Fragment {
     }
 
 
-    public String positionToContenttypeid(int position){
-        if(position == 0){
+    public String positionToContenttypeid(int position) {
+        if (position == 0) {
             return "";
-        }
-        else if (position == 1){
+        } else if (position == 1) {
             return "12";
-        }
-        else if (position == 2){
+        } else if (position == 2) {
             return "14";
-        }
-        else if (position == 3){
+        } else if (position == 3) {
             return "15";
-        }
-        else if (position == 4){
+        } else if (position == 4) {
             return "25";
-        }
-        else if (position == 5){
+        } else if (position == 5) {
             return "25";
-        }
-        else if (position == 6){
+        } else if (position == 6) {
             return "32";
-        }
-        else if (position == 7){
+        } else if (position == 7) {
             return "38";
-        }
-        else if (position == 8){
+        } else if (position == 8) {
             return "39";
         }
         return "";
+    }
+
+    @Override
+    public void onItemSelected(AdapterView<?> adapterView, View view, int position, long l) {
+        String[] models = null;
+        if (position == 0) {
+            models = getResources().getStringArray(R.array.middletype);
+
+        } else if (position == 1) {
+            models = getResources().getStringArray(R.array.middle_1);
+
+        } else if (position == 2) {
+            models = getResources().getStringArray(R.array.middle_2);
+
+        } else if (position == 3) {
+            models = getResources().getStringArray(R.array.middle_3);
+
+        } else if (position == 4) {
+            models = getResources().getStringArray(R.array.middle_4);
+
+        } else if (position == 5) {
+            models = getResources().getStringArray(R.array.middle_5);
+
+        } else if (position == 6) {
+            models = getResources().getStringArray(R.array.middle_6);
+
+        } else if (position == 7) {
+            models = getResources().getStringArray(R.array.middle_7);
+
+        }
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>
+                (getContext(), R.layout.support_simple_spinner_dropdown_item, models);
+        adapter.setDropDownViewResource(R.layout.support_simple_spinner_dropdown_item);
+        spinner_middletype.setAdapter(adapter);
+    }
+
+    @Override
+    public void onNothingSelected(AdapterView<?> adapterView) {
+
     }
 }
