@@ -50,7 +50,7 @@ public class AroundFragment extends Fragment implements ViewPager.OnPageChangeLi
     int spinner_item_position;
     String contentTypeId;
     String searchtype;
-    double latitude,longitude;
+    double latitude, longitude;
     String address;
 
 
@@ -109,9 +109,9 @@ public class AroundFragment extends Fragment implements ViewPager.OnPageChangeLi
 
         contentTypeId = TypeId.ContentTypeId(spinner.getSelectedItemPosition());
         radius = editText.getText().toString();
-        searchtype = TypeId .arrange(spinner_searchtype.getSelectedItemPosition()); // 검색타입 선택 변수
+        searchtype = TypeId.arrange(spinner_searchtype.getSelectedItemPosition()); // 검색타입 선택 변수
 
-        ((MainActivity) getActivity()).aroundSearch(contentTypeId, radius, searchtype,  String.valueOf(longitude),String.valueOf(latitude), String.valueOf(position + 1));
+        ((MainActivity) getActivity()).aroundSearch(contentTypeId, radius, searchtype, String.valueOf(longitude), String.valueOf(latitude), String.valueOf(position + 1));
         //변수에 우리가 선택한 스피너, 위도경도, 정렬이 드가면 됨
         ItemAdapter itemAdapter = new ItemAdapter(MainActivity.LocationBasedList_ArrayList);
         ListViewFragment.listView.setAdapter(itemAdapter);
@@ -129,12 +129,14 @@ public class AroundFragment extends Fragment implements ViewPager.OnPageChangeLi
 
         contentTypeId = TypeId.ContentTypeId(spinner.getSelectedItemPosition());
         radius = editText.getText().toString();
-        searchtype = TypeId .arrange(spinner_searchtype.getSelectedItemPosition()); // 검색타입 선택 변수
+        searchtype = TypeId.arrange(spinner_searchtype.getSelectedItemPosition()); // 검색타입 선택 변수
 
+
+//        ((MainActivity) getActivity()).aroundSearch("12", "1000", "A", "126.981611", "37.568477", "1");
         ((MainActivity) getActivity()).aroundSearch(contentTypeId, radius, searchtype,  String.valueOf(longitude),String.valueOf(latitude), "1");
         Log.d("totalcount", LocationBasedList_Class.totalcount);
-        if(Integer.parseInt(LocationBasedList_Class.totalcount)!=0) {
-            swipeAdapter = new SwipeAdapter(getChildFragmentManager(), (Integer.parseInt(LocationBasedList_Class.totalcount) / 5)+1);
+        if (Integer.parseInt(LocationBasedList_Class.totalcount) != 0) {
+            swipeAdapter = new SwipeAdapter(getChildFragmentManager(), (Integer.parseInt(LocationBasedList_Class.totalcount) / 5) + 1);
 
             viewPager.setOffscreenPageLimit(1);
             viewPager.setAdapter(swipeAdapter);
@@ -150,9 +152,7 @@ public class AroundFragment extends Fragment implements ViewPager.OnPageChangeLi
     }
 
     @Override
-    public void onRequestPermissionsResult(int permsRequestCode,
-                                           @NonNull String[] permissions,
-                                           @NonNull int[] grandResults) {
+    public void onRequestPermissionsResult(int permsRequestCode, @NonNull String[] permissions, @NonNull int[] grandResults) {
 
         if (permsRequestCode == PERMISSIONS_REQUEST_CODE && grandResults.length == REQUIRED_PERMISSIONS.length) {
 
@@ -189,7 +189,6 @@ public class AroundFragment extends Fragment implements ViewPager.OnPageChangeLi
 
                 }
             }
-
         }
     }
 
@@ -231,11 +230,9 @@ public class AroundFragment extends Fragment implements ViewPager.OnPageChangeLi
                 ActivityCompat.requestPermissions(getActivity(), REQUIRED_PERMISSIONS,
                         PERMISSIONS_REQUEST_CODE);
             }
-
         }
 
     }
-
 
     public String getCurrentAddress(double latitude, double longitude) {
 
@@ -272,7 +269,6 @@ public class AroundFragment extends Fragment implements ViewPager.OnPageChangeLi
 
     }
 
-
     //여기부터는 GPS 활성화를 위한 메소드들
     private void showDialogForLocationServiceSetting() {
 
@@ -297,7 +293,6 @@ public class AroundFragment extends Fragment implements ViewPager.OnPageChangeLi
         });
         builder.create().show();
     }
-
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {

@@ -12,12 +12,12 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 
 public class detailImage {
-    public static ArrayList<String> Images;
+    public static ArrayList<String> Images = new ArrayList<String>();
 
 
     public static void JSONParsing(String JSONFromLocationBasedListaddr) {
         String image;
-
+        String totalcount;
         try {
             JSONObject jsonObject = new JSONObject(JSONFromLocationBasedListaddr);
             String response = jsonObject.getString("response");
@@ -26,12 +26,33 @@ public class detailImage {
             String body = jsonObject_response.getString("body");
             JSONObject jsonObject_body = new JSONObject(body);
 
-
+            totalcount = jsonObject_body.getString("totalCount");
+            if(Integer.parseInt(totalcount) == 0){
+                return;
+            }
             String items = jsonObject_body.getString("items");
             JSONObject jsonObject_items = new JSONObject(items);
 
             String item = jsonObject_items.getString("item");
+
+            if(Integer.parseInt(totalcount)==1){
+                JSONObject jsonObject_item = new JSONObject(item);
+                image = jsonObject_item.getString("originimgurl");
+                Log.d("TAG", image);
+                Images.add(image);
+            }
+            else{
+                JSONArray jsonArray_item = new JSONArray(item);
+                for (int i = 0; i < jsonArray_item.length(); i++) {
+                    JSONObject subJsonObject = jsonArray_item.getJSONObject(i);
+                    image = subJsonObject.getString("originimgurl");
+                    Log.d("TAG", image);
+                    Images.add(image);
+                }
+            }
             JSONArray jsonArray_item = new JSONArray(item);
+
+
             for (int i = 0; i < jsonArray_item.length(); i++) {
                 JSONObject subJsonObject = jsonArray_item.getJSONObject(i);
                 image = subJsonObject.getString("originimgurl");

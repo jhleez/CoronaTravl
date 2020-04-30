@@ -18,7 +18,7 @@ import org.json.JSONObject;
 
 public class Detail_view extends AppCompatActivity {
 
-    TextView testCommon, testInfo;
+    TextView testCommon, testInfo,testImage;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -133,12 +133,15 @@ public class Detail_view extends AppCompatActivity {
         String JSONFromdetailImageUrl = "";
         String image;
         try {
-            JSONFromdetailImageUrl = new HttpReqTask().execute(detailInfoUrl).get();
+            JSONFromdetailImageUrl = new HttpReqTask().execute(detailImageUrl).get();
         } catch (Exception e) {;
             Log.d("TAG", "jsonparsing error");
         }
         detailImage.JSONParsing(JSONFromdetailImageUrl);
-//        //image = detailImage.Images.get(0);
-//        Log.d("TAG",image);
+
+        testImage = (TextView)findViewById(R.id.testImage);
+        if(detailImage.Images.size() != 0) {
+            testImage.setText("\n\n텝4에 들어갈 추가이미지 중 첫 번째: " + detailImage.Images.get(0));
+        }
     }
 }
