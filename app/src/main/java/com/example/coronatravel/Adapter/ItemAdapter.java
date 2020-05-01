@@ -4,14 +4,15 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.coronatravel.LocationBasedList_Class;
 import com.example.coronatravel.R;
 import com.squareup.picasso.Picasso;
 
-import org.w3c.dom.Text;
 
 import java.util.List;
 
@@ -49,8 +50,14 @@ public class ItemAdapter extends BaseAdapter {
         TextView addreess = convertView.findViewById(R.id.textview_listitem_address);
         TextView distance = convertView.findViewById(R.id.textview_listitem_distance);
         ImageView imageView =convertView.findViewById(R.id.imageview_listitem);
-
+        final Button bookmark = convertView.findViewById(R.id.listitem_bookmar);
         String URI = data.getFirstimage();
+        bookmark.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                bookmark.setVisibility(View.INVISIBLE);
+            }
+        });
         if(URI=="") URI="http://";
 
         Picasso.get().load(URI).placeholder(R.drawable.ic_launcher_background).into(imageView);
@@ -63,4 +70,6 @@ public class ItemAdapter extends BaseAdapter {
 
         return convertView;
     }
+
+
 }
