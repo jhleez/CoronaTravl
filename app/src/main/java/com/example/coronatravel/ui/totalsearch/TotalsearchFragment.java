@@ -78,30 +78,6 @@ public class TotalsearchFragment extends Fragment implements AdapterView.OnItemS
         return root;
     }
 
-
-    public String positionToContenttypeid(int position) {
-        if (position == 0) {
-            return "";
-        } else if (position == 1) {
-            return "12";
-        } else if (position == 2) {
-            return "14";
-        } else if (position == 3) {
-            return "15";
-        } else if (position == 4) {
-            return "25";
-        } else if (position == 5) {
-            return "25";
-        } else if (position == 6) {
-            return "32";
-        } else if (position == 7) {
-            return "38";
-        } else if (position == 8) {
-            return "39";
-        }
-        return "";
-    }
-
     @Override
     public void onItemSelected(AdapterView<?> adapterView, View view, int position, long l) {
         String[] models = null;
