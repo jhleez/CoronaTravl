@@ -17,8 +17,10 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.viewpager.widget.ViewPager;
 
+import com.example.coronatravel.MainActivity;
 import com.example.coronatravel.R;
 import com.example.coronatravel.Adapter.SwipeAdapter;
+import com.example.coronatravel.TypeId;
 
 public class TotalsearchFragment extends Fragment  {
 
@@ -142,13 +144,20 @@ public class TotalsearchFragment extends Fragment  {
             public void onClick(View view) {
                 service_typehigh = spinner_hightype.getSelectedItemPosition();//대분류
                 service_typemiddle = spinner_middletype.getSelectedItemPosition();//중분류
-
                 city_big = spinner_bigcity.getSelectedItemPosition();//지역선택
                 city_small = spinner_smallcity.getSelectedItemPosition();//시군구선택
-
                 input = editText_input.getText().toString(); // 검색 내용
-
                 searchtype = spinner_searchtype.getSelectedItemPosition(); // 정렬 방법
+
+                if(input.equals("")) {
+                    ((MainActivity) getActivity()).localSearch("", String.valueOf(city_big), String.valueOf(city_small),
+                            TypeId.cat1(service_typehigh), TypeId.cat2(service_typehigh, service_typelow), "", TypeId.arrange(searchtype), "1");
+                }
+                else {
+                    ((MainActivity) getActivity()).totalSearch(input, String.valueOf(city_big), String.valueOf(city_small),
+                            TypeId.cat1(service_typehigh), TypeId.cat2(service_typehigh, service_typelow), "", TypeId.arrange(searchtype), "1");
+                }
+
 
                 viewPager.setOffscreenPageLimit(1);
                 viewPager.setAdapter(swipeAdapter);
