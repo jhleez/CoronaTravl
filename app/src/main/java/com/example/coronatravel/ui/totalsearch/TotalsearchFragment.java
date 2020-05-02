@@ -136,7 +136,6 @@ public class TotalsearchFragment extends Fragment  {
             }
         });
 
-
         spinner_searchtype = root.findViewById(R.id.spinner_totalsearch_searchtype);
 
         Button button = root.findViewById(R.id.button_totalsearch_search);
