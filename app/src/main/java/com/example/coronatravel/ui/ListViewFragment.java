@@ -12,6 +12,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.example.coronatravel.Adapter.ItemAdapter;
 import com.example.coronatravel.MainActivity;
@@ -38,6 +39,9 @@ public class ListViewFragment extends Fragment {
         ItemAdapter itemAdapter = new ItemAdapter(MainActivity.LocationBasedList_ArrayList);
         listView.setAdapter(itemAdapter);
 
+
+
+
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView parent, View v, int position, long id) {
@@ -51,8 +55,6 @@ public class ListViewFragment extends Fragment {
                 startActivity(intent);
             }
         });
-
-
         return view;
     }
 }

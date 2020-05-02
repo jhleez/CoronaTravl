@@ -23,27 +23,29 @@ import com.example.coronatravel.Adapter.SwipeAdapter;
 import com.example.coronatravel.TypeId;
 import com.example.coronatravel.ui.ListViewFragment;
 
-public class FestivalFragment extends Fragment {
+public class FestivalFragment extends Fragment implements ViewPager.OnPageChangeListener {
 
     private FestivalViewModel festivalViewModel;
     int searchtype;
     int service_typehigh, service_typemiddle, service_typelow;
     int city_big, city_small;
+    int term;
     ListView listView;
     String contentTypeId;
     SwipeAdapter swipeAdapter;
     ViewPager viewPager;
+    Spinner spinner_term,spinner_searchtype;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         festivalViewModel =
                 ViewModelProviders.of(this).get(FestivalViewModel.class);
         final View root = inflater.inflate(R.layout.fragment_festival, container, false);
-        swipeAdapter= new SwipeAdapter(getChildFragmentManager(),1);
         viewPager = root.findViewById(R.id.viewpager_festival_page);
-        final Spinner spinner_hightype, spinner_middletype, spinner_lowtype,
-                spinner_bigcity, spinner_smallcity, spinner_searchtype;
+        viewPager.addOnPageChangeListener(this);
 
+        spinner_term = root.findViewById(R.id.spinner_festival_term);
+        spinner_searchtype=root.findViewById(R.id.spinner_festival_searchtype);
 
         /* listView = root.findViewById(R.id.listview_festival_dataview);
 
@@ -59,37 +61,26 @@ public class FestivalFragment extends Fragment {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-              /*  service_typehigh = spinner_hightype.getSelectedItemPosition();//대분류
-                service_typemiddle = spinner_middletype.getSelectedItemPosition();//중분류
-                service_typelow = spinner_lowtype.getSelectedItemPosition();//소분류
 
-                city_big = spinner_bigcity.getSelectedItemPosition();//지역선택
-                city_small = spinner_smallcity.getSelectedItemPosition();//시군구선택
+                term = spinner_term.getSelectedItemPosition();
+                searchtype = spinner_searchtype.getSelectedItemPosition();
 
-                searchtype = spinner_searchtype.getSelectedItemPosition(); // 정렬 방법*/
-                //contentTypeId = TypeId.ContentTypeId(spinner.getSelectedItemPosition());
-
-
+                //여기에 MainAcitivity.Festival()생성
 
                 Log.d("totalcount", LocationBasedList_Class.totalcount);
                 if (Integer.parseInt(LocationBasedList_Class.totalcount) != 0) {
                     swipeAdapter = new SwipeAdapter(getChildFragmentManager(), (Integer.parseInt(LocationBasedList_Class.totalcount) / 5) + 1);
 
+
                     viewPager.setOffscreenPageLimit(1);
                     viewPager.setAdapter(swipeAdapter);
                     viewPager.setCurrentItem(0);
 
-                    //변수에 우리가 선택한 스피너, 위도경도, 정렬이 드가면 됨
 
                     ItemAdapter itemAdapter = new ItemAdapter(MainActivity.LocationBasedList_ArrayList);
                     ListViewFragment.listView.setAdapter(itemAdapter);
 
-                    //Toast.makeText(getActivity(), Integer.parseInt(LocationBasedList_Class.totalcount) + "\n" + "현재위치 \n위도 " + latitude + "\n경도 " + longitude + "\n" + address, Toast.LENGTH_LONG).show();
                 }
-
-        /*        ((MainActivity)getActivity()).aroundSearch("12","1000","A","126.981611","37.568477","1");
-                ItemAdapter itemAdapter = new ItemAdapter(MainActivity.LocationBasedList_ArrayList);
-                listView.setAdapter(itemAdapter);*/
             }
         });
 
@@ -119,4 +110,24 @@ public class FestivalFragment extends Fragment {
         return "";
     }
 
+    @Override
+    public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+
+    }
+
+    @Override
+    public void onPageSelected(int position) {
+        //page 정보 나타내는 변수 설정 해줘야함
+        term = spinner_term.getSelectedItemPosition();
+        searchtype = spinner_searchtype.getSelectedItemPosition();
+
+        //((MainActivity) getActivity()).festival(contentTypeId, radius, searchtype, String.valueOf(longitude), String.valueOf(latitude), String.valueOf(position + 1));
+        ItemAdapter itemAdapter = new ItemAdapter(MainActivity.LocationBasedList_ArrayList);
+        ListViewFragment.listView.setAdapter(itemAdapter);
+    }
+
+    @Override
+    public void onPageScrollStateChanged(int state) {
+
+    }
 }

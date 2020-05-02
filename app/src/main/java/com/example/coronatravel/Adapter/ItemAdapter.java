@@ -1,5 +1,7 @@
 package com.example.coronatravel.Adapter;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -41,7 +43,7 @@ public class ItemAdapter extends BaseAdapter {
     }
 
     @Override
-    public View getView(int i, View convertView, ViewGroup viewGroup) {
+    public View getView(final int i, View convertView, final ViewGroup viewGroup) {
 
         LocationBasedList_Class data = list.get(i);
         convertView = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.activity_list_item, viewGroup, false);
@@ -49,16 +51,34 @@ public class ItemAdapter extends BaseAdapter {
         TextView title = convertView.findViewById(R.id.textview_listitem_title);
         TextView addreess = convertView.findViewById(R.id.textview_listitem_address);
         //TextView distance = convertView.findViewById(R.id.textview_listitem_distance);
-        ImageView imageView =convertView.findViewById(R.id.imageview_listitem);
+        ImageView imageView = convertView.findViewById(R.id.imageview_listitem);
         final Button bookmark = convertView.findViewById(R.id.listitem_bookmar);
         String URI = data.getFirstimage();
         bookmark.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                bookmark.setVisibility(View.INVISIBLE);
+                AlertDialog.Builder builder = new AlertDialog.Builder(viewGroup.getContext());
+                builder.setTitle("즐겨찾기 설정");
+                builder.setCancelable(true)
+                        .setMessage("즐겨찾기로 추가하시겠습니까?")
+                        .setNeutralButton("취소", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+
+                            }
+                        })
+                        .setPositiveButton("추가", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                Toast.makeText(viewGroup.getContext(), i + "째 추가", Toast.LENGTH_SHORT).show();
+                            }
+                        });
+                AlertDialog alertDialog = builder.create();
+                alertDialog.show();
+
             }
         });
-        if(URI=="") URI="http://";
+        if (URI == "") URI = "http://";
 
         Picasso.get().load(URI).placeholder(R.drawable.ic_launcher_background).into(imageView);
 
@@ -67,9 +87,7 @@ public class ItemAdapter extends BaseAdapter {
         //distance.setText(data.getDist());
 
 
-
         return convertView;
     }
-
 
 }

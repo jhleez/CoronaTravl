@@ -18,7 +18,7 @@
             android:textSize="15sp" />
 
         <Spinner
-            android:id="@+id/spinner_festival_hightype"
+            android:id="@+id/spinner_festival_term"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:entries="@array/festival_term"
