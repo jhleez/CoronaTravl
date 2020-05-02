@@ -26,7 +26,6 @@ public class Detail_view extends AppCompatActivity {
         setContentView(R.layout.activity_detail_view);
         testCommon = (TextView) findViewById(R.id.testCommon);
         testInfo = (TextView) findViewById(R.id.testInfo);
-        // 리스트뷰에서 넘길 때 contenttype , contentid를 같이 넘겨줘야되는데 일단 그냥 테스트케이스로 잡고했음
 
 
         Intent intent = getIntent();

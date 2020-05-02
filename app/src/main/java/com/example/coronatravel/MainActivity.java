@@ -36,7 +36,6 @@ public class MainActivity extends AppCompatActivity {
     public static ArrayList<LocationBasedList_Class> LocationBasedList_ArrayList = new ArrayList<>();
     private AppBarConfiguration mAppBarConfiguration;
     String id = "2YHyxt5iKCnOzEiYHMcML%2FgiOywB9tnJeL6D%2BHqsL48iMsSOXwPxQHTjCHq5dA1zAEcNIdcQUXnvFMN0aIdLsQ%3D%3D";
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -63,7 +62,6 @@ public class MainActivity extends AppCompatActivity {
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(navigationView, navController);
-
 
     }
 
@@ -107,6 +105,12 @@ public class MainActivity extends AppCompatActivity {
 
     public void localSearch(String contentTypeId,String areaCode, String sigunguCode, String cat1, String cat2, String cat3,String arrage, String pageNo){
         LocationBasedList_ArrayList.clear();
+        if(sigunguCode.equals("0")){
+            sigunguCode = "";
+        }
+        if(areaCode.equals("0")){
+            areaCode="";
+        }
         String LocalSearchAddr = "http://api.visitkorea.or.kr/openapi/service/rest/KorService/areaBasedList?" +
                 "ServiceKey="+id+
                 "&contentTypeId="+contentTypeId+
@@ -133,6 +137,12 @@ public class MainActivity extends AppCompatActivity {
     public void totalSearch(String keyword,String areaCode, String sigunguCode, String cat1, String cat2, String cat3,String arrage, String pageNo){
         LocationBasedList_ArrayList.clear();
         String encodeStr="";
+        if(sigunguCode.equals("0")){
+            sigunguCode = "";
+        }
+        if(areaCode.equals("0")){
+            areaCode="";
+        }
         try{
             encodeStr = URLEncoder.encode(keyword, "UTF-8");
         }catch (Exception e){

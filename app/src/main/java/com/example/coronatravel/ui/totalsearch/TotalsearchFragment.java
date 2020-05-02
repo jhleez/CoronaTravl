@@ -17,7 +17,6 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.viewpager.widget.ViewPager;
 
-import com.example.coronatravel.LocationBasedList_Class;
 import com.example.coronatravel.R;
 import com.example.coronatravel.Adapter.SwipeAdapter;
 
@@ -31,7 +30,6 @@ public class TotalsearchFragment extends Fragment  {
     ListView listView;
     Spinner spinner_hightype, spinner_middletype,
             spinner_bigcity, spinner_smallcity, spinner_searchtype;
-    SwipeAdapter swipeAdapter;
 
 
     public View onCreateView(@NonNull LayoutInflater inflater,
@@ -43,6 +41,7 @@ public class TotalsearchFragment extends Fragment  {
 
         final EditText editText_input;
         final ViewPager viewPager = root.findViewById(R.id.viewpager_totalsearch_page);
+        final SwipeAdapter swipeAdapter = new SwipeAdapter(getChildFragmentManager(), 1);
 
         editText_input = root.findViewById(R.id.edittext_totalsearch_input);
 
@@ -151,7 +150,6 @@ public class TotalsearchFragment extends Fragment  {
 
                 searchtype = spinner_searchtype.getSelectedItemPosition(); // 정렬 방법
 
-                swipeAdapter = new SwipeAdapter(getChildFragmentManager(), (Integer.parseInt(LocationBasedList_Class.totalcount) / 5) + 1);
                 viewPager.setOffscreenPageLimit(1);
                 viewPager.setAdapter(swipeAdapter);
                 viewPager.setCurrentItem(0);
