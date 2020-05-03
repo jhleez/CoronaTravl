@@ -129,7 +129,7 @@ public class AroundFragment extends Fragment implements ViewPager.OnPageChangeLi
 
         contentTypeId = TypeId.ContentTypeId(spinner.getSelectedItemPosition());
         radius = editText.getText().toString();
-        searchtype = TypeId.arrange(spinner_searchtype.getSelectedItemPosition()); // 검색타입 선택 변수
+        searchtype = arrange(spinner_searchtype.getSelectedItemPosition()); // 검색타입 선택 변수
 
 
 //        ((MainActivity) getActivity()).aroundSearch("12", "1000", "A", "126.981611", "37.568477", "1");
@@ -322,5 +322,19 @@ public class AroundFragment extends Fragment implements ViewPager.OnPageChangeLi
         return locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER)
                 || locationManager.isProviderEnabled(LocationManager.NETWORK_PROVIDER);
     }
-
+    public String arrange(int position) {
+        if(position == 0){
+            return "S";
+        }
+        else if (position == 1) {
+            return "A";
+        } else if (position == 2) {
+            return "B";
+        } else if (position == 3) {
+            return "C";
+        } else if (position == 4) {
+            return "D";
+        }
+        return "";
+    }
 }
