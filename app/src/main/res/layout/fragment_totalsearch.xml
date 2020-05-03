@@ -19,6 +19,7 @@
             android:textSize="15sp" />
 
         <Spinner
+
             android:id="@+id/spinner_totalsearch_hightype"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

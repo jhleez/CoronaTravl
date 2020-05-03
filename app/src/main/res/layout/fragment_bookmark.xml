@@ -5,11 +5,9 @@
     android:layout_height="match_parent"
     android:gravity="center">
 
-    <androidx.viewpager.widget.ViewPager
-        android:id="@+id/viewpager_bookmark_page"
+    <ListView
+        android:id="@+id/bookmark_listview"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-    </androidx.viewpager.widget.ViewPager>
+        android:layout_height="match_parent"/>
 
 </LinearLayout>

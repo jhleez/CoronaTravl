@@ -19,6 +19,9 @@ public class LocationBasedList_Class {
         this.firstimage=firstimage; // 사진
         this.title=title; //제목
     }
+    LocationBasedList_Class(){ // 여기에 SQLite 에 저장한 내용 삽입시키면 될듯?
+
+    }
 
     public static String totalcount;
     private String addr1;

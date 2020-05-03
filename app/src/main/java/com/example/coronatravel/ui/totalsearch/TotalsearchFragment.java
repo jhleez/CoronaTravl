@@ -86,9 +86,6 @@ public class TotalsearchFragment extends Fragment implements ViewPager.OnPageCha
         });
 
 
-
-        출처: https://ccdev.tistory.com/31 [초보코딩왕의 Power Dev.]
-
         spinner_hightype = root.findViewById(R.id.spinner_totalsearch_hightype);
         spinner_middletype = root.findViewById(R.id.spinner_totalsearch_middletype);
         spinner_hightype.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
@@ -194,7 +191,7 @@ public class TotalsearchFragment extends Fragment implements ViewPager.OnPageCha
 
                 searchtype = TypeId.arrange(spinner_searchtype.getSelectedItemPosition()); // 정렬 방법
                 if(input.length()>=2){
-                    ((MainActivity) getActivity()).totalSearch(input, city_big, city_small, service_typehigh, service_typemiddle, "0", searchtype, "1");
+                    ((MainActivity) getActivity()).totalSearch(input, city_big, city_small, service_typehigh, service_typemiddle, "", searchtype, "1");
                     if (Integer.parseInt(LocationBasedList_Class.totalcount) != 0) {
                         swipeAdapter = new SwipeAdapter(getChildFragmentManager(), (Integer.parseInt(LocationBasedList_Class.totalcount) / 5) + 1);
 
@@ -270,7 +267,7 @@ public class TotalsearchFragment extends Fragment implements ViewPager.OnPageCha
 
         searchtype = TypeId.arrange(spinner_searchtype.getSelectedItemPosition()); // 정렬 방법
 
-        ((MainActivity) getActivity()).totalSearch(input, city_big, city_small, service_typehigh, service_typemiddle, "0", searchtype, String.valueOf((position + 1)));
+        ((MainActivity) getActivity()).totalSearch(input, city_big, city_small, service_typehigh, service_typemiddle, "", searchtype, String.valueOf((position + 1)));
         ItemAdapter itemAdapter = new ItemAdapter(MainActivity.LocationBasedList_ArrayList);
         ListViewFragment.listView.setAdapter(itemAdapter);
     }
