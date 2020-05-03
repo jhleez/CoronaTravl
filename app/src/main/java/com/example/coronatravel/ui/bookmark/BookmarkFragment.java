@@ -3,9 +3,11 @@ package com.example.coronatravel.ui.bookmark;
 import android.content.ClipData;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.SystemClock;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.QuickContactBadge;
@@ -35,9 +37,11 @@ public class BookmarkFragment extends Fragment {
                 ViewModelProviders.of(this).get(BookmarkViewModel.class);
         View root = inflater.inflate(R.layout.fragment_bookmark, container, false);
 
-        listView=root.findViewById(R.id.bookmark_listview);
+        listView = root.findViewById(R.id.bookmark_listview);
+        ((MainActivity) getActivity()).bookMarkList();
         itemAdapter = new ItemAdapter(MainActivity.LocationBasedList_ArrayList);
         listView.setAdapter(itemAdapter);
         return root;
+
     }
 }

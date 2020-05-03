@@ -3,10 +3,14 @@ package com.example.coronatravel.detail;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.database.Cursor;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.CheckBox;
 import android.widget.TextView;
 
+import com.example.coronatravel.DbOpenHelper;
 import com.example.coronatravel.HttpReqTask;
 import com.example.coronatravel.LocationBasedList_Class;
 import com.example.coronatravel.MainActivity;
@@ -19,25 +23,32 @@ import org.json.JSONObject;
 public class Detail_view extends AppCompatActivity {
 
     TextView testCommon, testInfo,testImage;
-
+    CheckBox checkbox;
+    DbOpenHelper mDbOpenHelper;
+    String addr1, contentid,contenttypeid,firstimage,title;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail_view);
         testCommon = (TextView) findViewById(R.id.testCommon);
         testInfo = (TextView) findViewById(R.id.testInfo);
-
+        CheckBox checkbox = (CheckBox)findViewById(R.id.checkbox);
+        mDbOpenHelper = new DbOpenHelper(this);
 
         Intent intent = getIntent();
         int position = intent.getExtras().getInt("position");
-        String contentTypeId = MainActivity.LocationBasedList_ArrayList.get(position).getContenttypeid();
-        String contentId = MainActivity.LocationBasedList_ArrayList.get(position).getContentid();
+        contenttypeid = MainActivity.LocationBasedList_ArrayList.get(position).getContenttypeid();
+        contentid = MainActivity.LocationBasedList_ArrayList.get(position).getContentid();
+        addr1 = MainActivity.LocationBasedList_ArrayList.get(position).getAddr1();
+        firstimage = MainActivity.LocationBasedList_ArrayList.get(position).getFirstimage();
+        title=MainActivity.LocationBasedList_ArrayList.get(position).getTitle();
+
         String ServiceKey = "2YHyxt5iKCnOzEiYHMcML%2FgiOywB9tnJeL6D%2BHqsL48iMsSOXwPxQHTjCHq5dA1zAEcNIdcQUXnvFMN0aIdLsQ%3D%3D";
         detailCommon detail_C = new detailCommon();
         String detailCommonUrl = "http://api.visitkorea.or.kr/openapi/service/rest/KorService/detailCommon?" +
                 "ServiceKey=" + ServiceKey +
-                "&contentTypeId=" + contentTypeId +
-                "&contentId=" + contentId +
+                "&contentTypeId=" + contenttypeid +
+                "&contentId=" + contentid +
                 "&MobileOS=AND&MobileApp=CoronaTravel" +
                 "&defaultYN=Y&firstImageYN=Y&areacodeYN=Y&catcodeYN=Y&addrinfoYN=Y&mapinfoYN=Y&overviewYN=Y&transGuideYN=Y" +
                 "&_type=json";
@@ -49,8 +60,44 @@ public class Detail_view extends AppCompatActivity {
             Log.d("TAG", "jsonparsing error");
         }
 
-        detail_C = detail_C.JSONParsing(JSONFromdetailCommonUrl);
 
+       //체크박스 처리
+        int i=0;
+        Cursor iCursor = mDbOpenHelper.selectColumns(contentid);
+        while (iCursor.moveToNext()) {
+            i++;
+        }
+        if(i==0){
+            checkbox.setChecked(false);
+        }
+        else
+        {
+            checkbox.setChecked(true);
+        }
+
+
+        checkbox.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mDbOpenHelper.open();
+                mDbOpenHelper.create();
+
+                if(((CheckBox) v).isChecked()){
+                    mDbOpenHelper.insertColumn(addr1,contentid,contenttypeid,firstimage,title);
+                }
+                else
+                {
+                    mDbOpenHelper.deleteColumn(contentid);
+                }
+            }
+        });
+
+
+
+
+
+
+        detail_C = detail_C.JSONParsing(JSONFromdetailCommonUrl);
         //모든 데이터가 다들어 있는게 아님 이 케이스의 경우 홈페이지, 전화번호, 전화번호 명이없음
         testCommon.setText(
                 "텝1에 들어갈 공통정보" +
@@ -60,11 +107,10 @@ public class Detail_view extends AppCompatActivity {
                         "\n우편번호 : " + detail_C.getZipcode()
         );
 
-
         String detailInfoUrl = "http://api.visitkorea.or.kr/openapi/service/rest/KorService/detailIntro?" +
                 "ServiceKey="+ServiceKey+
-                "&contentTypeId="+contentTypeId+
-                "&contentId="+contentId +
+                "&contentTypeId="+contenttypeid+
+                "&contentId="+contentid +
                 "&MobileOS=ETC&MobileApp=TourAPI3.0_Guide&introYN=Y&_type=json";
 
         String JSONFromdetailInfoURL = "";
@@ -75,44 +121,44 @@ public class Detail_view extends AppCompatActivity {
         }
 
         detailInfo_12 detail_I_12 = new detailInfo_12();
-        if (contentTypeId.equals("12")) {
+        if (contenttypeid.equals("12")) {
             detail_I_12 = detail_I_12.JSONParsing(JSONFromdetailInfoURL);
             testInfo.setText("\n\n탭 2에 들어갈 설명정보" +
                     "\n유모차대여 : " + detail_I_12.getChkbabycarriage() +
                     "\n애완동물동반 가능 : " + detail_I_12.getChkpet());
         }
 
-        else if(contentTypeId.equals("14")) {
+        else if(contenttypeid.equals("14")) {
             detailInfo_14 detail_I_14 = new detailInfo_14();
             detail_I_14 = detail_I_14.JSONParsing(detailInfoUrl);
         }
 
-        else if(contentTypeId.equals("15")) {
+        else if(contenttypeid.equals("15")) {
             detailInfo_15 detail_I_15 = new detailInfo_15();
             detail_I_15 = detail_I_15.JSONParsing(detailInfoUrl);
         }
 
-        else if(contentTypeId.equals("15")) {
+        else if(contenttypeid.equals("15")) {
             detailInfo_15 detail_I_15 = new detailInfo_15();
             detail_I_15 = detail_I_15.JSONParsing(detailInfoUrl);
         }
-        else if(contentTypeId.equals("25")) {
+        else if(contenttypeid.equals("25")) {
             detailInfo_25 detail_I_25 = new detailInfo_25();
             detail_I_25 = detail_I_25.JSONParsing(detailInfoUrl);
         }
-        else if(contentTypeId.equals("28")) {
+        else if(contenttypeid.equals("28")) {
             detailInfo_28 detail_I_28 = new detailInfo_28();
             detail_I_28 = detail_I_28.JSONParsing(detailInfoUrl);
         }
-        else if(contentTypeId.equals("32")) {
+        else if(contenttypeid.equals("32")) {
             detailInfo_32 detail_I_32 = new detailInfo_32();
             detail_I_32 = detail_I_32.JSONParsing(detailInfoUrl);
         }
-        else if(contentTypeId.equals("38")) {
+        else if(contenttypeid.equals("38")) {
             detailInfo_38 detail_I_38 = new detailInfo_38();
             detail_I_38 = detail_I_38.JSONParsing(detailInfoUrl);
         }
-        else if(contentTypeId.equals("39")) {
+        else if(contenttypeid.equals("39")) {
             detailInfo_39 detail_I_39 = new detailInfo_39();
             detail_I_39 = detail_I_39.JSONParsing(detailInfoUrl);
         }
@@ -124,9 +170,9 @@ public class Detail_view extends AppCompatActivity {
 
         String detailImageUrl = "http://api.visitkorea.or.kr/openapi/service/rest/KorService/detailImage?" +
                 "ServiceKey="+ServiceKey+
-                "&contentTypeId=" +contentTypeId +
+                "&contentTypeId=" +contenttypeid +
                 "&MobileOS=AND&MobileApp=CoronaTravel" +
-                "&contentId=" +contentId+
+                "&contentId=" +contentid+
                 "&imageYN=Y&_type=json";
 
         String JSONFromdetailImageUrl = "";

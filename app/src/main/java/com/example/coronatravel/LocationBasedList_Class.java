@@ -10,12 +10,11 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 public class LocationBasedList_Class {
-    LocationBasedList_Class(String addr1,String contentid,String contenttypeid,String dist,String firstimage,String title)
+    LocationBasedList_Class(String addr1,String contentid,String contenttypeid,String firstimage,String title)
     {
         this.addr1 =addr1; //주소
         this.contentid=contentid;
         this.contenttypeid=contenttypeid;
-        this.dist=dist; //내위치에서 거리
         this.firstimage=firstimage; // 사진
         this.title=title; //제목
     }
@@ -27,7 +26,6 @@ public class LocationBasedList_Class {
     private String addr1;
     private String contentid;
     private String contenttypeid;
-    private String dist;
     private String firstimage;
     private String title;
 
@@ -56,13 +54,6 @@ public class LocationBasedList_Class {
         this.contenttypeid = contenttypeid;
     }
 
-    public String getDist() {
-        return dist;
-    }
-
-    public void setDist(String dist) {
-        this.dist = dist;
-    }
 
     public String getFirstimage() {
         return firstimage;
@@ -126,7 +117,7 @@ public class LocationBasedList_Class {
                 contenttypeid = subJsonObject.getString("contenttypeid");
                 title = subJsonObject.getString("title");
 
-                LocationBasedList_Class subclass = new LocationBasedList_Class(addr1,contentid,contenttypeid,dist,firstimage,title);
+                LocationBasedList_Class subclass = new LocationBasedList_Class(addr1,contentid,contenttypeid,firstimage,title);
                 MainActivity.LocationBasedList_ArrayList.add(subclass);
             }
         } catch (JSONException e) {

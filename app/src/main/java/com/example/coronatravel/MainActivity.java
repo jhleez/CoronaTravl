@@ -1,6 +1,7 @@
 package com.example.coronatravel;
 
 import android.content.Intent;
+import android.database.Cursor;
 import android.os.Bundle;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -36,8 +37,10 @@ public class MainActivity extends AppCompatActivity {
     public static ArrayList<LocationBasedList_Class> LocationBasedList_ArrayList = new ArrayList<>();
     private AppBarConfiguration mAppBarConfiguration;
     String id = "2YHyxt5iKCnOzEiYHMcML%2FgiOywB9tnJeL6D%2BHqsL48iMsSOXwPxQHTjCHq5dA1zAEcNIdcQUXnvFMN0aIdLsQ%3D%3D";
+    DbOpenHelper mDbOpenHelper;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        mDbOpenHelper = new DbOpenHelper(this);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Toolbar toolbar = findViewById(R.id.toolbar);
@@ -62,6 +65,19 @@ public class MainActivity extends AppCompatActivity {
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(navigationView, navController);
+
+
+
+        // sqlite example data set
+
+        mDbOpenHelper.open();
+        mDbOpenHelper.create();
+
+        mDbOpenHelper.deleteAllColumns();
+        mDbOpenHelper.insertColumn("서울특별시 종로구 북촌로 52", "130446","14", "http://tong.visitkorea.or.kr/cms/resource/75/2550575_image2_1.jpg", "가회민화박물관");
+        mDbOpenHelper.insertColumn("서울특별시 종로구 창경궁로 88", "132183","38", "http://tong.visitkorea.or.kr/cms/resource/11/710311_image2_1.jpg", "광장시장");
+
+
 
     }
 
@@ -169,5 +185,21 @@ public class MainActivity extends AppCompatActivity {
             Log.d("TAG", "jsonparsing error");
         }
         LocationBasedList_Class.JSONParsing(JSONFromTotalSearch);
+    }
+
+    public void bookMarkList(){
+        LocationBasedList_ArrayList.clear();
+        String addr1="", contentid="", contenttypeid="", firstimage="",title="";
+        Cursor iCursor = mDbOpenHelper.sortColumn("_id");
+        while (iCursor.moveToNext()) {
+            addr1 = iCursor.getString(iCursor.getColumnIndex("addr1"));
+            contentid = iCursor.getString(iCursor.getColumnIndex("contentid"));
+            contenttypeid = iCursor.getString(iCursor.getColumnIndex("contenttypeid"));
+            firstimage = iCursor.getString(iCursor.getColumnIndex("firstimage"));
+            title = iCursor.getString(iCursor.getColumnIndex("title"));
+
+            LocationBasedList_Class subclass = new LocationBasedList_Class(addr1,contentid,contenttypeid,firstimage,title);
+            LocationBasedList_ArrayList.add(subclass);
+        }
     }
 }

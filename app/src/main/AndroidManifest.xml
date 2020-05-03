@@ -19,7 +19,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".ui.ListViewFragment"></activity>
+        <activity android:name=".DbOpenHelper"></activity>
+        <activity android:name=".ui.ListViewFragment" />
         <activity android:name=".detail.Detail_view" />
         <activity
             android:name=".MainActivity"
