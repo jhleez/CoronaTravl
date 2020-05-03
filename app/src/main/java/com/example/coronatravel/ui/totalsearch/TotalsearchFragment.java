@@ -190,7 +190,7 @@ public class TotalsearchFragment extends Fragment implements ViewPager.OnPageCha
                 input = editText_input.getText().toString(); // 검색 내용
 
                 searchtype = TypeId.arrange(spinner_searchtype.getSelectedItemPosition()); // 정렬 방법
-                if(input.length()>=2){
+                if(input.length()!=1){
                     ((MainActivity) getActivity()).totalSearch(input, city_big, city_small, service_typehigh, service_typemiddle, "", searchtype, "1");
                     if (Integer.parseInt(LocationBasedList_Class.totalcount) != 0) {
                         swipeAdapter = new SwipeAdapter(getChildFragmentManager(), (Integer.parseInt(LocationBasedList_Class.totalcount) / 5) + 1);
