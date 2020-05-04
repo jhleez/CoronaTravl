@@ -30,6 +30,7 @@ import java.util.List;
 public class BookmarkFragment extends Fragment {
     ListView listView;
     ItemAdapter itemAdapter;
+    long mLastClickTime = 0;
     private BookmarkViewModel bookmarkViewModel;
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -41,7 +42,22 @@ public class BookmarkFragment extends Fragment {
         ((MainActivity) getActivity()).bookMarkList();
         itemAdapter = new ItemAdapter(MainActivity.LocationBasedList_ArrayList);
         listView.setAdapter(itemAdapter);
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView parent, View v, int position, long id) {
+                if (SystemClock.elapsedRealtime() - mLastClickTime < 1000){
+                    return;
+                }
+                mLastClickTime = SystemClock.elapsedRealtime();
+
+                Intent intent = new Intent(getActivity(), Detail_view.class);
+                intent.putExtra("position", position);
+                startActivity(intent);
+            }
+        });
+
         return root;
+
 
     }
 }
