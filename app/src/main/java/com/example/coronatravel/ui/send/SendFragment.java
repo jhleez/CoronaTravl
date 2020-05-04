@@ -4,6 +4,11 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.webkit.GeolocationPermissions;
+import android.webkit.WebChromeClient;
+import android.webkit.WebSettings;
+import android.webkit.WebView;
+import android.webkit.WebViewClient;
 import android.widget.TextView;
 
 import androidx.annotation.Nullable;
@@ -16,20 +21,34 @@ import com.example.coronatravel.R;
 
 public class SendFragment extends Fragment {
 
-    private SendViewModel sendViewModel;
+  /*  private static final String URL_DAUM_MAP = "http://m.map.daum.net/";
+    private static final String URL_NAVER_MAP = "http://m.map.naver.com/";
+    private static final String TAG = MainActivityTest.class.getSimpleName();
+    private static final int MY_PERMISSION_REQUEST_LOCATION = 0;
+    private WebView webView;
+*/
+
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        sendViewModel =
-                ViewModelProviders.of(this).get(SendViewModel.class);
+
         View root = inflater.inflate(R.layout.fragment_send, container, false);
-        final TextView textView = root.findViewById(R.id.text_send);
-        sendViewModel.getText().observe(this, new Observer<String>() {
+
+        WebView mywebview = root.findViewById(R.id.testwebview);
+        mywebview.setWebViewClient(new WebViewClient());
+        mywebview.setWebChromeClient(new WebChromeClient(){
             @Override
-            public void onChanged(@Nullable String s) {
-                textView.setText(s);
+            public void onGeolocationPermissionsShowPrompt(String origin, GeolocationPermissions.Callback callback) {
+                super.onGeolocationPermissionsShowPrompt(origin, callback);
+                callback.invoke(origin, true, false);
+
             }
         });
+        WebSettings mywebsettings = mywebview.getSettings();
+        mywebsettings.setJavaScriptEnabled(true);
+
+
+        mywebview.loadUrl("https://mohw.go.kr/react/ncov_map_page.jsp");
         return root;
     }
 }

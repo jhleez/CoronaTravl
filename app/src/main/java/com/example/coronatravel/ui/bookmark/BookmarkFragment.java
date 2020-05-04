@@ -55,9 +55,6 @@ public class BookmarkFragment extends Fragment {
                 startActivity(intent);
             }
         });
-
         return root;
-
-
     }
 }
