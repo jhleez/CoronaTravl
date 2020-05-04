@@ -166,6 +166,7 @@ public class Detail_view extends AppCompatActivity {
             detail_I_39 = detail_I_39.JSONParsing(detailInfoUrl);
         }
 
+
 //        String detailImageUrl = "http://api.visitkorea.or.kr/openapi/service/rest/KorService/detailImage?" +
 //                "ServiceKey="+ServiceKey+
 //                "&contentId="+contentId+
