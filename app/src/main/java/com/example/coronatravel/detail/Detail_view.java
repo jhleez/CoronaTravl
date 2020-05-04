@@ -14,15 +14,17 @@ import com.example.coronatravel.DbOpenHelper;
 import com.example.coronatravel.HttpReqTask;
 import com.example.coronatravel.LocationBasedList_Class;
 import com.example.coronatravel.MainActivity;
+import com.example.coronatravel.Mask;
 import com.example.coronatravel.R;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.w3c.dom.Text;
 
 public class Detail_view extends AppCompatActivity {
 
-    TextView testCommon, testInfo,testImage;
+    TextView testCommon, testInfo,testImage,testMask;
     CheckBox checkbox;
     DbOpenHelper mDbOpenHelper;
     String addr1, contentid,contenttypeid,firstimage,title;
@@ -32,7 +34,8 @@ public class Detail_view extends AppCompatActivity {
         setContentView(R.layout.activity_detail_view);
         testCommon = (TextView) findViewById(R.id.testCommon);
         testInfo = (TextView) findViewById(R.id.testInfo);
-        CheckBox checkbox = (CheckBox)findViewById(R.id.checkbox);
+        checkbox = (CheckBox)findViewById(R.id.checkbox);
+        testMask =(TextView) findViewById(R.id.testMask);
         mDbOpenHelper = new DbOpenHelper(this);
 
         Intent intent = getIntent();
@@ -188,5 +191,29 @@ public class Detail_view extends AppCompatActivity {
         if(detailImage.Images.size() != 0) {
             testImage.setText("\n\n텝4에 들어갈 추가이미지 중 첫 번째: " + detailImage.Images.get(0));
         }
+
+
+        String maskUrl = "https://8oi9s0nnth.apigw.ntruss.com/corona19-masks/v1/storesByGeo/json?" +
+                "lat="+detail_C.getMapy()+"&" +
+                "lng="+ detail_C.getMapx()+"&" +
+                "m=20000";
+        String JSONFromTotalSearch = "";
+        try {
+            JSONFromTotalSearch = new HttpReqTask().execute(maskUrl).get();
+        } catch (Exception e) {
+            Log.d("TAG", "jsonparsing error");
+        }
+        Mask.JSONParsing(JSONFromTotalSearch);
+        testMask.setText(String.valueOf(MainActivity.MASK_AraayList.size()));
+
+        if(MainActivity.MASK_AraayList.size() == 0){
+            testMask.setText("근방 2km 이내의 마스크 판매처 없음");
+        }
+        else {
+            testMask.setText("\n\n근방 2km 이내의 마스크 판매처 중 1개\n이름 : " + MainActivity.MASK_AraayList.get(0).getName()
+                    + "\n주소 : " + MainActivity.MASK_AraayList.get(0).getAddr()
+                    + "\n재고 : " + MainActivity.MASK_AraayList.get(0).getRemain_stat());
+        }
     }
+
 }

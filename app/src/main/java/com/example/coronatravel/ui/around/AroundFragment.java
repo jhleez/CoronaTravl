@@ -324,7 +324,7 @@ public class AroundFragment extends Fragment implements ViewPager.OnPageChangeLi
     }
     public String arrange(int position) {
         if(position == 0){
-            return "S";
+            return "E";
         }
         else if (position == 1) {
             return "A";

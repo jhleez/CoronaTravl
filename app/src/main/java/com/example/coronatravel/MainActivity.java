@@ -35,6 +35,7 @@ import java.util.ArrayList;
 public class MainActivity extends AppCompatActivity {
 
     public static ArrayList<LocationBasedList_Class> LocationBasedList_ArrayList = new ArrayList<>();
+    public static ArrayList<Mask> MASK_AraayList = new ArrayList<>();
     private AppBarConfiguration mAppBarConfiguration;
     String id = "2YHyxt5iKCnOzEiYHMcML%2FgiOywB9tnJeL6D%2BHqsL48iMsSOXwPxQHTjCHq5dA1zAEcNIdcQUXnvFMN0aIdLsQ%3D%3D";
     DbOpenHelper mDbOpenHelper;
