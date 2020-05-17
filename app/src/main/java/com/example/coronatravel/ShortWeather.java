@@ -116,6 +116,15 @@ public class ShortWeather {
             JSONArray jsonArray_item = new JSONArray(item);
             for (int i = 0; i < jsonArray_item.length(); i++) {
                 JSONObject subJsonObject = jsonArray_item.getJSONObject(i);
+                String time = subJsonObject.getString("fcstTime");
+                String category = subJsonObject.getString("category");
+                if(!(time.equals("0900") || time.equals("1200") || time.equals("1500") || time.equals("1800") || time.equals("2100"))){
+                    continue;
+                }
+                if(!(category.equals("POP") ||category.equals("PTY") ||category.equals("R06") ||category.equals("SKY") ||category.equals("T3H"))){
+                    continue;
+                }
+
                 if(subJsonObject.getString("category").equals("POP")){
                     POP = subJsonObject.getString("fcstValue");
                     fcstTime = subJsonObject.getString("fcstTime");

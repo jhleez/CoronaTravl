@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
 
+import com.example.coronatravel.detail.Detail_view;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 
@@ -81,7 +82,8 @@ public class MainActivity extends AppCompatActivity {
         mDbOpenHelper.insertColumn("서울특별시 종로구 창경궁로 88", "132183","38", "http://tong.visitkorea.or.kr/cms/resource/11/710311_image2_1.jpg", "광장시장");
 
 
-
+        Intent intent = new Intent(this, WeatherInfo.class);
+        startActivity(intent);
     }
 
     @Override
