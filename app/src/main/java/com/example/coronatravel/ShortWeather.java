@@ -26,13 +26,23 @@ public class ShortWeather {
         this.fcstDate = fcstDate;
     }
 
-    private String POP;
-    private String PTY;
-    private String R06;
-    private String SKY;
-    private String T3H;
-    private String fcstTime;
-    private String fcstDate;
+    private String POP; // 강수확률
+    private String PTY; // 강수형태태    없음(0), 비(1), 비/눈(2), 눈(3), 소나기(4)   여기서 비/눈은 비와 눈이 섞여 오는 것을 의미 (진눈개비)
+    private String R06; // 6시간 강수량
+
+//            0mm 또는 없음 0
+//            1mm 미만 1
+//            1~4mm	5
+//            5~9mm 	10
+//            10~19mm	20
+//            20~39mm	40
+//            40~69mm	70
+//            70mm 이상	100
+
+    private String SKY; // 하늘 상태 하늘상태(SKY) 코드 : 맑음(1), 구름많음(3), 흐림(4)
+    private String T3H; // 3시간 기온
+    private String fcstTime; // 조회 시간
+    private String fcstDate; // 조회 날짜
 
     public String getPOP() {
         return POP;
