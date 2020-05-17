@@ -36,6 +36,8 @@ public class MainActivity extends AppCompatActivity {
 
     public static ArrayList<LocationBasedList_Class> LocationBasedList_ArrayList = new ArrayList<>();
     public static ArrayList<Mask> MASK_AraayList = new ArrayList<>();
+    public static ArrayList<ShortWeather> ShortWeather_ArrayList = new ArrayList<>();
+    public static ShortWeather sub_shortweather = new ShortWeather();
     private AppBarConfiguration mAppBarConfiguration;
     String id = "2YHyxt5iKCnOzEiYHMcML%2FgiOywB9tnJeL6D%2BHqsL48iMsSOXwPxQHTjCHq5dA1zAEcNIdcQUXnvFMN0aIdLsQ%3D%3D";
     DbOpenHelper mDbOpenHelper;
