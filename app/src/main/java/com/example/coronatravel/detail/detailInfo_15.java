@@ -22,7 +22,7 @@ public class detailInfo_15 {
         this.usetimefestival=usetimefestival;
     }
 
-    private String agelimit; //관람가능연력ㅇ
+    private String agelimit; //관람가능연력
     private String bookingplace; // 예매처
     private String discountinfofestival; //할인정보
     private String eventenddate; // 행사 종료일

@@ -67,15 +67,12 @@ public class detailInfo_25 {
         String schedule; // 코스 일정
         String taketime; // 코스 총 소요시간
         String theme; // 코스 테마
-
         try {
             JSONObject jsonObject = new JSONObject(JSONFromLocationBasedListaddr);
             String response = jsonObject.getString("response");
             JSONObject jsonObject_response = new JSONObject(response);
-
             String body = jsonObject_response.getString("body");
             JSONObject jsonObject_body = new JSONObject(body);
-
             String items = jsonObject_body.getString("items");
             JSONObject jsonObject_items = new JSONObject(items);
 

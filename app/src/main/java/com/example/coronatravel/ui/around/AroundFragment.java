@@ -47,7 +47,6 @@ public class AroundFragment extends Fragment implements ViewPager.OnPageChangeLi
 
     private AroundViewModel aroundViewModel;
     String radius;
-    int spinner_item_position;
     String contentTypeId;
     String searchtype;
     double latitude, longitude;

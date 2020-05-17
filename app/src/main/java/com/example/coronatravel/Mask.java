@@ -62,13 +62,14 @@ public class Mask {
         this.stock_at = stock_at;
     }
 
-    public static String JSONParsing(String JSONFROMMASK){
+    public static boolean JSONParsing(String JSONFROMMASK){
         String addr="";
         String name="";
         String remain_stat="";
         String type="";
         String stock_at="";
         Log.d("마스크","함수 진입");
+        MainActivity.MASK_AraayList.clear();
         try {
             JSONObject jsonObject = new JSONObject(JSONFROMMASK);
             count = jsonObject.getString("count");
@@ -85,10 +86,11 @@ public class Mask {
                 Log.d("마스크","어레이리스트 추가");
                 Mask subclass = new Mask(addr,name,remain_stat,type,stock_at);
                 MainActivity.MASK_AraayList.add(subclass);
+                return true;
             }
         } catch (JSONException e) {
             Log.d("TAG","parsing error");
         }
-        return addr;
+        return false;
     }
 }

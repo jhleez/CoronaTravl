@@ -133,37 +133,37 @@ public class Detail_view extends AppCompatActivity {
 
         else if(contenttypeid.equals("14")) {
             detailInfo_14 detail_I_14 = new detailInfo_14();
-            detail_I_14 = detail_I_14.JSONParsing(detailInfoUrl);
+            detail_I_14 = detail_I_14.JSONParsing(JSONFromdetailInfoURL);
         }
 
         else if(contenttypeid.equals("15")) {
             detailInfo_15 detail_I_15 = new detailInfo_15();
-            detail_I_15 = detail_I_15.JSONParsing(detailInfoUrl);
+            detail_I_15 = detail_I_15.JSONParsing(JSONFromdetailInfoURL);
         }
 
-        else if(contenttypeid.equals("15")) {
-            detailInfo_15 detail_I_15 = new detailInfo_15();
-            detail_I_15 = detail_I_15.JSONParsing(detailInfoUrl);
-        }
         else if(contenttypeid.equals("25")) {
+            Log.d("여행코스", "여행코스");
             detailInfo_25 detail_I_25 = new detailInfo_25();
-            detail_I_25 = detail_I_25.JSONParsing(detailInfoUrl);
+            detail_I_25 = detail_I_25.JSONParsing(JSONFromdetailInfoURL);
+            testInfo.setText("\n\n탭 2에 들어갈 설명정보" +
+                    "\n총 거리 : " + detail_I_25.getDistance() +
+                    "\n소요 시간 : " + detail_I_25.getTaketime());
         }
         else if(contenttypeid.equals("28")) {
             detailInfo_28 detail_I_28 = new detailInfo_28();
-            detail_I_28 = detail_I_28.JSONParsing(detailInfoUrl);
+            detail_I_28 = detail_I_28.JSONParsing(JSONFromdetailInfoURL);
         }
         else if(contenttypeid.equals("32")) {
             detailInfo_32 detail_I_32 = new detailInfo_32();
-            detail_I_32 = detail_I_32.JSONParsing(detailInfoUrl);
+            detail_I_32 = detail_I_32.JSONParsing(JSONFromdetailInfoURL);
         }
         else if(contenttypeid.equals("38")) {
             detailInfo_38 detail_I_38 = new detailInfo_38();
-            detail_I_38 = detail_I_38.JSONParsing(detailInfoUrl);
+            detail_I_38 = detail_I_38.JSONParsing(JSONFromdetailInfoURL);
         }
         else if(contenttypeid.equals("39")) {
             detailInfo_39 detail_I_39 = new detailInfo_39();
-            detail_I_39 = detail_I_39.JSONParsing(detailInfoUrl);
+            detail_I_39 = detail_I_39.JSONParsing(JSONFromdetailInfoURL);
         }
 
 
@@ -193,11 +193,12 @@ public class Detail_view extends AppCompatActivity {
             testImage.setText("\n\n텝4에 들어갈 추가이미지 중 첫 번째: " + detailImage.Images.get(0));
         }
 
-
-        String maskUrl = "https://8oi9s0nnth.apigw.ntruss.com/corona19-masks/v1/storesByGeo/json?" +
+        String dist="1";
+        String maskUrl ="";
+        maskUrl = "https://8oi9s0nnth.apigw.ntruss.com/corona19-masks/v1/storesByGeo/json?" +
                 "lat="+detail_C.getMapy()+"&" +
                 "lng="+ detail_C.getMapx()+"&" +
-                "m=20000";
+                "m="+dist;
         String JSONFromTotalSearch = "";
         try {
             JSONFromTotalSearch = new HttpReqTask().execute(maskUrl).get();

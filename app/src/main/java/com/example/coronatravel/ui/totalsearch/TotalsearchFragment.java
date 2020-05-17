@@ -185,7 +185,7 @@ public class TotalsearchFragment extends Fragment implements ViewPager.OnPageCha
                 service_typehigh = TypeId.cat1(spinner_hightype.getSelectedItemPosition());//대분류
                 service_typemiddle = TypeId.cat2(spinner_middletype.getSelectedItemPosition(), spinner_hightype.getSelectedItemPosition());//중분류
 
-                city_big = String.valueOf(spinner_bigcity.getSelectedItemPosition());//지역선택
+                city_big = TypeId.areacode(spinner_bigcity.getSelectedItemPosition());//지역선택
                 city_small = String.valueOf(spinner_smallcity.getSelectedItemPosition());//시군구선택
 
                 input = editText_input.getText().toString(); // 검색 내용

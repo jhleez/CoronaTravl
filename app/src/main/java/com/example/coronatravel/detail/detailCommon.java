@@ -7,7 +7,7 @@ import org.json.JSONObject;
 
 public class detailCommon {
     detailCommon(){};
-    detailCommon(String addr1, String booktour, String firstimage, String mapx, String mapy, String mlevel,String overview, String title, String zipcode,String homepage, String tel, String telname){
+    detailCommon(String addr1, String booktour, String firstimage, String mapx, String mapy, String mlevel,String overview, String title, String zipcode,String homepage, String tel, String telname,String areacode,String sigungucode){
         this.addr1 = addr1; //주소
         this.booktour=booktour; // 교과서 여행지 여부
         this.firstimage=firstimage; // 썸네일 이미지
@@ -20,6 +20,8 @@ public class detailCommon {
         this.homepage = homepage; // 홈페이지
         this.tel = tel; // 전화번호
         this.telname = telname; // 전화번호명명
+        this.areacode = areacode;
+        this.sigungucode = sigungucode;
     }
     private String homepage;
     private String tel;
@@ -33,6 +35,33 @@ public class detailCommon {
     private String overview;
     private String title;
     private String zipcode;
+
+    public String getTelname() {
+        return telname;
+    }
+
+    public void setTelname(String telname) {
+        this.telname = telname;
+    }
+
+    public String getAreacode() {
+        return areacode;
+    }
+
+    public void setAreacode(String areacode) {
+        this.areacode = areacode;
+    }
+
+    public String getSigungucode() {
+        return sigungucode;
+    }
+
+    public void setSigungucode(String sigungucode) {
+        this.sigungucode = sigungucode;
+    }
+
+    private String areacode;
+    private String sigungucode;
 
     public String getAddr1() {
         return addr1;
@@ -132,7 +161,7 @@ public class detailCommon {
 
     public detailCommon JSONParsing(String JSONFromdetailCommonUrl) {
         detailCommon subclass=null;
-        String addr1,booktour, firstimage,mapx,mapy,mlevel,overview,title,zipcode,homepage,tel,telname;
+        String addr1,booktour, firstimage,mapx,mapy,mlevel,overview,title,zipcode,homepage,tel,telname,areacode,sigungucode;
         try {
             JSONObject jsonObject = new JSONObject(JSONFromdetailCommonUrl);
             String response = jsonObject.getString("response");
@@ -207,8 +236,18 @@ public class detailCommon {
             }catch (JSONException e){
                 telname="";
             }
+            try{
+                areacode = jsonObject_item.getString("areacode");
+            }catch (JSONException e){
+                areacode="";
+            }
+            try{
+                sigungucode = jsonObject_item.getString("sigungucode");
+            }catch (JSONException e){
+                sigungucode="";
+            }
 
-            subclass = new detailCommon(addr1,booktour,firstimage,mapx,mapy,mlevel,overview,title,zipcode,homepage,tel,telname);
+            subclass = new detailCommon(addr1,booktour,firstimage,mapx,mapy,mlevel,overview,title,zipcode,homepage,tel,telname,areacode,sigungucode);
         } catch (JSONException e) {
             Log.d("TAG", "detailCommon parsing error");
         }
