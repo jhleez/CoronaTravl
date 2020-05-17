@@ -119,7 +119,7 @@ public class HomeFragment extends Fragment {
                 now = now.substring(4,10);
                 Elements elements1 = document.select("div.liveNumOuter").select("ul.liveNum").select("span.before");
                 String compare = elements1.get(0).text();
-                compare = compare.substring(5,10);
+                compare = compare.substring(5,11);
                 return "확진환자\n\n" + now + "\n" + compare;
                 //잘 이해가 안되면 저 링크 url 소스코드 열어보고 확인해보면 이해가 빠를거야
             } catch (IOException e) {

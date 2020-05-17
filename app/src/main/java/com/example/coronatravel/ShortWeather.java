@@ -161,7 +161,6 @@ public class ShortWeather {
                     MainActivity.ShortWeather_ArrayList.add(MainActivity.sub_shortweather);
                     MainActivity.sub_shortweather = new ShortWeather();
                 }
-
             }
         } catch (JSONException e) {
             Log.d("TAG", "parsing error");

@@ -102,7 +102,7 @@ public class TypeId {
         return "";
     }
 
-    public static String nxny(String x){
+    public static String nxny(String x) {
         if(x.equals(1)){
             return "nx=60&ny=127";
         }
