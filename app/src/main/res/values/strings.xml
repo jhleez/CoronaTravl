@@ -120,8 +120,8 @@
 
 
     <string-array name="total_middle">
-      <!--  <item>전체</item>-->
-       <!-- <item>강서구</item>
+        <item>전체</item>
+        <item>강서구</item>
         <item>중구</item>
         <item>괴산군</item>
         <item>광산구</item>
@@ -350,7 +350,7 @@
         <item>평택시</item>
         <item>포천시</item>
         <item>하남시</item>
-        <item>화성시</item>-->
+        <item>화성시</item>
     </string-array>
     <string-array name="seoul_middle">
         <item>전체</item>
@@ -440,7 +440,7 @@
         <item>해운대구</item>
     </string-array>
     <string-array name="ulsan_middle">
-        <item>시군구 전체</item>
+        <item>전체</item>
         <item>중구</item>
         <item>남구</item>
         <item>동구</item>
@@ -448,7 +448,7 @@
         <item>울주군</item>
     </string-array>
     <string-array name="sejong_middle">
-        <item>시군구 전체</item>
+        <item>전체</item>
         <item>세종특별자치시</item>
     </string-array>
     <string-array name="geunggi_middle">

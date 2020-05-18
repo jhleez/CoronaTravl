@@ -3,6 +3,7 @@ package com.example.coronatravel.ui.totalsearch;
 import android.app.Activity;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.InputType;
 import android.util.Log;
@@ -43,6 +44,8 @@ import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Arrays;
 
+import static android.content.Context.MODE_PRIVATE;
+
 public class TotalsearchFragment extends Fragment implements ViewPager.OnPageChangeListener, View.OnClickListener {
 
     private TotalsearchViewModel totalsearchViewModel;
@@ -50,13 +53,14 @@ public class TotalsearchFragment extends Fragment implements ViewPager.OnPageCha
     String service_typehigh, service_typemiddle, service_typelow;
     String city_big, city_small;
     String input;
-    ListView listView;
+    TextView local_result_text;
     Spinner spinner_hightype, spinner_middletype,
             spinner_bigcity, spinner_smallcity, spinner_searchtype;
     SwipeAdapter swipeAdapter;
     ViewPager viewPager;
     EditText editText_input;
     Button local_select;
+    int a,b;
 
 
     public View onCreateView(@NonNull LayoutInflater inflater,
@@ -69,6 +73,7 @@ public class TotalsearchFragment extends Fragment implements ViewPager.OnPageCha
         viewPager.addOnPageChangeListener(this);
         local_select = root.findViewById(R.id.button_totalsearch_local);
         local_select.setOnClickListener(this);
+        local_result_text= root.findViewById(R.id.select_local_textview);
 
 
         editText_input = root.findViewById(R.id.edittext_totalsearch_input);
@@ -194,8 +199,8 @@ public class TotalsearchFragment extends Fragment implements ViewPager.OnPageCha
                 service_typehigh = TypeId.cat1(spinner_hightype.getSelectedItemPosition());//대분류
                 service_typemiddle = TypeId.cat2(spinner_middletype.getSelectedItemPosition(), spinner_hightype.getSelectedItemPosition());//중분류
 
-                city_big = TypeId.areacode(spinner_bigcity.getSelectedItemPosition());//지역선택
-                city_small = String.valueOf(spinner_smallcity.getSelectedItemPosition());//시군구선택
+                city_big = TypeId.areacode(a);//지역선택
+                city_small = String.valueOf(b);//시군구선택
 
                 input = editText_input.getText().toString(); // 검색 내용
 
@@ -260,8 +265,9 @@ public class TotalsearchFragment extends Fragment implements ViewPager.OnPageCha
         service_typehigh = TypeId.cat1(spinner_hightype.getSelectedItemPosition());//대분류
         service_typemiddle = TypeId.cat2(spinner_middletype.getSelectedItemPosition(), spinner_hightype.getSelectedItemPosition());//중분류
 
-        city_big = String.valueOf(spinner_bigcity.getSelectedItemPosition());//지역선택
-        city_small = String.valueOf(spinner_smallcity.getSelectedItemPosition());//시군구선택
+
+        city_big = TypeId.areacode(a);//지역선택
+        city_small = String.valueOf(b);//시군구선택
         input = editText_input.getText().toString(); // 검색 내용
         searchtype = TypeId.arrange(spinner_searchtype.getSelectedItemPosition()); // 정렬 방법
         if (input.length() >= 2) {
@@ -278,7 +284,6 @@ public class TotalsearchFragment extends Fragment implements ViewPager.OnPageCha
                 ListViewFragment.listView.setAdapter(itemAdapter);
             }
         }
-        //((MainActivity) getActivity()).totalSearch(input, city_big, city_small, service_typehigh, service_typemiddle, "", searchtype, String.valueOf((position + 1)));
         ItemAdapter itemAdapter = new ItemAdapter(MainActivity.LocationBasedList_ArrayList);
         ListViewFragment.listView.setAdapter(itemAdapter);
     }
@@ -344,6 +349,8 @@ public class TotalsearchFragment extends Fragment implements ViewPager.OnPageCha
                     smallarraylist = new ArrayList<>(Arrays.asList(getResources().getStringArray(R.array.jeaju_middle)));
                 }
                 bigcity_string[0] = (String) listView1.getAdapter().getItem(position);
+                a= (int) listView1.getAdapter().getItemId(position);
+                b=0;
                 textView.setText(bigcity_string[0]);
                 TotalsearchCityAdapter totalsearchCityAdapter = new TotalsearchCityAdapter(smallarraylist);
                 listView2.setAdapter(totalsearchCityAdapter);
@@ -353,7 +360,22 @@ public class TotalsearchFragment extends Fragment implements ViewPager.OnPageCha
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 smallcity_string[0] = (String) listView2.getAdapter().getItem(position);
+                b = (int) listView2.getAdapter().getItemId(position);
                 textView.setText(bigcity_string[0]+" "+smallcity_string[0]);
+            }
+        });
+        builder.setPositiveButton("확인", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                local_result_text.setText(bigcity_string[0]+" "+smallcity_string[0]);
+            }
+        });
+        builder.setNegativeButton("취소", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                local_result_text.setText("전체");
+                a=0;b=0;
+
             }
         });
         builder.setView(view);

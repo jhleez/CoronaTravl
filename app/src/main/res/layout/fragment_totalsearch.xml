@@ -131,7 +131,7 @@
                 android:textStyle="bold"
                 android:textSize="20sp"
                 android:gravity="center"
-                android:text="대구 전체"
+                android:text="전체"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"/>
 
