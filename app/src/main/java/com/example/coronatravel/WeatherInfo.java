@@ -1,6 +1,9 @@
 package com.example.coronatravel;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
 import android.util.Log;
@@ -8,13 +11,18 @@ import android.widget.TextView;
 
 import com.example.coronatravel.detail.detailCommon;
 
+import java.util.ArrayList;
+
 public class WeatherInfo extends AppCompatActivity {
     TextView test;
+    private RecyclerView weatherListview;
+    private myWeatherAdapter weatherAdapter;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_weather_info);
-
+/*
         String pagenumber="1";
         String ShortWeatherURL = "http://apis.data.go.kr/1360000/VilageFcstInfoService/getVilageFcst?serviceKey=LuQHzrmd0D8xz9tDN8srTETgDoVfSeUV%2FAvFrhKX%2BtTdNMG7GJINi%2B6INCB7yMFJXXIO%2FKb7JfNeFdA%2BNmEIqA%3D%3D" +
                 "&numOfRows=50" +
@@ -55,5 +63,30 @@ public class WeatherInfo extends AppCompatActivity {
         }
 
         test.setText(MainActivity.ShortWeather_ArrayList.get(8).getFcstTime());
+*/
+        init();
+    }
+
+    private void init() {
+        weatherListview = findViewById(R.id.weatherListview);
+        LinearLayoutManager layoutManager = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL,false);
+        weatherListview.setLayoutManager(layoutManager);
+
+
+        ArrayList<weatherListViewItem> itemList = new ArrayList<>();
+
+        weatherListViewItem e = new weatherListViewItem();
+        e.setTemperature("5/20도");
+        e.setDate("5월 18일");
+        e.setIconDrawble(ContextCompat.getDrawable(this,R.drawable.ic_menu_camera));
+        itemList.add(e);
+        itemList.add(e);
+        itemList.add(e);
+
+        weatherAdapter = new myWeatherAdapter(this,itemList);
+        weatherListview.setAdapter(weatherAdapter);
+
+        myWeatherListviewDecoration decoration = new myWeatherListviewDecoration();
+        weatherListview.addItemDecoration(decoration);
     }
 }
