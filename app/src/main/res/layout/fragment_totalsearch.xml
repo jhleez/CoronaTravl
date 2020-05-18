@@ -37,6 +37,7 @@
     </LinearLayout>
 
     <LinearLayout
+        android:visibility="gone"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="5dp">
@@ -65,50 +66,79 @@
     </LinearLayout>
 
     <LinearLayout
+        android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="5dp">
+        android:padding="2dp">
+
 
         <EditText
+            android:background="@drawable/serach_ui_totalsearch"
             android:id="@+id/edittext_totalsearch_input"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="4"
             android:gravity="center"
-            android:hint="(입력)"
             android:imeOptions="actionSearch"
-            android:inputType="text"
-            android:textSize="15sp" />
+            android:inputType="text" />
+        <Button
+            android:layout_weight="0.5"
+            android:background="@drawable/search_totalsearch"
+            android:id="@+id/button_totalsearch_search"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"/>
 
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="5dp">
+        android:padding="2dp">
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="match_parent">
+            <Button
+                android:id="@+id/button_totalsearch_sort"
+                android:background="@drawable/total_ui_sort"
+                android:layout_width="30dp"
+                android:layout_height="wrap_content">
+            </Button>
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:text="검색"
-            android:textSize="15sp" />
+            <Spinner
+                android:id="@+id/spinner_totalsearch_searchtype"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="8dp"
+                android:entries="@array/searchtype"
+                android:gravity="center" />
 
-        <Spinner
-            android:id="@+id/spinner_totalsearch_searchtype"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="8dp"
-            android:entries="@array/searchtype"
-            android:gravity="center" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="match_parent">
+            <Button
+                android:background="@drawable/search_ui_place"
+                android:layout_width="30dp"
+                android:layout_height="match_parent"/>
+
+            <TextView
+                android:textStyle="bold"
+                android:textSize="20sp"
+                android:gravity="center"
+                android:text="대구 전체"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"/>
 
 
-        <Button
-            android:id="@+id/button_totalsearch_search"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
-            android:text="검색" />
+        </LinearLayout>
+
+
+
+
 
     </LinearLayout>
 
