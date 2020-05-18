@@ -60,7 +60,7 @@ public class TotalsearchFragment extends Fragment implements ViewPager.OnPageCha
     ViewPager viewPager;
     EditText editText_input;
     Button local_select;
-    int a,b;
+    int a=0,b=0;
 
 
     public View onCreateView(@NonNull LayoutInflater inflater,
@@ -216,6 +216,7 @@ public class TotalsearchFragment extends Fragment implements ViewPager.OnPageCha
 
                         ItemAdapter itemAdapter = new ItemAdapter(MainActivity.LocationBasedList_ArrayList);
                         ListViewFragment.listView.setAdapter(itemAdapter);
+                        ListViewFragment.listView.notify();
 
                     }
                 } else if (input.length() == 0) {
@@ -333,19 +334,19 @@ public class TotalsearchFragment extends Fragment implements ViewPager.OnPageCha
                     smallarraylist = new ArrayList<>(Arrays.asList(getResources().getStringArray(R.array.geunggi_middle)));
                 } else if (position == 10) {
                     smallarraylist = new ArrayList<>(Arrays.asList(getResources().getStringArray(R.array.gangwon_middle)));
-                } else if (position == 12) {
+                } else if (position == 11) {
                     smallarraylist = new ArrayList<>(Arrays.asList(getResources().getStringArray(R.array.choongbook_middle)));
-                } else if (position == 13) {
+                } else if (position == 12) {
                     smallarraylist = new ArrayList<>(Arrays.asList(getResources().getStringArray(R.array.choongnam_middle)));
-                } else if (position == 14) {
+                } else if (position == 13) {
                     smallarraylist = new ArrayList<>(Arrays.asList(getResources().getStringArray(R.array.geungbook_middle)));
-                } else if (position == 15) {
+                } else if (position == 14) {
                     smallarraylist = new ArrayList<>(Arrays.asList(getResources().getStringArray(R.array.geungnak_middle)));
-                } else if (position == 16) {
+                } else if (position == 15) {
                     smallarraylist = new ArrayList<>(Arrays.asList(getResources().getStringArray(R.array.junbook_middle)));
-                } else if (position == 17) {
+                } else if (position == 16) {
                     smallarraylist = new ArrayList<>(Arrays.asList(getResources().getStringArray(R.array.junnam_midlle)));
-                } else if (position == 18) {
+                } else if (position == 17) {
                     smallarraylist = new ArrayList<>(Arrays.asList(getResources().getStringArray(R.array.jeaju_middle)));
                 }
                 bigcity_string[0] = (String) listView1.getAdapter().getItem(position);
@@ -373,8 +374,7 @@ public class TotalsearchFragment extends Fragment implements ViewPager.OnPageCha
         builder.setNegativeButton("취소", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                local_result_text.setText("전체");
-                a=0;b=0;
+                //local_result_text.setText("전체");
 
             }
         });

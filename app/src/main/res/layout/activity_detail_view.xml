@@ -36,5 +36,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="즐겨찾기" />
+    <LinearLayout
+        android:id="@+id/test_layout"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:orientation="vertical" />
 
 </LinearLayout>

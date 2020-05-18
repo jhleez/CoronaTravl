@@ -6,8 +6,10 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.CheckBox;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.example.coronatravel.DbOpenHelper;
@@ -28,6 +30,8 @@ public class Detail_view extends AppCompatActivity {
     CheckBox checkbox;
     DbOpenHelper mDbOpenHelper;
     String addr1, contentid,contenttypeid,firstimage,title;
+    LayoutInflater layoutInflater;
+    LinearLayout linearLayout;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -37,6 +41,12 @@ public class Detail_view extends AppCompatActivity {
         checkbox = (CheckBox)findViewById(R.id.checkbox);
         testMask =(TextView) findViewById(R.id.testMask);
         mDbOpenHelper = new DbOpenHelper(this);
+
+        layoutInflater=LayoutInflater.from(getApplicationContext());
+        View view = layoutInflater.inflate(R.layout.fragment_totalsearch,null);
+        linearLayout=findViewById(R.id.test_layout);
+        linearLayout.addView(view);
+
 
         Intent intent = getIntent();
         int position = intent.getExtras().getInt("position");
