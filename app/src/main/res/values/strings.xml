@@ -98,7 +98,7 @@
     </string-array>
 
     <string-array name="bigcity">
-        <item>지역 선택</item>
+        <item>전체</item>
         <item>서울</item>
         <item>인천</item>
         <item>대전</item>
@@ -120,8 +120,8 @@
 
 
     <string-array name="total_middle">
-        <item>시군구 선택</item>
-        <item>강서구</item>
+      <!--  <item>전체</item>-->
+       <!-- <item>강서구</item>
         <item>중구</item>
         <item>괴산군</item>
         <item>광산구</item>
@@ -350,10 +350,10 @@
         <item>평택시</item>
         <item>포천시</item>
         <item>하남시</item>
-        <item>화성시</item>
+        <item>화성시</item>-->
     </string-array>
     <string-array name="seoul_middle">
-        <item>시군구 선택</item>
+        <item>전체</item>
         <item>강남구</item>
         <item>강동구</item>
         <item>강북구</item>
@@ -381,7 +381,7 @@
         <item>중랑구</item>
     </string-array>
     <string-array name="incheon_middle">
-        <item>시군구 선택</item>
+        <item>전체</item>
         <item>강화군</item>
         <item>계양구</item>
         <item>미추홀구</item>
@@ -394,7 +394,7 @@
         <item>중구</item>
     </string-array>
     <string-array name="daejeun_middle">
-        <item>시군구 선택</item>
+        <item>전체</item>
         <item>대덕구</item>
         <item>동구</item>
         <item>서구</item>
@@ -402,7 +402,7 @@
         <item>중구</item>
     </string-array>
     <string-array name="daegu_middle">
-        <item>시군구 선택</item>
+        <item>전체</item>
         <item>남구</item>
         <item>달서구</item>
         <item>달성군</item>
@@ -413,7 +413,7 @@
         <item>중구</item>
     </string-array>
     <string-array name="gangju_middle">
-        <item>시군구 선택</item>
+        <item>전체</item>
         <item>광산구</item>
         <item>남구</item>
         <item>동구</item>
@@ -421,7 +421,7 @@
         <item>서구</item>
     </string-array>
     <string-array name="busan_middle">
-        <item>시군구 선택</item>
+        <item>전체</item>
         <item>강서구</item>
         <item>금정구</item>
         <item>기장군</item>
@@ -440,7 +440,7 @@
         <item>해운대구</item>
     </string-array>
     <string-array name="ulsan_middle">
-        <item>시군구 선택</item>
+        <item>시군구 전체</item>
         <item>중구</item>
         <item>남구</item>
         <item>동구</item>
@@ -448,11 +448,11 @@
         <item>울주군</item>
     </string-array>
     <string-array name="sejong_middle">
-        <item>시군구 선택</item>
+        <item>시군구 전체</item>
         <item>세종특별자치시</item>
     </string-array>
     <string-array name="geunggi_middle">
-        <item>시군구 선택</item>
+        <item>전체</item>
         <item>가평군</item>
         <item>고양시</item>
         <item>과천시</item>
@@ -486,7 +486,7 @@
         <item>화성시</item>
     </string-array>
     <string-array name="gangwon_middle">
-        <item>시군구 선택</item>
+        <item>전체</item>
         <item>강릉시</item>
         <item>고성군</item>
         <item>동해시</item>
@@ -507,7 +507,7 @@
         <item>횡성군</item>
     </string-array>
     <string-array name="choongbook_middle">
-        <item>시군구 선택</item>
+        <item>전체</item>
         <item>괴산군</item>
         <item>단양군</item>
         <item>보은군</item>
@@ -522,7 +522,7 @@
         <item>증평군</item>
     </string-array>
     <string-array name="choongnam_middle">
-        <item>시군구 선택</item>
+        <item>전체</item>
         <item>공주시</item>
         <item>금산군</item>
         <item>논산시</item>
@@ -540,7 +540,7 @@
         <item>계룡시</item>
     </string-array>
     <string-array name="geungbook_middle">
-        <item>시군구 선택</item>
+        <item>전체</item>
         <item>경산시</item>
         <item>경주시</item>
         <item>고령군</item>
@@ -566,7 +566,7 @@
         <item>포항시</item>
     </string-array>
     <string-array name="geungnak_middle">
-        <item>시군구 선택</item>
+        <item>전체</item>
         <item>거제시</item>
         <item>거창군</item>
         <item>고성군</item>
@@ -589,7 +589,7 @@
         <item>합천군</item>
     </string-array>
     <string-array name="junbook_middle">
-        <item>시군구 선택</item>
+        <item>전체</item>
         <item>고창군</item>
         <item>군산시</item>
         <item>김제시</item>
@@ -606,7 +606,7 @@
         <item>진안군</item>
     </string-array>
     <string-array name="junnam_midlle">
-        <item>시군구 선택</item>
+        <item>전체</item>
         <item>강진군</item>
         <item>고흥군</item>
         <item>곡성군</item>
@@ -631,7 +631,7 @@
         <item>화순군</item>
     </string-array>
     <string-array name="jeaju_middle">
-        <item>시군구 선택</item>
+        <item>전체</item>
         <item>남제주군</item>
         <item>북제주군</item>
         <item>서귀포시</item>

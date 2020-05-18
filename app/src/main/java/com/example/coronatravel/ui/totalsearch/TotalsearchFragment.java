@@ -18,6 +18,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.GridLayout;
 import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -30,6 +31,7 @@ import androidx.lifecycle.ViewModelProviders;
 import androidx.viewpager.widget.ViewPager;
 
 import com.example.coronatravel.Adapter.ItemAdapter;
+import com.example.coronatravel.Adapter.TotalsearchCityAdapter;
 import com.example.coronatravel.LocationBasedList_Class;
 import com.example.coronatravel.MainActivity;
 import com.example.coronatravel.R;
@@ -37,7 +39,11 @@ import com.example.coronatravel.Adapter.SwipeAdapter;
 import com.example.coronatravel.TypeId;
 import com.example.coronatravel.ui.ListViewFragment;
 
-public class TotalsearchFragment extends Fragment implements ViewPager.OnPageChangeListener {
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+import java.util.Arrays;
+
+public class TotalsearchFragment extends Fragment implements ViewPager.OnPageChangeListener, View.OnClickListener {
 
     private TotalsearchViewModel totalsearchViewModel;
     String searchtype;
@@ -50,6 +56,7 @@ public class TotalsearchFragment extends Fragment implements ViewPager.OnPageCha
     SwipeAdapter swipeAdapter;
     ViewPager viewPager;
     EditText editText_input;
+    Button local_select;
 
 
     public View onCreateView(@NonNull LayoutInflater inflater,
@@ -60,6 +67,8 @@ public class TotalsearchFragment extends Fragment implements ViewPager.OnPageCha
 
         viewPager = root.findViewById(R.id.viewpager_totalsearch_page);
         viewPager.addOnPageChangeListener(this);
+        local_select = root.findViewById(R.id.button_totalsearch_local);
+        local_select.setOnClickListener(this);
 
 
         editText_input = root.findViewById(R.id.edittext_totalsearch_input);
@@ -68,12 +77,12 @@ public class TotalsearchFragment extends Fragment implements ViewPager.OnPageCha
         editText_input.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             @Override
             public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
-                switch (actionId){
+                switch (actionId) {
                     case EditorInfo.IME_ACTION_SEARCH:
                         try {
                             (getActivity()).getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
                             if (((getActivity()).getCurrentFocus() != null) && (((Activity) getActivity()).getCurrentFocus().getWindowToken() != null)) {
-                                ((InputMethodManager) getActivity().getSystemService(Context.INPUT_METHOD_SERVICE)).hideSoftInputFromWindow(( getActivity()).getCurrentFocus().getWindowToken(), 0);
+                                ((InputMethodManager) getActivity().getSystemService(Context.INPUT_METHOD_SERVICE)).hideSoftInputFromWindow((getActivity()).getCurrentFocus().getWindowToken(), 0);
                             }
                         } catch (Exception e) {
                             e.printStackTrace();
@@ -191,7 +200,7 @@ public class TotalsearchFragment extends Fragment implements ViewPager.OnPageCha
                 input = editText_input.getText().toString(); // 검색 내용
 
                 searchtype = TypeId.arrange(spinner_searchtype.getSelectedItemPosition()); // 정렬 방법
-                if(input.length()>=2){
+                if (input.length() >= 2) {
                     ((MainActivity) getActivity()).totalSearch(input, city_big, city_small, service_typehigh, service_typemiddle, "", searchtype, "1");
                     if (Integer.parseInt(LocationBasedList_Class.totalcount) != 0) {
                         swipeAdapter = new SwipeAdapter(getChildFragmentManager(), (Integer.parseInt(LocationBasedList_Class.totalcount) / 5) + 1);
@@ -204,7 +213,7 @@ public class TotalsearchFragment extends Fragment implements ViewPager.OnPageCha
                         ListViewFragment.listView.setAdapter(itemAdapter);
 
                     }
-                }else if(input.length()==0){
+                } else if (input.length() == 0) {
                     ((MainActivity) getActivity()).localSearch("", city_big, city_small, service_typehigh, service_typemiddle, "", searchtype, "1");
                     if (Integer.parseInt(LocationBasedList_Class.totalcount) != 0) {
                         swipeAdapter = new SwipeAdapter(getChildFragmentManager(), (Integer.parseInt(LocationBasedList_Class.totalcount) / 5) + 1);
@@ -217,8 +226,7 @@ public class TotalsearchFragment extends Fragment implements ViewPager.OnPageCha
                         ListViewFragment.listView.setAdapter(itemAdapter);
 
                     }
-                }
-                else{
+                } else {
                     AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
                     builder.setTitle("검색 오류");
                     builder.setMessage("2글자 이상 입력해 주세요")
@@ -256,14 +264,14 @@ public class TotalsearchFragment extends Fragment implements ViewPager.OnPageCha
         city_small = String.valueOf(spinner_smallcity.getSelectedItemPosition());//시군구선택
         input = editText_input.getText().toString(); // 검색 내용
         searchtype = TypeId.arrange(spinner_searchtype.getSelectedItemPosition()); // 정렬 방법
-        if(input.length()>=2){
+        if (input.length() >= 2) {
             ((MainActivity) getActivity()).totalSearch(input, city_big, city_small, service_typehigh, service_typemiddle, "", searchtype, String.valueOf((position + 1)));
             if (Integer.parseInt(LocationBasedList_Class.totalcount) != 0) {
                 ItemAdapter itemAdapter = new ItemAdapter(MainActivity.LocationBasedList_ArrayList);
                 ListViewFragment.listView.setAdapter(itemAdapter);
 
             }
-        }else if(input.length()==0){
+        } else if (input.length() == 0) {
             ((MainActivity) getActivity()).localSearch("", city_big, city_small, service_typehigh, service_typemiddle, "", searchtype, String.valueOf((position + 1)));
             if (Integer.parseInt(LocationBasedList_Class.totalcount) != 0) {
                 ItemAdapter itemAdapter = new ItemAdapter(MainActivity.LocationBasedList_ArrayList);
@@ -277,6 +285,81 @@ public class TotalsearchFragment extends Fragment implements ViewPager.OnPageCha
 
     @Override
     public void onPageScrollStateChanged(int state) {
+
+    }
+
+    @Override
+    public void onClick(final View v) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+        builder.setTitle("지역 선택");
+        LayoutInflater layoutInflater = LayoutInflater.from(getActivity());
+        View view = layoutInflater.inflate(R.layout.totalsearch_local_setting, null);
+        final String[] bigcity_string = {""};
+        final String[] smallcity_string={""};
+        final TextView textView = view.findViewById(R.id.textview_result_city);
+        final ListView listView1 = view.findViewById(R.id.big_city_listview);
+        final ListView listView2 = view.findViewById(R.id.small_city_listview);
+        final ArrayList<String> bigarraylist = new ArrayList<>(Arrays.asList(getResources().getStringArray(R.array.bigcity)));
+        TotalsearchCityAdapter totalsearchCityAdapter = new TotalsearchCityAdapter(bigarraylist);
+        listView1.setAdapter(totalsearchCityAdapter);
+        listView1.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                ArrayList<String> smallarraylist = null;
+                if (position == 0) {
+                    smallarraylist = new ArrayList<>(Arrays.asList(getResources().getStringArray(R.array.total_middle)));
+                } else if (position == 1) {
+                    smallarraylist = new ArrayList<>(Arrays.asList(getResources().getStringArray(R.array.seoul_middle)));
+                } else if (position == 2) {
+                    smallarraylist = new ArrayList<>(Arrays.asList(getResources().getStringArray(R.array.incheon_middle)));
+                } else if (position == 3) {
+                    smallarraylist = new ArrayList<>(Arrays.asList(getResources().getStringArray(R.array.daejeun_middle)));
+                } else if (position == 4) {
+                    smallarraylist = new ArrayList<>(Arrays.asList(getResources().getStringArray(R.array.daegu_middle)));
+                } else if (position == 5) {
+                    smallarraylist = new ArrayList<>(Arrays.asList(getResources().getStringArray(R.array.gangju_middle)));
+                } else if (position == 6) {
+                    smallarraylist = new ArrayList<>(Arrays.asList(getResources().getStringArray(R.array.busan_middle)));
+                } else if (position == 7) {
+                    smallarraylist = new ArrayList<>(Arrays.asList(getResources().getStringArray(R.array.ulsan_middle)));
+                } else if (position == 8) {
+                    smallarraylist = new ArrayList<>(Arrays.asList(getResources().getStringArray(R.array.sejong_middle)));
+                } else if (position == 9) {
+                    smallarraylist = new ArrayList<>(Arrays.asList(getResources().getStringArray(R.array.geunggi_middle)));
+                } else if (position == 10) {
+                    smallarraylist = new ArrayList<>(Arrays.asList(getResources().getStringArray(R.array.gangwon_middle)));
+                } else if (position == 12) {
+                    smallarraylist = new ArrayList<>(Arrays.asList(getResources().getStringArray(R.array.choongbook_middle)));
+                } else if (position == 13) {
+                    smallarraylist = new ArrayList<>(Arrays.asList(getResources().getStringArray(R.array.choongnam_middle)));
+                } else if (position == 14) {
+                    smallarraylist = new ArrayList<>(Arrays.asList(getResources().getStringArray(R.array.geungbook_middle)));
+                } else if (position == 15) {
+                    smallarraylist = new ArrayList<>(Arrays.asList(getResources().getStringArray(R.array.geungnak_middle)));
+                } else if (position == 16) {
+                    smallarraylist = new ArrayList<>(Arrays.asList(getResources().getStringArray(R.array.junbook_middle)));
+                } else if (position == 17) {
+                    smallarraylist = new ArrayList<>(Arrays.asList(getResources().getStringArray(R.array.junnam_midlle)));
+                } else if (position == 18) {
+                    smallarraylist = new ArrayList<>(Arrays.asList(getResources().getStringArray(R.array.jeaju_middle)));
+                }
+                bigcity_string[0] = (String) listView1.getAdapter().getItem(position);
+                textView.setText(bigcity_string[0]);
+                TotalsearchCityAdapter totalsearchCityAdapter = new TotalsearchCityAdapter(smallarraylist);
+                listView2.setAdapter(totalsearchCityAdapter);
+            }
+        });
+        listView2.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                smallcity_string[0] = (String) listView2.getAdapter().getItem(position);
+                textView.setText(bigcity_string[0]+" "+smallcity_string[0]);
+            }
+        });
+        builder.setView(view);
+        AlertDialog alertDialog = builder.create();
+        alertDialog.show();
+
 
     }
 }
