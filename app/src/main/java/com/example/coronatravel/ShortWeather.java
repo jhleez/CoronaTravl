@@ -27,7 +27,7 @@ public class ShortWeather {
     }
 
     private String POP; // 강수확률
-    private String PTY; // 강수형태태    없음(0), 비(1), 비/눈(2), 눈(3), 소나기(4)   여기서 비/눈은 비와 눈이 섞여 오는 것을 의미 (진눈개비)
+    private String PTY; // 강수형태    없음(0), 비(1), 비/눈(2), 눈(3), 소나기(4)   여기서 비/눈은 비와 눈이 섞여 오는 것을 의미 (진눈개비)
     private String R06; // 6시간 강수량
 
 //            0mm 또는 없음 0

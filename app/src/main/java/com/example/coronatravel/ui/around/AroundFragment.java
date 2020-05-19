@@ -135,7 +135,7 @@ public class AroundFragment extends Fragment implements ViewPager.OnPageChangeLi
         ((MainActivity) getActivity()).aroundSearch(contentTypeId, radius, searchtype,  String.valueOf(longitude),String.valueOf(latitude), "1");
         Log.d("totalcount", LocationBasedList_Class.totalcount);
         if (Integer.parseInt(LocationBasedList_Class.totalcount) != 0) {
-            swipeAdapter = new SwipeAdapter(getChildFragmentManager(), (Integer.parseInt(LocationBasedList_Class.totalcount) / 5) + 1);
+            swipeAdapter = new SwipeAdapter(getChildFragmentManager(), (Integer.parseInt(LocationBasedList_Class.totalcount) / 10) + 1);
 
             viewPager.setOffscreenPageLimit(1);
             viewPager.setAdapter(swipeAdapter);

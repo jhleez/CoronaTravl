@@ -208,7 +208,7 @@ public class TotalsearchFragment extends Fragment implements ViewPager.OnPageCha
                 if (input.length() >= 2) {
                     ((MainActivity) getActivity()).totalSearch(input, city_big, city_small, service_typehigh, service_typemiddle, "", searchtype, "1");
                     if (Integer.parseInt(LocationBasedList_Class.totalcount) != 0) {
-                        swipeAdapter = new SwipeAdapter(getChildFragmentManager(), (Integer.parseInt(LocationBasedList_Class.totalcount) / 5) + 1);
+                        swipeAdapter = new SwipeAdapter(getChildFragmentManager(), (Integer.parseInt(LocationBasedList_Class.totalcount) / 10) + 1);
 
                         viewPager.setOffscreenPageLimit(1);
                         viewPager.setAdapter(swipeAdapter);
@@ -220,7 +220,7 @@ public class TotalsearchFragment extends Fragment implements ViewPager.OnPageCha
                 } else if (input.length() == 0) {
                     ((MainActivity) getActivity()).localSearch("", city_big, city_small, service_typehigh, service_typemiddle, "", searchtype, "1");
                     if (Integer.parseInt(LocationBasedList_Class.totalcount) != 0) {
-                        swipeAdapter = new SwipeAdapter(getChildFragmentManager(), (Integer.parseInt(LocationBasedList_Class.totalcount) / 5) + 1);
+                        swipeAdapter = new SwipeAdapter(getChildFragmentManager(), (Integer.parseInt(LocationBasedList_Class.totalcount) / 10) + 1);
 
                         viewPager.setOffscreenPageLimit(1);
                         viewPager.setAdapter(swipeAdapter);

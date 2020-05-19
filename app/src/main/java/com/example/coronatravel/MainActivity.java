@@ -81,9 +81,9 @@ public class MainActivity extends AppCompatActivity {
         mDbOpenHelper.insertColumn("서울특별시 종로구 북촌로 52", "130446","14", "http://tong.visitkorea.or.kr/cms/resource/75/2550575_image2_1.jpg", "가회민화박물관");
         mDbOpenHelper.insertColumn("서울특별시 종로구 창경궁로 88", "132183","38", "http://tong.visitkorea.or.kr/cms/resource/11/710311_image2_1.jpg", "광장시장");
 
-
-       // Intent intent = new Intent(this, WeatherInfo.class);
-       // startActivity(intent);
+//
+//        Intent intent = new Intent(this, WeatherInfo.class);
+//        startActivity(intent);
     }
 
     @Override
@@ -111,7 +111,7 @@ public class MainActivity extends AppCompatActivity {
                 "&radius=" + radius +
                 "&listYN=Y" +
                 "&arrange=" + arrange +
-                "&numOfRows=5" +
+                "&numOfRows=10" +
                 "&pageNo=" + pageNo + //한 페이지 몇개씩 가져올껀지, 뒤에는 페이지 수
                 "&MobileOS=AND&MobileApp=CoronaTravel&_type=json";
 
@@ -142,7 +142,7 @@ public class MainActivity extends AppCompatActivity {
                 "&cat3="+cat3+
                 "&listYN=Y&MobileOS=AND&MobileApp=CoronaTravel" +
                 "&arrange=" +arrage+
-                "&numOfRows=5" +
+                "&numOfRows=10" +
                 "&pageNo=" +pageNo+
                 "&_type=json";
 
@@ -179,7 +179,7 @@ public class MainActivity extends AppCompatActivity {
                 "&cat3="+cat3+
                 "&listYN=Y&MobileOS=AND&MobileApp=CoronaTravel" +
                 "&arrange="+arrage+
-                "&numOfRows=5&" +
+                "&numOfRows=10&" +
                 "pageNo="+pageNo+
                 "&_type=json";
 
