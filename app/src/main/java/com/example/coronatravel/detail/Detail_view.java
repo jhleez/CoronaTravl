@@ -56,6 +56,8 @@ public class Detail_view extends AppCompatActivity {
         firstimage = MainActivity.LocationBasedList_ArrayList.get(position).getFirstimage();
         title=MainActivity.LocationBasedList_ArrayList.get(position).getTitle();
 
+
+
         String ServiceKey = "2YHyxt5iKCnOzEiYHMcML%2FgiOywB9tnJeL6D%2BHqsL48iMsSOXwPxQHTjCHq5dA1zAEcNIdcQUXnvFMN0aIdLsQ%3D%3D";
         detailCommon detail_C = new detailCommon();
         String detailCommonUrl = "http://api.visitkorea.or.kr/openapi/service/rest/KorService/detailCommon?" +
