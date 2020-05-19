@@ -1,11 +1,20 @@
 package com.example.coronatravel;
 
+import android.content.Context;
 import android.graphics.drawable.Drawable;
+
+import androidx.core.content.ContextCompat;
 
 public class weatherListViewItem {
     private Drawable iconDrawble;
     private String date;
     private String temperature;
+
+    public weatherListViewItem(Drawable icon, String date, String temperature){
+        this.iconDrawble = icon;
+        this.date = date;
+        this.temperature = temperature;
+    }
 
     public Drawable getIconDrawble() {
         return iconDrawble;
