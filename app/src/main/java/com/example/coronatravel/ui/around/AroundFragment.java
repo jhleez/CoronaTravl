@@ -18,6 +18,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.Toast;
@@ -51,6 +52,7 @@ public class AroundFragment extends Fragment implements ViewPager.OnPageChangeLi
     String searchtype;
     double latitude, longitude;
     String address;
+    ImageButton next,pre;
 
 
     private static final int GPS_ENABLE_REQUEST_CODE = 2001;
@@ -83,9 +85,37 @@ public class AroundFragment extends Fragment implements ViewPager.OnPageChangeLi
         editText = root.findViewById(R.id.edittext_around_distance);
         spinner_searchtype = root.findViewById(R.id.spinner_around_searchtype);
 
-        Button button = root.findViewById(R.id.button_around_search);
+        ImageButton button = root.findViewById(R.id.button_around_search);
         button.setOnClickListener(this);
 
+        pre=root.findViewById(R.id.around_floatbt_previous);
+        pre.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                try{
+                    ((MainActivity) getActivity()).aroundSearch(contentTypeId, radius, searchtype, String.valueOf(longitude), String.valueOf(latitude), String.valueOf(viewPager.getCurrentItem() + 1));
+                    //변수에 우리가 선택한 스피너, 위도경도, 정렬이 드가면 됨
+                    ItemAdapter itemAdapter = new ItemAdapter(MainActivity.LocationBasedList_ArrayList);
+                    ListViewFragment.listView.setAdapter(itemAdapter);
+                }catch(Exception e){
+                    e.printStackTrace();
+                }
+            }
+        });
+        next=root.findViewById(R.id.around_floatbt_next);
+        next.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                try{
+                    ((MainActivity) getActivity()).aroundSearch(contentTypeId, radius, searchtype, String.valueOf(longitude), String.valueOf(latitude), String.valueOf(viewPager.getCurrentItem()));
+                    //변수에 우리가 선택한 스피너, 위도경도, 정렬이 드가면 됨
+                    ItemAdapter itemAdapter = new ItemAdapter(MainActivity.LocationBasedList_ArrayList);
+                    ListViewFragment.listView.setAdapter(itemAdapter);
+                }catch(Exception e){
+                    e.printStackTrace();
+                }
+            }
+        });
         gpsTracker = new GpsTracker(getActivity());
         latitude = gpsTracker.getLatitude();
         longitude = gpsTracker.getLongitude();
@@ -106,9 +136,6 @@ public class AroundFragment extends Fragment implements ViewPager.OnPageChangeLi
     public void onPageSelected(int position) {
         Log.d("ITPANGPANG", "onPageSelected : " + position);
 
-        contentTypeId = TypeId.ContentTypeId(spinner.getSelectedItemPosition());
-        radius = editText.getText().toString();
-        searchtype = TypeId.arrange(spinner_searchtype.getSelectedItemPosition()); // 검색타입 선택 변수
 
         ((MainActivity) getActivity()).aroundSearch(contentTypeId, radius, searchtype, String.valueOf(longitude), String.valueOf(latitude), String.valueOf(position + 1));
         //변수에 우리가 선택한 스피너, 위도경도, 정렬이 드가면 됨
@@ -152,77 +179,49 @@ public class AroundFragment extends Fragment implements ViewPager.OnPageChangeLi
 
     @Override
     public void onRequestPermissionsResult(int permsRequestCode, @NonNull String[] permissions, @NonNull int[] grandResults) {
-
         if (permsRequestCode == PERMISSIONS_REQUEST_CODE && grandResults.length == REQUIRED_PERMISSIONS.length) {
-
             // 요청 코드가 PERMISSIONS_REQUEST_CODE 이고, 요청한 퍼미션 개수만큼 수신되었다면
-
             boolean check_result = true;
-
-
             // 모든 퍼미션을 허용했는지 체크합니다.
-
             for (int result : grandResults) {
                 if (result != PackageManager.PERMISSION_GRANTED) {
                     check_result = false;
                     break;
                 }
             }
-
             if (check_result) {
-
                 //위치 값을 가져올 수 있음
-
             } else {
                 // 거부한 퍼미션이 있다면 앱을 사용할 수 없는 이유를 설명해주고 앱을 종료합니다.2 가지 경우가 있습니다.
-
                 if (ActivityCompat.shouldShowRequestPermissionRationale(getActivity(), REQUIRED_PERMISSIONS[0])
                         || ActivityCompat.shouldShowRequestPermissionRationale(getActivity(), REQUIRED_PERMISSIONS[1])) {
-
                     Toast.makeText(getActivity(), "퍼미션이 거부되었습니다. 앱을 다시 실행하여 퍼미션을 허용해주세요.", Toast.LENGTH_LONG).show();
-
-
                 } else {
-
                     Toast.makeText(getActivity(), "퍼미션이 거부되었습니다. 설정(앱 정보)에서 퍼미션을 허용해야 합니다. ", Toast.LENGTH_LONG).show();
-
                 }
             }
         }
     }
-
     void checkRunTimePermission() {
-
         //런타임 퍼미션 처리
         // 1. 위치 퍼미션을 가지고 있는지 체크합니다.
         int hasFineLocationPermission = ContextCompat.checkSelfPermission(getActivity(),
                 Manifest.permission.ACCESS_FINE_LOCATION);
         int hasCoarseLocationPermission = ContextCompat.checkSelfPermission(getActivity(),
                 Manifest.permission.ACCESS_COARSE_LOCATION);
-
-
         if (hasFineLocationPermission == PackageManager.PERMISSION_GRANTED &&
                 hasCoarseLocationPermission == PackageManager.PERMISSION_GRANTED) {
-
             // 2. 이미 퍼미션을 가지고 있다면
             // ( 안드로이드 6.0 이하 버전은 런타임 퍼미션이 필요없기 때문에 이미 허용된 걸로 인식합니다.)
-
-
             // 3.  위치 값을 가져올 수 있음
-
-
         } else {  //2. 퍼미션 요청을 허용한 적이 없다면 퍼미션 요청이 필요합니다. 2가지 경우(3-1, 4-1)가 있습니다.
-
             // 3-1. 사용자가 퍼미션 거부를 한 적이 있는 경우에는
             if (ActivityCompat.shouldShowRequestPermissionRationale(getActivity(), REQUIRED_PERMISSIONS[0])) {
-
                 // 3-2. 요청을 진행하기 전에 사용자가에게 퍼미션이 필요한 이유를 설명해줄 필요가 있습니다.
                 Toast.makeText(getActivity(), "이 앱을 실행하려면 위치 접근 권한이 필요합니다.", Toast.LENGTH_LONG).show();
                 // 3-3. 사용자게에 퍼미션 요청을 합니다. 요청 결과는 onRequestPermissionResult에서 수신됩니다.
                 ActivityCompat.requestPermissions(getActivity(), REQUIRED_PERMISSIONS,
                         PERMISSIONS_REQUEST_CODE);
-
-
             } else {
                 // 4-1. 사용자가 퍼미션 거부를 한 적이 없는 경우에는 퍼미션 요청을 바로 합니다.
                 // 요청 결과는 onRequestPermissionResult에서 수신됩니다.
@@ -230,7 +229,6 @@ public class AroundFragment extends Fragment implements ViewPager.OnPageChangeLi
                         PERMISSIONS_REQUEST_CODE);
             }
         }
-
     }
 
     public String getCurrentAddress(double latitude, double longitude) {
