@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
@@ -12,12 +13,12 @@
         android:padding="5dp">
 
         <TextView
-            android:textStyle="bold"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="center"
             android:text="관광 타입"
-            android:textSize="15sp" />
+            android:textSize="15sp"
+            android:textStyle="bold" />
 
         <Spinner
             android:id="@+id/spinner_totalsearch_hightype"
@@ -37,10 +38,10 @@
     </LinearLayout>
 
     <LinearLayout
-        android:visibility="gone"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="5dp">
+        android:padding="5dp"
+        android:visibility="gone">
 
         <TextView
             android:layout_width="wrap_content"
@@ -66,28 +67,29 @@
     </LinearLayout>
 
     <LinearLayout
-        android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:orientation="horizontal"
         android:padding="2dp">
 
 
         <EditText
-            android:background="@drawable/serach_ui_totalsearch"
             android:id="@+id/edittext_totalsearch_input"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="4"
+            android:background="@drawable/serach_ui_totalsearch"
             android:gravity="center"
             android:imeOptions="actionSearch"
             android:inputType="text" />
+
         <Button
-            android:layout_weight="0.5"
-            android:background="@drawable/search_totalsearch"
             android:id="@+id/button_totalsearch_search"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="5dp"/>
+            android:layout_marginLeft="5dp"
+            android:layout_weight="0.5"
+            android:background="@drawable/search_totalsearch" />
 
     </LinearLayout>
 
@@ -95,17 +97,18 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="2dp">
+
         <LinearLayout
-            android:orientation="horizontal"
-            android:layout_weight="1"
             android:layout_width="0dp"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="horizontal">
+
             <Button
                 android:id="@+id/button_totalsearch_sort"
-                android:background="@drawable/total_ui_sort"
                 android:layout_width="30dp"
-                android:layout_height="wrap_content">
-            </Button>
+                android:layout_height="wrap_content"
+                android:background="@drawable/total_ui_sort"></Button>
 
             <Spinner
                 android:id="@+id/spinner_totalsearch_searchtype"
@@ -116,44 +119,65 @@
                 android:gravity="center" />
 
         </LinearLayout>
+
         <LinearLayout
-            android:layout_weight="1"
             android:layout_width="0dp"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+
             <Button
                 android:id="@+id/button_totalsearch_local"
-                android:background="@drawable/search_ui_place"
                 android:layout_width="30dp"
-                android:layout_height="30dp"/>
+                android:layout_height="30dp"
+                android:background="@drawable/search_ui_place" />
 
             <TextView
                 android:id="@+id/select_local_textview"
-                android:textStyle="bold"
-                android:textSize="20sp"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
                 android:gravity="center"
                 android:text="전체"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"/>
+                android:textSize="20sp"
+                android:textStyle="bold" />
 
 
         </LinearLayout>
 
 
-
-
-
     </LinearLayout>
 
-    <LinearLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
         <androidx.viewpager.widget.ViewPager
             android:id="@+id/viewpager_totalsearch_page"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
 
-    </LinearLayout>
+
+        </androidx.viewpager.widget.ViewPager>
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/floatbt_previous"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/floatbt_next"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 
 </LinearLayout>
