@@ -6,6 +6,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.os.Handler;
 import android.text.InputType;
 import android.util.Log;
 import android.view.KeyEvent;
@@ -21,6 +22,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.GridLayout;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -61,7 +63,7 @@ public class TotalsearchFragment extends Fragment implements ViewPager.OnPageCha
     SwipeAdapter swipeAdapter;
     ViewPager viewPager;
     EditText editText_input;
-    Button local_select;
+    LinearLayout local_select;
     FloatingActionButton next,pre;
     int a = 0, b = 0;
 
@@ -81,14 +83,53 @@ public class TotalsearchFragment extends Fragment implements ViewPager.OnPageCha
         next.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                viewPager.setCurrentItem(viewPager.getCurrentItem()+1,true);
+                try {
+                    if (input.length() >= 2) {
+                        ((MainActivity) getActivity()).totalSearch(input, city_big, city_small, service_typehigh, service_typemiddle, "", searchtype, String.valueOf((viewPager.getCurrentItem() + 1)));
+                        if (Integer.parseInt(LocationBasedList_Class.totalcount) != 0) {
+                            ItemAdapter itemAdapter = new ItemAdapter(MainActivity.LocationBasedList_ArrayList);
+                            ListViewFragment.listView.setAdapter(itemAdapter);
+                        }
+                    } else if (input.length() == 0) {
+                        ((MainActivity) getActivity()).localSearch("", city_big, city_small, service_typehigh, service_typemiddle, "", searchtype, String.valueOf((viewPager.getCurrentItem() + 1)));
+                        if (Integer.parseInt(LocationBasedList_Class.totalcount) != 0) {
+                            ItemAdapter itemAdapter = new ItemAdapter(MainActivity.LocationBasedList_ArrayList);
+                            ListViewFragment.listView.setAdapter(itemAdapter);
+                        }
+                    }
+                }catch (Exception e){
+                    e.printStackTrace();
+                }
+                viewPager.setCurrentItem(viewPager.getCurrentItem()+1);
+                ItemAdapter itemAdapter = new ItemAdapter(MainActivity.LocationBasedList_ArrayList);
+                ListViewFragment.listView.setAdapter(itemAdapter);
             }
         });
         pre=root.findViewById(R.id.floatbt_previous);
         pre.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                viewPager.setCurrentItem(viewPager.getCurrentItem()-1,true);
+                try {
+                    if (input.length() >= 2) {
+                        ((MainActivity) getActivity()).totalSearch(input, city_big, city_small, service_typehigh, service_typemiddle, "", searchtype, String.valueOf((viewPager.getCurrentItem())));
+                        if (Integer.parseInt(LocationBasedList_Class.totalcount) != 0) {
+                            ItemAdapter itemAdapter = new ItemAdapter(MainActivity.LocationBasedList_ArrayList);
+                            ListViewFragment.listView.setAdapter(itemAdapter);
+                        }
+                    } else if (input.length() == 0) {
+                        ((MainActivity) getActivity()).localSearch("", city_big, city_small, service_typehigh, service_typemiddle, "", searchtype, String.valueOf((viewPager.getCurrentItem())));
+                        if (Integer.parseInt(LocationBasedList_Class.totalcount) != 0) {
+                            ItemAdapter itemAdapter = new ItemAdapter(MainActivity.LocationBasedList_ArrayList);
+                            ListViewFragment.listView.setAdapter(itemAdapter);
+                        }
+                    }
+                }catch (Exception e){
+                    e.printStackTrace();
+                }
+                viewPager.setCurrentItem(viewPager.getCurrentItem()-1);
+                ItemAdapter itemAdapter = new ItemAdapter(MainActivity.LocationBasedList_ArrayList);
+                ListViewFragment.listView.setAdapter(itemAdapter);
+
             }
         });
 
@@ -159,6 +200,7 @@ public class TotalsearchFragment extends Fragment implements ViewPager.OnPageCha
 
         Button button = root.findViewById(R.id.button_totalsearch_search);
         button.setOnClickListener(new View.OnClickListener() {
+            @SuppressLint("RestrictedApi")
             @Override
             public void onClick(View view) {
                 service_typehigh = TypeId.cat1(spinner_hightype.getSelectedItemPosition());//대분류
@@ -180,6 +222,11 @@ public class TotalsearchFragment extends Fragment implements ViewPager.OnPageCha
                     viewPager.setAdapter(swipeAdapter);
                     viewPager.setCurrentItem(0);
 
+                    pre.setVisibility(View.GONE);
+                    if(1!=pagecount){
+                        next.setVisibility(View.VISIBLE);
+                    }
+
                     ItemAdapter itemAdapter = new ItemAdapter(MainActivity.LocationBasedList_ArrayList);
                     ListViewFragment.listView.setAdapter(itemAdapter);
 
@@ -192,6 +239,11 @@ public class TotalsearchFragment extends Fragment implements ViewPager.OnPageCha
                     viewPager.setOffscreenPageLimit(1);
                     viewPager.setAdapter(swipeAdapter);
                     viewPager.setCurrentItem(0);
+
+                    pre.setVisibility(View.GONE);
+                    if(1!=pagecount){
+                        next.setVisibility(View.VISIBLE);
+                    }
 
                     ItemAdapter itemAdapter = new ItemAdapter(MainActivity.LocationBasedList_ArrayList);
                     ListViewFragment.listView.setAdapter(itemAdapter);
@@ -230,9 +282,9 @@ public class TotalsearchFragment extends Fragment implements ViewPager.OnPageCha
     public void onPageSelected(int position) {
         int pagecount= (Integer.parseInt(LocationBasedList_Class.totalcount)%10==0)?
                 (Integer.parseInt(LocationBasedList_Class.totalcount)/10):(Integer.parseInt(LocationBasedList_Class.totalcount)/10)+1;
-        if(position==1){
+        if(position==0){
             pre.setVisibility(View.GONE);
-        }else if(position==pagecount){
+        }else if(position+1==pagecount){
             next.setVisibility(View.GONE);
         }else{
             pre.setVisibility(View.VISIBLE);
@@ -251,24 +303,23 @@ public class TotalsearchFragment extends Fragment implements ViewPager.OnPageCha
             ((MainActivity) getActivity()).totalSearch(input, city_big, city_small, service_typehigh, service_typemiddle, "", searchtype, String.valueOf((position + 1)));
             if (Integer.parseInt(LocationBasedList_Class.totalcount) != 0) {
                 ItemAdapter itemAdapter = new ItemAdapter(MainActivity.LocationBasedList_ArrayList);
-
                 ListViewFragment.listView.setAdapter(itemAdapter);
-
             }
         } else if (input.length() == 0) {
             ((MainActivity) getActivity()).localSearch("", city_big, city_small, service_typehigh, service_typemiddle, "", searchtype, String.valueOf((position + 1)));
             if (Integer.parseInt(LocationBasedList_Class.totalcount) != 0) {
                 ItemAdapter itemAdapter = new ItemAdapter(MainActivity.LocationBasedList_ArrayList);
-
                 ListViewFragment.listView.setAdapter(itemAdapter);
             }
         }
-/*        ItemAdapter itemAdapter = new ItemAdapter(MainActivity.LocationBasedList_ArrayList);
-        ListViewFragment.listView.setAdapter(itemAdapter);*/
+        ItemAdapter itemAdapter = new ItemAdapter(MainActivity.LocationBasedList_ArrayList);
+        ListViewFragment.listView.setAdapter(itemAdapter);
     }
 
     @Override
     public void onPageScrollStateChanged(int state) {
+
+        Log.i("state",state+"");
 
     }
 
@@ -360,4 +411,6 @@ public class TotalsearchFragment extends Fragment implements ViewPager.OnPageCha
         AlertDialog alertDialog = builder.create();
         alertDialog.show();
     }
+
+
 }

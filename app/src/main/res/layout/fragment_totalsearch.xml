@@ -69,33 +69,6 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:padding="2dp">
-
-
-        <EditText
-            android:id="@+id/edittext_totalsearch_input"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="4"
-            android:background="@drawable/serach_ui_totalsearch"
-            android:gravity="center"
-            android:imeOptions="actionSearch"
-            android:inputType="text" />
-
-        <Button
-            android:id="@+id/button_totalsearch_search"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="5dp"
-            android:layout_weight="0.5"
-            android:background="@drawable/search_totalsearch" />
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
         android:padding="2dp">
 
         <LinearLayout
@@ -121,12 +94,13 @@
         </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/button_totalsearch_local"
+            android:clickable="true"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1">
 
             <Button
-                android:id="@+id/button_totalsearch_local"
                 android:layout_width="30dp"
                 android:layout_height="30dp"
                 android:background="@drawable/search_ui_place" />
@@ -145,6 +119,34 @@
 
 
     </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="2dp">
+
+
+        <EditText
+            android:id="@+id/edittext_totalsearch_input"
+            android:layout_width="0dp"
+            android:layout_height="35dp"
+            android:layout_weight="4"
+            android:background="@drawable/serach_ui_totalsearch"
+            android:gravity="center"
+            android:imeOptions="actionSearch"
+            android:inputType="text" />
+
+        <Button
+            android:id="@+id/button_totalsearch_search"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:layout_weight="0.5"
+            android:background="@drawable/search_totalsearch" />
+
+    </LinearLayout>
+
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -165,6 +167,7 @@
             android:id="@+id/floatbt_previous"
             android:layout_width="40dp"
             android:layout_height="40dp"
+            android:visibility="gone"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -173,6 +176,7 @@
             android:id="@+id/floatbt_next"
             android:layout_width="40dp"
             android:layout_height="40dp"
+            android:visibility="gone"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
