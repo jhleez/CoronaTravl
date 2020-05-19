@@ -12,16 +12,18 @@ public class ShortWeather {
         this.PTY = "";
         R06 = "";
         this.SKY = "";
-        T3H = "";
+        TMN = "";
         this.fcstTime = "";
         this.fcstDate = "";
     }
-    public ShortWeather(String POP, String PTY, String r06, String SKY, String t3H, String fcstTime, String fcstDate) {
+
+    public ShortWeather(String POP, String PTY, String r06, String SKY, String TMN, String TMX, String fcstTime, String fcstDate) {
         this.POP = POP;
         this.PTY = PTY;
         R06 = r06;
         this.SKY = SKY;
-        T3H = t3H;
+        this.TMN = TMN;
+        this.TMX = TMX;
         this.fcstTime = fcstTime;
         this.fcstDate = fcstDate;
     }
@@ -40,7 +42,8 @@ public class ShortWeather {
 //            70mm 이상	100
 
     private String SKY; // 하늘 상태 하늘상태(SKY) 코드 : 맑음(1), 구름많음(3), 흐림(4)
-    private String T3H; // 3시간 기온
+    private String TMN; // 최저 기온
+    private String TMX; // 최고 기온
     private String fcstTime; // 조회 시간
     private String fcstDate; // 조회 날짜
 
@@ -76,12 +79,20 @@ public class ShortWeather {
         this.SKY = SKY;
     }
 
-    public String getT3H() {
-        return T3H;
+    public String getTMN() {
+        return TMN;
     }
 
-    public void setT3H(String t3H) {
-        T3H = t3H;
+    public void setTMN(String TMN) {
+        this.TMN = TMN;
+    }
+
+    public String getTMX() {
+        return TMX;
+    }
+
+    public void setTMX(String TMX) {
+        this.TMX = TMX;
     }
 
     public String getFcstTime() {
@@ -108,7 +119,8 @@ public class ShortWeather {
         String PTY="";
         String R06="";
         String SKY="";
-        String T3H="";
+        String TMN="";
+        String TMX="";
         try {
             JSONObject jsonObject = new JSONObject(JSONFromLocationBasedListaddr);
             String response = jsonObject.getString("response");
@@ -128,10 +140,10 @@ public class ShortWeather {
                 JSONObject subJsonObject = jsonArray_item.getJSONObject(i);
                 String time = subJsonObject.getString("fcstTime");
                 String category = subJsonObject.getString("category");
-                if(!(time.equals("0900") || time.equals("1200") || time.equals("1500") || time.equals("1800") || time.equals("2100"))){
+                if(!(time.equals("1500") || time.equals("0600"))){
                     continue;
                 }
-                if(!(category.equals("POP") ||category.equals("PTY") ||category.equals("R06") ||category.equals("SKY") ||category.equals("T3H"))){
+                if(!(category.equals("POP") ||category.equals("PTY") ||category.equals("R06") ||category.equals("SKY") ||category.equals("TMN") || category.equals("TMX"))){
                     continue;
                 }
 
@@ -156,9 +168,13 @@ public class ShortWeather {
                     SKY = subJsonObject.getString("fcstValue");
                     MainActivity.sub_shortweather.setSKY(SKY);
                 }
-                else if(subJsonObject.getString("category").equals("T3H")) {
-                    T3H = subJsonObject.getString("fcstValue");
-                    MainActivity.sub_shortweather.setT3H(T3H);
+                else if(subJsonObject.getString("category").equals("TMN")) {
+                    TMN = subJsonObject.getString("fcstValue");
+                    MainActivity.sub_shortweather.setTMN(TMN);
+                }
+                else if(subJsonObject.getString("category").equals("TMX")) {
+                    TMX = subJsonObject.getString("fcstValue");
+                    MainActivity.sub_shortweather.setTMX(TMX);
                     MainActivity.ShortWeather_ArrayList.add(MainActivity.sub_shortweather);
                     MainActivity.sub_shortweather = new ShortWeather();
                 }
@@ -167,5 +183,42 @@ public class ShortWeather {
             Log.d("TAG", "parsing error");
         }
         return totalCount;
+    }
+
+    public static String JSONParsing2(String JSONFromLocationBasedListaddr) {
+        String TMN="A";
+        try {
+            JSONObject jsonObject = new JSONObject(JSONFromLocationBasedListaddr);
+            String response = jsonObject.getString("response");
+            JSONObject jsonObject_response = new JSONObject(response);
+
+            String body = jsonObject_response.getString("body");
+            JSONObject jsonObject_body = new JSONObject(body);
+
+            String items = jsonObject_body.getString("items");
+            JSONObject jsonObject_items = new JSONObject(items);
+
+            String item = jsonObject_items.getString("item");
+            JSONArray jsonArray_item = new JSONArray(item);
+            for (int i = 0; i < jsonArray_item.length(); i++) {
+                JSONObject subJsonObject = jsonArray_item.getJSONObject(i);
+                String time = subJsonObject.getString("fcstTime");
+                String category = subJsonObject.getString("category");
+                if(!(time.equals("1500") || time.equals("0600"))){
+                    continue;
+                }
+                if(!(category.equals("POP") ||category.equals("PTY") ||category.equals("R06") ||category.equals("SKY") ||category.equals("TMN") || category.equals("TMX"))){
+                    continue;
+                }
+
+                if(subJsonObject.getString("category").equals("TMN")) {
+                    TMN = subJsonObject.getString("fcstValue");
+                    return TMN;
+                }
+            }
+        } catch (JSONException e) {
+            Log.d("TAG", "parsing error");
+        }
+        return TMN;
     }
 }
