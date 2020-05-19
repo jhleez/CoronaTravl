@@ -216,8 +216,6 @@ public class TotalsearchFragment extends Fragment implements ViewPager.OnPageCha
 
                         ItemAdapter itemAdapter = new ItemAdapter(MainActivity.LocationBasedList_ArrayList);
                         ListViewFragment.listView.setAdapter(itemAdapter);
-                        ListViewFragment.listView.notify();
-
                     }
                 } else if (input.length() == 0) {
                     ((MainActivity) getActivity()).localSearch("", city_big, city_small, service_typehigh, service_typemiddle, "", searchtype, "1");
