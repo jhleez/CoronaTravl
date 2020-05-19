@@ -103,12 +103,13 @@ public class WeatherInfo extends AppCompatActivity {
         LinearLayoutManager layoutManager = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL,false);
         weatherListview.setLayoutManager(layoutManager);
 
-
         ArrayList<weatherListViewItem> itemList = new ArrayList<>();
 
         for(int i = 0; i < MainActivity.ShortWeather_ArrayList.size(); i++) {
             String rainState = MainActivity.ShortWeather_ArrayList.get(i).getPTY();
             String skyState = MainActivity.ShortWeather_ArrayList.get(i).getSKY();
+            String month = MainActivity.ShortWeather_ArrayList.get(i).getFcstDate().substring(4,6);
+            String date = MainActivity.ShortWeather_ArrayList.get(i).getFcstDate().substring(6);
             Drawable skyIcon = null;
             if(rainState.equals("1") || rainState.equals("4")) //Rain or shower
                 skyIcon = ContextCompat.getDrawable(this,R.drawable.rainicon);
@@ -129,7 +130,7 @@ public class WeatherInfo extends AppCompatActivity {
             }
             else Toast.makeText(WeatherInfo.this, "rainState is " + rainState, Toast.LENGTH_SHORT).show();
 
-            itemList.add(new weatherListViewItem(skyIcon, MainActivity.ShortWeather_ArrayList.get(i).getFcstDate(),
+            itemList.add(new weatherListViewItem(skyIcon, month + "월 " + date + "일",
                     MainActivity.ShortWeather_ArrayList.get(i).getTMN() + "/" + MainActivity.ShortWeather_ArrayList.get(i).getTMX()));
         }
 
