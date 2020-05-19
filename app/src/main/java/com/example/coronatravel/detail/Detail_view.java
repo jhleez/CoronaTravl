@@ -42,10 +42,10 @@ public class Detail_view extends AppCompatActivity {
         testMask =(TextView) findViewById(R.id.testMask);
         mDbOpenHelper = new DbOpenHelper(this);
 
-        layoutInflater=LayoutInflater.from(getApplicationContext());
+        /*layoutInflater=LayoutInflater.from(getApplicationContext());
         View view = layoutInflater.inflate(R.layout.fragment_totalsearch,null);
         linearLayout=findViewById(R.id.test_layout);
-        linearLayout.addView(view);
+        linearLayout.addView(view);*/
 
 
         Intent intent = getIntent();
