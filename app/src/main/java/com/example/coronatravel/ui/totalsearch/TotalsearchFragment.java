@@ -1,10 +1,12 @@
 package com.example.coronatravel.ui.totalsearch;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.os.Handler;
 import android.text.InputType;
 import android.util.Log;
 import android.view.KeyEvent;
@@ -40,6 +42,7 @@ import com.example.coronatravel.R;
 import com.example.coronatravel.Adapter.SwipeAdapter;
 import com.example.coronatravel.TypeId;
 import com.example.coronatravel.ui.ListViewFragment;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.lang.reflect.Array;
 import java.util.ArrayList;
@@ -61,7 +64,8 @@ public class TotalsearchFragment extends Fragment implements ViewPager.OnPageCha
     ViewPager viewPager;
     EditText editText_input;
     LinearLayout local_select;
-    int a=0,b=0;
+    FloatingActionButton next,pre;
+    int a = 0, b = 0;
 
 
     public View onCreateView(@NonNull LayoutInflater inflater,
@@ -74,7 +78,60 @@ public class TotalsearchFragment extends Fragment implements ViewPager.OnPageCha
         viewPager.addOnPageChangeListener(this);
         local_select = root.findViewById(R.id.button_totalsearch_local);
         local_select.setOnClickListener(this);
-        local_result_text= root.findViewById(R.id.select_local_textview);
+        local_result_text = root.findViewById(R.id.select_local_textview);
+        next= root.findViewById(R.id.floatbt_next);
+        next.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                try {
+                    if (input.length() >= 2) {
+                        ((MainActivity) getActivity()).totalSearch(input, city_big, city_small, service_typehigh, service_typemiddle, "", searchtype, String.valueOf((viewPager.getCurrentItem() + 1)));
+                        if (Integer.parseInt(LocationBasedList_Class.totalcount) != 0) {
+                            ItemAdapter itemAdapter = new ItemAdapter(MainActivity.LocationBasedList_ArrayList);
+                            ListViewFragment.listView.setAdapter(itemAdapter);
+                        }
+                    } else if (input.length() == 0) {
+                        ((MainActivity) getActivity()).localSearch("", city_big, city_small, service_typehigh, service_typemiddle, "", searchtype, String.valueOf((viewPager.getCurrentItem() + 1)));
+                        if (Integer.parseInt(LocationBasedList_Class.totalcount) != 0) {
+                            ItemAdapter itemAdapter = new ItemAdapter(MainActivity.LocationBasedList_ArrayList);
+                            ListViewFragment.listView.setAdapter(itemAdapter);
+                        }
+                    }
+                }catch (Exception e){
+                    e.printStackTrace();
+                }
+                viewPager.setCurrentItem(viewPager.getCurrentItem()+1);
+                ItemAdapter itemAdapter = new ItemAdapter(MainActivity.LocationBasedList_ArrayList);
+                ListViewFragment.listView.setAdapter(itemAdapter);
+            }
+        });
+        pre=root.findViewById(R.id.floatbt_previous);
+        pre.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                try {
+                    if (input.length() >= 2) {
+                        ((MainActivity) getActivity()).totalSearch(input, city_big, city_small, service_typehigh, service_typemiddle, "", searchtype, String.valueOf((viewPager.getCurrentItem())));
+                        if (Integer.parseInt(LocationBasedList_Class.totalcount) != 0) {
+                            ItemAdapter itemAdapter = new ItemAdapter(MainActivity.LocationBasedList_ArrayList);
+                            ListViewFragment.listView.setAdapter(itemAdapter);
+                        }
+                    } else if (input.length() == 0) {
+                        ((MainActivity) getActivity()).localSearch("", city_big, city_small, service_typehigh, service_typemiddle, "", searchtype, String.valueOf((viewPager.getCurrentItem())));
+                        if (Integer.parseInt(LocationBasedList_Class.totalcount) != 0) {
+                            ItemAdapter itemAdapter = new ItemAdapter(MainActivity.LocationBasedList_ArrayList);
+                            ListViewFragment.listView.setAdapter(itemAdapter);
+                        }
+                    }
+                }catch (Exception e){
+                    e.printStackTrace();
+                }
+                viewPager.setCurrentItem(viewPager.getCurrentItem()-1);
+                ItemAdapter itemAdapter = new ItemAdapter(MainActivity.LocationBasedList_ArrayList);
+                ListViewFragment.listView.setAdapter(itemAdapter);
+
+            }
+        });
 
 
         editText_input = root.findViewById(R.id.edittext_totalsearch_input);
@@ -139,62 +196,11 @@ public class TotalsearchFragment extends Fragment implements ViewPager.OnPageCha
 
         spinner_bigcity = root.findViewById(R.id.spinner_totalsearch_bigcity);
         spinner_smallcity = root.findViewById(R.id.spinner_totalsearch_smallcity);
-        spinner_bigcity.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                String[] model_2 = null;
-                if (position == 0) {
-                    model_2 = getResources().getStringArray(R.array.total_middle);
-                } else if (position == 1) {
-                    model_2 = getResources().getStringArray(R.array.seoul_middle);
-                } else if (position == 2) {
-                    model_2 = getResources().getStringArray(R.array.incheon_middle);
-                } else if (position == 3) {
-                    model_2 = getResources().getStringArray(R.array.daejeun_middle);
-                } else if (position == 4) {
-                    model_2 = getResources().getStringArray(R.array.daegu_middle);
-                } else if (position == 5) {
-                    model_2 = getResources().getStringArray(R.array.gangju_middle);
-                } else if (position == 6) {
-                    model_2 = getResources().getStringArray(R.array.busan_middle);
-                } else if (position == 7) {
-                    model_2 = getResources().getStringArray(R.array.ulsan_middle);
-                } else if (position == 8) {
-                    model_2 = getResources().getStringArray(R.array.sejong_middle);
-                } else if (position == 9) {
-                    model_2 = getResources().getStringArray(R.array.geunggi_middle);
-                } else if (position == 10) {
-                    model_2 = getResources().getStringArray(R.array.gangwon_middle);
-                } else if (position == 12) {
-                    model_2 = getResources().getStringArray(R.array.choongbook_middle);
-                } else if (position == 13) {
-                    model_2 = getResources().getStringArray(R.array.choongnam_middle);
-                } else if (position == 14) {
-                    model_2 = getResources().getStringArray(R.array.geungbook_middle);
-                } else if (position == 15) {
-                    model_2 = getResources().getStringArray(R.array.geungnak_middle);
-                } else if (position == 16) {
-                    model_2 = getResources().getStringArray(R.array.junbook_middle);
-                } else if (position == 17) {
-                    model_2 = getResources().getStringArray(R.array.junnam_midlle);
-                } else if (position == 18) {
-                    model_2 = getResources().getStringArray(R.array.jeaju_middle);
-                }
-                ArrayAdapter<String> adapter_2 = new ArrayAdapter<String>(getContext(), R.layout.support_simple_spinner_dropdown_item, model_2);
-                adapter_2.setDropDownViewResource(R.layout.support_simple_spinner_dropdown_item);
-                spinner_smallcity.setAdapter(adapter_2);
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-
-            }
-        });
-
         spinner_searchtype = root.findViewById(R.id.spinner_totalsearch_searchtype);
 
         Button button = root.findViewById(R.id.button_totalsearch_search);
         button.setOnClickListener(new View.OnClickListener() {
+            @SuppressLint("RestrictedApi")
             @Override
             public void onClick(View view) {
                 service_typehigh = TypeId.cat1(spinner_hightype.getSelectedItemPosition());//대분류
@@ -208,31 +214,41 @@ public class TotalsearchFragment extends Fragment implements ViewPager.OnPageCha
                 searchtype = TypeId.arrange(spinner_searchtype.getSelectedItemPosition()); // 정렬 방법
                 if (input.length() >= 2) {
                     ((MainActivity) getActivity()).totalSearch(input, city_big, city_small, service_typehigh, service_typemiddle, "", searchtype, "1");
-                    if (Integer.parseInt(LocationBasedList_Class.totalcount) != 0) {
-                        swipeAdapter = new SwipeAdapter(getChildFragmentManager(), (Integer.parseInt(LocationBasedList_Class.totalcount) / 5) + 1);
+                    int pagecount= (Integer.parseInt(LocationBasedList_Class.totalcount)%10==0)?
+                            (Integer.parseInt(LocationBasedList_Class.totalcount)/10):(Integer.parseInt(LocationBasedList_Class.totalcount)/10)+1;
+                    swipeAdapter = new SwipeAdapter(getChildFragmentManager(), pagecount);
 
-                        viewPager.setOffscreenPageLimit(1);
-                        viewPager.setAdapter(swipeAdapter);
-                        viewPager.setCurrentItem(0);
+                    viewPager.setOffscreenPageLimit(1);
+                    viewPager.setAdapter(swipeAdapter);
+                    viewPager.setCurrentItem(0);
 
-                        ItemAdapter itemAdapter = new ItemAdapter(MainActivity.LocationBasedList_ArrayList);
-                        ListViewFragment.listView.setAdapter(itemAdapter);
-                        ListViewFragment.listView.notify();
-
+                    pre.setVisibility(View.GONE);
+                    if(1!=pagecount){
+                        next.setVisibility(View.VISIBLE);
                     }
+
+                    ItemAdapter itemAdapter = new ItemAdapter(MainActivity.LocationBasedList_ArrayList);
+                    ListViewFragment.listView.setAdapter(itemAdapter);
+
                 } else if (input.length() == 0) {
                     ((MainActivity) getActivity()).localSearch("", city_big, city_small, service_typehigh, service_typemiddle, "", searchtype, "1");
-                    if (Integer.parseInt(LocationBasedList_Class.totalcount) != 0) {
-                        swipeAdapter = new SwipeAdapter(getChildFragmentManager(), (Integer.parseInt(LocationBasedList_Class.totalcount) / 5) + 1);
+                    int pagecount= (Integer.parseInt(LocationBasedList_Class.totalcount)%10==0)?
+                            (Integer.parseInt(LocationBasedList_Class.totalcount)/10):(Integer.parseInt(LocationBasedList_Class.totalcount)/10)+1;
+                    swipeAdapter = new SwipeAdapter(getChildFragmentManager(), pagecount);
 
-                        viewPager.setOffscreenPageLimit(1);
-                        viewPager.setAdapter(swipeAdapter);
-                        viewPager.setCurrentItem(0);
+                    viewPager.setOffscreenPageLimit(1);
+                    viewPager.setAdapter(swipeAdapter);
+                    viewPager.setCurrentItem(0);
 
-                        ItemAdapter itemAdapter = new ItemAdapter(MainActivity.LocationBasedList_ArrayList);
-                        ListViewFragment.listView.setAdapter(itemAdapter);
-
+                    pre.setVisibility(View.GONE);
+                    if(1!=pagecount){
+                        next.setVisibility(View.VISIBLE);
                     }
+
+                    ItemAdapter itemAdapter = new ItemAdapter(MainActivity.LocationBasedList_ArrayList);
+                    ListViewFragment.listView.setAdapter(itemAdapter);
+
+
                 } else {
                     AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
                     builder.setTitle("검색 오류");
@@ -252,7 +268,6 @@ public class TotalsearchFragment extends Fragment implements ViewPager.OnPageCha
 
             }
         });
-
         return root;
     }
 
@@ -262,8 +277,20 @@ public class TotalsearchFragment extends Fragment implements ViewPager.OnPageCha
 
     }
 
+    @SuppressLint("RestrictedApi")
     @Override
     public void onPageSelected(int position) {
+        int pagecount= (Integer.parseInt(LocationBasedList_Class.totalcount)%10==0)?
+                (Integer.parseInt(LocationBasedList_Class.totalcount)/10):(Integer.parseInt(LocationBasedList_Class.totalcount)/10)+1;
+        if(position==0){
+            pre.setVisibility(View.GONE);
+        }else if(position+1==pagecount){
+            next.setVisibility(View.GONE);
+        }else{
+            pre.setVisibility(View.VISIBLE);
+            next.setVisibility(View.VISIBLE);
+        }
+
         service_typehigh = TypeId.cat1(spinner_hightype.getSelectedItemPosition());//대분류
         service_typemiddle = TypeId.cat2(spinner_middletype.getSelectedItemPosition(), spinner_hightype.getSelectedItemPosition());//중분류
 
@@ -277,7 +304,6 @@ public class TotalsearchFragment extends Fragment implements ViewPager.OnPageCha
             if (Integer.parseInt(LocationBasedList_Class.totalcount) != 0) {
                 ItemAdapter itemAdapter = new ItemAdapter(MainActivity.LocationBasedList_ArrayList);
                 ListViewFragment.listView.setAdapter(itemAdapter);
-
             }
         } else if (input.length() == 0) {
             ((MainActivity) getActivity()).localSearch("", city_big, city_small, service_typehigh, service_typemiddle, "", searchtype, String.valueOf((position + 1)));
@@ -293,6 +319,8 @@ public class TotalsearchFragment extends Fragment implements ViewPager.OnPageCha
     @Override
     public void onPageScrollStateChanged(int state) {
 
+        Log.i("state",state+"");
+
     }
 
     @Override
@@ -302,7 +330,7 @@ public class TotalsearchFragment extends Fragment implements ViewPager.OnPageCha
         LayoutInflater layoutInflater = LayoutInflater.from(getActivity());
         View view = layoutInflater.inflate(R.layout.totalsearch_local_setting, null);
         final String[] bigcity_string = {""};
-        final String[] smallcity_string={""};
+        final String[] smallcity_string = {""};
         final TextView textView = view.findViewById(R.id.textview_result_city);
         final ListView listView1 = view.findViewById(R.id.big_city_listview);
         final ListView listView2 = view.findViewById(R.id.small_city_listview);
@@ -351,8 +379,8 @@ public class TotalsearchFragment extends Fragment implements ViewPager.OnPageCha
                     smallarraylist = new ArrayList<>(Arrays.asList(getResources().getStringArray(R.array.jeaju_middle)));
                 }
                 bigcity_string[0] = (String) listView1.getAdapter().getItem(position);
-                a= (int) listView1.getAdapter().getItemId(position);
-                b=0;
+                a = (int) listView1.getAdapter().getItemId(position);
+                b = 0;
                 textView.setText(bigcity_string[0]);
                 TotalsearchCityAdapter totalsearchCityAdapter = new TotalsearchCityAdapter(smallarraylist);
                 listView2.setAdapter(totalsearchCityAdapter);
@@ -363,13 +391,13 @@ public class TotalsearchFragment extends Fragment implements ViewPager.OnPageCha
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 smallcity_string[0] = (String) listView2.getAdapter().getItem(position);
                 b = (int) listView2.getAdapter().getItemId(position);
-                textView.setText(bigcity_string[0]+" "+smallcity_string[0]);
+                textView.setText(bigcity_string[0] + " " + smallcity_string[0]);
             }
         });
         builder.setPositiveButton("확인", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                local_result_text.setText(bigcity_string[0]+" "+smallcity_string[0]);
+                local_result_text.setText(bigcity_string[0] + " " + smallcity_string[0]);
             }
         });
         builder.setNegativeButton("취소", new DialogInterface.OnClickListener() {
@@ -382,7 +410,7 @@ public class TotalsearchFragment extends Fragment implements ViewPager.OnPageCha
         builder.setView(view);
         AlertDialog alertDialog = builder.create();
         alertDialog.show();
-
-
     }
+
+
 }
