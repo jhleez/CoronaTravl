@@ -15,7 +15,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:text="관광타입"
+            android:text="관광 타입"
             android:textSize="15sp" />
 
 
@@ -30,25 +30,57 @@
     </LinearLayout>
 
     <LinearLayout
+        android:padding="2dp"
+        android:orientation="horizontal"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:padding="5dp">
+        android:layout_height="wrap_content">
 
-        <TextView
+        <ImageView
+            android:src="@drawable/total_ui_sort"
+            android:layout_width="30dp"
+            android:layout_height="40dp"
+            android:layout_gravity="center" />
+
+        <Spinner
+            android:layout_gravity="center_vertical"
+            android:id="@+id/spinner_around_searchtype"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginRight="5dp"
-            android:text="거리"
-            android:textSize="15sp" />
+            android:layout_marginLeft="8dp"
+            android:entries="@array/searchtype"
+            android:gravity="center" />
+
+        <ImageButton
+            android:layout_gravity="end"
+            android:id="@+id/button_around_search"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginLeft="25dp"
+            android:background="@drawable/search_totalsearch"/>
+
+    </LinearLayout>
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@drawable/distance" />
+
 
         <EditText
+            android:defaultFocusHighlightEnabled="false"
             android:id="@+id/edittext_around_distance"
-            android:layout_width="100dp"
+            android:layout_width="150dp"
             android:layout_height="wrap_content"
+            android:textAlignment="center"
             android:hint="(거리 입력)"
             android:inputType="number"
             android:maxLength="5"
-            android:textSize="15sp" />
+            android:textSize="15sp"
+            android:gravity="center_horizontal" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -59,48 +91,47 @@
             android:textSize="15sp" />
     </LinearLayout>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:padding="5dp">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:text="검색"
-            android:textSize="15sp" />
-
-        <Spinner
-            android:id="@+id/spinner_around_searchtype"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="8dp"
-            android:entries="@array/searchtype"
-            android:gravity="center" />
-
-        <Button
-            android:id="@+id/button_around_search"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="25dp"
-            android:text="검색" />
-
-    </LinearLayout>
-
-    <LinearLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
         <androidx.viewpager.widget.ViewPager
             android:id="@+id/viewpager_around_page"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
 
         </androidx.viewpager.widget.ViewPager>
 
+        <ImageButton
+            android:id="@+id/around_floatbt_previous"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginLeft="10dp"
+            android:background="#16FFFFFF"
+            android:src="@drawable/pre_viewpager_button"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:rippleColor="#DFB330" />
 
-    </LinearLayout>
+        <ImageButton
+            android:id="@+id/around_floatbt_next"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:background="@drawable/pagemove_button"
+            android:src="@drawable/next_viewpager_button"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 
 </LinearLayout>

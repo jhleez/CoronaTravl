@@ -58,8 +58,7 @@ public class TotalsearchFragment extends Fragment implements ViewPager.OnPageCha
     String city_big, city_small;
     String input;
     TextView local_result_text;
-    Spinner spinner_hightype, spinner_middletype,
-            spinner_bigcity, spinner_smallcity, spinner_searchtype;
+    Spinner spinner_hightype, spinner_middletype, spinner_searchtype;
     SwipeAdapter swipeAdapter;
     ViewPager viewPager;
     EditText editText_input;
@@ -194,8 +193,7 @@ public class TotalsearchFragment extends Fragment implements ViewPager.OnPageCha
         });
 
 
-        spinner_bigcity = root.findViewById(R.id.spinner_totalsearch_bigcity);
-        spinner_smallcity = root.findViewById(R.id.spinner_totalsearch_smallcity);
+
         spinner_searchtype = root.findViewById(R.id.spinner_totalsearch_searchtype);
 
         Button button = root.findViewById(R.id.button_totalsearch_search);
@@ -414,6 +412,4 @@ public class TotalsearchFragment extends Fragment implements ViewPager.OnPageCha
         AlertDialog alertDialog = builder.create();
         alertDialog.show();
     }
-
-
 }
