@@ -135,6 +135,7 @@ public class ShortWeather {
                     continue;
                 }
 
+
                 if(subJsonObject.getString("category").equals("POP")){
                     POP = subJsonObject.getString("fcstValue");
                     fcstTime = subJsonObject.getString("fcstTime");
