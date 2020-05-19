@@ -22,6 +22,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.GridLayout;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -62,7 +63,7 @@ public class TotalsearchFragment extends Fragment implements ViewPager.OnPageCha
     SwipeAdapter swipeAdapter;
     ViewPager viewPager;
     EditText editText_input;
-    Button local_select;
+    LinearLayout local_select;
     FloatingActionButton next,pre;
     int a = 0, b = 0;
 
