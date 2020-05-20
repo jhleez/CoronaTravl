@@ -26,14 +26,12 @@ public class WeatherInfo extends AppCompatActivity {
         setContentView(R.layout.activity_weather_info);
 
 
-
-
         String pagenumber="1";
         String ShortWeatherURL = "http://apis.data.go.kr/1360000/VilageFcstInfoService/getVilageFcst?serviceKey=LuQHzrmd0D8xz9tDN8srTETgDoVfSeUV%2FAvFrhKX%2BtTdNMG7GJINi%2B6INCB7yMFJXXIO%2FKb7JfNeFdA%2BNmEIqA%3D%3D" +
                 "&numOfRows=50" +
                 "&pageNo=" + pagenumber+
                 "&dataType=JSON" +
-                "&base_date=20200519" +
+                "&base_date=20200520" +
                 "&base_time=0500" +
                 "&nx=55&ny=127";
 
@@ -55,7 +53,7 @@ public class WeatherInfo extends AppCompatActivity {
                     "&numOfRows=50" +
                     "&pageNo=" + pagenumber+
                     "&dataType=JSON" +
-                    "&base_date=20200519" +
+                    "&base_date=20200520" +
                     "&base_time=0500" +
                     "&nx=55&ny=127";
             try {
@@ -72,7 +70,7 @@ public class WeatherInfo extends AppCompatActivity {
                 "&numOfRows=50" +
                 "&pageNo=" +"1"+
                 "&dataType=JSON" +
-                "&base_date=20200519" +
+                "&base_date=20200520" +
                 "&base_time=0200" +
                 "&nx=55&ny=127";
 

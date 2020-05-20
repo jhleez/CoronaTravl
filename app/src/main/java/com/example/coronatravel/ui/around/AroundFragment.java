@@ -93,7 +93,7 @@ public class AroundFragment extends Fragment implements ViewPager.OnPageChangeLi
             @Override
             public void onClick(View v) {
                 try{
-                    ((MainActivity) getActivity()).aroundSearch(contentTypeId, radius, searchtype, String.valueOf(longitude), String.valueOf(latitude), String.valueOf(viewPager.getCurrentItem() + 1));
+                    ((MainActivity) getActivity()).aroundSearch(contentTypeId, radius, "E", String.valueOf(longitude), String.valueOf(latitude), String.valueOf(viewPager.getCurrentItem() + 1));
                     //변수에 우리가 선택한 스피너, 위도경도, 정렬이 드가면 됨
                     ItemAdapter itemAdapter = new ItemAdapter(MainActivity.LocationBasedList_ArrayList);
                     ListViewFragment.listView.setAdapter(itemAdapter);
@@ -107,7 +107,7 @@ public class AroundFragment extends Fragment implements ViewPager.OnPageChangeLi
             @Override
             public void onClick(View v) {
                 try{
-                    ((MainActivity) getActivity()).aroundSearch(contentTypeId, radius, searchtype, String.valueOf(longitude), String.valueOf(latitude), String.valueOf(viewPager.getCurrentItem()));
+                    ((MainActivity) getActivity()).aroundSearch(contentTypeId, radius, "E", String.valueOf(longitude), String.valueOf(latitude), String.valueOf(viewPager.getCurrentItem()));
                     //변수에 우리가 선택한 스피너, 위도경도, 정렬이 드가면 됨
                     ItemAdapter itemAdapter = new ItemAdapter(MainActivity.LocationBasedList_ArrayList);
                     ListViewFragment.listView.setAdapter(itemAdapter);
@@ -137,7 +137,7 @@ public class AroundFragment extends Fragment implements ViewPager.OnPageChangeLi
         Log.d("ITPANGPANG", "onPageSelected : " + position);
 
 
-        ((MainActivity) getActivity()).aroundSearch(contentTypeId, radius, searchtype, String.valueOf(longitude), String.valueOf(latitude), String.valueOf(position + 1));
+        ((MainActivity) getActivity()).aroundSearch(contentTypeId, radius, "E", String.valueOf(longitude), String.valueOf(latitude), String.valueOf(position + 1));
         //변수에 우리가 선택한 스피너, 위도경도, 정렬이 드가면 됨
         ItemAdapter itemAdapter = new ItemAdapter(MainActivity.LocationBasedList_ArrayList);
         ListViewFragment.listView.setAdapter(itemAdapter);
@@ -155,11 +155,11 @@ public class AroundFragment extends Fragment implements ViewPager.OnPageChangeLi
 
         contentTypeId = TypeId.ContentTypeId(spinner.getSelectedItemPosition());
         radius = editText.getText().toString();
-        searchtype = arrange(spinner_searchtype.getSelectedItemPosition()); // 검색타입 선택 변수
+        searchtype = "E"; // 검색타입 선택 변수
 
 
 //        ((MainActivity) getActivity()).aroundSearch("12", "1000", "A", "126.981611", "37.568477", "1");
-        ((MainActivity) getActivity()).aroundSearch(contentTypeId, radius, searchtype,  String.valueOf(longitude),String.valueOf(latitude), "1");
+        ((MainActivity) getActivity()).aroundSearch(contentTypeId, radius, "E",  String.valueOf(longitude),String.valueOf(latitude), "1");
         Log.d("totalcount", LocationBasedList_Class.totalcount);
         if (Integer.parseInt(LocationBasedList_Class.totalcount) != 0) {
             swipeAdapter = new SwipeAdapter(getChildFragmentManager(), (Integer.parseInt(LocationBasedList_Class.totalcount) / 10) + 1);
@@ -319,19 +319,5 @@ public class AroundFragment extends Fragment implements ViewPager.OnPageChangeLi
         return locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER)
                 || locationManager.isProviderEnabled(LocationManager.NETWORK_PROVIDER);
     }
-    public String arrange(int position) {
-        if(position == 0){
-            return "E";
-        }
-        else if (position == 1) {
-            return "A";
-        } else if (position == 2) {
-            return "B";
-        } else if (position == 3) {
-            return "C";
-        } else if (position == 4) {
-            return "D";
-        }
-        return "";
-    }
+
 }
