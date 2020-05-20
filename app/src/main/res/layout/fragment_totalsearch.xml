@@ -111,11 +111,13 @@
             android:inputType="text" />
 
         <Button
+
             android:id="@+id/button_totalsearch_search"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginLeft="5dp"
             android:layout_weight="0.5"
+            android:foreground="?android:attr/selectableItemBackground"
             android:background="@drawable/search_totalsearch" />
 
     </LinearLayout>

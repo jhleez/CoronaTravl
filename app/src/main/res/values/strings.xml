@@ -16,7 +16,7 @@
     <string name="menu_send">Send</string>
 
     <string-array name="around_traveltype">
-        <item>타입 선택</item>
+        <item>전체</item>
         <item>관광지</item>
         <item>문화 시설</item>
         <item>축제 공연 행사</item>
