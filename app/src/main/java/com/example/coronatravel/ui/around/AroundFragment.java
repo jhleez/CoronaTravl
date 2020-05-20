@@ -47,7 +47,6 @@ import static android.content.Context.LOCATION_SERVICE;
 public class AroundFragment extends Fragment implements ViewPager.OnPageChangeListener, View.OnClickListener {
 
     private AroundViewModel aroundViewModel;
-    String radius;
     String contentTypeId;
     String searchtype;
     double latitude, longitude;
@@ -93,7 +92,7 @@ public class AroundFragment extends Fragment implements ViewPager.OnPageChangeLi
             @Override
             public void onClick(View v) {
                 try{
-                    ((MainActivity) getActivity()).aroundSearch(contentTypeId, radius, "E", String.valueOf(longitude), String.valueOf(latitude), String.valueOf(viewPager.getCurrentItem() + 1));
+                    ((MainActivity) getActivity()).aroundSearch(contentTypeId, "10000", "E", String.valueOf(longitude), String.valueOf(latitude), String.valueOf(viewPager.getCurrentItem() + 1));
                     //변수에 우리가 선택한 스피너, 위도경도, 정렬이 드가면 됨
                     ItemAdapter itemAdapter = new ItemAdapter(MainActivity.LocationBasedList_ArrayList);
                     ListViewFragment.listView.setAdapter(itemAdapter);
@@ -107,7 +106,7 @@ public class AroundFragment extends Fragment implements ViewPager.OnPageChangeLi
             @Override
             public void onClick(View v) {
                 try{
-                    ((MainActivity) getActivity()).aroundSearch(contentTypeId, radius, "E", String.valueOf(longitude), String.valueOf(latitude), String.valueOf(viewPager.getCurrentItem()));
+                    ((MainActivity) getActivity()).aroundSearch(contentTypeId, "10000", "E", String.valueOf(longitude), String.valueOf(latitude), String.valueOf(viewPager.getCurrentItem()));
                     //변수에 우리가 선택한 스피너, 위도경도, 정렬이 드가면 됨
                     ItemAdapter itemAdapter = new ItemAdapter(MainActivity.LocationBasedList_ArrayList);
                     ListViewFragment.listView.setAdapter(itemAdapter);
@@ -137,7 +136,7 @@ public class AroundFragment extends Fragment implements ViewPager.OnPageChangeLi
         Log.d("ITPANGPANG", "onPageSelected : " + position);
 
 
-        ((MainActivity) getActivity()).aroundSearch(contentTypeId, radius, "E", String.valueOf(longitude), String.valueOf(latitude), String.valueOf(position + 1));
+        ((MainActivity) getActivity()).aroundSearch(contentTypeId, "10000", "E", String.valueOf(longitude), String.valueOf(latitude), String.valueOf(position + 1));
         //변수에 우리가 선택한 스피너, 위도경도, 정렬이 드가면 됨
         ItemAdapter itemAdapter = new ItemAdapter(MainActivity.LocationBasedList_ArrayList);
         ListViewFragment.listView.setAdapter(itemAdapter);
@@ -154,12 +153,10 @@ public class AroundFragment extends Fragment implements ViewPager.OnPageChangeLi
     public void onClick(View view) {
 
         contentTypeId = TypeId.ContentTypeId(spinner.getSelectedItemPosition());
-        radius = editText.getText().toString();
         searchtype = "E"; // 검색타입 선택 변수
 
 
-//        ((MainActivity) getActivity()).aroundSearch("12", "1000", "A", "126.981611", "37.568477", "1");
-        ((MainActivity) getActivity()).aroundSearch(contentTypeId, radius, "E",  String.valueOf(longitude),String.valueOf(latitude), "1");
+        ((MainActivity) getActivity()).aroundSearch(contentTypeId, "10000", "E",  String.valueOf(longitude),String.valueOf(latitude), "1");
         Log.d("totalcount", LocationBasedList_Class.totalcount);
         if (Integer.parseInt(LocationBasedList_Class.totalcount) != 0) {
             swipeAdapter = new SwipeAdapter(getChildFragmentManager(), (Integer.parseInt(LocationBasedList_Class.totalcount) / 10) + 1);
