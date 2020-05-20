@@ -52,35 +52,11 @@ public class ItemAdapter extends BaseAdapter {
         TextView addreess = convertView.findViewById(R.id.textview_listitem_address);
         //TextView distance = convertView.findViewById(R.id.textview_listitem_distance);
         ImageView imageView = convertView.findViewById(R.id.imageview_listitem);
-        //final Button bookmark = convertView.findViewById(R.id.listitem_bookmar);
+
         String URI = data.getFirstimage();
-       /* bookmark.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                AlertDialog.Builder builder = new AlertDialog.Builder(viewGroup.getContext());
-                builder.setTitle("즐겨찾기 설정");
-                builder.setCancelable(true)
-                        .setMessage("즐겨찾기로 추가하시겠습니까?")
-                        .setNeutralButton("취소", new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
 
-                            }
-                        })
-                        .setPositiveButton("추가", new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
-                                Toast.makeText(viewGroup.getContext(), i + "째 추가", Toast.LENGTH_SHORT).show();
-                            }
-                        });
-                AlertDialog alertDialog = builder.create();
-                alertDialog.show();
-
-            }
-        });*/
         if (URI == "") URI = "http://";
-
-        Picasso.get().load(URI).placeholder(R.drawable.ic_launcher_background).into(imageView);
+        Picasso.get().load(URI).placeholder(R.drawable.sunnyicon).into(imageView);
 
         title.setText(data.getTitle());
         addreess.setText(data.getAddr1());

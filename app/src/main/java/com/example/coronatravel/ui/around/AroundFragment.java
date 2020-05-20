@@ -48,7 +48,6 @@ public class AroundFragment extends Fragment implements ViewPager.OnPageChangeLi
 
     private AroundViewModel aroundViewModel;
     String contentTypeId;
-    String searchtype;
     double latitude, longitude;
     String address;
     ImageButton next,pre;
@@ -81,28 +80,13 @@ public class AroundFragment extends Fragment implements ViewPager.OnPageChangeLi
         }
 
         spinner = root.findViewById(R.id.spinner_around_traveltype);
-        editText = root.findViewById(R.id.edittext_around_distance);
-        spinner_searchtype = root.findViewById(R.id.spinner_around_searchtype);
+
 
         ImageButton button = root.findViewById(R.id.button_around_search);
         button.setOnClickListener(this);
-
+        next=root.findViewById(R.id.around_floatbt_next);
         pre=root.findViewById(R.id.around_floatbt_previous);
         pre.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                try{
-                    ((MainActivity) getActivity()).aroundSearch(contentTypeId, "10000", "E", String.valueOf(longitude), String.valueOf(latitude), String.valueOf(viewPager.getCurrentItem() + 1));
-                    //변수에 우리가 선택한 스피너, 위도경도, 정렬이 드가면 됨
-                    ItemAdapter itemAdapter = new ItemAdapter(MainActivity.LocationBasedList_ArrayList);
-                    ListViewFragment.listView.setAdapter(itemAdapter);
-                }catch(Exception e){
-                    e.printStackTrace();
-                }
-            }
-        });
-        next=root.findViewById(R.id.around_floatbt_next);
-        next.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 try{
@@ -113,14 +97,32 @@ public class AroundFragment extends Fragment implements ViewPager.OnPageChangeLi
                 }catch(Exception e){
                     e.printStackTrace();
                 }
+                viewPager.setCurrentItem(viewPager.getCurrentItem()-1);
+                ItemAdapter itemAdapter = new ItemAdapter(MainActivity.LocationBasedList_ArrayList);
+                ListViewFragment.listView.setAdapter(itemAdapter);
+            }
+        });
+
+        next.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                try{
+                    ((MainActivity) getActivity()).aroundSearch(contentTypeId, "10000", "E", String.valueOf(longitude), String.valueOf(latitude), String.valueOf(viewPager.getCurrentItem()+1));
+                    //변수에 우리가 선택한 스피너, 위도경도, 정렬이 드가면 됨
+                    ItemAdapter itemAdapter = new ItemAdapter(MainActivity.LocationBasedList_ArrayList);
+                    ListViewFragment.listView.setAdapter(itemAdapter);
+                }catch(Exception e){
+                    e.printStackTrace();
+                }
+                viewPager.setCurrentItem(viewPager.getCurrentItem()+1);
+                ItemAdapter itemAdapter = new ItemAdapter(MainActivity.LocationBasedList_ArrayList);
+                ListViewFragment.listView.setAdapter(itemAdapter);
             }
         });
         gpsTracker = new GpsTracker(getActivity());
         latitude = gpsTracker.getLatitude();
         longitude = gpsTracker.getLongitude();
         address = getCurrentAddress(latitude, longitude);
-
-
         return root;
     }
 
@@ -128,14 +130,22 @@ public class AroundFragment extends Fragment implements ViewPager.OnPageChangeLi
     @Override
     public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
         Log.d("ITPANGPANG", "onPageScrolled : " + position);
-
     }
 
     @Override
     public void onPageSelected(int position) {
+        int pagecount= (Integer.parseInt(LocationBasedList_Class.totalcount)%10==0)?
+                (Integer.parseInt(LocationBasedList_Class.totalcount)/10):(Integer.parseInt(LocationBasedList_Class.totalcount)/10)+1;
+        if(position==0){
+            pre.setVisibility(View.GONE);
+        }else if(position+1==pagecount){
+            next.setVisibility(View.GONE);
+        }else{
+            pre.setVisibility(View.VISIBLE);
+            next.setVisibility(View.VISIBLE);
+        }
+
         Log.d("ITPANGPANG", "onPageSelected : " + position);
-
-
         ((MainActivity) getActivity()).aroundSearch(contentTypeId, "10000", "E", String.valueOf(longitude), String.valueOf(latitude), String.valueOf(position + 1));
         //변수에 우리가 선택한 스피너, 위도경도, 정렬이 드가면 됨
         ItemAdapter itemAdapter = new ItemAdapter(MainActivity.LocationBasedList_ArrayList);
@@ -153,12 +163,19 @@ public class AroundFragment extends Fragment implements ViewPager.OnPageChangeLi
     public void onClick(View view) {
 
         contentTypeId = TypeId.ContentTypeId(spinner.getSelectedItemPosition());
-        searchtype = "E"; // 검색타입 선택 변수
 
 
         ((MainActivity) getActivity()).aroundSearch(contentTypeId, "10000", "E",  String.valueOf(longitude),String.valueOf(latitude), "1");
         Log.d("totalcount", LocationBasedList_Class.totalcount);
         if (Integer.parseInt(LocationBasedList_Class.totalcount) != 0) {
+
+            int pagecount= (Integer.parseInt(LocationBasedList_Class.totalcount)%10==0)?
+                    (Integer.parseInt(LocationBasedList_Class.totalcount)/10):(Integer.parseInt(LocationBasedList_Class.totalcount)/10)+1;
+            pre.setVisibility(View.GONE);
+            if(1!=pagecount){
+                next.setVisibility(View.VISIBLE);
+            }
+
             swipeAdapter = new SwipeAdapter(getChildFragmentManager(), (Integer.parseInt(LocationBasedList_Class.totalcount) / 10) + 1);
 
             viewPager.setOffscreenPageLimit(1);

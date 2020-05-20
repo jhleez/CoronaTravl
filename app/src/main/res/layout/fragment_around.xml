@@ -1,95 +1,61 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:background="@drawable/total_fragment_design">
 
-    <LinearLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
 
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="5dp">
 
+
         <TextView
+            android:id="@+id/textView2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:gravity="center"
+            android:layout_gravity="center_vertical"
+            android:layout_marginStart="4dp"
+            android:layout_marginLeft="4dp"
+            android:layout_marginTop="1dp"
+            android:layout_marginBottom="1dp"
             android:text="분류"
-            android:textSize="15sp" />
-
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <Spinner
-
             android:id="@+id/spinner_around_traveltype"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:entries="@array/around_traveltype"
-            android:gravity="center" />
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:padding="2dp"
-        android:orientation="horizontal"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-        <ImageView
-            android:src="@drawable/total_ui_sort"
-            android:layout_width="30dp"
-            android:layout_height="40dp"
-            android:layout_gravity="center" />
-
-        <Spinner
             android:layout_gravity="center_vertical"
-            android:id="@+id/spinner_around_searchtype"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="8dp"
-            android:entries="@array/searchtype"
-            android:gravity="center" />
+            android:layout_marginStart="10dp"
+            android:layout_marginLeft="10dp"
+            android:entries="@array/around_traveltype"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/textView2"
+            app:layout_constraintTop_toTopOf="parent" />
+
 
         <ImageButton
-            android:layout_gravity="end"
             android:id="@+id/button_around_search"
             android:layout_width="40dp"
             android:layout_height="40dp"
-            android:layout_marginLeft="25dp"
-            android:background="@drawable/search_totalsearch"/>
+            android:layout_marginEnd="15dp"
+            android:layout_marginRight="15dp"
+            android:background="@drawable/search_totalsearch"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-    </LinearLayout>
-    <LinearLayout
-        android:orientation="horizontal"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
-        <ImageView
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:src="@drawable/distance" />
-
-
-        <EditText
-            android:defaultFocusHighlightEnabled="false"
-            android:id="@+id/edittext_around_distance"
-            android:layout_width="150dp"
-            android:layout_height="wrap_content"
-            android:textAlignment="center"
-            android:hint="(거리 입력)"
-            android:inputType="number"
-            android:maxLength="5"
-            android:textSize="15sp"
-            android:gravity="center_horizontal" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="5dp"
-            android:layout_marginRight="5dp"
-            android:text="m  (20km 까지 가능합니다)"
-            android:textSize="15sp" />
-    </LinearLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
