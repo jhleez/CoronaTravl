@@ -14,7 +14,11 @@ import android.widget.Toast;
 
 import com.example.coronatravel.detail.detailCommon;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.Locale;
 
 public class WeatherInfo extends AppCompatActivity {
     TextView test;
@@ -77,12 +81,23 @@ public class WeatherInfo extends AppCompatActivity {
     }
 
     public void getdata() {
+        Date currentTime = Calendar.getInstance().getTime();
+        SimpleDateFormat dayFormat = new SimpleDateFormat("dd", Locale.getDefault());
+        SimpleDateFormat monthFormat = new SimpleDateFormat("MM", Locale.getDefault());
+        SimpleDateFormat yearFormat = new SimpleDateFormat("yyyy", Locale.getDefault());
+
+        String year = yearFormat.format(currentTime);
+        String month = monthFormat.format(currentTime);
+        String day = dayFormat.format(currentTime);
+
+        String today = year + month + day;
+
         String pagenumber = "1";
         String ShortWeatherURL = "http://apis.data.go.kr/1360000/VilageFcstInfoService/getVilageFcst?serviceKey=LuQHzrmd0D8xz9tDN8srTETgDoVfSeUV%2FAvFrhKX%2BtTdNMG7GJINi%2B6INCB7yMFJXXIO%2FKb7JfNeFdA%2BNmEIqA%3D%3D" +
                 "&numOfRows=50" +
                 "&pageNo=" + pagenumber +
                 "&dataType=JSON" +
-                "&base_date=20200520" +
+                "&base_date=" + today +
                 "&base_time=0500" +
                 "&nx=55&ny=127";
 
@@ -102,7 +117,7 @@ public class WeatherInfo extends AppCompatActivity {
                     "&numOfRows=50" +
                     "&pageNo=" + pagenumber +
                     "&dataType=JSON" +
-                    "&base_date=20200520" +
+                    "&base_date=" + today +
                     "&base_time=0500" +
                     "&nx=55&ny=127";
             try {
@@ -119,7 +134,7 @@ public class WeatherInfo extends AppCompatActivity {
                 "&numOfRows=50" +
                 "&pageNo=" + "1" +
                 "&dataType=JSON" +
-                "&base_date=20200520" +
+                "&base_date=" + today +
                 "&base_time=0200" +
                 "&nx=55&ny=127";
 

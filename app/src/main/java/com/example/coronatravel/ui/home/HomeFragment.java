@@ -106,7 +106,6 @@ public class HomeFragment extends Fragment {
          double longitude = gpsTracker.getLongitude();
 
          String address = getCurrentAddress(latitude, longitude);
-        Toast.makeText(getActivity(), address, Toast.LENGTH_SHORT).show();
         addressTextview.setText(address);
 
         return root;
@@ -141,119 +140,6 @@ public class HomeFragment extends Fragment {
         new getData3().execute(path2);
         new getData4().execute(path2);
         new getData5().execute(path2);
-        //new getDataAddress1().execute(pathAddress);
-        //new getDataAddress2().execute(pathAddress);
-        //new getDataAddress3().execute(pathAddress);
-        //new getDataAddress4().execute(pathAddress);
-    }
-
-    private class getDataAddress1 extends AsyncTask<String, Void, String> {
-        // String 으로 값을 전달받은 값을 처리하고, Boolean 으로 doInBackground 결과를 넘겨준다.
-        @Override
-        protected String doInBackground(String... params) {
-            try {
-                Document document = Jsoup.connect(params[0].toString()).get(); // Web에서 내용을 가져온다.
-                Elements elements = document.select("table.num midsize");
-                String now = null;
-                now = elements.get(0).text();
-                return "확진환자\n\n" + now;
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-            return null;
-        }
-
-        @Override
-        protected void onPostExecute(String result) {
-            totalViewAddress.setText(result);
-        }
-    }
-
-    private class getDataAddress2 extends AsyncTask<String, Void, String> {
-        // String 으로 값을 전달받은 값을 처리하고, Boolean 으로 doInBackground 결과를 넘겨준다.
-        @Override
-        protected String doInBackground(String... params) {
-            try {
-                Document document = Jsoup.connect(params[0].toString()).get(); // Web에서 내용을 가져온다.
-                //자식으로 타고 간다고 생각하면 돼 <div class="liveNumOuter"> 에 있는 <ul class="liveNum"> 에 있는 <span class="num">을 elements에 저장
-                Elements elements = document.select("div.liveNumOuter").select("ul.liveNum").select("span.num");
-                //elements에 있는 첫번째(0번 index) 값을 string 으로 받아오기
-                String now = elements.get(0).text();
-                //이거는 문자열 자르는거야
-                now = now.substring(4,10);
-                Elements elements1 = document.select("div.liveNumOuter").select("ul.liveNum").select("span.before");
-                String compare = elements1.get(0).text();
-                compare = compare.substring(5,11);
-                return "확진환자\n\n" + now + "\n" + compare;
-                //잘 이해가 안되면 저 링크 url 소스코드 열어보고 확인해보면 이해가 빠를거야
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-            return null;
-        }
-
-        @Override
-        protected void onPostExecute(String result) {
-            totalView.setText(result);
-        }
-    }
-
-    private class getDataAddress3 extends AsyncTask<String, Void, String> {
-        // String 으로 값을 전달받은 값을 처리하고, Boolean 으로 doInBackground 결과를 넘겨준다.
-        @Override
-        protected String doInBackground(String... params) {
-            try {
-                Document document = Jsoup.connect(params[0].toString()).get(); // Web에서 내용을 가져온다.
-                //자식으로 타고 간다고 생각하면 돼 <div class="liveNumOuter"> 에 있는 <ul class="liveNum"> 에 있는 <span class="num">을 elements에 저장
-                Elements elements = document.select("div.liveNumOuter").select("ul.liveNum").select("span.num");
-                //elements에 있는 첫번째(0번 index) 값을 string 으로 받아오기
-                String now = elements.get(0).text();
-                //이거는 문자열 자르는거야
-                now = now.substring(4,10);
-                Elements elements1 = document.select("div.liveNumOuter").select("ul.liveNum").select("span.before");
-                String compare = elements1.get(0).text();
-                compare = compare.substring(5,11);
-                return "확진환자\n\n" + now + "\n" + compare;
-                //잘 이해가 안되면 저 링크 url 소스코드 열어보고 확인해보면 이해가 빠를거야
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-            return null;
-        }
-
-        @Override
-        protected void onPostExecute(String result) {
-            totalView.setText(result);
-        }
-    }
-
-    private class getDataAddress4 extends AsyncTask<String, Void, String> {
-        // String 으로 값을 전달받은 값을 처리하고, Boolean 으로 doInBackground 결과를 넘겨준다.
-        @Override
-        protected String doInBackground(String... params) {
-            try {
-                Document document = Jsoup.connect(params[0].toString()).get(); // Web에서 내용을 가져온다.
-                //자식으로 타고 간다고 생각하면 돼 <div class="liveNumOuter"> 에 있는 <ul class="liveNum"> 에 있는 <span class="num">을 elements에 저장
-                Elements elements = document.select("div.liveNumOuter").select("ul.liveNum").select("span.num");
-                //elements에 있는 첫번째(0번 index) 값을 string 으로 받아오기
-                String now = elements.get(0).text();
-                //이거는 문자열 자르는거야
-                now = now.substring(4,10);
-                Elements elements1 = document.select("div.liveNumOuter").select("ul.liveNum").select("span.before");
-                String compare = elements1.get(0).text();
-                compare = compare.substring(5,11);
-                return "확진환자\n\n" + now + "\n" + compare;
-                //잘 이해가 안되면 저 링크 url 소스코드 열어보고 확인해보면 이해가 빠를거야
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-            return null;
-        }
-
-        @Override
-        protected void onPostExecute(String result) {
-            totalView.setText(result);
-        }
     }
 
     private class getData1 extends AsyncTask<String, Void, String> {
