@@ -56,7 +56,7 @@ public class HomeFragment extends Fragment {
     String[] REQUIRED_PERMISSIONS  = {Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION};
 
 
-    TextView totalView, dischargedView, curingView, deathView, patientView;
+    TextView totalView, dischargedView, curingView, deathView, patientView, dailyCuredTextview, dailyDiagnosisTextview;
     Context context;
 
     TextView totalViewAddress, dischargedViewAddress, curingViewAddress, deathViewAddress;
@@ -86,6 +86,8 @@ public class HomeFragment extends Fragment {
         curingView = root.findViewById(R.id.curing);
         deathView = root.findViewById(R.id.death);
         patientView = root.findViewById(R.id.patientView);
+        dailyDiagnosisTextview = root.findViewById(R.id.dailyDiagnosisTextview);
+        dailyCuredTextview = root.findViewById(R.id.dailyCuredTextview);
 
         context = getActivity();
 
@@ -140,6 +142,50 @@ public class HomeFragment extends Fragment {
         new getData3().execute(path2);
         new getData4().execute(path2);
         new getData5().execute(path2);
+        new getDailyDiagnosis().execute(path2);
+        new getDailyCured().execute(path2);
+    }
+
+    private class getDailyDiagnosis extends AsyncTask<String, Void, String> {
+        // String 으로 값을 전달받은 값을 처리하고, Boolean 으로 doInBackground 결과를 넘겨준다.
+        @Override
+        protected String doInBackground(String... params) {
+            try {
+                Document document = Jsoup.connect(params[0].toString()).get(); // Web에서 내용을 가져온다.
+                Elements elements = document.select("div.liveNumOuter").select("span.data1");
+                String now = elements.get(0).text();
+                return "일일 확진자\n" + now ;
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(String result) {
+            dailyDiagnosisTextview.setText(result);
+        }
+    }
+
+    private class getDailyCured extends AsyncTask<String, Void, String> {
+        // String 으로 값을 전달받은 값을 처리하고, Boolean 으로 doInBackground 결과를 넘겨준다.
+        @Override
+        protected String doInBackground(String... params) {
+            try {
+                Document document = Jsoup.connect(params[0].toString()).get(); // Web에서 내용을 가져온다.
+                Elements elements = document.select("div.liveNumOuter").select("span.data2");
+                String now = elements.get(0).text();
+                return "일일 완치자\n" + now ;
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(String result) {
+            dailyCuredTextview.setText(result);
+        }
     }
 
     private class getData1 extends AsyncTask<String, Void, String> {
