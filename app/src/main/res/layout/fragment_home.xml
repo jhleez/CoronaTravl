@@ -34,7 +34,7 @@
             android:gravity="center"
             android:padding="10sp"
             android:text="확진환자\n"
-            android:textColor="@android:color/black"
+            android:textColor="@android:color/white"
             android:textSize="30sp"
             android:textStyle="bold" />
 
@@ -124,9 +124,14 @@
         </LinearLayout>
 
         <TextView
+            android:textColor="@android:color/black"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:gravity="center"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/addressTextview"/>
+            android:id="@+id/addressTextview"
+            android:text="\n\n"/>
 
         <TextView
             android:id="@+id/totalViewAddress"

@@ -49,11 +49,14 @@ import static android.content.Context.LOCATION_SERVICE;
 
 public class HomeFragment extends Fragment {
 
+    private int addressNum = 2;
+
     TextView addressTextview;
     private GpsTracker gpsTracker;
     private static final int GPS_ENABLE_REQUEST_CODE = 2001;
     private static final int PERMISSIONS_REQUEST_CODE = 100;
     String[] REQUIRED_PERMISSIONS  = {Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION};
+    private String address;
 
 
     TextView totalView, dischargedView, curingView, deathView, patientView, dailyCuredTextview, dailyDiagnosisTextview;
@@ -88,6 +91,10 @@ public class HomeFragment extends Fragment {
         patientView = root.findViewById(R.id.patientView);
         dailyDiagnosisTextview = root.findViewById(R.id.dailyDiagnosisTextview);
         dailyCuredTextview = root.findViewById(R.id.dailyCuredTextview);
+        totalViewAddress = root.findViewById(R.id.totalViewAddress);
+        dischargedViewAddress = root.findViewById(R.id.dischargedAddress);
+        curingViewAddress = root.findViewById(R.id.curingAddress);
+        deathViewAddress = root.findViewById(R.id.deathAddress);
 
         context = getActivity();
 
@@ -107,8 +114,7 @@ public class HomeFragment extends Fragment {
          double latitude = gpsTracker.getLatitude();
          double longitude = gpsTracker.getLongitude();
 
-         String address = getCurrentAddress(latitude, longitude);
-        addressTextview.setText(address);
+         address = getCurrentAddress(latitude, longitude);
 
         return root;
     }
@@ -144,6 +150,96 @@ public class HomeFragment extends Fragment {
         new getData5().execute(path2);
         new getDailyDiagnosis().execute(path2);
         new getDailyCured().execute(path2);
+        new getAddressDiagnosis().execute(pathAddress);
+        new getAddressDischarged().execute(pathAddress);
+        new getAddressCured().execute(pathAddress);
+        new getAddressDeath().execute(pathAddress);
+    }
+
+    private class getAddressDischarged extends AsyncTask<String, Void, String> {
+        // String 으로 값을 전달받은 값을 처리하고, Boolean 으로 doInBackground 결과를 넘겨준다.
+        @Override
+        protected String doInBackground(String... params) {
+            try {
+                Document document = Jsoup.connect(params[0].toString()).get(); // Web에서 내용을 가져온다.
+                Elements elements = document.select("div.data_table").select("td.number");
+                String now = elements.get(29).text();
+                return "완치\n(격리해제)\n" + now;
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(String result) {
+            dischargedViewAddress.setText(result);
+        }
+    }
+
+    private class getAddressCured extends AsyncTask<String, Void, String> {
+        // String 으로 값을 전달받은 값을 처리하고, Boolean 으로 doInBackground 결과를 넘겨준다.
+        @Override
+        protected String doInBackground(String... params) {
+            try {
+                Document document = Jsoup.connect(params[0].toString()).get(); // Web에서 내용을 가져온다.
+                Elements elements = document.select("div.data_table").select("td.number");
+                String now = elements.get(28).text();
+                return "치료 중\n(격리 중)\n" + now;
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(String result) {
+            curingViewAddress.setText(result);
+        }
+    }
+
+    private class getAddressDeath extends AsyncTask<String, Void, String> {
+        // String 으로 값을 전달받은 값을 처리하고, Boolean 으로 doInBackground 결과를 넘겨준다.
+        @Override
+        protected String doInBackground(String... params) {
+            try {
+                Document document = Jsoup.connect(params[0].toString()).get(); // Web에서 내용을 가져온다.
+                Elements elements = document.select("div.data_table").select("td.number");
+                String now = elements.get(30).text();
+                return "사망\n\n" + now;
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(String result) {
+            deathViewAddress.setText(result);
+        }
+    }
+
+    private class getAddressDiagnosis extends AsyncTask<String, Void, String> {
+        // String 으로 값을 전달받은 값을 처리하고, Boolean 으로 doInBackground 결과를 넘겨준다.
+        @Override
+        protected String doInBackground(String... params) {
+            try {
+                Document document = Jsoup.connect(params[0].toString()).get(); // Web에서 내용을 가져온다.
+                Elements elements = document.select("div.rpsa_map").select("span.num");
+                Elements elementsBefore = document.select("div.rpsa_map").select("span.before");
+                String now = elements.get(2).text();
+                String compare = elementsBefore.get(2).text();
+                return "확진환자\n" + now + "\n" + compare;
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(String result) {
+            totalViewAddress.setText(result);
+        }
     }
 
     private class getDailyDiagnosis extends AsyncTask<String, Void, String> {
@@ -203,7 +299,7 @@ public class HomeFragment extends Fragment {
                 Elements elements1 = document.select("div.liveNumOuter").select("ul.liveNum").select("span.before");
                 String compare = elements1.get(0).text();
                 compare = compare.substring(5,11);
-                return "확진환자\n\n" + now + "\n" + compare;
+                return "확진환자\n" + now + "\n" + compare;
                 //잘 이해가 안되면 저 링크 url 소스코드 열어보고 확인해보면 이해가 빠를거야
             } catch (IOException e) {
                 e.printStackTrace();
@@ -304,6 +400,8 @@ public class HomeFragment extends Fragment {
         @Override
         protected void onPostExecute(String result) {
             patientView.setText(result);
+            //addressTextview.setText(address);
+            addressTextview.setText("\n대구 " + result);
         }
     }
 
