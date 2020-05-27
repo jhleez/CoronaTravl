@@ -16,30 +16,20 @@ import android.os.Bundle;
 import android.transition.AutoTransition;
 import android.transition.TransitionManager;
 import android.util.Log;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.coronatravel.DbOpenHelper;
 import com.example.coronatravel.HttpReqTask;
-import com.example.coronatravel.LocationBasedList_Class;
 import com.example.coronatravel.MainActivity;
 import com.example.coronatravel.Mask;
 import com.example.coronatravel.R;
-import com.example.coronatravel.ShortWeather;
-import com.example.coronatravel.WeatherInfo;
 import com.example.coronatravel.myWeatherAdapter;
 import com.example.coronatravel.myWeatherListviewDecoration;
 import com.example.coronatravel.weatherListViewItem;
-
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 
@@ -49,12 +39,12 @@ public class    Detail_view extends AppCompatActivity {
     CheckBox checkbox;
     DbOpenHelper mDbOpenHelper;
     String addr1, contentid,contenttypeid,firstimage,title;
-    ConstraintLayout weatehr_exendlayout;
+    ConstraintLayout weatehr_expandlayout,mask_expandlayout,corona_expandlayout;
 
     private RecyclerView weatherListview;
     private myWeatherAdapter weatherAdapter;
-    Button weatherexpendbt;
-    CardView weathercardview;
+    Button weatherexpendbt,maskexpandbt,coronaexpandbt;
+    CardView weathercardview,maskcardview,coronacardview;
     LinearLayoutManager layoutManager;
     ArrayList<weatherListViewItem> itemList;
 
@@ -67,21 +57,61 @@ public class    Detail_view extends AppCompatActivity {
         checkbox = (CheckBox)findViewById(R.id.checkbox);
         testMask =(TextView) findViewById(R.id.testMask);
         mDbOpenHelper = new DbOpenHelper(this);
-        weatehr_exendlayout=findViewById(R.id.expend_layout_weather);
+
+        weatehr_expandlayout =findViewById(R.id.expend_layout_weather);
+        mask_expandlayout=findViewById(R.id.expand_layout_mask);
+        corona_expandlayout=findViewById(R.id.expand_layout_corona);
+
         weatherexpendbt=findViewById(R.id.weather_expend_bt);
+        maskexpandbt=findViewById(R.id.mask_expend_bt);
+        coronaexpandbt=findViewById(R.id.corona_expend_bt);
+
         weathercardview=findViewById(R.id.weather_cardview);
+        maskcardview=findViewById(R.id.mask_cardview);
+        coronacardview=findViewById(R.id.corona_cardview);
+
         weatherexpendbt.setOnClickListener(new View.OnClickListener() {
             @RequiresApi(api = Build.VERSION_CODES.KITKAT)
             @Override
             public void onClick(View v) {
-                if (weatehr_exendlayout.getVisibility() == View.GONE) {
+                if (weatehr_expandlayout.getVisibility() == View.GONE) {
                     TransitionManager.beginDelayedTransition(weathercardview, new AutoTransition());
-                    weatehr_exendlayout.setVisibility(View.VISIBLE);
+                    weatehr_expandlayout.setVisibility(View.VISIBLE);
                     weatherexpendbt.setBackgroundResource(R.drawable.ic_expand_less_black_24dp);
                 } else {
                     TransitionManager.beginDelayedTransition(weathercardview, new AutoTransition());
-                    weatehr_exendlayout.setVisibility(View.GONE);
+                    weatehr_expandlayout.setVisibility(View.GONE);
                     weatherexpendbt.setBackgroundResource(R.drawable.ic_expand_more_black_24dp);
+                }
+            }
+        });
+        maskexpandbt.setOnClickListener(new View.OnClickListener() {
+            @RequiresApi(api = Build.VERSION_CODES.KITKAT)
+            @Override
+            public void onClick(View v) {
+                if (mask_expandlayout.getVisibility() == View.GONE) {
+                    TransitionManager.beginDelayedTransition(maskcardview, new AutoTransition());
+                    mask_expandlayout.setVisibility(View.VISIBLE);
+                    maskexpandbt.setBackgroundResource(R.drawable.ic_expand_less_black_24dp);
+                } else {
+                    TransitionManager.beginDelayedTransition(maskcardview, new AutoTransition());
+                    mask_expandlayout.setVisibility(View.GONE);
+                    maskexpandbt.setBackgroundResource(R.drawable.ic_expand_more_black_24dp);
+                }
+            }
+        });
+        coronaexpandbt.setOnClickListener(new View.OnClickListener() {
+            @RequiresApi(api = Build.VERSION_CODES.KITKAT)
+            @Override
+            public void onClick(View v) {
+                if (corona_expandlayout.getVisibility() == View.GONE) {
+                    TransitionManager.beginDelayedTransition(coronacardview, new AutoTransition());
+                    corona_expandlayout.setVisibility(View.VISIBLE);
+                    coronaexpandbt.setBackgroundResource(R.drawable.ic_expand_less_black_24dp);
+                } else {
+                    TransitionManager.beginDelayedTransition(coronacardview, new AutoTransition());
+                    corona_expandlayout.setVisibility(View.GONE);
+                    coronaexpandbt.setBackgroundResource(R.drawable.ic_expand_more_black_24dp);
                 }
             }
         });
