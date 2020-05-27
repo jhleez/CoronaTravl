@@ -1,6 +1,9 @@
 package com.example.coronatravel.detail;
 
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.cardview.widget.CardView;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -8,10 +11,14 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.Intent;
 import android.database.Cursor;
 import android.graphics.drawable.Drawable;
+import android.os.Build;
 import android.os.Bundle;
+import android.transition.AutoTransition;
+import android.transition.TransitionManager;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -42,11 +49,12 @@ public class    Detail_view extends AppCompatActivity {
     CheckBox checkbox;
     DbOpenHelper mDbOpenHelper;
     String addr1, contentid,contenttypeid,firstimage,title;
-    LayoutInflater layoutInflater;
-    LinearLayout linearLayout;
+    ConstraintLayout weatehr_exendlayout;
 
     private RecyclerView weatherListview;
     private myWeatherAdapter weatherAdapter;
+    Button weatherexpendbt;
+    CardView weathercardview;
     LinearLayoutManager layoutManager;
     ArrayList<weatherListViewItem> itemList;
 
@@ -59,6 +67,24 @@ public class    Detail_view extends AppCompatActivity {
         checkbox = (CheckBox)findViewById(R.id.checkbox);
         testMask =(TextView) findViewById(R.id.testMask);
         mDbOpenHelper = new DbOpenHelper(this);
+        weatehr_exendlayout=findViewById(R.id.expend_layout_weather);
+        weatherexpendbt=findViewById(R.id.weather_expend_bt);
+        weathercardview=findViewById(R.id.weather_cardview);
+        weatherexpendbt.setOnClickListener(new View.OnClickListener() {
+            @RequiresApi(api = Build.VERSION_CODES.KITKAT)
+            @Override
+            public void onClick(View v) {
+                if (weatehr_exendlayout.getVisibility() == View.GONE) {
+                    TransitionManager.beginDelayedTransition(weathercardview, new AutoTransition());
+                    weatehr_exendlayout.setVisibility(View.VISIBLE);
+                    weatherexpendbt.setBackgroundResource(R.drawable.ic_expand_less_black_24dp);
+                } else {
+                    TransitionManager.beginDelayedTransition(weathercardview, new AutoTransition());
+                    weatehr_exendlayout.setVisibility(View.GONE);
+                    weatherexpendbt.setBackgroundResource(R.drawable.ic_expand_more_black_24dp);
+                }
+            }
+        });
 
 
         weatherListview = findViewById(R.id.weatherListview);
