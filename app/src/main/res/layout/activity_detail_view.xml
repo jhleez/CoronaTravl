@@ -167,7 +167,7 @@
                     android:id="@+id/expand_layout_mask"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:visibility="visible"
+                    android:visibility="gone"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/mask_expend_bt">
@@ -176,104 +176,36 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:orientation="vertical"
+                        android:padding="10dp"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent">
 
+                        <TextView
+                            android:id="@+id/testCommon"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="abc" />
 
-                        <LinearLayout
+                        <TextView
+                            android:id="@+id/testInfo"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:orientation="horizontal">
+                            android:text="TextView" />
 
-                            <TextView
-                                android:layout_width="0dp"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="1"
-                                android:text="거리 "
-                                android:textSize="30sp" />
-
-                            <TextView
-                                android:id="@+id/mask_distance_textview"
-                                android:layout_width="0dp"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="1"
-                                android:gravity="center_horizontal"
-                                android:hint="m"
-                                android:textAlignment="center"
-                                android:textSize="30sp" />
-
-                            <LinearLayout
-                                android:layout_width="0dp"
-                                android:layout_height="match_parent"
-                                android:layout_weight="0.5" />
-
-                            <TextView
-                                android:layout_width="0dp"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="1"
-                                android:text="재고 "
-                                android:textSize="30sp" />
-
-                            <TextView
-                                android:id="@+id/mask_count_textview"
-                                android:layout_width="0dp"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="1"
-                                android:gravity="center_horizontal"
-                                android:hint="개"
-                                android:textAlignment="center"
-                                android:textSize="30sp" />
-                        </LinearLayout>
-
-                        <LinearLayout
-                            android:layout_marginTop="3dp"
+                        <TextView
+                            android:id="@+id/testImage"
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content">
+                            android:layout_height="wrap_content"
+                            android:text="TextView" />
 
-                            <TextView
-                                android:layout_width="0dp"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="1"
-                                android:drawableLeft="@drawable/plenty_24dp"
-                                android:text="수량많음" />
-
-                            <TextView
-                                android:layout_width="0dp"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="1"
-                                android:drawableLeft="@drawable/middle_24dp"
-                                android:text="수량많음" />
-
-                            <TextView
-                                android:layout_width="0dp"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="1"
-                                android:drawableLeft="@drawable/little_24dp"
-                                android:text="수량많음" />
-
-                            <TextView
-                                android:layout_width="0dp"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="1"
-                                android:drawableLeft="@drawable/none_24dp"
-                                android:text="수량많음" />
-
-
-                        </LinearLayout>
-
-                        <LinearLayout
-                            android:layout_marginTop="10dp"
+                        <TextView
+                            android:id="@+id/testMask"
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content">
+                            android:layout_height="wrap_content"
+                            android:text="TextView" />
 
-                            <androidx.viewpager.widget.ViewPager
-                                android:id="@+id/mask_viewpager"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content" />
-                        </LinearLayout>
                     </LinearLayout>
-
 
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
@@ -349,41 +281,11 @@
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent">
 
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:orientation="vertical"
-                            android:padding="10dp"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="parent">
-
-                            <TextView
-                                android:id="@+id/testCommon"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="abc" />
-
-                            <TextView
-                                android:id="@+id/testInfo"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:text="TextView" />
-
-                            <TextView
-                                android:id="@+id/testImage"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:text="TextView" />
-
-                            <TextView
-                                android:id="@+id/testMask"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:text="TextView" />
-
-                        </LinearLayout>
-
+                        <TextView
+                            android:textSize="50sp"
+                            android:text="코로나 정보"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"/>
 
 
                     </LinearLayout>
@@ -402,6 +304,3 @@
 
 
 </LinearLayout>
-
-
-
