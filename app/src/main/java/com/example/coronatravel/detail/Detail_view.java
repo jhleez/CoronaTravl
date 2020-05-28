@@ -7,6 +7,7 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.viewpager.widget.ViewPager;
 
 import android.content.Intent;
 import android.database.Cursor;
@@ -22,6 +23,7 @@ import android.widget.CheckBox;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.coronatravel.Adapter.MaskSwipeAdapter;
 import com.example.coronatravel.DbOpenHelper;
 import com.example.coronatravel.HttpReqTask;
 import com.example.coronatravel.MainActivity;
@@ -41,6 +43,9 @@ public class    Detail_view extends AppCompatActivity {
     DbOpenHelper mDbOpenHelper;
     String addr1, contentid,contenttypeid,firstimage,title;
     ConstraintLayout weatehr_expandlayout,mask_expandlayout,corona_expandlayout;
+
+    ViewPager viewPager_mask;
+    MaskSwipeAdapter maskSwipeAdapter;
 
     private RecyclerView weatherListview;
     private myWeatherAdapter weatherAdapter;
@@ -70,6 +75,8 @@ public class    Detail_view extends AppCompatActivity {
         weathercardview=findViewById(R.id.weather_cardview);
         maskcardview=findViewById(R.id.mask_cardview);
         coronacardview=findViewById(R.id.corona_cardview);
+
+        viewPager_mask=findViewById(R.id.mask_viewpager);
 
         weatherexpendbt.setOnClickListener(new View.OnClickListener() {
             @RequiresApi(api = Build.VERSION_CODES.KITKAT)
@@ -279,7 +286,7 @@ public class    Detail_view extends AppCompatActivity {
             testImage.setText("\n\n텝4에 들어갈 추가이미지 중 첫 번째: " + detailImage.Images.get(0));
         }
 
-        String dist="1";
+        String dist="10000";
         String maskUrl ="";
         maskUrl = "https://8oi9s0nnth.apigw.ntruss.com/corona19-masks/v1/storesByGeo/json?" +
                 "lat="+detail_C.getMapy()+"&" +
@@ -302,6 +309,9 @@ public class    Detail_view extends AppCompatActivity {
                     + "\n주소 : " + MainActivity.MASK_AraayList.get(0).getAddr()
                     + "\n재고 : " + MainActivity.MASK_AraayList.get(0).getRemain_stat());
         }
+
+        maskSwipeAdapter = new MaskSwipeAdapter(getSupportFragmentManager(),MainActivity.MASK_AraayList);
+        if(MainActivity.MASK_AraayList.size()!=0) viewPager_mask.setAdapter(maskSwipeAdapter);
     }
 
     public void init() {
