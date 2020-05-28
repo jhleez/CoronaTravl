@@ -82,6 +82,8 @@ public class Mask {
                 addr=subJsonObject.getString("addr");
                 name = subJsonObject.getString("name");
                 remain_stat = subJsonObject.getString("remain_stat");
+                if(remain_stat.equals("break")) continue;;
+                if(remain_stat.equals("null"))continue;
                 type = subJsonObject.getString("type");
                 stock_at = subJsonObject.getString("stock_at");
                 Log.d("마스크","어레이리스트 추가");

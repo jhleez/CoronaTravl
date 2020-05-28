@@ -30,6 +30,9 @@ import com.example.coronatravel.HttpReqTask;
 import com.example.coronatravel.MainActivity;
 import com.example.coronatravel.Mask;
 import com.example.coronatravel.R;
+import com.example.coronatravel.ShortWeather;
+import com.example.coronatravel.TypeId;
+import com.example.coronatravel.WeatherInfo;
 import com.example.coronatravel.myWeatherAdapter;
 import com.example.coronatravel.myWeatherListviewDecoration;
 import com.example.coronatravel.weatherListViewItem;
@@ -40,7 +43,11 @@ import org.jsoup.select.Elements;
 import org.w3c.dom.Text;
 
 import java.io.IOException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.Locale;
 
 public class    Detail_view extends AppCompatActivity {
 
@@ -143,8 +150,6 @@ public class    Detail_view extends AppCompatActivity {
         });
 
 
-        weatherListview = findViewById(R.id.weatherListview);
-        init();
 
         Intent intent = getIntent();
         int position = intent.getExtras().getInt("position");
@@ -212,6 +217,9 @@ public class    Detail_view extends AppCompatActivity {
 
         detail_C = detail_C.JSONParsing(JSONFromdetailCommonUrl);
         addressCode = Integer.parseInt(detail_C.getAreacode());
+
+        weatherListview = findViewById(R.id.weatherListview);
+        init(addressCode);
         //모든 데이터가 다들어 있는게 아님 이 케이스의 경우 홈페이지, 전화번호, 전화번호 명이없음
 //        testCommon.setText(
 //                "텝1에 들어갈 공통정보" +
@@ -397,12 +405,83 @@ public class    Detail_view extends AppCompatActivity {
         new getAddressPlus().execute(pathAddress);
     }
 
-    public void init() {
+    public void init(int addressCode) {
+        Date currentTime = Calendar.getInstance().getTime();
+        SimpleDateFormat dayFormat = new SimpleDateFormat("dd", Locale.getDefault());
+        SimpleDateFormat monthFormat = new SimpleDateFormat("MM", Locale.getDefault());
+        SimpleDateFormat yearFormat = new SimpleDateFormat("yyyy", Locale.getDefault());
+
+        String year = yearFormat.format(currentTime);
+        String month1 = monthFormat.format(currentTime);
+        String day = dayFormat.format(currentTime);
+
+        String today = year + month1 + day;
+
+        String pagenumber = "1";
+        String ShortWeatherURL = "http://apis.data.go.kr/1360000/VilageFcstInfoService/getVilageFcst?serviceKey=LuQHzrmd0D8xz9tDN8srTETgDoVfSeUV%2FAvFrhKX%2BtTdNMG7GJINi%2B6INCB7yMFJXXIO%2FKb7JfNeFdA%2BNmEIqA%3D%3D" +
+                "&numOfRows=50" +
+                "&pageNo=" + pagenumber +
+                "&dataType=JSON" +
+                "&base_date=" + today +
+                "&base_time=0500&" + TypeId.nxny(String.valueOf(addressCode));
+                //"&nx=55&ny=127";
+
+        Log.d("TAG",ShortWeatherURL);
+        Toast.makeText(Detail_view.this,ShortWeatherURL,Toast.LENGTH_LONG).show();
+
+        String JSONFromShortWeatherURL = "a";
+        try {
+            JSONFromShortWeatherURL = new HttpReqTask().execute(ShortWeatherURL).get();
+        } catch (Exception e) {
+            Log.d("TAG", "jsonparsing error");
+        }
+        String totalCount = ShortWeather.JSONParsing(JSONFromShortWeatherURL);
+        int totalPage = (Integer.parseInt(totalCount) / 50) + 1;
+        pagenumber = String.valueOf(Integer.parseInt(pagenumber) + 1);
+
+        while (Integer.parseInt(pagenumber) <= totalPage) {
+            ShortWeatherURL = "http://apis.data.go.kr/1360000/VilageFcstInfoService/getVilageFcst?serviceKey=LuQHzrmd0D8xz9tDN8srTETgDoVfSeUV%2FAvFrhKX%2BtTdNMG7GJINi%2B6INCB7yMFJXXIO%2FKb7JfNeFdA%2BNmEIqA%3D%3D" +
+                    "&numOfRows=50" +
+                    "&pageNo=" + pagenumber +
+                    "&dataType=JSON" +
+                    "&base_date=" + today +
+                    "&base_time=0500&" +  TypeId.nxny(String.valueOf(addressCode));
+                    //"&nx=55&ny=127";
+            try {
+                JSONFromShortWeatherURL = new HttpReqTask().execute(ShortWeatherURL).get();
+            } catch (Exception e) {
+                Log.d("TAG", "jsonparsing error");
+            }
+            ShortWeather.JSONParsing(JSONFromShortWeatherURL);
+            pagenumber = String.valueOf(Integer.parseInt(pagenumber) + 1);
+        }
+
+
+        String ShortWeatherURL2 = "http://apis.data.go.kr/1360000/VilageFcstInfoService/getVilageFcst?serviceKey=LuQHzrmd0D8xz9tDN8srTETgDoVfSeUV%2FAvFrhKX%2BtTdNMG7GJINi%2B6INCB7yMFJXXIO%2FKb7JfNeFdA%2BNmEIqA%3D%3D" +
+                "&numOfRows=50" +
+                "&pageNo=" + "1" +
+                "&dataType=JSON" +
+                "&base_date=" + today +
+                "&base_time=0200&" +   TypeId.nxny(String.valueOf(addressCode));
+                //"&nx=55&ny=127";
+
+
+        String JSONFromShortWeatherURL2 = "";
+        try {
+            JSONFromShortWeatherURL2 = new HttpReqTask().execute(ShortWeatherURL2).get();
+        } catch (Exception e) {
+            Log.d("TAG", "jsonparsing error");
+        }
+
+        String a = ShortWeather.JSONParsing2(JSONFromShortWeatherURL2);
+        MainActivity.ShortWeather_ArrayList.get(0).setTMN(a);
 
         layoutManager = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
         weatherListview.setLayoutManager(layoutManager);
 
         itemList = new ArrayList<>();
+
+//        Toast.makeText(Detail_view.this,"size is " + MainActivity.ShortWeather_ArrayList.size(), Toast.LENGTH_SHORT).show();
 
         for (int i = 0; i < MainActivity.ShortWeather_ArrayList.size(); i++) {
             String rainState = MainActivity.ShortWeather_ArrayList.get(i).getPTY();

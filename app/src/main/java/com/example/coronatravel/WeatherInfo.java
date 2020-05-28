@@ -33,8 +33,8 @@ public class WeatherInfo extends AppCompatActivity {
         setContentView(R.layout.activity_weather_info);
         weatherListview = findViewById(R.id.weatherListview);
 
-        //getdata();
-        //init();
+        getdata();
+        init();
     }
 
     public void init() {

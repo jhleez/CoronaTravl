@@ -103,55 +103,55 @@ public class TypeId {
     }
 
     public static String nxny(String x) {
-        if(x.equals(1)){
+        if(x.equals("1")){
             return "nx=60&ny=127";
         }
-        if(x.equals(2)){
+        if(x.equals("2")){
             return "nx=55&ny=124";
         }
-        if(x.equals(3)){
+        if(x.equals("3")){
             return "nx=67&ny=100";
         }
-        if(x.equals(4)){
+        if(x.equals("4")){
             return "nx=89&ny=90";
         }
-        if(x.equals(5)){
+        if(x.equals("5")){
             return "nx=58&ny=74";
         }
-        if(x.equals(6)){
+        if(x.equals("6")){
             return "nx=98&ny=76";
         }
-        if(x.equals(7)){
+        if(x.equals("7")){
             return "nx=102&ny=84";
         }
-        if(x.equals(8)){
+        if(x.equals("8")){
             return "nx=66&ny=103";
         }
-        if(x.equals(31)){
+        if(x.equals("31")){
             return "nx=60&ny=120";
         }
-        if(x.equals(32)){
+        if(x.equals("32")){
             return "nx=73&ny=134";
         }
-        if(x.equals(33)){
+        if(x.equals("33")){
             return "nx=69&ny=107";
         }
-        if(x.equals(34)){
+        if(x.equals("34")){
             return "nx=68&ny=100";
         }
-        if(x.equals(35)){
+        if(x.equals("35")){
             return "nx=89&ny=91";
         }
-        if(x.equals(36)){
+        if(x.equals("36")){
             return "nx=91&ny=77";
         }
-        if(x.equals(37)){
+        if(x.equals("37")){
             return "nx=63&ny=89";
         }
-        if(x.equals(38)){
+        if(x.equals("38")){
             return "nx=51&ny=67";
         }
-        if(x.equals(39)){
+        if(x.equals("39")){
             return "nx=52&ny=38";
         }
         return"";
