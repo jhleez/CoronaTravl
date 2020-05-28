@@ -23,6 +23,7 @@ import com.example.coronatravel.Adapter.ItemAdapter;
 import com.example.coronatravel.LocationBasedList_Class;
 import com.example.coronatravel.MainActivity;
 import com.example.coronatravel.R;
+import com.example.coronatravel.detail.Deatail_UI_Test;
 import com.example.coronatravel.detail.Detail_view;
 
 import java.util.List;
@@ -55,6 +56,16 @@ public class BookmarkFragment extends Fragment {
                 startActivity(intent);
             }
         });
+
+        Button button= root.findViewById(R.id.testbutton111);
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getContext(), Deatail_UI_Test.class);
+                startActivity(intent);
+            }
+        });
+
         return root;
     }
 }

@@ -19,7 +19,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".home"></activity>
+        <activity android:name=".detail.Deatail_UI_Test"></activity>
+        <activity android:name=".home" />
         <activity android:name=".WeatherInfo" />
         <activity android:name=".DbOpenHelper" />
         <activity android:name=".ui.ListViewFragment" />
