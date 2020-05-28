@@ -7,6 +7,7 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.viewpager.widget.ViewPager;
 
 import android.content.Intent;
 import android.database.Cursor;
@@ -22,6 +23,7 @@ import android.widget.CheckBox;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.coronatravel.Adapter.MaskSwipeAdapter;
 import com.example.coronatravel.DbOpenHelper;
 import com.example.coronatravel.HttpReqTask;
 import com.example.coronatravel.MainActivity;
@@ -48,6 +50,9 @@ public class    Detail_view extends AppCompatActivity {
     CardView weathercardview,maskcardview,coronacardview;
     LinearLayoutManager layoutManager;
     ArrayList<weatherListViewItem> itemList;
+
+    ViewPager viewPager_mask;
+    MaskSwipeAdapter maskSwipeAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -116,6 +121,14 @@ public class    Detail_view extends AppCompatActivity {
                 }
             }
         });
+
+        viewPager_mask=findViewById(R.id.mask_viewpager);
+
+        /*maskSwipeAdapter = new MaskSwipeAdapter(getSupportFragmentManager(),MainActivity.MASK_AraayList);
+        if(MainActivity.MASK_AraayList.size()!=0) viewPager_mask.setAdapter(maskSwipeAdapter);*/
+
+
+
 
 
         weatherListview = findViewById(R.id.weatherListview);
@@ -279,7 +292,7 @@ public class    Detail_view extends AppCompatActivity {
             testImage.setText("\n\n텝4에 들어갈 추가이미지 중 첫 번째: " + detailImage.Images.get(0));
         }
 
-        String dist="1";
+        String dist="10000";
         String maskUrl ="";
         maskUrl = "https://8oi9s0nnth.apigw.ntruss.com/corona19-masks/v1/storesByGeo/json?" +
                 "lat="+detail_C.getMapy()+"&" +
@@ -298,10 +311,17 @@ public class    Detail_view extends AppCompatActivity {
             testMask.setText("근방 2km 이내의 마스크 판매처 없음");
         }
         else {
-            testMask.setText("\n\n근방 2km 이내의 마스크 판매처 중 1개\n이름 : " + MainActivity.MASK_AraayList.get(0).getName()
-                    + "\n주소 : " + MainActivity.MASK_AraayList.get(0).getAddr()
-                    + "\n재고 : " + MainActivity.MASK_AraayList.get(0).getRemain_stat());
+            testMask.setText(String.valueOf(MainActivity.MASK_AraayList.size()));
+//            testMask.setText("\n\n근방 2km 이내의 마스크 판매처 중 1개\n이름 : " + MainActivity.MASK_AraayList.get(0).getName()
+//                    + "\n주소 : " + MainActivity.MASK_AraayList.get(0).getAddr()
+//                    + "\n재고 : " + MainActivity.MASK_AraayList.get(0).getRemain_stat()
+//                    +"\n"+String.valueOf(MainActivity.MASK_AraayList.size())
+//            );
         }
+
+        maskSwipeAdapter = new MaskSwipeAdapter(getSupportFragmentManager(),MainActivity.MASK_AraayList);
+        if(MainActivity.MASK_AraayList.size()!=0) viewPager_mask.setAdapter(maskSwipeAdapter);
+
     }
 
     public void init() {

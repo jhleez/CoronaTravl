@@ -14,24 +14,24 @@ public class MaskSwipeAdapter extends FragmentStatePagerAdapter {
 
     public MaskSwipeAdapter(FragmentManager fm, ArrayList<Mask> arrayList) {
         super(fm);
-        this.arrayList=arrayList;
+        this.arrayList = arrayList;
     }
 
     @Override
     public Fragment getItem(int position) {
-        Fragment fragment=null;
-        for(int i=0;i<((arrayList.size()-1)/3)+1;i++){
-            ArrayList<Mask> list=new ArrayList<>();
-            for(int j=0;j<3;j++){
-                if(arrayList.get(3*i+j)!=null) list.add(arrayList.get(3*i+j));
-            }
-            fragment= new MaskFragment(list);
+        Fragment fragment = null;
+        ArrayList<Mask> list = new ArrayList<>();
+        for (int j = 0; j < 3; j++) {
+            if (arrayList.size() >= 3 * position + j + 1) list.add(arrayList.get(3 * position + j));
+            else break;
         }
+        fragment = new MaskFragment(list);
+
         return fragment;
     }
 
     @Override
     public int getCount() {
-        return ((arrayList.size()-1)/3)+1;
+        return ((arrayList.size() - 1) / 3) + 1;
     }
 }

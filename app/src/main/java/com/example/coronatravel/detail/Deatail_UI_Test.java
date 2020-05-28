@@ -17,11 +17,11 @@ public class Deatail_UI_Test extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_deatail__u_i__test);
-        viewPager_mask=findViewById(R.id.mask_viewpager);
+       /* viewPager_mask=findViewById(R.id.mask_viewpager);
 
         maskSwipeAdapter = new MaskSwipeAdapter(getSupportFragmentManager(),MainActivity.MASK_AraayList);
         if(MainActivity.MASK_AraayList.size()!=0) viewPager_mask.setAdapter(maskSwipeAdapter);
-
+*/
 
 
 

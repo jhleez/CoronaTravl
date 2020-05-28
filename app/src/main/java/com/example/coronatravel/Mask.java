@@ -78,6 +78,7 @@ public class Mask {
             for(int i=0;i<jsonArray_stores.length();i++){
                 JSONObject subJsonObject = jsonArray_stores.getJSONObject(i);
 
+
                 addr=subJsonObject.getString("addr");
                 name = subJsonObject.getString("name");
                 remain_stat = subJsonObject.getString("remain_stat");
@@ -86,7 +87,6 @@ public class Mask {
                 Log.d("마스크","어레이리스트 추가");
                 Mask subclass = new Mask(addr,name,remain_stat,type,stock_at);
                 MainActivity.MASK_AraayList.add(subclass);
-                return true;
             }
         } catch (JSONException e) {
             Log.d("TAG","parsing error");

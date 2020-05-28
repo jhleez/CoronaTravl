@@ -37,7 +37,7 @@ public class HttpReqTask extends AsyncTask <String,String,String>{
             BufferedReader reader = new BufferedReader(new InputStreamReader(is,"UTF-8"));
             while((line = reader.readLine()) != null) {
                 result += line + '\n';
-                if( result.length() > 20000) break;
+                //if( result.length() > 20000) break;
             }
             reader.close();
             conn.disconnect();
