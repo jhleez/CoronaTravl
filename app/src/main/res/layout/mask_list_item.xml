@@ -7,14 +7,14 @@
     android:orientation="horizontal">
 
     <LinearLayout
-        android:layout_weight="1"
+        android:gravity="center"
+        android:layout_weight="0.8"
         android:layout_width="0dp"
         android:layout_height="match_parent">
         <ImageView
             android:id="@+id/mask_list_item_imageview"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:padding="10dp" />
+            android:layout_width="40dp"
+            android:layout_height="40dp" />
     </LinearLayout>
 
     <LinearLayout
