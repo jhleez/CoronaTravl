@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.Intent;
 import android.database.Cursor;
 import android.graphics.drawable.Drawable;
+import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
 import android.transition.AutoTransition;
@@ -27,11 +28,16 @@ import com.example.coronatravel.HttpReqTask;
 import com.example.coronatravel.MainActivity;
 import com.example.coronatravel.Mask;
 import com.example.coronatravel.R;
-import com.example.coronatravel.TypeId;
 import com.example.coronatravel.myWeatherAdapter;
 import com.example.coronatravel.myWeatherListviewDecoration;
 import com.example.coronatravel.weatherListViewItem;
 
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
+import org.jsoup.select.Elements;
+import org.w3c.dom.Text;
+
+import java.io.IOException;
 import java.util.ArrayList;
 
 public class    Detail_view extends AppCompatActivity {
@@ -49,10 +55,22 @@ public class    Detail_view extends AppCompatActivity {
     LinearLayoutManager layoutManager;
     ArrayList<weatherListViewItem> itemList;
 
+    private int addressCode = 0, addressIndex;
+    private String cityName = null;
+    private TextView totalP, citynameP, plusP, dischargedP, curedP, deathP;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail_view);
+
+        totalP = (TextView)findViewById(R.id.AddressTotalTextview);
+        citynameP = (TextView)findViewById(R.id.AddressCitynameTextview);
+        plusP = (TextView)findViewById(R.id.AddressPlusTextview);
+        dischargedP = (TextView)findViewById(R.id.AddressDischarged);
+        curedP = (TextView)findViewById(R.id.AddressCured);
+        deathP = (TextView)findViewById(R.id.AddressDeath);
+
         testCommon = (TextView) findViewById(R.id.testCommon);
         testInfo = (TextView) findViewById(R.id.testInfo);
         checkbox = (CheckBox)findViewById(R.id.checkbox);
@@ -147,7 +165,7 @@ public class    Detail_view extends AppCompatActivity {
         } catch (Exception e) {
             Log.d("TAG", "jsonparsing error");
         }
-        detail_C = detail_C.JSONParsing(JSONFromdetailCommonUrl);
+
 
        //체크박스 처리
         int i=0;
@@ -186,6 +204,7 @@ public class    Detail_view extends AppCompatActivity {
 
 
         detail_C = detail_C.JSONParsing(JSONFromdetailCommonUrl);
+        addressCode = Integer.parseInt(detail_C.getAreacode());
         //모든 데이터가 다들어 있는게 아님 이 케이스의 경우 홈페이지, 전화번호, 전화번호 명이없음
         testCommon.setText(
                 "텝1에 들어갈 공통정보" +
@@ -194,7 +213,61 @@ public class    Detail_view extends AppCompatActivity {
                         "\n주소 : " + detail_C.getAddr1() +
                         "\n우편번호 : " + detail_C.getZipcode()
         );
-        TypeId.nxny(detail_C.getAreacode());
+
+        if(addressCode == 1){
+            cityName = "서울특별시";
+            addressIndex = 1;
+        }else if(addressCode == 2){
+            cityName = "인천광역시";
+            addressIndex = 4;
+        }else if(addressCode == 3){
+            cityName = "대전광역시";
+            addressIndex = 6;
+        }else if(addressCode == 4){
+            cityName = "대구광역시";
+            addressIndex = 3;
+        }else if(addressCode == 5){
+            cityName = "광주광역시";
+            addressIndex = 5;
+        }else if(addressCode == 6){
+            cityName = "부산광역시";
+            addressIndex = 2;
+        }else if(addressCode == 7){
+            cityName = "울산광역시";
+            addressIndex = 7;
+        }else if(addressCode == 8){
+            cityName = "세종특별자치시";
+            addressIndex = 8;
+       }else if(addressCode == 31){
+            cityName = "경기도";
+            addressIndex = 9;
+        }else if(addressCode == 32){
+            cityName = "강원도";
+            addressIndex = 10;
+        }else if(addressCode == 33){
+            cityName = "충청북도";
+            addressIndex = 11;
+        }else if(addressCode == 34){
+            cityName = "충청남도";
+            addressIndex = 12;
+        }else if(addressCode == 35){
+            cityName = "경상북도";
+            addressIndex = 15;
+        }else if(addressCode == 36){
+            cityName = "경상남도";
+            addressIndex = 16;
+        }else if(addressCode == 37){
+            cityName = "전라북도";
+            addressIndex = 13;
+        }else if(addressCode == 38){
+            cityName = "전라남도";
+            addressIndex = 14;
+        }else if(addressCode == 39){
+            cityName = "제주특별자치도";
+            addressIndex = 17;
+        }
+        citynameP.setText(cityName);
+        init2();
 
         String detailInfoUrl = "http://api.visitkorea.or.kr/openapi/service/rest/KorService/detailIntro?" +
                 "ServiceKey="+ServiceKey+
@@ -304,6 +377,16 @@ public class    Detail_view extends AppCompatActivity {
         }
     }
 
+    public void init2() {
+        String pathAddress = "http://ncov.mohw.go.kr/bdBoardList_Real.do?brdId=1&brdGubun=13&ncvContSeq=&contSeq=&board_id=&gubun=";
+
+        new getAddressDiagnosis().execute(pathAddress);
+        new getAddressDischarged().execute(pathAddress);
+        new getAddressCured().execute(pathAddress);
+        new getAddressDeath().execute(pathAddress);
+        new getAddressPlus().execute(pathAddress);
+    }
+
     public void init() {
 
         layoutManager = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
@@ -345,5 +428,110 @@ public class    Detail_view extends AppCompatActivity {
 
         myWeatherListviewDecoration decoration = new myWeatherListviewDecoration();
         weatherListview.addItemDecoration(decoration);
+    }
+
+    private class getAddressDischarged extends AsyncTask<String, Void, String> {
+        // String 으로 값을 전달받은 값을 처리하고, Boolean 으로 doInBackground 결과를 넘겨준다.
+        @Override
+        protected String doInBackground(String... params) {
+            try {
+                Document document = Jsoup.connect(params[0].toString()).get(); // Web에서 내용을 가져온다.
+                Elements elements = document.select("div.data_table").select("td.number");
+                String now = elements.get(addressIndex * 8 + 3).text();
+                return now;
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(String result) {
+            dischargedP.setText(result);
+        }
+    }
+
+    private class getAddressCured extends AsyncTask<String, Void, String> {
+        // String 으로 값을 전달받은 값을 처리하고, Boolean 으로 doInBackground 결과를 넘겨준다.
+        @Override
+        protected String doInBackground(String... params) {
+            try {
+                Document document = Jsoup.connect(params[0].toString()).get(); // Web에서 내용을 가져온다.
+                Elements elements = document.select("div.data_table").select("td.number");
+                String now = elements.get(addressIndex * 8 + 5).text();
+                return now;
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(String result) {
+            curedP.setText(result);
+        }
+    }
+
+    private class getAddressDeath extends AsyncTask<String, Void, String> {
+        // String 으로 값을 전달받은 값을 처리하고, Boolean 으로 doInBackground 결과를 넘겨준다.
+        @Override
+        protected String doInBackground(String... params) {
+            try {
+                Document document = Jsoup.connect(params[0].toString()).get(); // Web에서 내용을 가져온다.
+                Elements elements = document.select("div.data_table").select("td.number");
+                String now = elements.get(addressIndex * 8 + 6).text();
+                return now;
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(String result) {
+            deathP.setText(result);
+        }
+    }
+
+    private class getAddressDiagnosis extends AsyncTask<String, Void, String> {
+        // String 으로 값을 전달받은 값을 처리하고, Boolean 으로 doInBackground 결과를 넘겨준다.
+        @Override
+        protected String doInBackground(String... params) {
+            try {
+                Document document = Jsoup.connect(params[0].toString()).get(); // Web에서 내용을 가져온다.
+                Elements elements = document.select("div.data_table").select("td.number");
+                String now = elements.get(addressIndex * 8 + 3).text();
+                return now;
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(String result) {
+            totalP.setText(result);
+        }
+    }
+
+    private class getAddressPlus extends AsyncTask<String, Void, String> {
+        // String 으로 값을 전달받은 값을 처리하고, Boolean 으로 doInBackground 결과를 넘겨준다.
+        @Override
+        protected String doInBackground(String... params) {
+            try {
+                Document document = Jsoup.connect(params[0].toString()).get(); // Web에서 내용을 가져온다.
+                Elements elements = document.select("div.data_table").select("td.number");
+                String now = elements.get(addressIndex * 8).text();
+                return "+" + now;
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(String result) {
+            plusP.setText(result);
+        }
     }
 }
