@@ -51,7 +51,7 @@ public class MaskAdapter extends BaseAdapter {
         address.setText(mask.getAddr());
         name.setText(mask.getName());
 
-        if(mask.getRemain_stat().equals("plenty")) imageView.setImageResource(R.drawable.plenty);
+        if(mask.getRemain_stat().equals("plenty")) imageView.setImageResource(R.drawable.plenty_24dp);
         else if(mask.getRemain_stat().equals("some")) imageView.setImageResource(R.drawable.middle_24dp);
         else if(mask.getRemain_stat().equals("few")) imageView.setImageResource(R.drawable.little_24dp);
         else if(mask.getRemain_stat().equals("empty")) imageView.setImageResource(R.drawable.none_24dp);
