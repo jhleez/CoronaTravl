@@ -27,6 +27,7 @@ import com.example.coronatravel.HttpReqTask;
 import com.example.coronatravel.MainActivity;
 import com.example.coronatravel.Mask;
 import com.example.coronatravel.R;
+import com.example.coronatravel.TypeId;
 import com.example.coronatravel.myWeatherAdapter;
 import com.example.coronatravel.myWeatherListviewDecoration;
 import com.example.coronatravel.weatherListViewItem;
@@ -146,7 +147,7 @@ public class    Detail_view extends AppCompatActivity {
         } catch (Exception e) {
             Log.d("TAG", "jsonparsing error");
         }
-
+        detail_C = detail_C.JSONParsing(JSONFromdetailCommonUrl);
 
        //체크박스 처리
         int i=0;
@@ -193,6 +194,7 @@ public class    Detail_view extends AppCompatActivity {
                         "\n주소 : " + detail_C.getAddr1() +
                         "\n우편번호 : " + detail_C.getZipcode()
         );
+        TypeId.nxny(detail_C.getAreacode());
 
         String detailInfoUrl = "http://api.visitkorea.or.kr/openapi/service/rest/KorService/detailIntro?" +
                 "ServiceKey="+ServiceKey+
