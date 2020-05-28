@@ -90,6 +90,14 @@ public class home extends AppCompatActivity {
                 "&defaultYN=Y&firstImageYN=Y&areacodeYN=Y&catcodeYN=Y&addrinfoYN=Y&mapinfoYN=Y&overviewYN=Y&transGuideYN=Y" +
                 "&_type=json";
 
+//        String detailCommonUrl = "http://api.visitkorea.or.kr/openapi/service/rest/KorService/detailCommon?" +
+//                "ServiceKey=" + ServiceKey +
+//                "&contentTypeId=" + "15" +
+//                "&contentId=" + "2647367" +
+//                "&MobileOS=AND&MobileApp=CoronaTravel" +
+//                "&defaultYN=Y&firstImageYN=Y&areacodeYN=Y&catcodeYN=Y&addrinfoYN=Y&mapinfoYN=Y&overviewYN=Y&transGuideYN=Y" +
+//                "&_type=json";
+
         String JSONFromdetailCommonUrl = "";
         try {
             JSONFromdetailCommonUrl = new HttpReqTask().execute(detailCommonUrl).get();
@@ -97,14 +105,15 @@ public class home extends AppCompatActivity {
             Log.d("TAG", "jsonparsing error");
         }
 
-        festival.setOverview(OverviewJSONParsing(JSONFromdetailCommonUrl));
-        try{
-            String a = URLDecoder.decode(festival.getOverview());
-            test.setText(a);
-        }catch (Exception e) {
-
-        }
-        test.setText(festival.getOverview());
+        String a = OverviewJSONParsing(JSONFromdetailCommonUrl);
+        a = a.replace("<b>","");
+        a = a.replace("공지사항","공지사항\n");
+        a = a.replace("<br>","");
+        a = a.replace("</b><u><a href=\"https://korean.visitkorea.or.kr/notice/news_detail.do?nwsid=8cdd65e1-59f1-4904-8bc9-884001e40911","");
+        a = a.replace("\" title=\"여행정보 변동사항 페이지로 이동\">→ 코로나바이러스감염증-19 여행정보 변동사항 확인하기","");
+        a = a.replace("</a></u><"+festival.getTitle()+">","");
+        festival.setOverview(a);
+        test.setText(a);
 
 
         String URI = festival.getFirstimage();
