@@ -101,6 +101,10 @@ public class Detail_view extends AppCompatActivity {
         dischargedP = (TextView) findViewById(R.id.AddressDischarged);
         curedP = (TextView) findViewById(R.id.AddressCured);
         deathP = (TextView) findViewById(R.id.AddressDeath);
+        detailRepeat.repeat_array.clear();
+        detailRepeat_32.repeat_array.clear();;
+        detailRepeat_25.repeat_array.clear();
+        detailImage.Images.clear();
 
 //        testCommon = (TextView) findViewById(R.id.testCommon);
 //        testInfo = (TextView) findViewById(R.id.testInfo);

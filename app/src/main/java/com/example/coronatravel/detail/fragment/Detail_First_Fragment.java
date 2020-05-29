@@ -40,15 +40,7 @@ public class Detail_First_Fragment extends Fragment {
                 "\n홈페이지 : " + detail_C1.getHomepage() +
         "\n\n" + detail_C1.getOverview());
 
-
-
-
-
-
-
         return view;
-
-
 
 
     }
