@@ -585,7 +585,6 @@ public class Detail_view extends AppCompatActivity {
         //"&nx=55&ny=127";
 
         Log.d("TAG", ShortWeatherURL);
-        Toast.makeText(Detail_view.this, ShortWeatherURL, Toast.LENGTH_LONG).show();
 
         String JSONFromShortWeatherURL = "a";
         try {
