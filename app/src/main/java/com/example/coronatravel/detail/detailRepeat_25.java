@@ -7,7 +7,10 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.ArrayList;
+
 public class detailRepeat_25 {
+    public static ArrayList<detailRepeat_25> repeat_array = new ArrayList<>();
     public detailRepeat_25() {
     }
 
@@ -90,6 +93,7 @@ public class detailRepeat_25 {
                 }
 
                 subclass = new detailRepeat_25(subdetailalt, subdetailimg,subdetailoverview);
+                repeat_array.add(subclass);
             }
         } catch (JSONException e) {
             Log.d("TAG", "parsing error");
