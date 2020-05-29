@@ -388,6 +388,7 @@
                                             android:layout_width="wrap_content"
                                             android:layout_height="wrap_content"
                                             android:layout_weight="1"
+                                            android:textSize="17sp"
                                             android:text="지역 (시도별)" />
 
                                         <TextView
@@ -396,7 +397,7 @@
                                             android:layout_height="wrap_content"
                                             android:layout_weight="1"
                                             android:gravity="end"
-                                            android:text="test" />
+                                            android:textSize="17sp" />
 
                                     </LinearLayout>
 
@@ -410,6 +411,7 @@
                                             android:layout_width="wrap_content"
                                             android:layout_height="wrap_content"
                                             android:layout_weight="1"
+                                            android:textSize="20sp"
                                             android:text="누적 확진환자" />
 
                                         <TextView
@@ -417,8 +419,8 @@
                                             android:layout_width="wrap_content"
                                             android:layout_height="wrap_content"
                                             android:layout_weight="1"
-                                            android:gravity="end"
-                                            android:text="test" />
+                                            android:textSize="20sp"
+                                            android:gravity="end" />
 
                                     </LinearLayout>
 
@@ -432,6 +434,8 @@
                                             android:layout_width="wrap_content"
                                             android:layout_height="wrap_content"
                                             android:layout_weight="1"
+                                            android:textSize="15sp"
+                                            android:textColor="@android:color/holo_blue_light"
                                             android:text="전일 대비 증감" />
 
                                         <TextView
@@ -439,8 +443,9 @@
                                             android:layout_width="wrap_content"
                                             android:layout_height="wrap_content"
                                             android:layout_weight="1"
-                                            android:gravity="end"
-                                            android:text="test" />
+                                            android:textSize="15sp"
+                                            android:textColor="@android:color/holo_blue_light"
+                                            android:gravity="end" />
 
                                     </LinearLayout>
 
@@ -454,6 +459,7 @@
                                             android:layout_width="wrap_content"
                                             android:layout_height="wrap_content"
                                             android:layout_weight="1"
+                                            android:textSize="20sp"
                                             android:text="격리중" />
 
                                         <TextView
@@ -462,7 +468,7 @@
                                             android:layout_height="wrap_content"
                                             android:layout_weight="1"
                                             android:gravity="end"
-                                            android:text="test" />
+                                            android:textSize="20sp" />
 
                                     </LinearLayout>
 
@@ -476,6 +482,7 @@
                                             android:layout_width="wrap_content"
                                             android:layout_height="wrap_content"
                                             android:layout_weight="1"
+                                            android:textSize="20sp"
                                             android:text="누적 격리해제" />
 
                                         <TextView
@@ -484,7 +491,7 @@
                                             android:layout_height="wrap_content"
                                             android:layout_weight="1"
                                             android:gravity="end"
-                                            android:text="test" />
+                                            android:textSize="20sp" />
 
                                     </LinearLayout>
 
@@ -498,6 +505,7 @@
                                             android:layout_width="wrap_content"
                                             android:layout_height="wrap_content"
                                             android:layout_weight="1"
+                                            android:textSize="20sp"
                                             android:text="사망자" />
 
                                         <TextView
@@ -505,8 +513,8 @@
                                             android:layout_width="wrap_content"
                                             android:layout_height="wrap_content"
                                             android:layout_weight="1"
-                                            android:gravity="end"
-                                            android:text="test" />
+                                            android:textSize="20sp"
+                                            android:gravity="end" />
 
                                     </LinearLayout>
 
