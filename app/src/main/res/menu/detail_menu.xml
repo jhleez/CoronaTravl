@@ -3,21 +3,25 @@
     xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
+        app:cnb_backgroundColor="#fff"
         android:title="first"
         android:id="@+id/first_menu"
         android:icon="@drawable/first_menu_24dp"
         ></item>
     <item
+        app:cnb_backgroundColor="#fff"
         android:title="second"
         android:id="@+id/second_menu"
         android:icon="@drawable/second_menu_24dp"
         ></item>
     <item
+        app:cnb_backgroundColor="#fff"
         android:title="third"
         android:id="@+id/third_menu"
         android:icon="@drawable/third_menu_24dp"
         ></item>
     <item
+        app:cnb_backgroundColor="#fff"
         android:title="forth"
         android:id="@+id/fourth_menu"
         android:icon="@drawable/fourth_menu_24dp"
