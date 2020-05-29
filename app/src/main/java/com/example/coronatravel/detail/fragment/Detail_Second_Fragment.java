@@ -55,7 +55,7 @@ public class Detail_Second_Fragment extends Fragment {
         contentid = Data.contentid;
         contenttypeid = Data.contenttypeid;
         second = view.findViewById(R.id.second);
-
+        second.setText("");
         if (contenttypeid.equals("12")) {
             second.setText("유모차 대여 정보 : " + detail_I_12.getChkbabycarriage() +
                     "\n주차 시설 : " + detail_I_12.getParking() +

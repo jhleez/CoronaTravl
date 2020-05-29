@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
 
@@ -29,11 +30,13 @@ public class Detail_Third_Fragment extends Fragment {
 
 
         third = view.findViewById(R.id.third);
+        third.setText("");
         String repeat="";
         for(int i =0;i<detailRepeat.repeat_array.size();i++){
             repeat = repeat + detailRepeat.repeat_array.get(i).getInfoname() +": "+detailRepeat.repeat_array.get(i).getInfotext() + "\n\n";
         }
         third.setText(repeat);
+        Toast.makeText(getContext(), detailRepeat.repeat_array.size()+"", Toast.LENGTH_SHORT).show();
         return view;
     }
 }
