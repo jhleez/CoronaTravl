@@ -28,6 +28,8 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"/>
         <TextView
+            android:singleLine="true"
+            android:ellipsize="marquee"
             android:id="@+id/mask_list_item_address"
             android:layout_weight="1"
             android:layout_width="match_parent"

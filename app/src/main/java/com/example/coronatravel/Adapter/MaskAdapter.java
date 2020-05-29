@@ -1,5 +1,6 @@
 package com.example.coronatravel.Adapter;
 
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -50,6 +51,9 @@ public class MaskAdapter extends BaseAdapter {
 
         address.setText(mask.getAddr());
         name.setText(mask.getName());
+        address.setSelected(true);
+
+        if(address.length()>=address.getMaxWidth()) address.setEllipsize(TextUtils.TruncateAt.MARQUEE);
 
         if(mask.getRemain_stat().equals("plenty")) imageView.setImageResource(R.drawable.plenty_24dp);
         else if(mask.getRemain_stat().equals("some")) imageView.setImageResource(R.drawable.middle_24dp);
