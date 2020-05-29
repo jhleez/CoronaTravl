@@ -83,8 +83,8 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-        Intent intent = new Intent(this, WeatherInfo.class);
-        //startActivity(intent);
+        Intent intent = new Intent(this, home.class);
+        startActivity(intent);
     }
 
     @Override

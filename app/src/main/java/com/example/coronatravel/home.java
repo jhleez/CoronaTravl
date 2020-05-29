@@ -4,6 +4,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -30,7 +32,7 @@ public class home extends AppCompatActivity {
     TextView test;
     ImageView firstImage;
     String totalcount;
-
+    Button change;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -51,7 +53,7 @@ public class home extends AppCompatActivity {
                 "ServiceKey=" + ServiceKey +
                 "&eventStartDate=" + startdate +
                 "&eventEndDate=" + enddate +
-                "&areaCode=&sigunguCode=&cat1=A02&cat2=&cat3=&listYN=Y" +
+                "&areaCode=&sigunguCode=&cat1=A02&cat2=A0207&cat3=&listYN=Y" +
                 "&MobileOS=AND&MobileApp=CoronaTravel" +
                 "&arrange=O&numOfRows=1&pageNo=1&_type=json";
 
@@ -63,15 +65,18 @@ public class home extends AppCompatActivity {
         }
         totalcount = ShortJSONParsing(JSONFromRandomFestivalUrl);
         Random rnd = new Random();
-        String randomnum = String.valueOf(rnd.nextInt((Integer.parseInt(totalcount) / 10) * 7));
-
+        String randomnum = String.valueOf(rnd.nextInt((Integer.parseInt(totalcount) / 10) * 8));
+        int randomarrange =rnd.nextInt(4);
+        String arrange[] = {"O","P","Q","R"};
         RandomFestivalUrl = "http://api.visitkorea.or.kr/openapi/service/rest/KorService/searchFestival?" +
                 "ServiceKey=" + ServiceKey +
                 "&eventStartDate=" + startdate +
                 "&eventEndDate=" + enddate +
-                "&areaCode=&sigunguCode=&cat1=A02&cat2=&cat3=&listYN=Y" +
+                "&areaCode=&sigunguCode=&cat1=A02&cat2=A0207&cat3=&listYN=Y" +
                 "&MobileOS=AND&MobileApp=CoronaTravel" +
-                "&arrange=O&numOfRows=1&pageNo=" + randomnum + "&_type=json";
+                "&arrange=" + arrange[randomarrange] +
+                "&numOfRows=1&pageNo=" + randomnum + "&_type=json";
+
 
         try {
             JSONFromRandomFestivalUrl = new HttpReqTask().execute(RandomFestivalUrl).get();
@@ -93,7 +98,7 @@ public class home extends AppCompatActivity {
 //        String detailCommonUrl = "http://api.visitkorea.or.kr/openapi/service/rest/KorService/detailCommon?" +
 //                "ServiceKey=" + ServiceKey +
 //                "&contentTypeId=" + "15" +
-//                "&contentId=" + "2647367" +
+//                "&contentId=" + "292961" +
 //                "&MobileOS=AND&MobileApp=CoronaTravel" +
 //                "&defaultYN=Y&firstImageYN=Y&areacodeYN=Y&catcodeYN=Y&addrinfoYN=Y&mapinfoYN=Y&overviewYN=Y&transGuideYN=Y" +
 //                "&_type=json";
@@ -106,12 +111,20 @@ public class home extends AppCompatActivity {
         }
 
         String a = OverviewJSONParsing(JSONFromdetailCommonUrl);
+        try{
+            a = URLDecoder.decode(a,"UTF-8");
+        }catch (Exception e) {
+
+        }
         a = a.replace("<b>","");
         a = a.replace("공지사항","공지사항\n");
         a = a.replace("<br>","");
         a = a.replace("</b><u><a href=\"https://korean.visitkorea.or.kr/notice/news_detail.do?nwsid=8cdd65e1-59f1-4904-8bc9-884001e40911","");
         a = a.replace("\" title=\"여행정보 변동사항 페이지로 이동\">→ 코로나바이러스감염증-19 여행정보 변동사항 확인하기","");
+        a = a.replace("</a></u>","\n\n");
         a = a.replace("</a></u><"+festival.getTitle()+">","");
+        a = a.replace("<strong>","");
+        a = a.replace("</strong>","");
         festival.setOverview(a);
         test.setText(a);
 
@@ -119,6 +132,101 @@ public class home extends AppCompatActivity {
         String URI = festival.getFirstimage();
         if (URI == "") URI = "http://";
         Picasso.get().load(URI).placeholder(R.drawable.sunnyicon).into(firstImage);
+
+
+        Button change = (Button)findViewById(R.id.change);
+
+        change.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String ServiceKey = "2YHyxt5iKCnOzEiYHMcML%2FgiOywB9tnJeL6D%2BHqsL48iMsSOXwPxQHTjCHq5dA1zAEcNIdcQUXnvFMN0aIdLsQ%3D%3D";
+                String RandomFestivalUrl = "http://api.visitkorea.or.kr/openapi/service/rest/KorService/searchFestival?" +
+                        "ServiceKey=" + ServiceKey +
+                        "&eventStartDate=" + startdate +
+                        "&eventEndDate=" + enddate +
+                        "&areaCode=&sigunguCode=&cat1=A02&cat2=A0207&cat3=&listYN=Y" +
+                        "&MobileOS=AND&MobileApp=CoronaTravel" +
+                        "&arrange=O&numOfRows=1&pageNo=1&_type=json";
+
+                String JSONFromRandomFestivalUrl = "";
+                try {
+                    JSONFromRandomFestivalUrl = new HttpReqTask().execute(RandomFestivalUrl).get();
+                } catch (Exception e) {
+                    Log.d("TAG", "jsonparsing error");
+                }
+                totalcount = ShortJSONParsing(JSONFromRandomFestivalUrl);
+                Random rnd = new Random();
+                String randomnum = String.valueOf(rnd.nextInt((Integer.parseInt(totalcount) / 10) * 8) + 1);
+                int randomarrange =rnd.nextInt(3);
+                String arrange[] = {"O","P","Q","R"};
+                RandomFestivalUrl = "http://api.visitkorea.or.kr/openapi/service/rest/KorService/searchFestival?" +
+                        "ServiceKey=" + ServiceKey +
+                        "&eventStartDate=" + startdate +
+                        "&eventEndDate=" + enddate +
+                        "&areaCode=&sigunguCode=&cat1=A02&cat2=A0207&cat3=&listYN=Y" +
+                        "&MobileOS=AND&MobileApp=CoronaTravel" +
+                        "&arrange=" + arrange[randomarrange] +
+                        "&numOfRows=1&pageNo=" + randomnum + "&_type=json";
+
+                Log.d("randomfestival",RandomFestivalUrl);
+
+                try {
+                    JSONFromRandomFestivalUrl = new HttpReqTask().execute(RandomFestivalUrl).get();
+                } catch (Exception e) {
+                    Log.d("TAG", "jsonparsing error");
+                }
+
+
+                Festival festival = JSONParsing(JSONFromRandomFestivalUrl);
+
+                String detailCommonUrl = "http://api.visitkorea.or.kr/openapi/service/rest/KorService/detailCommon?" +
+                        "ServiceKey=" + ServiceKey +
+                        "&contentTypeId=" + festival.getContenttypeid() +
+                        "&contentId=" + festival.getContentid() +
+                        "&MobileOS=AND&MobileApp=CoronaTravel" +
+                        "&defaultYN=Y&firstImageYN=Y&areacodeYN=Y&catcodeYN=Y&addrinfoYN=Y&mapinfoYN=Y&overviewYN=Y&transGuideYN=Y" +
+                        "&_type=json";
+
+//        String detailCommonUrl = "http://api.visitkorea.or.kr/openapi/service/rest/KorService/detailCommon?" +
+//                "ServiceKey=" + ServiceKey +
+//                "&contentTypeId=" + "15" +
+//                "&contentId=" + "292961" +
+//                "&MobileOS=AND&MobileApp=CoronaTravel" +
+//                "&defaultYN=Y&firstImageYN=Y&areacodeYN=Y&catcodeYN=Y&addrinfoYN=Y&mapinfoYN=Y&overviewYN=Y&transGuideYN=Y" +
+//                "&_type=json";
+
+                String JSONFromdetailCommonUrl = "";
+                try {
+                    JSONFromdetailCommonUrl = new HttpReqTask().execute(detailCommonUrl).get();
+                } catch (Exception e) {
+                    Log.d("TAG", "jsonparsing error");
+                }
+
+                String a = OverviewJSONParsing(JSONFromdetailCommonUrl);
+                try{
+                    a = URLDecoder.decode(a,"UTF-8");
+                }catch (Exception e) {
+
+                }
+                a = a.replace("<b>","");
+                a = a.replace("공지사항","공지사항\n");
+                a = a.replace("<br>","");
+                a = a.replace("</b><u><a href=\"https://korean.visitkorea.or.kr/notice/news_detail.do?nwsid=8cdd65e1-59f1-4904-8bc9-884001e40911","");
+                a = a.replace("\" title=\"여행정보 변동사항 페이지로 이동\">→ 코로나바이러스감염증-19 여행정보 변동사항 확인하기","");
+                a = a.replace("</a></u>","\n\n");
+                a = a.replace("</a></u><"+festival.getTitle()+">","");
+                a = a.replace("<strong>","");
+                a = a.replace("</strong>","");
+                festival.setOverview(a);
+                test.setText(a);
+
+
+                String URI = festival.getFirstimage();
+                if (URI == "") URI = "http://";
+                Picasso.get().load(URI).placeholder(R.drawable.sunnyicon).into(firstImage);
+            }
+        });
+
     }
 
     public static String ShortJSONParsing(String JSONFromLocationBasedListaddr) {
