@@ -72,7 +72,7 @@ public class Detail_view extends AppCompatActivity {
     Detail_Third_Fragment detail_third_fragment = new Detail_Third_Fragment();
     Detail_Fourth_Fragment detail_fourth_fragment = new Detail_Fourth_Fragment();
     ChipNavigationBar chipNavigationBar;
-
+    String ServiceKey;
 
     ViewPager viewPager_mask;
     MaskSwipeAdapter maskSwipeAdapter;
@@ -105,7 +105,14 @@ public class Detail_view extends AppCompatActivity {
         detailRepeat_32.repeat_array.clear();;
         detailRepeat_25.repeat_array.clear();
         detailImage.Images.clear();
-
+        Intent intent = getIntent();
+        int position = intent.getExtras().getInt("position");
+        contenttypeid = MainActivity.LocationBasedList_ArrayList.get(position).getContenttypeid();
+        contentid = MainActivity.LocationBasedList_ArrayList.get(position).getContentid();
+        addr1 = MainActivity.LocationBasedList_ArrayList.get(position).getAddr1();
+        firstimage = MainActivity.LocationBasedList_ArrayList.get(position).getFirstimage();
+        title = MainActivity.LocationBasedList_ArrayList.get(position).getTitle();
+        ServiceKey = "2YHyxt5iKCnOzEiYHMcML%2FgiOywB9tnJeL6D%2BHqsL48iMsSOXwPxQHTjCHq5dA1zAEcNIdcQUXnvFMN0aIdLsQ%3D%3D";
 
 //        testCommon = (TextView) findViewById(R.id.testCommon);
 //        testInfo = (TextView) findViewById(R.id.testInfo);
@@ -126,8 +133,9 @@ public class Detail_view extends AppCompatActivity {
         coronacardview = findViewById(R.id.corona_cardview);
 
         viewPager_mask = findViewById(R.id.mask_viewpager);
-
         frameLayout = findViewById(R.id.detail_framlayout);
+
+        final int firstnavigationclick[] ={0,0,0,0};
         chipNavigationBar = findViewById(R.id.chipnavigation);
         chipNavigationBar.setOnItemSelectedListener(new ChipNavigationBar.OnItemSelectedListener() {
             @Override
@@ -137,13 +145,114 @@ public class Detail_view extends AppCompatActivity {
                 if (i == R.id.first_menu) {
                     fragmentTransaction.replace(R.id.detail_framlayout, detail_first_fragment);
                     fragmentTransaction.commit();
-                } else if (i == R.id.second_menu) {
+                }
+
+                else if (i == R.id.second_menu) {
+                    if(firstnavigationclick[1] == 0){
+
+                        String detailInfoUrl = "http://api.visitkorea.or.kr/openapi/service/rest/KorService/detailIntro?" +
+                                "ServiceKey=" + ServiceKey +
+                                "&contentTypeId=" + contenttypeid +
+                                "&contentId=" + contentid +
+                                "&MobileOS=ETC&MobileApp=TourAPI3.0_Guide&introYN=Y&_type=json";
+
+                        String JSONFromdetailInfoURL = "";
+                        try {
+                            JSONFromdetailInfoURL = new HttpReqTask().execute(detailInfoUrl).get();
+                        } catch (Exception e) {
+                        }
+
+                        detailInfo_12 detail_I_12 = new detailInfo_12();
+                        detailInfo_14 detail_I_14 = new detailInfo_14();
+                        detailInfo_15 detail_I_15 = new detailInfo_15();
+                        detailInfo_25 detail_I_25 = new detailInfo_25();
+                        detailInfo_28 detail_I_28 = new detailInfo_28();
+                        detailInfo_32 detail_I_32 = new detailInfo_32();
+                        detailInfo_38 detail_I_38 = new detailInfo_38();
+                        detailInfo_39 detail_I_39 = new detailInfo_39();
+                        Data.contentid = contentid;
+                        Data.contenttypeid = contenttypeid;
+
+                        if (contenttypeid.equals("12")) {
+                            detail_I_12 = detail_I_12.JSONParsing(JSONFromdetailInfoURL);
+                        } else if (contenttypeid.equals("14")) {
+                            detail_I_14 = detail_I_14.JSONParsing(JSONFromdetailInfoURL);
+                        } else if (contenttypeid.equals("15")) {
+                            detail_I_15 = detail_I_15.JSONParsing(JSONFromdetailInfoURL);
+                        } else if (contenttypeid.equals("25")) {
+                            detail_I_25 = detail_I_25.JSONParsing(JSONFromdetailInfoURL);
+                        } else if (contenttypeid.equals("28")) {
+                            detail_I_28 = detail_I_28.JSONParsing(JSONFromdetailInfoURL);
+                        } else if (contenttypeid.equals("32")) {
+                            detail_I_32 = detail_I_32.JSONParsing(JSONFromdetailInfoURL);
+                        } else if (contenttypeid.equals("38")) {
+                            detail_I_38 = detail_I_38.JSONParsing(JSONFromdetailInfoURL);
+                        } else if (contenttypeid.equals("39")) {
+                            detail_I_39 = detail_I_39.JSONParsing(JSONFromdetailInfoURL);
+                        }
+
+                        Data. detail_I_12 = detail_I_12;
+                        Data. detail_I_14 = detail_I_14;
+                        Data. detail_I_15 = detail_I_15;
+                        Data. detail_I_25 = detail_I_25;
+                        Data. detail_I_28 = detail_I_28;
+                        Data. detail_I_32 = detail_I_32;
+                        Data. detail_I_38 = detail_I_38;
+                        Data. detail_I_39 = detail_I_39;
+
+                        firstnavigationclick[1]++;
+                    }
+
                     fragmentTransaction.replace(R.id.detail_framlayout, detail_second_fragment);
                     fragmentTransaction.commit();
-                } else if (i == R.id.third_menu) {
+                }
+
+                else if (i == R.id.third_menu) {
+
+                    String detailRepeatURL = "http://api.visitkorea.or.kr/openapi/service/rest/KorService/detailInfo?" +
+                            "ServiceKey="+ServiceKey+
+                            "&contentTypeId="+contenttypeid+
+                            "&contentId="+contentid+
+                            "&MobileOS=AND&MobileApp=CoronaTravel&listYN=Y&_type=json";
+                    String JSONFromdetailRepeat = "";
+                    try {
+                        JSONFromdetailRepeat = new HttpReqTask().execute(detailRepeatURL).get();
+                    } catch (Exception e) {
+                        ;
+                    }
+                    if(contenttypeid.equals("25")){
+                        detailRepeat_25.JSONParsing(JSONFromdetailRepeat);
+                    }
+                    else if(contenttypeid.equals("32")){
+                        detailRepeat_32.JSONParsing(JSONFromdetailRepeat);
+                    }
+                    else{
+                        detailRepeat.JSONParsing(JSONFromdetailRepeat);
+                    }
                     fragmentTransaction.replace(R.id.detail_framlayout, detail_third_fragment);
                     fragmentTransaction.commit();
-                } else if (i == R.id.fourth_menu) {
+                }
+
+                else if (i == R.id.fourth_menu) {
+                    Log.d("click",String.valueOf(firstnavigationclick[3]));
+                    if(firstnavigationclick[3] == 0) {
+                        String detailImageUrl = "http://api.visitkorea.or.kr/openapi/service/rest/KorService/detailImage?" +
+                                "ServiceKey=" + ServiceKey +
+                                "&contentTypeId=" + contenttypeid +
+                                "&MobileOS=AND&MobileApp=CoronaTravel" +
+                                "&contentId=" + contentid +
+                                "&imageYN=Y&_type=json";
+                        String JSONFromdetailImageUrl = "";
+                        String image;
+                        try {
+                            JSONFromdetailImageUrl = new HttpReqTask().execute(detailImageUrl).get();
+                        } catch (Exception e) {
+                            ;
+                        }
+                        detailImage.JSONParsing(JSONFromdetailImageUrl);
+                        firstnavigationclick[3]++;
+                    }
+
                     fragmentTransaction.replace(R.id.detail_framlayout, detail_fourth_fragment);
                     fragmentTransaction.commit();
                 }
@@ -152,6 +261,7 @@ public class Detail_view extends AppCompatActivity {
 
 
         weatherexpendbt.setOnClickListener(new View.OnClickListener() {
+            int firstclick=0;
             @RequiresApi(api = Build.VERSION_CODES.KITKAT)
             @Override
             public void onClick(View v) {
@@ -159,6 +269,12 @@ public class Detail_view extends AppCompatActivity {
                     TransitionManager.beginDelayedTransition(weathercardview, new AutoTransition());
                     weatehr_expandlayout.setVisibility(View.VISIBLE);
                     weatherexpendbt.setBackgroundResource(R.drawable.ic_expand_less_black_24dp);
+                    if(firstclick == 0){
+                        init(addressCode);
+                        firstclick++;
+                    }
+
+
                 } else {
                     TransitionManager.beginDelayedTransition(weathercardview, new AutoTransition());
                     weatehr_expandlayout.setVisibility(View.GONE);
@@ -167,6 +283,7 @@ public class Detail_view extends AppCompatActivity {
             }
         });
         maskexpandbt.setOnClickListener(new View.OnClickListener() {
+            int firstclick=0;
             @RequiresApi(api = Build.VERSION_CODES.KITKAT)
             @Override
             public void onClick(View v) {
@@ -174,6 +291,24 @@ public class Detail_view extends AppCompatActivity {
                     TransitionManager.beginDelayedTransition(maskcardview, new AutoTransition());
                     mask_expandlayout.setVisibility(View.VISIBLE);
                     maskexpandbt.setBackgroundResource(R.drawable.ic_expand_less_black_24dp);
+                   if(firstclick == 0) {
+                       String dist = "10000";
+                       String maskUrl = "";
+                       maskUrl = "https://8oi9s0nnth.apigw.ntruss.com/corona19-masks/v1/storesByGeo/json?" +
+                               "lat=" + detail_C.getMapy() + "&" +
+                               "lng=" + detail_C.getMapx() + "&" +
+                               "m=" + dist;
+                       String JSONFromTotalSearch = "";
+                       try {
+                           JSONFromTotalSearch = new HttpReqTask().execute(maskUrl).get();
+                       } catch (Exception e) {
+                       }
+                       Mask.JSONParsing(JSONFromTotalSearch);
+                       maskSwipeAdapter = new MaskSwipeAdapter(getSupportFragmentManager(), MainActivity.MASK_AraayList);
+                       if (MainActivity.MASK_AraayList.size() != 0)
+                           viewPager_mask.setAdapter(maskSwipeAdapter);
+                       firstclick++;
+                   }
                 } else {
                     TransitionManager.beginDelayedTransition(maskcardview, new AutoTransition());
                     mask_expandlayout.setVisibility(View.GONE);
@@ -182,6 +317,7 @@ public class Detail_view extends AppCompatActivity {
             }
         });
         coronaexpandbt.setOnClickListener(new View.OnClickListener() {
+            int firstclick;
             @RequiresApi(api = Build.VERSION_CODES.KITKAT)
             @Override
             public void onClick(View v) {
@@ -189,6 +325,11 @@ public class Detail_view extends AppCompatActivity {
                     TransitionManager.beginDelayedTransition(coronacardview, new AutoTransition());
                     corona_expandlayout.setVisibility(View.VISIBLE);
                     coronaexpandbt.setBackgroundResource(R.drawable.ic_expand_less_black_24dp);
+                    if(firstclick == 0){
+                        init2();
+                        firstclick++;
+                    }
+
                 } else {
                     TransitionManager.beginDelayedTransition(coronacardview, new AutoTransition());
                     corona_expandlayout.setVisibility(View.GONE);
@@ -198,16 +339,7 @@ public class Detail_view extends AppCompatActivity {
         });
 
 
-        Intent intent = getIntent();
-        int position = intent.getExtras().getInt("position");
-        contenttypeid = MainActivity.LocationBasedList_ArrayList.get(position).getContenttypeid();
-        contentid = MainActivity.LocationBasedList_ArrayList.get(position).getContentid();
-        addr1 = MainActivity.LocationBasedList_ArrayList.get(position).getAddr1();
-        firstimage = MainActivity.LocationBasedList_ArrayList.get(position).getFirstimage();
-        title = MainActivity.LocationBasedList_ArrayList.get(position).getTitle();
 
-
-        String ServiceKey = "2YHyxt5iKCnOzEiYHMcML%2FgiOywB9tnJeL6D%2BHqsL48iMsSOXwPxQHTjCHq5dA1zAEcNIdcQUXnvFMN0aIdLsQ%3D%3D";
         detail_C = new detailCommon();
         String detailCommonUrl = "http://api.visitkorea.or.kr/openapi/service/rest/KorService/detailCommon?" +
                 "ServiceKey=" + ServiceKey +
@@ -221,7 +353,6 @@ public class Detail_view extends AppCompatActivity {
         try {
             JSONFromdetailCommonUrl = new HttpReqTask().execute(detailCommonUrl).get();
         } catch (Exception e) {
-            Log.d("TAG", "jsonparsing error");
         }
 
 
@@ -255,11 +386,11 @@ public class Detail_view extends AppCompatActivity {
 
         detail_C = detail_C.JSONParsing(JSONFromdetailCommonUrl);
         addressCode = Integer.parseInt(detail_C.getAreacode()); // 여기
-        detail_first_fragment=new Detail_First_Fragment(detail_C);
         Data.detail_C = detail_C;
-        weatherListview = findViewById(R.id.weatherListview);
-        init(addressCode);
+        detail_first_fragment=new Detail_First_Fragment();
 
+        weatherListview = findViewById(R.id.weatherListview);
+        //init(addressCode);
         if (addressCode == 1) {
             cityName = "서울특별시";
             addressIndex = 1;
@@ -313,123 +444,114 @@ public class Detail_view extends AppCompatActivity {
             addressIndex = 17;
         }
         citynameP.setText(cityName);
-        init2();
+        //init2();
 
-        String detailInfoUrl = "http://api.visitkorea.or.kr/openapi/service/rest/KorService/detailIntro?" +
-                "ServiceKey=" + ServiceKey +
-                "&contentTypeId=" + contenttypeid +
-                "&contentId=" + contentid +
-                "&MobileOS=ETC&MobileApp=TourAPI3.0_Guide&introYN=Y&_type=json";
-
-        String JSONFromdetailInfoURL = "";
-        try {
-            JSONFromdetailInfoURL = new HttpReqTask().execute(detailInfoUrl).get();
-        } catch (Exception e) {
-            Log.d("TAG", "jsonparsing error");
-        }
-
-        detailInfo_12 detail_I_12 = new detailInfo_12();
-        detailInfo_14 detail_I_14 = new detailInfo_14();
-        detailInfo_15 detail_I_15 = new detailInfo_15();
-        detailInfo_25 detail_I_25 = new detailInfo_25();
-        detailInfo_28 detail_I_28 = new detailInfo_28();
-        detailInfo_32 detail_I_32 = new detailInfo_32();
-        detailInfo_38 detail_I_38 = new detailInfo_38();
-        detailInfo_39 detail_I_39 = new detailInfo_39();
-        Data.contentid = contentid;
-        Data.contenttypeid = contenttypeid;
-
-        if (contenttypeid.equals("12")) {
-            detail_I_12 = detail_I_12.JSONParsing(JSONFromdetailInfoURL);
-        } else if (contenttypeid.equals("14")) {
-            detail_I_14 = detail_I_14.JSONParsing(JSONFromdetailInfoURL);
-        } else if (contenttypeid.equals("15")) {
-            detail_I_15 = detail_I_15.JSONParsing(JSONFromdetailInfoURL);
-        } else if (contenttypeid.equals("25")) {
-            Log.d("여행코스", "여행코스");
-            detail_I_25 = detail_I_25.JSONParsing(JSONFromdetailInfoURL);
-        } else if (contenttypeid.equals("28")) {
-            detail_I_28 = detail_I_28.JSONParsing(JSONFromdetailInfoURL);
-        } else if (contenttypeid.equals("32")) {
-            detail_I_32 = detail_I_32.JSONParsing(JSONFromdetailInfoURL);
-        } else if (contenttypeid.equals("38")) {
-            detail_I_38 = detail_I_38.JSONParsing(JSONFromdetailInfoURL);
-        } else if (contenttypeid.equals("39")) {
-            detail_I_39 = detail_I_39.JSONParsing(JSONFromdetailInfoURL);
-        }
-
-        Data. detail_I_12 = detail_I_12;
-        Data. detail_I_14 = detail_I_14;
-        Data. detail_I_15 = detail_I_15;
-        Data. detail_I_25 = detail_I_25;
-        Data. detail_I_28 = detail_I_28;
-        Data. detail_I_32 = detail_I_32;
-        Data. detail_I_38 = detail_I_38;
-        Data. detail_I_39 = detail_I_39;
-
-        String detailRepeatURL = "http://api.visitkorea.or.kr/openapi/service/rest/KorService/detailInfo?" +
-                "ServiceKey="+ServiceKey+
-                "&contentTypeId="+contenttypeid+
-                "&contentId="+contentid+
-                "&MobileOS=AND&MobileApp=CoronaTravel&listYN=Y&_type=json";
-        String JSONFromdetailRepeat = "";
-        try {
-            JSONFromdetailRepeat = new HttpReqTask().execute(detailRepeatURL).get();
-        } catch (Exception e) {
-            ;
-            Log.d("TAG", "jsonparsing error");
-        }
-        if(contenttypeid.equals("25")){
-            detailRepeat_25.JSONParsing(JSONFromdetailRepeat);
-        }
-        else if(contenttypeid.equals("32")){
-            detailRepeat_32.JSONParsing(JSONFromdetailRepeat);
-        }
-        else{
-            detailRepeat.JSONParsing(JSONFromdetailRepeat);
-        }
-
-
-        String detailImageUrl = "http://api.visitkorea.or.kr/openapi/service/rest/KorService/detailImage?" +
-                "ServiceKey=" + ServiceKey +
-                "&contentTypeId=" + contenttypeid +
-                "&MobileOS=AND&MobileApp=CoronaTravel" +
-                "&contentId=" + contentid +
-                "&imageYN=Y&_type=json";
-        String JSONFromdetailImageUrl = "";
-        String image;
-        try {
-            JSONFromdetailImageUrl = new HttpReqTask().execute(detailImageUrl).get();
-        } catch (Exception e) {
-            ;
-            Log.d("TAG", "jsonparsing error");
-        }
-        detailImage.JSONParsing(JSONFromdetailImageUrl);
-
-        //testImage = (TextView)findViewById(R.id.testImage);
-//        if(detailImage.Images.size() != 0) {
-//            testImage.setText("\n\n텝4에 들어갈 추가이미지 중 첫 번째: " + detailImage.Images.get(0));
+//        String detailInfoUrl = "http://api.visitkorea.or.kr/openapi/service/rest/KorService/detailIntro?" +
+//                "ServiceKey=" + ServiceKey +
+//                "&contentTypeId=" + contenttypeid +
+//                "&contentId=" + contentid +
+//                "&MobileOS=ETC&MobileApp=TourAPI3.0_Guide&introYN=Y&_type=json";
+//
+//        String JSONFromdetailInfoURL = "";
+//        try {
+//            JSONFromdetailInfoURL = new HttpReqTask().execute(detailInfoUrl).get();
+//        } catch (Exception e) {
+//        }
+//
+//        detailInfo_12 detail_I_12 = new detailInfo_12();
+//        detailInfo_14 detail_I_14 = new detailInfo_14();
+//        detailInfo_15 detail_I_15 = new detailInfo_15();
+//        detailInfo_25 detail_I_25 = new detailInfo_25();
+//        detailInfo_28 detail_I_28 = new detailInfo_28();
+//        detailInfo_32 detail_I_32 = new detailInfo_32();
+//        detailInfo_38 detail_I_38 = new detailInfo_38();
+//        detailInfo_39 detail_I_39 = new detailInfo_39();
+//        Data.contentid = contentid;
+//        Data.contenttypeid = contenttypeid;
+//
+//        if (contenttypeid.equals("12")) {
+//            detail_I_12 = detail_I_12.JSONParsing(JSONFromdetailInfoURL);
+//        } else if (contenttypeid.equals("14")) {
+//            detail_I_14 = detail_I_14.JSONParsing(JSONFromdetailInfoURL);
+//        } else if (contenttypeid.equals("15")) {
+//            detail_I_15 = detail_I_15.JSONParsing(JSONFromdetailInfoURL);
+//        } else if (contenttypeid.equals("25")) {
+//            detail_I_25 = detail_I_25.JSONParsing(JSONFromdetailInfoURL);
+//        } else if (contenttypeid.equals("28")) {
+//            detail_I_28 = detail_I_28.JSONParsing(JSONFromdetailInfoURL);
+//        } else if (contenttypeid.equals("32")) {
+//            detail_I_32 = detail_I_32.JSONParsing(JSONFromdetailInfoURL);
+//        } else if (contenttypeid.equals("38")) {
+//            detail_I_38 = detail_I_38.JSONParsing(JSONFromdetailInfoURL);
+//        } else if (contenttypeid.equals("39")) {
+//            detail_I_39 = detail_I_39.JSONParsing(JSONFromdetailInfoURL);
+//        }
+//
+//        Data. detail_I_12 = detail_I_12;
+//        Data. detail_I_14 = detail_I_14;
+//        Data. detail_I_15 = detail_I_15;
+//        Data. detail_I_25 = detail_I_25;
+//        Data. detail_I_28 = detail_I_28;
+//        Data. detail_I_32 = detail_I_32;
+//        Data. detail_I_38 = detail_I_38;
+//        Data. detail_I_39 = detail_I_39;
+//
+//        String detailRepeatURL = "http://api.visitkorea.or.kr/openapi/service/rest/KorService/detailInfo?" +
+//                "ServiceKey="+ServiceKey+
+//                "&contentTypeId="+contenttypeid+
+//                "&contentId="+contentid+
+//                "&MobileOS=AND&MobileApp=CoronaTravel&listYN=Y&_type=json";
+//        String JSONFromdetailRepeat = "";
+//        try {
+//            JSONFromdetailRepeat = new HttpReqTask().execute(detailRepeatURL).get();
+//        } catch (Exception e) {
+//            ;
+//        }
+//        if(contenttypeid.equals("25")){
+//            detailRepeat_25.JSONParsing(JSONFromdetailRepeat);
+//        }
+//        else if(contenttypeid.equals("32")){
+//            detailRepeat_32.JSONParsing(JSONFromdetailRepeat);
+//        }
+//        else{
+//            detailRepeat.JSONParsing(JSONFromdetailRepeat);
 //        }
 
 
+//        String detailImageUrl = "http://api.visitkorea.or.kr/openapi/service/rest/KorService/detailImage?" +
+//                "ServiceKey=" + ServiceKey +
+//                "&contentTypeId=" + contenttypeid +
+//                "&MobileOS=AND&MobileApp=CoronaTravel" +
+//                "&contentId=" + contentid +
+//                "&imageYN=Y&_type=json";
+//        String JSONFromdetailImageUrl = "";
+//        String image;
+//        try {
+//            JSONFromdetailImageUrl = new HttpReqTask().execute(detailImageUrl).get();
+//        } catch (Exception e) {
+//            ;
+//        }
+//        detailImage.JSONParsing(JSONFromdetailImageUrl);
 
 
-        String dist = "10000";
-        String maskUrl = "";
-        maskUrl = "https://8oi9s0nnth.apigw.ntruss.com/corona19-masks/v1/storesByGeo/json?" +
-                "lat=" + detail_C.getMapy() + "&" +
-                "lng=" + detail_C.getMapx() + "&" +
-                "m=" + dist;
-        String JSONFromTotalSearch = "";
-        try {
-            JSONFromTotalSearch = new HttpReqTask().execute(maskUrl).get();
-        } catch (Exception e) {
-            Log.d("TAG", "jsonparsing error");
-        }
-        Mask.JSONParsing(JSONFromTotalSearch);
 
-        maskSwipeAdapter = new MaskSwipeAdapter(getSupportFragmentManager(), MainActivity.MASK_AraayList);
-        if (MainActivity.MASK_AraayList.size() != 0) viewPager_mask.setAdapter(maskSwipeAdapter);
+
+//        String dist = "10000";
+//        String maskUrl = "";
+//        maskUrl = "https://8oi9s0nnth.apigw.ntruss.com/corona19-masks/v1/storesByGeo/json?" +
+//                "lat=" + detail_C.getMapy() + "&" +
+//                "lng=" + detail_C.getMapx() + "&" +
+//                "m=" + dist;
+//        String JSONFromTotalSearch = "";
+//        try {
+//            JSONFromTotalSearch = new HttpReqTask().execute(maskUrl).get();
+//        } catch (Exception e) {
+//            Log.d("TAG", "jsonparsing error");
+//        }
+//        Mask.JSONParsing(JSONFromTotalSearch);
+//
+//        maskSwipeAdapter = new MaskSwipeAdapter(getSupportFragmentManager(), MainActivity.MASK_AraayList);
+//        if (MainActivity.MASK_AraayList.size() != 0) viewPager_mask.setAdapter(maskSwipeAdapter);
     }
     public void init2() {
         String pathAddress = "http://ncov.mohw.go.kr/bdBoardList_Real.do?brdId=1&brdGubun=13&ncvContSeq=&contSeq=&board_id=&gubun=";

@@ -151,6 +151,7 @@ public class detailRepeat_32 {
     }
 
     public static detailRepeat_32 JSONParsing(String JSONFromLocationBasedListaddr) {
+        repeat_array.clear();
         String removehtml = Html.fromHtml(JSONFromLocationBasedListaddr).toString();
         detailRepeat_32 subclass = null;
 

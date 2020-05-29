@@ -17,6 +17,7 @@ public class detailImage {
 
 
     public static void JSONParsing(String JSONFromLocationBasedListaddr) {
+        Images.clear();
         String removehtml = Html.fromHtml(JSONFromLocationBasedListaddr).toString();
         String image;
         String totalcount;

@@ -49,6 +49,7 @@ public class detailRepeat_25 {
     }
 
     public static detailRepeat_25 JSONParsing(String JSONFromLocationBasedListaddr) {
+        repeat_array.clear();
         String removehtml = Html.fromHtml(JSONFromLocationBasedListaddr).toString();
         detailRepeat_25 subclass = null;
 

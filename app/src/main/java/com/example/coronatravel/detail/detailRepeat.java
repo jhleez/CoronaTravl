@@ -42,6 +42,7 @@ public class detailRepeat {
     }
 
     public static detailRepeat JSONParsing(String JSONFromLocationBasedListaddr) {
+        repeat_array.clear();
         String removehtml = Html.fromHtml(JSONFromLocationBasedListaddr).toString();
         detailRepeat subclass = null;
         String totalcount;

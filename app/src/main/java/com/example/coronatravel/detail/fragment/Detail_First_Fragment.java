@@ -19,8 +19,7 @@ public class Detail_First_Fragment extends Fragment {
     detailCommon detail_C1;
     TextView first;
 
-    public Detail_First_Fragment(detailCommon detail_C1) {
-        this.detail_C1 = detail_C1;
+    public Detail_First_Fragment() {
     }
 
 
