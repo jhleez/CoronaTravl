@@ -94,31 +94,49 @@ public class LocationBasedList_Class {
             JSONObject jsonObject_items = new JSONObject(items);
 
             String item = jsonObject_items.getString("item");
-            JSONArray jsonArray_item = new JSONArray(item);
-            for(int i=0;i<jsonArray_item.length();i++){
-                JSONObject subJsonObject = jsonArray_item.getJSONObject(i);
+            if(totalcount.equals("1")){
+                Log.d("tag","검색결과가 1개일때");
+                JSONObject jsonObject_item = new JSONObject(item);
                 try{
-                    addr1 = subJsonObject.getString("addr1");
+                    addr1 = jsonObject_item.getString("addr1");
                 }catch (JSONException e){
                     addr1="";
                 }
-
                 try{
-                    dist = subJsonObject.getString("dist");
-                }catch (JSONException e){
-                    dist="";
-                }
-                try{
-                    firstimage = subJsonObject.getString("firstimage");
+                    firstimage = jsonObject_item.getString("firstimage");
                 }catch (JSONException e){
                     firstimage="";
                 }
-                contentid =subJsonObject.getString("contentid");
-                contenttypeid = subJsonObject.getString("contenttypeid");
-                title = subJsonObject.getString("title");
+                contentid =jsonObject_item.getString("contentid");
+                contenttypeid = jsonObject_item.getString("contenttypeid");
+                title = jsonObject_item.getString("title");
 
                 LocationBasedList_Class subclass = new LocationBasedList_Class(addr1,contentid,contenttypeid,firstimage,title);
                 MainActivity.LocationBasedList_ArrayList.add(subclass);
+            }
+            else {
+                JSONArray jsonArray_item = new JSONArray(item);
+                Log.d("tag","검색결과가 여러개일때");
+                for (int i = 0; i < jsonArray_item.length(); i++) {
+                    JSONObject subJsonObject = jsonArray_item.getJSONObject(i);
+                    try {
+                        addr1 = subJsonObject.getString("addr1");
+                    } catch (JSONException e) {
+                        addr1 = "";
+                    }
+
+                    try {
+                        firstimage = subJsonObject.getString("firstimage");
+                    } catch (JSONException e) {
+                        firstimage = "";
+                    }
+                    contentid = subJsonObject.getString("contentid");
+                    contenttypeid = subJsonObject.getString("contenttypeid");
+                    title = subJsonObject.getString("title");
+
+                    LocationBasedList_Class subclass = new LocationBasedList_Class(addr1, contentid, contenttypeid, firstimage, title);
+                    MainActivity.LocationBasedList_ArrayList.add(subclass);
+                }
             }
         } catch (JSONException e) {
             Log.d("TAG","parsing error");

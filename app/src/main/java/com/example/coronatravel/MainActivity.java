@@ -84,7 +84,7 @@ public class MainActivity extends AppCompatActivity {
 
 
         Intent intent = new Intent(this, home.class);
-        startActivity(intent);
+//        startActivity(intent);
     }
 
     @Override
@@ -183,7 +183,7 @@ public class MainActivity extends AppCompatActivity {
                 "&numOfRows=10&" +
                 "pageNo="+pageNo+
                 "&_type=json";
-
+        Log.d("TAG",TotalSearchAddr);
         String JSONFromTotalSearch = "";
         try {
             JSONFromTotalSearch = new HttpReqTask().execute(TotalSearchAddr).get();
