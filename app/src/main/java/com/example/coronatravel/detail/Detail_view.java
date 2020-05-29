@@ -377,8 +377,8 @@ public class Detail_view extends AppCompatActivity {
         if(contenttypeid.equals("25")){
             detailRepeat_25.JSONParsing(JSONFromdetailRepeat);
         }
-        else if(contenttypeid.equals("39")){
-
+        else if(contenttypeid.equals("32")){
+            detailRepeat_32.JSONParsing(JSONFromdetailRepeat);
         }
         else{
             detailRepeat.JSONParsing(JSONFromdetailRepeat);
