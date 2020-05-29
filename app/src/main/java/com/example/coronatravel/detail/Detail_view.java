@@ -106,6 +106,7 @@ public class Detail_view extends AppCompatActivity {
         detailRepeat_25.repeat_array.clear();
         detailImage.Images.clear();
 
+
 //        testCommon = (TextView) findViewById(R.id.testCommon);
 //        testInfo = (TextView) findViewById(R.id.testInfo);
         checkbox = (CheckBox) findViewById(R.id.checkbox);
