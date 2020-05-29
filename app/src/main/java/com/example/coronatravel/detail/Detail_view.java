@@ -5,6 +5,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.core.content.ContextCompat;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager.widget.ViewPager;
@@ -18,9 +20,12 @@ import android.os.Bundle;
 import android.transition.AutoTransition;
 import android.transition.TransitionManager;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
+import android.widget.FrameLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -32,15 +37,19 @@ import com.example.coronatravel.Mask;
 import com.example.coronatravel.R;
 import com.example.coronatravel.ShortWeather;
 import com.example.coronatravel.TypeId;
-import com.example.coronatravel.WeatherInfo;
+import com.example.coronatravel.detail.fragment.Detail_First_Fragment;
+import com.example.coronatravel.detail.fragment.Detail_Fourth_Fragment;
+import com.example.coronatravel.detail.fragment.Detail_Second_Fragment;
+import com.example.coronatravel.detail.fragment.Detail_Third_Fragment;
 import com.example.coronatravel.myWeatherAdapter;
 import com.example.coronatravel.myWeatherListviewDecoration;
 import com.example.coronatravel.weatherListViewItem;
+import com.ismaeldivita.chipnavigation.ChipNavigationBar;
+
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.select.Elements;
-import org.w3c.dom.Text;
 
 import java.io.IOException;
 import java.text.SimpleDateFormat;
@@ -49,59 +58,91 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
 
-public class    Detail_view extends AppCompatActivity {
+public class Detail_view extends AppCompatActivity {
 
     //TextView testCommon, testInfo,testImage,testMask;
     CheckBox checkbox;
     DbOpenHelper mDbOpenHelper;
-    String addr1, contentid,contenttypeid,firstimage,title;
-    ConstraintLayout weatehr_expandlayout,mask_expandlayout,corona_expandlayout;
+    String addr1, contentid, contenttypeid, firstimage, title;
+    ConstraintLayout weatehr_expandlayout, mask_expandlayout, corona_expandlayout;
+    FrameLayout frameLayout;
+    Detail_First_Fragment detail_first_fragment = new Detail_First_Fragment();
+    Detail_Second_Fragment detail_second_fragment = new Detail_Second_Fragment();
+    Detail_Third_Fragment detail_third_fragment = new Detail_Third_Fragment();
+    Detail_Fourth_Fragment detail_fourth_fragment = new Detail_Fourth_Fragment();
+    ChipNavigationBar chipNavigationBar;
 
     ViewPager viewPager_mask;
     MaskSwipeAdapter maskSwipeAdapter;
 
     private RecyclerView weatherListview;
     private myWeatherAdapter weatherAdapter;
-    Button weatherexpendbt,maskexpandbt,coronaexpandbt;
-    CardView weathercardview,maskcardview,coronacardview;
+    Button weatherexpendbt, maskexpandbt, coronaexpandbt;
+    CardView weathercardview, maskcardview, coronacardview;
     LinearLayoutManager layoutManager;
     ArrayList<weatherListViewItem> itemList;
+
 
     private int addressCode = 0, addressIndex;
     private String cityName = null;
     private TextView totalP, citynameP, plusP, dischargedP, curedP, deathP;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail_view);
 
-        totalP = (TextView)findViewById(R.id.AddressTotalTextview);
-        citynameP = (TextView)findViewById(R.id.AddressCitynameTextview);
-        plusP = (TextView)findViewById(R.id.AddressPlusTextview);
-        dischargedP = (TextView)findViewById(R.id.AddressDischarged);
-        curedP = (TextView)findViewById(R.id.AddressCured);
-        deathP = (TextView)findViewById(R.id.AddressDeath);
+        totalP = (TextView) findViewById(R.id.AddressTotalTextview);
+        citynameP = (TextView) findViewById(R.id.AddressCitynameTextview);
+        plusP = (TextView) findViewById(R.id.AddressPlusTextview);
+        dischargedP = (TextView) findViewById(R.id.AddressDischarged);
+        curedP = (TextView) findViewById(R.id.AddressCured);
+        deathP = (TextView) findViewById(R.id.AddressDeath);
 
 //        testCommon = (TextView) findViewById(R.id.testCommon);
 //        testInfo = (TextView) findViewById(R.id.testInfo);
-      checkbox = (CheckBox)findViewById(R.id.checkbox);
+        checkbox = (CheckBox) findViewById(R.id.checkbox);
 //        testMask =(TextView) findViewById(R.id.testMask);
         mDbOpenHelper = new DbOpenHelper(this);
 
-        weatehr_expandlayout =findViewById(R.id.expend_layout_weather);
-        mask_expandlayout=findViewById(R.id.expand_layout_mask);
-        corona_expandlayout=findViewById(R.id.expand_layout_corona);
+        weatehr_expandlayout = findViewById(R.id.expend_layout_weather);
+        mask_expandlayout = findViewById(R.id.expand_layout_mask);
+        corona_expandlayout = findViewById(R.id.expand_layout_corona);
 
-        weatherexpendbt=findViewById(R.id.weather_expend_bt);
-        maskexpandbt=findViewById(R.id.mask_expend_bt);
-        coronaexpandbt=findViewById(R.id.corona_expend_bt);
+        weatherexpendbt = findViewById(R.id.weather_expend_bt);
+        maskexpandbt = findViewById(R.id.mask_expend_bt);
+        coronaexpandbt = findViewById(R.id.corona_expend_bt);
 
-        weathercardview=findViewById(R.id.weather_cardview);
-        maskcardview=findViewById(R.id.mask_cardview);
-        coronacardview=findViewById(R.id.corona_cardview);
+        weathercardview = findViewById(R.id.weather_cardview);
+        maskcardview = findViewById(R.id.mask_cardview);
+        coronacardview = findViewById(R.id.corona_cardview);
 
-        viewPager_mask=findViewById(R.id.mask_viewpager);
+        viewPager_mask = findViewById(R.id.mask_viewpager);
+
+        frameLayout = findViewById(R.id.detail_framlayout);
+        chipNavigationBar = findViewById(R.id.chipnavigation);
+        chipNavigationBar.setOnItemSelectedListener(new ChipNavigationBar.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(int i) {
+                FragmentManager fragmentManager = getSupportFragmentManager();
+                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                if (i == R.id.first_menu) {
+                    fragmentTransaction.replace(R.id.detail_framlayout, detail_first_fragment);
+                    fragmentTransaction.commit();
+                } else if (i == R.id.second_menu) {
+                    fragmentTransaction.replace(R.id.detail_framlayout, detail_second_fragment);
+                    fragmentTransaction.commit();
+                } else if (i == R.id.third_menu) {
+                    fragmentTransaction.replace(R.id.detail_framlayout, detail_third_fragment);
+                    fragmentTransaction.commit();
+                } else if (i == R.id.fourth_menu) {
+                    fragmentTransaction.replace(R.id.detail_framlayout, detail_fourth_fragment);
+                    fragmentTransaction.commit();
+                }
+            }
+        });
+
 
         weatherexpendbt.setOnClickListener(new View.OnClickListener() {
             @RequiresApi(api = Build.VERSION_CODES.KITKAT)
@@ -150,15 +191,13 @@ public class    Detail_view extends AppCompatActivity {
         });
 
 
-
         Intent intent = getIntent();
         int position = intent.getExtras().getInt("position");
         contenttypeid = MainActivity.LocationBasedList_ArrayList.get(position).getContenttypeid();
         contentid = MainActivity.LocationBasedList_ArrayList.get(position).getContentid();
         addr1 = MainActivity.LocationBasedList_ArrayList.get(position).getAddr1();
         firstimage = MainActivity.LocationBasedList_ArrayList.get(position).getFirstimage();
-        title=MainActivity.LocationBasedList_ArrayList.get(position).getTitle();
-
+        title = MainActivity.LocationBasedList_ArrayList.get(position).getTitle();
 
 
         String ServiceKey = "2YHyxt5iKCnOzEiYHMcML%2FgiOywB9tnJeL6D%2BHqsL48iMsSOXwPxQHTjCHq5dA1zAEcNIdcQUXnvFMN0aIdLsQ%3D%3D";
@@ -180,16 +219,14 @@ public class    Detail_view extends AppCompatActivity {
 
 
         //체크박스 처리
-        int i=0;
+        int i = 0;
         Cursor iCursor = mDbOpenHelper.selectColumns(contentid);
         while (iCursor.moveToNext()) {
             i++;
         }
-        if(i==0){
+        if (i == 0) {
             checkbox.setChecked(false);
-        }
-        else
-        {
+        } else {
             checkbox.setChecked(true);
         }
 
@@ -200,19 +237,13 @@ public class    Detail_view extends AppCompatActivity {
                 mDbOpenHelper.open();
                 mDbOpenHelper.create();
 
-                if(((CheckBox) v).isChecked()){
-                    mDbOpenHelper.insertColumn(addr1,contentid,contenttypeid,firstimage,title);
-                }
-                else
-                {
+                if (((CheckBox) v).isChecked()) {
+                    mDbOpenHelper.insertColumn(addr1, contentid, contenttypeid, firstimage, title);
+                } else {
                     mDbOpenHelper.deleteColumn(contentid);
                 }
             }
         });
-
-
-
-
 
 
         detail_C = detail_C.JSONParsing(JSONFromdetailCommonUrl);
@@ -229,55 +260,55 @@ public class    Detail_view extends AppCompatActivity {
 //                        "\n우편번호 : " + detail_C.getZipcode()
 //        );
 
-        if(addressCode == 1){
+        if (addressCode == 1) {
             cityName = "서울특별시";
             addressIndex = 1;
-        }else if(addressCode == 2){
+        } else if (addressCode == 2) {
             cityName = "인천광역시";
             addressIndex = 4;
-        }else if(addressCode == 3){
+        } else if (addressCode == 3) {
             cityName = "대전광역시";
             addressIndex = 6;
-        }else if(addressCode == 4){
+        } else if (addressCode == 4) {
             cityName = "대구광역시";
             addressIndex = 3;
-        }else if(addressCode == 5){
+        } else if (addressCode == 5) {
             cityName = "광주광역시";
             addressIndex = 5;
-        }else if(addressCode == 6){
+        } else if (addressCode == 6) {
             cityName = "부산광역시";
             addressIndex = 2;
-        }else if(addressCode == 7){
+        } else if (addressCode == 7) {
             cityName = "울산광역시";
             addressIndex = 7;
-        }else if(addressCode == 8){
+        } else if (addressCode == 8) {
             cityName = "세종특별자치시";
             addressIndex = 8;
-        }else if(addressCode == 31){
+        } else if (addressCode == 31) {
             cityName = "경기도";
             addressIndex = 9;
-        }else if(addressCode == 32){
+        } else if (addressCode == 32) {
             cityName = "강원도";
             addressIndex = 10;
-        }else if(addressCode == 33){
+        } else if (addressCode == 33) {
             cityName = "충청북도";
             addressIndex = 11;
-        }else if(addressCode == 34){
+        } else if (addressCode == 34) {
             cityName = "충청남도";
             addressIndex = 12;
-        }else if(addressCode == 35){
+        } else if (addressCode == 35) {
             cityName = "경상북도";
             addressIndex = 15;
-        }else if(addressCode == 36){
+        } else if (addressCode == 36) {
             cityName = "경상남도";
             addressIndex = 16;
-        }else if(addressCode == 37){
+        } else if (addressCode == 37) {
             cityName = "전라북도";
             addressIndex = 13;
-        }else if(addressCode == 38){
+        } else if (addressCode == 38) {
             cityName = "전라남도";
             addressIndex = 14;
-        }else if(addressCode == 39){
+        } else if (addressCode == 39) {
             cityName = "제주특별자치도";
             addressIndex = 17;
         }
@@ -285,9 +316,9 @@ public class    Detail_view extends AppCompatActivity {
         init2();
 
         String detailInfoUrl = "http://api.visitkorea.or.kr/openapi/service/rest/KorService/detailIntro?" +
-                "ServiceKey="+ServiceKey+
-                "&contentTypeId="+contenttypeid+
-                "&contentId="+contentid +
+                "ServiceKey=" + ServiceKey +
+                "&contentTypeId=" + contenttypeid +
+                "&contentId=" + contentid +
                 "&MobileOS=ETC&MobileApp=TourAPI3.0_Guide&introYN=Y&_type=json";
 
         String JSONFromdetailInfoURL = "";
@@ -303,39 +334,29 @@ public class    Detail_view extends AppCompatActivity {
 //            testInfo.setText("\n\n탭 2에 들어갈 설명정보" +
 //                    "\n유모차대여 : " + detail_I_12.getChkbabycarriage() +
 //                    "\n애완동물동반 가능 : " + detail_I_12.getChkpet());
-        }
-
-        else if(contenttypeid.equals("14")) {
+        } else if (contenttypeid.equals("14")) {
             detailInfo_14 detail_I_14 = new detailInfo_14();
             detail_I_14 = detail_I_14.JSONParsing(JSONFromdetailInfoURL);
-        }
-
-        else if(contenttypeid.equals("15")) {
+        } else if (contenttypeid.equals("15")) {
             detailInfo_15 detail_I_15 = new detailInfo_15();
             detail_I_15 = detail_I_15.JSONParsing(JSONFromdetailInfoURL);
-        }
-
-        else if(contenttypeid.equals("25")) {
+        } else if (contenttypeid.equals("25")) {
             Log.d("여행코스", "여행코스");
             detailInfo_25 detail_I_25 = new detailInfo_25();
             detail_I_25 = detail_I_25.JSONParsing(JSONFromdetailInfoURL);
 //            testInfo.setText("\n\n탭 2에 들어갈 설명정보" +
 //                    "\n총 거리 : " + detail_I_25.getDistance() +
 //                    "\n소요 시간 : " + detail_I_25.getTaketime());
-        }
-        else if(contenttypeid.equals("28")) {
+        } else if (contenttypeid.equals("28")) {
             detailInfo_28 detail_I_28 = new detailInfo_28();
             detail_I_28 = detail_I_28.JSONParsing(JSONFromdetailInfoURL);
-        }
-        else if(contenttypeid.equals("32")) {
+        } else if (contenttypeid.equals("32")) {
             detailInfo_32 detail_I_32 = new detailInfo_32();
             detail_I_32 = detail_I_32.JSONParsing(JSONFromdetailInfoURL);
-        }
-        else if(contenttypeid.equals("38")) {
+        } else if (contenttypeid.equals("38")) {
             detailInfo_38 detail_I_38 = new detailInfo_38();
             detail_I_38 = detail_I_38.JSONParsing(JSONFromdetailInfoURL);
-        }
-        else if(contenttypeid.equals("39")) {
+        } else if (contenttypeid.equals("39")) {
             detailInfo_39 detail_I_39 = new detailInfo_39();
             detail_I_39 = detail_I_39.JSONParsing(JSONFromdetailInfoURL);
         }
@@ -347,17 +368,18 @@ public class    Detail_view extends AppCompatActivity {
 //                "&imageYN=N&MobileOS=AND&MobileApp=CoronaTravel&_type=json";
 
         String detailImageUrl = "http://api.visitkorea.or.kr/openapi/service/rest/KorService/detailImage?" +
-                "ServiceKey="+ServiceKey+
-                "&contentTypeId=" +contenttypeid +
+                "ServiceKey=" + ServiceKey +
+                "&contentTypeId=" + contenttypeid +
                 "&MobileOS=AND&MobileApp=CoronaTravel" +
-                "&contentId=" +contentid+
+                "&contentId=" + contentid +
                 "&imageYN=Y&_type=json";
 
         String JSONFromdetailImageUrl = "";
         String image;
         try {
             JSONFromdetailImageUrl = new HttpReqTask().execute(detailImageUrl).get();
-        } catch (Exception e) {;
+        } catch (Exception e) {
+            ;
             Log.d("TAG", "jsonparsing error");
         }
         detailImage.JSONParsing(JSONFromdetailImageUrl);
@@ -367,12 +389,12 @@ public class    Detail_view extends AppCompatActivity {
 //            testImage.setText("\n\n텝4에 들어갈 추가이미지 중 첫 번째: " + detailImage.Images.get(0));
 //        }
 
-        String dist="10000";
-        String maskUrl ="";
+        String dist = "10000";
+        String maskUrl = "";
         maskUrl = "https://8oi9s0nnth.apigw.ntruss.com/corona19-masks/v1/storesByGeo/json?" +
-                "lat="+detail_C.getMapy()+"&" +
-                "lng="+ detail_C.getMapx()+"&" +
-                "m="+dist;
+                "lat=" + detail_C.getMapy() + "&" +
+                "lng=" + detail_C.getMapx() + "&" +
+                "m=" + dist;
         String JSONFromTotalSearch = "";
         try {
             JSONFromTotalSearch = new HttpReqTask().execute(maskUrl).get();
@@ -391,8 +413,29 @@ public class    Detail_view extends AppCompatActivity {
 //                    + "\n재고 : " + MainActivity.MASK_AraayList.get(0).getRemain_stat());
 //        }
 
-        maskSwipeAdapter = new MaskSwipeAdapter(getSupportFragmentManager(),MainActivity.MASK_AraayList);
-        if(MainActivity.MASK_AraayList.size()!=0) viewPager_mask.setAdapter(maskSwipeAdapter);
+        maskSwipeAdapter = new MaskSwipeAdapter(getSupportFragmentManager(), MainActivity.MASK_AraayList);
+        if (MainActivity.MASK_AraayList.size() != 0) viewPager_mask.setAdapter(maskSwipeAdapter);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        if (item.getItemId() == R.id.first_menu) {
+            fragmentTransaction.replace(R.id.detail_framlayout, detail_first_fragment);
+            fragmentTransaction.commit();
+
+        } else if (item.getItemId() == R.id.second_menu) {
+            fragmentTransaction.replace(R.id.detail_framlayout, detail_second_fragment);
+            fragmentTransaction.commit();
+        } else if (item.getItemId() == R.id.third_menu) {
+            fragmentTransaction.replace(R.id.detail_framlayout, detail_third_fragment);
+            fragmentTransaction.commit();
+        } else if (item.getItemId() == R.id.fourth_menu) {
+            fragmentTransaction.replace(R.id.detail_framlayout, detail_fourth_fragment);
+            fragmentTransaction.commit();
+        }
+        return true;
     }
 
     public void init2() {
@@ -424,10 +467,10 @@ public class    Detail_view extends AppCompatActivity {
                 "&dataType=JSON" +
                 "&base_date=" + today +
                 "&base_time=0500&" + TypeId.nxny(String.valueOf(addressCode));
-                //"&nx=55&ny=127";
+        //"&nx=55&ny=127";
 
-        Log.d("TAG",ShortWeatherURL);
-        Toast.makeText(Detail_view.this,ShortWeatherURL,Toast.LENGTH_LONG).show();
+        Log.d("TAG", ShortWeatherURL);
+        Toast.makeText(Detail_view.this, ShortWeatherURL, Toast.LENGTH_LONG).show();
 
         String JSONFromShortWeatherURL = "a";
         try {
@@ -445,8 +488,8 @@ public class    Detail_view extends AppCompatActivity {
                     "&pageNo=" + pagenumber +
                     "&dataType=JSON" +
                     "&base_date=" + today +
-                    "&base_time=0500&" +  TypeId.nxny(String.valueOf(addressCode));
-                    //"&nx=55&ny=127";
+                    "&base_time=0500&" + TypeId.nxny(String.valueOf(addressCode));
+            //"&nx=55&ny=127";
             try {
                 JSONFromShortWeatherURL = new HttpReqTask().execute(ShortWeatherURL).get();
             } catch (Exception e) {
@@ -462,8 +505,8 @@ public class    Detail_view extends AppCompatActivity {
                 "&pageNo=" + "1" +
                 "&dataType=JSON" +
                 "&base_date=" + today +
-                "&base_time=0200&" +   TypeId.nxny(String.valueOf(addressCode));
-                //"&nx=55&ny=127";
+                "&base_time=0200&" + TypeId.nxny(String.valueOf(addressCode));
+        //"&nx=55&ny=127";
 
 
         String JSONFromShortWeatherURL2 = "";
