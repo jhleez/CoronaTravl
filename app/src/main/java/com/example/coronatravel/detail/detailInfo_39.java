@@ -1,5 +1,6 @@
 package com.example.coronatravel.detail;
 
+import android.text.Html;
 import android.util.Log;
 
 import org.json.JSONException;
@@ -108,6 +109,7 @@ public class detailInfo_39 {
 
 
     public detailInfo_39 JSONParsing(String JSONFromLocationBasedListaddr) {
+        String removehtml = Html.fromHtml(JSONFromLocationBasedListaddr).toString();
         detailInfo_39 subclass = null;
         String chkcreditcardfood; // 신용카드가능 정보
         String discountinfofood; // 할인정보
@@ -120,7 +122,7 @@ public class detailInfo_39 {
         String treatmenu;//취급메뉴
 
         try {
-            JSONObject jsonObject = new JSONObject(JSONFromLocationBasedListaddr);
+            JSONObject jsonObject = new JSONObject(removehtml);
             String response = jsonObject.getString("response");
             JSONObject jsonObject_response = new JSONObject(response);
 

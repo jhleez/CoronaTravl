@@ -1,5 +1,6 @@
 package com.example.coronatravel;
 
+import android.text.Html;
 import android.util.Log;
 
 import com.example.coronatravel.Adapter.SwipeAdapter;
@@ -73,6 +74,7 @@ public class LocationBasedList_Class {
 
 
     public static void JSONParsing(String JSONFromLocationBasedListaddr) {
+        String removehtml = Html.fromHtml(JSONFromLocationBasedListaddr).toString();
         String addr1;
         String contentid;
         String contenttypeid;
@@ -81,7 +83,7 @@ public class LocationBasedList_Class {
         String title;
 
         try {
-            JSONObject jsonObject = new JSONObject(JSONFromLocationBasedListaddr);
+            JSONObject jsonObject = new JSONObject(removehtml);
             String  response = jsonObject.getString("response");
             JSONObject jsonObject_response = new JSONObject(response);
 

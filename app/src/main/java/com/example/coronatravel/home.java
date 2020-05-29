@@ -3,6 +3,7 @@ package com.example.coronatravel;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.text.Html;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -110,21 +111,7 @@ public class home extends AppCompatActivity {
             Log.d("TAG", "jsonparsing error");
         }
 
-        String a = OverviewJSONParsing(JSONFromdetailCommonUrl);
-        try{
-            a = URLDecoder.decode(a,"UTF-8");
-        }catch (Exception e) {
-
-        }
-        a = a.replace("<b>","");
-        a = a.replace("공지사항","공지사항\n");
-        a = a.replace("<br>","");
-        a = a.replace("</b><u><a href=\"https://korean.visitkorea.or.kr/notice/news_detail.do?nwsid=8cdd65e1-59f1-4904-8bc9-884001e40911","");
-        a = a.replace("\" title=\"여행정보 변동사항 페이지로 이동\">→ 코로나바이러스감염증-19 여행정보 변동사항 확인하기","");
-        a = a.replace("</a></u>","\n\n");
-        a = a.replace("</a></u><"+festival.getTitle()+">","");
-        a = a.replace("<strong>","");
-        a = a.replace("</strong>","");
+        String a = OverviewJSONParsing(JSONFromdetailCommonUrl, festival.getTitle());
         festival.setOverview(a);
         test.setText(a);
 
@@ -202,21 +189,9 @@ public class home extends AppCompatActivity {
                     Log.d("TAG", "jsonparsing error");
                 }
 
-                String a = OverviewJSONParsing(JSONFromdetailCommonUrl);
-                try{
-                    a = URLDecoder.decode(a,"UTF-8");
-                }catch (Exception e) {
+                String a = OverviewJSONParsing(JSONFromdetailCommonUrl,festival.getTitle());
 
-                }
-                a = a.replace("<b>","");
-                a = a.replace("공지사항","공지사항\n");
-                a = a.replace("<br>","");
-                a = a.replace("</b><u><a href=\"https://korean.visitkorea.or.kr/notice/news_detail.do?nwsid=8cdd65e1-59f1-4904-8bc9-884001e40911","");
-                a = a.replace("\" title=\"여행정보 변동사항 페이지로 이동\">→ 코로나바이러스감염증-19 여행정보 변동사항 확인하기","");
-                a = a.replace("</a></u>","\n\n");
-                a = a.replace("</a></u><"+festival.getTitle()+">","");
-                a = a.replace("<strong>","");
-                a = a.replace("</strong>","");
+
                 festival.setOverview(a);
                 test.setText(a);
 
@@ -248,6 +223,7 @@ public class home extends AppCompatActivity {
 
 
     public static Festival JSONParsing(String JSONFromLocationBasedListaddr) {
+        String removehtml = Html.fromHtml(JSONFromLocationBasedListaddr).toString();
         String addr1="";
         String areacode="";
         String eventenddate="";
@@ -257,7 +233,7 @@ public class home extends AppCompatActivity {
         String contentid="";
         String contenttypeid="";
         try {
-            JSONObject jsonObject = new JSONObject(JSONFromLocationBasedListaddr);
+            JSONObject jsonObject = new JSONObject(removehtml);
             String response = jsonObject.getString("response");
             JSONObject jsonObject_response = new JSONObject(response);
 
@@ -312,10 +288,11 @@ public class home extends AppCompatActivity {
         return festival;
     }
 
-    public String OverviewJSONParsing(String JSONFromdetailCommonUrl) {
+    public String OverviewJSONParsing(String JSONFromdetailCommonUrl, String title) {
         String overview ="";
+        String removehtml = Html.fromHtml(JSONFromdetailCommonUrl).toString();
         try {
-            JSONObject jsonObject = new JSONObject(JSONFromdetailCommonUrl);
+            JSONObject jsonObject = new JSONObject(removehtml);
             String response = jsonObject.getString("response");
             JSONObject jsonObject_response = new JSONObject(response);
 
@@ -329,6 +306,12 @@ public class home extends AppCompatActivity {
             JSONObject jsonObject_item = new JSONObject(item);
             try {
                 overview = jsonObject_item.getString("overview");
+                if(overview.startsWith("는") || overview.startsWith("은")){
+                    overview = "[" + title + "]" + overview;
+                }
+                //overview = Html.fromHtml(overview).toString();
+                //overview = overview.replaceAll("<(/)?([a-zA-Z]*)(\\s[a-zA-Z]*=[^>]*)?(\\s)*(/)?>", "");
+
             }catch (JSONException e){
                 overview="";
             }

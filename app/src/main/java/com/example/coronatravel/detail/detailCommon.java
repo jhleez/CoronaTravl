@@ -1,5 +1,6 @@
 package com.example.coronatravel.detail;
 
+import android.text.Html;
 import android.util.Log;
 
 import org.json.JSONException;
@@ -160,10 +161,11 @@ public class detailCommon {
     }
 
     public detailCommon JSONParsing(String JSONFromdetailCommonUrl) {
+        String removehtml = Html.fromHtml(JSONFromdetailCommonUrl).toString();
         detailCommon subclass=null;
         String addr1,booktour, firstimage,mapx,mapy,mlevel,overview,title,zipcode,homepage,tel,telname,areacode,sigungucode;
         try {
-            JSONObject jsonObject = new JSONObject(JSONFromdetailCommonUrl);
+            JSONObject jsonObject = new JSONObject(removehtml);
             String response = jsonObject.getString("response");
             JSONObject jsonObject_response = new JSONObject(response);
 
