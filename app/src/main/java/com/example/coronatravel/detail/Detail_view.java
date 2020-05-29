@@ -514,7 +514,7 @@ public class Detail_view extends AppCompatActivity {
 
 //        Toast.makeText(Detail_view.this,"size is " + MainActivity.ShortWeather_ArrayList.size(), Toast.LENGTH_SHORT).show();
 
-        for (int i = 0; i < MainActivity.ShortWeather_ArrayList.size(); i++) {
+        for (int i = 0; i < 3; i++) {
             String rainState = MainActivity.ShortWeather_ArrayList.get(i).getPTY();
             String skyState = MainActivity.ShortWeather_ArrayList.get(i).getSKY();
             String month = MainActivity.ShortWeather_ArrayList.get(i).getFcstDate().substring(4, 6);
