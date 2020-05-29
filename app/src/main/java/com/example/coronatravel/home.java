@@ -57,13 +57,14 @@ public class home extends AppCompatActivity {
                 "&areaCode=&sigunguCode=&cat1=A02&cat2=A0207&cat3=&listYN=Y" +
                 "&MobileOS=AND&MobileApp=CoronaTravel" +
                 "&arrange=O&numOfRows=1&pageNo=1&_type=json";
-
         String JSONFromRandomFestivalUrl = "";
+        Log.d("random",RandomFestivalUrl);
         try {
             JSONFromRandomFestivalUrl = new HttpReqTask().execute(RandomFestivalUrl).get();
         } catch (Exception e) {
             Log.d("TAG", "jsonparsing error");
         }
+        Log.d("random",RandomFestivalUrl);
         totalcount = ShortJSONParsing(JSONFromRandomFestivalUrl);
         Random rnd = new Random();
         String randomnum = String.valueOf(rnd.nextInt((Integer.parseInt(totalcount) / 10) * 8));
@@ -78,7 +79,7 @@ public class home extends AppCompatActivity {
                 "&arrange=" + arrange[randomarrange] +
                 "&numOfRows=1&pageNo=" + randomnum + "&_type=json";
 
-
+        Log.d("random",RandomFestivalUrl);
         try {
             JSONFromRandomFestivalUrl = new HttpReqTask().execute(RandomFestivalUrl).get();
         } catch (Exception e) {
@@ -96,6 +97,7 @@ public class home extends AppCompatActivity {
                 "&defaultYN=Y&firstImageYN=Y&areacodeYN=Y&catcodeYN=Y&addrinfoYN=Y&mapinfoYN=Y&overviewYN=Y&transGuideYN=Y" +
                 "&_type=json";
 
+        Log.d("random11111",detailCommonUrl);
 //        String detailCommonUrl = "http://api.visitkorea.or.kr/openapi/service/rest/KorService/detailCommon?" +
 //                "ServiceKey=" + ServiceKey +
 //                "&contentTypeId=" + "15" +

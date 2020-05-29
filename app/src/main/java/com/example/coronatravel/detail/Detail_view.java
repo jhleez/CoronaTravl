@@ -37,6 +37,7 @@ import com.example.coronatravel.Mask;
 import com.example.coronatravel.R;
 import com.example.coronatravel.ShortWeather;
 import com.example.coronatravel.TypeId;
+import com.example.coronatravel.detail.fragment.Data;
 import com.example.coronatravel.detail.fragment.Detail_First_Fragment;
 import com.example.coronatravel.detail.fragment.Detail_Fourth_Fragment;
 import com.example.coronatravel.detail.fragment.Detail_Second_Fragment;
@@ -66,11 +67,12 @@ public class Detail_view extends AppCompatActivity {
     String addr1, contentid, contenttypeid, firstimage, title;
     ConstraintLayout weatehr_expandlayout, mask_expandlayout, corona_expandlayout;
     FrameLayout frameLayout;
-    Detail_First_Fragment detail_first_fragment = new Detail_First_Fragment();
+    Detail_First_Fragment detail_first_fragment ;
     Detail_Second_Fragment detail_second_fragment = new Detail_Second_Fragment();
     Detail_Third_Fragment detail_third_fragment = new Detail_Third_Fragment();
     Detail_Fourth_Fragment detail_fourth_fragment = new Detail_Fourth_Fragment();
     ChipNavigationBar chipNavigationBar;
+
 
     ViewPager viewPager_mask;
     MaskSwipeAdapter maskSwipeAdapter;
@@ -86,7 +88,7 @@ public class Detail_view extends AppCompatActivity {
     private int addressCode = 0, addressIndex;
     private String cityName = null;
     private TextView totalP, citynameP, plusP, dischargedP, curedP, deathP;
-
+    public detailCommon detail_C;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -201,7 +203,7 @@ public class Detail_view extends AppCompatActivity {
 
 
         String ServiceKey = "2YHyxt5iKCnOzEiYHMcML%2FgiOywB9tnJeL6D%2BHqsL48iMsSOXwPxQHTjCHq5dA1zAEcNIdcQUXnvFMN0aIdLsQ%3D%3D";
-        detailCommon detail_C = new detailCommon();
+        detail_C = new detailCommon();
         String detailCommonUrl = "http://api.visitkorea.or.kr/openapi/service/rest/KorService/detailCommon?" +
                 "ServiceKey=" + ServiceKey +
                 "&contentTypeId=" + contenttypeid +
@@ -247,8 +249,9 @@ public class Detail_view extends AppCompatActivity {
 
 
         detail_C = detail_C.JSONParsing(JSONFromdetailCommonUrl);
-        addressCode = Integer.parseInt(detail_C.getAreacode());
-
+        addressCode = Integer.parseInt(detail_C.getAreacode()); // 여기
+        detail_first_fragment=new Detail_First_Fragment(detail_C);
+        Data.detail_C = detail_C;
         weatherListview = findViewById(R.id.weatherListview);
         init(addressCode);
         //모든 데이터가 다들어 있는게 아님 이 케이스의 경우 홈페이지, 전화번호, 전화번호 명이없음
@@ -329,38 +332,43 @@ public class Detail_view extends AppCompatActivity {
         }
 
         detailInfo_12 detail_I_12 = new detailInfo_12();
+        detailInfo_14 detail_I_14 = new detailInfo_14();
+        detailInfo_15 detail_I_15 = new detailInfo_15();
+        detailInfo_25 detail_I_25 = new detailInfo_25();
+        detailInfo_28 detail_I_28 = new detailInfo_28();
+        detailInfo_32 detail_I_32 = new detailInfo_32();
+        detailInfo_38 detail_I_38 = new detailInfo_38();
+        detailInfo_39 detail_I_39 = new detailInfo_39();
+        Data.contentid = contentid;
+        Data.contenttypeid = contenttypeid;
+
         if (contenttypeid.equals("12")) {
             detail_I_12 = detail_I_12.JSONParsing(JSONFromdetailInfoURL);
-//            testInfo.setText("\n\n탭 2에 들어갈 설명정보" +
-//                    "\n유모차대여 : " + detail_I_12.getChkbabycarriage() +
-//                    "\n애완동물동반 가능 : " + detail_I_12.getChkpet());
         } else if (contenttypeid.equals("14")) {
-            detailInfo_14 detail_I_14 = new detailInfo_14();
             detail_I_14 = detail_I_14.JSONParsing(JSONFromdetailInfoURL);
         } else if (contenttypeid.equals("15")) {
-            detailInfo_15 detail_I_15 = new detailInfo_15();
             detail_I_15 = detail_I_15.JSONParsing(JSONFromdetailInfoURL);
         } else if (contenttypeid.equals("25")) {
             Log.d("여행코스", "여행코스");
-            detailInfo_25 detail_I_25 = new detailInfo_25();
             detail_I_25 = detail_I_25.JSONParsing(JSONFromdetailInfoURL);
-//            testInfo.setText("\n\n탭 2에 들어갈 설명정보" +
-//                    "\n총 거리 : " + detail_I_25.getDistance() +
-//                    "\n소요 시간 : " + detail_I_25.getTaketime());
         } else if (contenttypeid.equals("28")) {
-            detailInfo_28 detail_I_28 = new detailInfo_28();
             detail_I_28 = detail_I_28.JSONParsing(JSONFromdetailInfoURL);
         } else if (contenttypeid.equals("32")) {
-            detailInfo_32 detail_I_32 = new detailInfo_32();
             detail_I_32 = detail_I_32.JSONParsing(JSONFromdetailInfoURL);
         } else if (contenttypeid.equals("38")) {
-            detailInfo_38 detail_I_38 = new detailInfo_38();
             detail_I_38 = detail_I_38.JSONParsing(JSONFromdetailInfoURL);
         } else if (contenttypeid.equals("39")) {
-            detailInfo_39 detail_I_39 = new detailInfo_39();
             detail_I_39 = detail_I_39.JSONParsing(JSONFromdetailInfoURL);
         }
 
+        Data. detail_I_12 = detail_I_12;
+        Data. detail_I_14 = detail_I_14;
+        Data. detail_I_15 = detail_I_15;
+        Data. detail_I_25 = detail_I_25;
+        Data. detail_I_28 = detail_I_28;
+        Data. detail_I_32 = detail_I_32;
+        Data. detail_I_38 = detail_I_38;
+        Data. detail_I_39 = detail_I_39;
 
 //        String detailImageUrl = "http://api.visitkorea.or.kr/openapi/service/rest/KorService/detailImage?" +
 //                "ServiceKey="+ServiceKey+
@@ -416,28 +424,6 @@ public class Detail_view extends AppCompatActivity {
         maskSwipeAdapter = new MaskSwipeAdapter(getSupportFragmentManager(), MainActivity.MASK_AraayList);
         if (MainActivity.MASK_AraayList.size() != 0) viewPager_mask.setAdapter(maskSwipeAdapter);
     }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        FragmentManager fragmentManager = getSupportFragmentManager();
-        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-        if (item.getItemId() == R.id.first_menu) {
-            fragmentTransaction.replace(R.id.detail_framlayout, detail_first_fragment);
-            fragmentTransaction.commit();
-
-        } else if (item.getItemId() == R.id.second_menu) {
-            fragmentTransaction.replace(R.id.detail_framlayout, detail_second_fragment);
-            fragmentTransaction.commit();
-        } else if (item.getItemId() == R.id.third_menu) {
-            fragmentTransaction.replace(R.id.detail_framlayout, detail_third_fragment);
-            fragmentTransaction.commit();
-        } else if (item.getItemId() == R.id.fourth_menu) {
-            fragmentTransaction.replace(R.id.detail_framlayout, detail_fourth_fragment);
-            fragmentTransaction.commit();
-        }
-        return true;
-    }
-
     public void init2() {
         String pathAddress = "http://ncov.mohw.go.kr/bdBoardList_Real.do?brdId=1&brdGubun=13&ncvContSeq=&contSeq=&board_id=&gubun=";
 

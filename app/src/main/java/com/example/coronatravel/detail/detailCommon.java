@@ -36,6 +36,8 @@ public class detailCommon {
     private String overview;
     private String title;
     private String zipcode;
+    private String areacode;
+    private String sigungucode;
 
     public String getTelname() {
         return telname;
@@ -61,8 +63,7 @@ public class detailCommon {
         this.sigungucode = sigungucode;
     }
 
-    private String areacode;
-    private String sigungucode;
+
 
     public String getAddr1() {
         return addr1;

@@ -20,6 +20,6 @@ public class Detail_Third_Fragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_detail_fourth_, container, false);
+        return inflater.inflate(R.layout.fragment_detail_third_, container, false);
     }
 }

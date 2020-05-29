@@ -225,8 +225,9 @@ public class detailInfo_15 {
              usetimefestival = "";
          }
 
-         subclass = new detailInfo_15(agelimit, bookingplace, discountinfofestival, eventenddate, eventhomepage, eventplace, eventstartdate
-                 , placeinfo, playtime, program, spendtimefestival, usetimefestival);
+
+             subclass = new detailInfo_15(agelimit, bookingplace, discountinfofestival, eventenddate, eventhomepage, eventplace, placeinfo,eventstartdate
+                , playtime, program, spendtimefestival, usetimefestival);
         } catch (JSONException e) {
               Log.d("TAG", "detailInfo_15 parsing error");
          }

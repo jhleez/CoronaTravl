@@ -110,7 +110,7 @@ public class HomeFragment extends Fragment {
 
         context = getActivity();
 
-        recommendation();
+//        recommendation();
 
         // 네트워크 연결상태 체크
         if (NetworkConnection() == false) NotConnected_showAlert();
@@ -164,7 +164,7 @@ public class HomeFragment extends Fragment {
                 "&areaCode=&sigunguCode=&cat1=A02&cat2=A0207&cat3=&listYN=Y" +
                 "&MobileOS=AND&MobileApp=CoronaTravel" +
                 "&arrange=O&numOfRows=1&pageNo=1&_type=json";
-
+        Log.d("RND",RandomFestivalUrl);
         String JSONFromRandomFestivalUrl = "";
         try {
             JSONFromRandomFestivalUrl = new HttpReqTask().execute(RandomFestivalUrl).get();
