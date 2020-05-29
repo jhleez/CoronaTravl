@@ -21,7 +21,7 @@ public class TypeId {
         } else if (position == 4) {
             return "25";
         } else if (position == 5) {
-            return "25";
+            return "28";
         } else if (position == 6) {
             return "32";
         } else if (position == 7) {

@@ -10,7 +10,10 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.ArrayList;
+
 public class detailRepeat {
+    public static ArrayList<detailRepeat> repeat_array = new ArrayList<>();
     public detailRepeat() {
     }
 
@@ -38,7 +41,7 @@ public class detailRepeat {
         this.infotext = infotext;
     }
 
-    public detailRepeat JSONParsing(String JSONFromLocationBasedListaddr) {
+    public static detailRepeat JSONParsing(String JSONFromLocationBasedListaddr) {
         String removehtml = Html.fromHtml(JSONFromLocationBasedListaddr).toString();
         detailRepeat subclass = null;
         String totalcount;
@@ -73,6 +76,7 @@ public class detailRepeat {
                 }
 
                 subclass = new detailRepeat(infoname,infotext);
+                repeat_array.add(subclass);
 
             }
             else {
@@ -92,6 +96,7 @@ public class detailRepeat {
                     }
 
                     subclass = new detailRepeat(infoname,infotext);
+                    repeat_array.add(subclass);
                 }
             }
         } catch (JSONException e) {

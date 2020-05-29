@@ -36,6 +36,7 @@ public class Detail_First_Fragment extends Fragment {
         first.setText("이름 : " + detail_C1.getTitle()+
         "\n주소 : " + detail_C1.getAddr1() +
         "\n전화번호 : " + detail_C1.getTel() + " (" + detail_C1.getTel_name() + ")" +
+                "\n홈페이지 : " + detail_C1.getHomepage() +
         "\n\n" + detail_C1.getOverview());
 
 

@@ -93,12 +93,72 @@ public class Detail_Second_Fragment extends Fragment {
                     "\n할인 정보 :\n" + detail_I_15.getDiscountinfofestival() +
                     "\n이용 요금 :" + detail_I_15.getUsetimefestival());
         }
+
         else if (contenttypeid.equals("25")) {
-            second.setText("코스 일정 : " + detail_I_25.getSchedule() +
-                    "\n코스 테마 : " + detail_I_25.getTheme() +
-                    "\n코스 총 거리 : " + detail_I_25.getDistance() +
-                    "\n코스 총 소요 시간 : " + detail_I_25.getTheme() +
-                    "\n문의 및 안내 : " + detail_I_25.getInfocentertourcourse());
+            second.setText("\n코스 총 거리 : " + detail_I_25.getDistance() +
+                    "\n코스 총 소요 시간 : " + detail_I_25.getTaketime());
+        }
+
+        else if (contenttypeid.equals("28")) {
+            second.setText("유모차 대여 정보: " + detail_I_28.getChkbabycarriageleports() +
+                    "\n체험가능 연령 : " + detail_I_28.getExpagerangeleports() +
+                    "\n\n수용 인원 : " + detail_I_28.getAccomcountleports() +
+                    "\n개장 기간 : " + detail_I_28.getOpenperiod() +
+                    "\n이용 시간 : " + detail_I_28.getUsetimeleports() +
+                    "\n쉬는 날: " + detail_I_28.getRestdateleports() +
+                    "\n\n입장료: " + detail_I_28.getUsefeeleports() +
+                    "\n예약 안내 : " + detail_I_28.getReservation() +
+                    "\n\n문의 및 안내 : " + detail_I_28.getInfocenterleports());
+        }
+
+        else if (contenttypeid.equals("32")) {
+            second.setText("입실 시간: " + detail_I_32.getCheckintime() +
+                    "\n퇴실 시간 : " + detail_I_32.getCheckouttime() +
+                    "\n픽업 여부 : " + detail_I_32.getPickup() +
+                    "\n\n예약 홈페이지: " + detail_I_32.getReservationurl() +
+                    "\n환불 규정 : " + detail_I_32.getRefundregulation() +
+                    "\n문의 및 안내 : " + detail_I_32.getInfocenterlodging());
+        }
+
+        else if (contenttypeid.equals("38")) {
+            second.setText("유모차 대여 정보: " + detail_I_38.getChkbabycarriageshopping() +
+                    "\n애완동물 동반 가능 여부: " + detail_I_38.getChkpetshopping() +
+                    "\n신용카드 가능 정보 : " + detail_I_38.getChkcreditcardshopping() +
+                    "\n\n장 서는 날: " + detail_I_38.getFairday() +
+                    "\n개장일 : " + detail_I_38.getOpendateshopping() +
+                    "\n쉬는 날 : " + detail_I_38.getRestdateshopping() +
+                    "\n매장 안내 : " + detail_I_38.getShopguide() +
+                    "\n판매 품목 : " + detail_I_38.getSaleitem() +
+                    "\n문의 및 안내 : " + detail_I_38.getInfocentershopping());
+        }
+
+        else if (contenttypeid.equals("38")) {
+            second.setText("유모차 대여 정보: " + detail_I_38.getChkbabycarriageshopping() +
+                    "\n애완동물 동반 가능 여부: " + detail_I_38.getChkpetshopping() +
+                    "\n신용카드 가능 정보 : " + detail_I_38.getChkcreditcardshopping() +
+                    "\n\n장 서는 날: " + detail_I_38.getFairday() +
+                    "\n쉬는 날 : " + detail_I_38.getRestdateshopping() +
+                    "\n매장 안내 : " + detail_I_38.getShopguide() +
+                    "\n\n판매 품목 : " + detail_I_38.getSaleitem() +
+                    "\n문의 및 안내 : " + detail_I_38.getInfocentershopping());
+        }
+
+        else if (contenttypeid.equals("39")) {
+            String kids = detail_I_39.getKidsfacility();
+            if(kids.equals("0")){
+                kids = "없음";
+            }
+            else{
+                kids="있음";
+            }
+            second.setText("대표 메뉴: " + detail_I_39.getFirstmenu() +
+                    "\n취급 메뉴: " + detail_I_39.getTreatmenu() +
+                    "\n어린이 놀이방 여부: " + kids +
+                    "\n포장가능 여부 : " + detail_I_39.getPacking() +
+                    "\n신용카드 가능 여부: " + detail_I_39.getChkcreditcardfood() +
+                    "\n영업시간 : " + detail_I_39.getOpentimefood() +
+                    "\n영업일 : " + detail_I_39.getOpendatefood() +
+                    "\n문의 및 안내 : " + detail_I_39.getInfocenterfood());
         }
         return view;
     }

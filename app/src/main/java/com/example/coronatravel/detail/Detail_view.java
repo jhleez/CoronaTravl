@@ -254,14 +254,6 @@ public class Detail_view extends AppCompatActivity {
         Data.detail_C = detail_C;
         weatherListview = findViewById(R.id.weatherListview);
         init(addressCode);
-        //모든 데이터가 다들어 있는게 아님 이 케이스의 경우 홈페이지, 전화번호, 전화번호 명이없음
-//        testCommon.setText(
-//                "텝1에 들어갈 공통정보" +
-//                        "\n이름 : " + detail_C.getTitle() +
-//                        "\n홈페이지 : " + detail_C.getHomepage() +
-//                        "\n주소 : " + detail_C.getAddr1() +
-//                        "\n우편번호 : " + detail_C.getZipcode()
-//        );
 
         if (addressCode == 1) {
             cityName = "서울특별시";
@@ -370,10 +362,28 @@ public class Detail_view extends AppCompatActivity {
         Data. detail_I_38 = detail_I_38;
         Data. detail_I_39 = detail_I_39;
 
-//        String detailImageUrl = "http://api.visitkorea.or.kr/openapi/service/rest/KorService/detailImage?" +
-//                "ServiceKey="+ServiceKey+
-//                "&contentId="+contentId+
-//                "&imageYN=N&MobileOS=AND&MobileApp=CoronaTravel&_type=json";
+        String detailRepeatURL = "http://api.visitkorea.or.kr/openapi/service/rest/KorService/detailInfo?" +
+                "ServiceKey="+ServiceKey+
+                "&contentTypeId="+contenttypeid+
+                "&contentId="+contentid+
+                "&MobileOS=AND&MobileApp=CoronaTravel&listYN=Y&_type=json";
+        String JSONFromdetailRepeat = "";
+        try {
+            JSONFromdetailRepeat = new HttpReqTask().execute(detailRepeatURL).get();
+        } catch (Exception e) {
+            ;
+            Log.d("TAG", "jsonparsing error");
+        }
+        if(contenttypeid.equals("25")){
+            detailRepeat_25.JSONParsing(JSONFromdetailRepeat);
+        }
+        else if(contenttypeid.equals("39")){
+
+        }
+        else{
+            detailRepeat.JSONParsing(JSONFromdetailRepeat);
+        }
+
 
         String detailImageUrl = "http://api.visitkorea.or.kr/openapi/service/rest/KorService/detailImage?" +
                 "ServiceKey=" + ServiceKey +
@@ -381,7 +391,6 @@ public class Detail_view extends AppCompatActivity {
                 "&MobileOS=AND&MobileApp=CoronaTravel" +
                 "&contentId=" + contentid +
                 "&imageYN=Y&_type=json";
-
         String JSONFromdetailImageUrl = "";
         String image;
         try {
@@ -397,6 +406,9 @@ public class Detail_view extends AppCompatActivity {
 //            testImage.setText("\n\n텝4에 들어갈 추가이미지 중 첫 번째: " + detailImage.Images.get(0));
 //        }
 
+
+
+
         String dist = "10000";
         String maskUrl = "";
         maskUrl = "https://8oi9s0nnth.apigw.ntruss.com/corona19-masks/v1/storesByGeo/json?" +
@@ -410,16 +422,6 @@ public class Detail_view extends AppCompatActivity {
             Log.d("TAG", "jsonparsing error");
         }
         Mask.JSONParsing(JSONFromTotalSearch);
-//        testMask.setText(String.valueOf(MainActivity.MASK_AraayList.size()));
-//
-//        if(MainActivity.MASK_AraayList.size() == 0){
-//            testMask.setText("근방 2km 이내의 마스크 판매처 없음");
-//        }
-//        else {
-//            testMask.setText("\n\n근방 2km 이내의 마스크 판매처 중 1개\n이름 : " + MainActivity.MASK_AraayList.get(0).getName()
-//                    + "\n주소 : " + MainActivity.MASK_AraayList.get(0).getAddr()
-//                    + "\n재고 : " + MainActivity.MASK_AraayList.get(0).getRemain_stat());
-//        }
 
         maskSwipeAdapter = new MaskSwipeAdapter(getSupportFragmentManager(), MainActivity.MASK_AraayList);
         if (MainActivity.MASK_AraayList.size() != 0) viewPager_mask.setAdapter(maskSwipeAdapter);

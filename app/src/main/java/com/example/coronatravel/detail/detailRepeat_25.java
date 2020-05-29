@@ -45,7 +45,7 @@ public class detailRepeat_25 {
         this.subdetailoverview = subdetailoverview;
     }
 
-    public detailRepeat_25 JSONParsing(String JSONFromLocationBasedListaddr) {
+    public static detailRepeat_25 JSONParsing(String JSONFromLocationBasedListaddr) {
         String removehtml = Html.fromHtml(JSONFromLocationBasedListaddr).toString();
         detailRepeat_25 subclass = null;
 

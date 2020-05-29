@@ -8,7 +8,8 @@ import org.json.JSONObject;
 
 public class detailInfo_25 {
     detailInfo_25(){};
-    detailInfo_25(String distance, String infocentertourcourse, String schedule, String taketime, String theme){
+    detailInfo_25(String distance, String infocentertourcourse,
+                  String schedule, String taketime, String theme){
         this.distance=distance;
         this.infocentertourcourse=infocentertourcourse;
         this.schedule=schedule;

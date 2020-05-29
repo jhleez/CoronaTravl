@@ -24,6 +24,102 @@ public class detailInfo_28 {
         this.usetimeleports=usetimeleports;
     }
 
+    public String getAccomcountleports() {
+        return accomcountleports;
+    }
+
+    public void setAccomcountleports(String accomcountleports) {
+        this.accomcountleports = accomcountleports;
+    }
+
+    public String getChkbabycarriageleports() {
+        return chkbabycarriageleports;
+    }
+
+    public void setChkbabycarriageleports(String chkbabycarriageleports) {
+        this.chkbabycarriageleports = chkbabycarriageleports;
+    }
+
+    public String getChkcreditcardleports() {
+        return chkcreditcardleports;
+    }
+
+    public void setChkcreditcardleports(String chkcreditcardleports) {
+        this.chkcreditcardleports = chkcreditcardleports;
+    }
+
+    public String getChkpetleports() {
+        return chkpetleports;
+    }
+
+    public void setChkpetleports(String chkpetleports) {
+        this.chkpetleports = chkpetleports;
+    }
+
+    public String getExpagerangeleports() {
+        return expagerangeleports;
+    }
+
+    public void setExpagerangeleports(String expagerangeleports) {
+        this.expagerangeleports = expagerangeleports;
+    }
+
+    public String getInfocenterleports() {
+        return infocenterleports;
+    }
+
+    public void setInfocenterleports(String infocenterleports) {
+        this.infocenterleports = infocenterleports;
+    }
+
+    public String getOpenperiod() {
+        return openperiod;
+    }
+
+    public void setOpenperiod(String openperiod) {
+        this.openperiod = openperiod;
+    }
+
+    public String getReservation() {
+        return reservation;
+    }
+
+    public void setReservation(String reservation) {
+        this.reservation = reservation;
+    }
+
+    public String getRestdateleports() {
+        return restdateleports;
+    }
+
+    public void setRestdateleports(String restdateleports) {
+        this.restdateleports = restdateleports;
+    }
+
+    public String getScaleleports() {
+        return scaleleports;
+    }
+
+    public void setScaleleports(String scaleleports) {
+        this.scaleleports = scaleleports;
+    }
+
+    public String getUsefeeleports() {
+        return usefeeleports;
+    }
+
+    public void setUsefeeleports(String usefeeleports) {
+        this.usefeeleports = usefeeleports;
+    }
+
+    public String getUsetimeleports() {
+        return usetimeleports;
+    }
+
+    public void setUsetimeleports(String usetimeleports) {
+        this.usetimeleports = usetimeleports;
+    }
+
     private String accomcountleports; //수용인원
     private String chkbabycarriageleports; //유모차대여 정보
     private String chkcreditcardleports;// 신용카드가능 정보
@@ -124,7 +220,7 @@ public class detailInfo_28 {
                 usefeeleports = "";
             }
             try {
-                usetimeleports = jsonObject_item.getString("usetimefestival");
+                usetimeleports = jsonObject_item.getString("usetimeleports");
             } catch (JSONException e) {
                 usetimeleports = "";
             }
