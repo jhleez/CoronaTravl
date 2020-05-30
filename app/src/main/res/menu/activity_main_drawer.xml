@@ -6,40 +6,39 @@
     <group android:checkableBehavior="single">
         <item
             android:id="@+id/nav_home"
-            android:icon="@drawable/ic_menu_camera"
+            android:icon="@drawable/baseline_home_black_18dp"
             android:title="@string/menu_home" />
         <item
             android:id="@+id/nav_around"
-            android:icon="@drawable/ic_menu_gallery"
+            android:icon="@drawable/baseline_near_me_black_18dp"
             android:title="@string/menu_around" />
         <item
             android:id="@+id/nav_totalsearch"
-            android:icon="@drawable/ic_menu_manage"
+            android:icon="@drawable/baseline_directions_car_black_18dp"
             android:title="@string/menu_totalsearch" />
-
-        <item
-            android:id="@+id/nav_festival"
-            android:icon="@drawable/ic_menu_slideshow"
-            android:title="@string/menu_festival" />
 
         <item
             android:id="@+id/nav_bookmark"
             android:icon="@drawable/ic_menu_star"
             android:title="@string/menu_bookmark" />
+        <item
+            android:id="@+id/nav_send"
+            android:icon="@drawable/baseline_local_hospital_black_18dp"
+            android:title="@string/menu_send" />
 
     </group>
 
-    <item android:title="Communicate">
-        <menu>
-            <item
-                android:id="@+id/nav_share"
-                android:icon="@drawable/ic_menu_share"
-                android:title="@string/menu_share" />
-            <item
-                android:id="@+id/nav_send"
-                android:icon="@drawable/ic_menu_send"
-                android:title="@string/menu_send" />
-        </menu>
-    </item>
+<!--    <item android:title="Communicate">-->
+<!--        <menu>-->
+<!--            <item-->
+<!--                android:id="@+id/nav_share"-->
+<!--                android:icon="@drawable/ic_menu_share"-->
+<!--                android:title="@string/menu_share" />-->
+<!--            <item-->
+<!--                android:id="@+id/nav_send"-->
+<!--                android:icon="@drawable/ic_menu_send"-->
+<!--                android:title="@string/menu_send" />-->
+<!--        </menu>-->
+<!--    </item>-->
 
 </menu>
