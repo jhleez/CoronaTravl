@@ -4,13 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:background="@drawable/total_fragment_design">
+    android:background="#fff"
+    android:orientation="vertical">
 
     <androidx.constraintlayout.widget.ConstraintLayout
 
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_gravity="center"
         android:padding="5dp">
 
 
@@ -23,8 +24,8 @@
             android:layout_marginLeft="4dp"
             android:layout_marginTop="1dp"
             android:layout_marginBottom="1dp"
-            android:text="분류"
-            android:textSize="20sp"
+            android:text="분류 : "
+            android:textSize="15sp"
             android:textColor="#000"
             android:fontFamily="@font/hangeulnurib"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -34,9 +35,9 @@
         <Spinner
             android:background="@drawable/border"
             android:id="@+id/spinner_around_traveltype"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
+            android:layout_width="150dp"
+            android:layout_height="40dp"
+            android:gravity="center"
             android:layout_marginStart="10dp"
             android:layout_marginLeft="10dp"
             app:layout_constraintBottom_toBottomOf="parent"

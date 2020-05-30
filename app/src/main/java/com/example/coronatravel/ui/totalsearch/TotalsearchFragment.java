@@ -41,6 +41,8 @@ import com.example.coronatravel.LocationBasedList_Class;
 import com.example.coronatravel.MainActivity;
 import com.example.coronatravel.R;
 import com.example.coronatravel.Adapter.SwipeAdapter;
+import com.example.coronatravel.SpinnerAdapter;
+import com.example.coronatravel.SpinnerAdapter2;
 import com.example.coronatravel.TypeId;
 import com.example.coronatravel.ui.ListViewFragment;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -159,12 +161,21 @@ public class TotalsearchFragment extends Fragment implements ViewPager.OnPageCha
 
 
 
+        final SpinnerAdapter2 adapter = new SpinnerAdapter2(getContext());
+        final  SpinnerAdapter2 adapter1 = new SpinnerAdapter2(getContext());
+        String[] model = null;
+        model = getResources().getStringArray(R.array.hightype);
+        for(int i = 0;i <model.length;i++){
+            adapter1.addItem(model[i]);
+        }
         spinner_hightype = root.findViewById(R.id.spinner_totalsearch_hightype);
+        spinner_hightype.setAdapter(adapter1);
 
         spinner_middletype = root.findViewById(R.id.spinner_totalsearch_middletype);
         spinner_hightype.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                adapter.clear();
                 String[] model_1 = null;
                 if (position == 0) {
                     model_1 = getResources().getStringArray(R.array.middletype);
@@ -183,9 +194,11 @@ public class TotalsearchFragment extends Fragment implements ViewPager.OnPageCha
                 } else if (position == 7) {
                     model_1 = getResources().getStringArray(R.array.middle_7);
                 }
-                ArrayAdapter<String> adapter_1 = new ArrayAdapter<String>(getContext(), R.layout.support_simple_spinner_dropdown_item, model_1);
-                adapter_1.setDropDownViewResource(R.layout.support_simple_spinner_dropdown_item);
-                spinner_middletype.setAdapter(adapter_1);
+                for(int i = 0; i<model_1.length;i++){
+                    adapter.addItem(model_1[i]);
+                }
+                spinner_middletype.setAdapter(adapter);
+
             }
 
             @Override
@@ -197,6 +210,13 @@ public class TotalsearchFragment extends Fragment implements ViewPager.OnPageCha
 
 
         spinner_searchtype = root.findViewById(R.id.spinner_totalsearch_searchtype);
+        SpinnerAdapter2 adapter3 = new SpinnerAdapter2(getContext());
+        String[] asd = getResources().getStringArray(R.array.searchtype);
+        for(int i=0; i<asd.length;i++){
+            adapter3.addItem(asd[i]);
+        }
+        spinner_searchtype.setAdapter(adapter3);
+
 
         Button button = root.findViewById(R.id.button_totalsearch_search);
         button.setOnClickListener(new View.OnClickListener() {

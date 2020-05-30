@@ -5,18 +5,17 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
 
-public class SpinnerAdapter extends BaseAdapter {
+public class SpinnerAdapter2 extends BaseAdapter {
 
     private ArrayList<SpinnerItem> SpinnerItemList = new ArrayList<SpinnerItem>() ;
     LayoutInflater inflater;
     // ListViewAdapter의 생성자
 
-    public SpinnerAdapter(Context context) {
+    public SpinnerAdapter2(Context context) {
         inflater = (LayoutInflater)context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
     }
 
@@ -32,7 +31,7 @@ public class SpinnerAdapter extends BaseAdapter {
 
         // "listview_item" Layout을 inflate하여 convertView 참조 획득.
         if (convertView == null) {
-            convertView = inflater.inflate(R.layout.spinner_item, parent, false);
+            convertView = inflater.inflate(R.layout.spinner_item2, parent, false);
         }
 
 
@@ -89,5 +88,9 @@ public class SpinnerAdapter extends BaseAdapter {
 
         item.setItem(country);
         SpinnerItemList.add(item);
+    }
+
+    public void clear(){
+        SpinnerItemList.clear();
     }
 }
