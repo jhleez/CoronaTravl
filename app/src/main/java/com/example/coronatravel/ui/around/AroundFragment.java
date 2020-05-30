@@ -35,6 +35,7 @@ import com.example.coronatravel.LocationBasedList_Class;
 import com.example.coronatravel.MainActivity;
 import com.example.coronatravel.R;
 import com.example.coronatravel.Adapter.SwipeAdapter;
+import com.example.coronatravel.SpinnerAdapter;
 import com.example.coronatravel.TypeId;
 import com.example.coronatravel.ui.ListViewFragment;
 
@@ -79,8 +80,18 @@ public class AroundFragment extends Fragment implements ViewPager.OnPageChangeLi
             checkRunTimePermission();
         }
 
+        SpinnerAdapter adapter = new SpinnerAdapter(getContext());
         spinner = root.findViewById(R.id.spinner_around_traveltype);
-
+        adapter.addItem("전체");
+        adapter.addItem("관광지");
+        adapter.addItem("문화 시설");
+        adapter.addItem("축제 공연 행사");
+        adapter.addItem("여행 코스");
+        adapter.addItem("레포츠");
+        adapter.addItem("숙박");
+        adapter.addItem("쇼핑");
+        adapter.addItem("음식점");
+        spinner.setAdapter(adapter);
 
         ImageButton button = root.findViewById(R.id.button_around_search);
         button.setOnClickListener(this);

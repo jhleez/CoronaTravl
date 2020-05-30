@@ -25,19 +25,20 @@
             android:layout_marginBottom="1dp"
             android:text="분류"
             android:textSize="20sp"
-            android:textStyle="bold"
+            android:textColor="#000"
+            android:fontFamily="@font/hangeulnurib"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <Spinner
+            android:background="@drawable/border"
             android:id="@+id/spinner_around_traveltype"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
             android:layout_marginStart="10dp"
             android:layout_marginLeft="10dp"
-            android:entries="@array/around_traveltype"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toEndOf="@+id/textView2"
             app:layout_constraintTop_toTopOf="parent" />
