@@ -1,5 +1,8 @@
 package com.example.coronatravel.detail;
 
+import android.content.ClipData;
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -7,6 +10,7 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ListView;
 
 import com.example.coronatravel.Adapter.MaskAdapter;
@@ -31,6 +35,17 @@ public class MaskFragment extends Fragment {
         maskAdapter = new MaskAdapter(arrayList);
         listView.setAdapter(maskAdapter);
 
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Mask mask = (Mask) listView.getAdapter().getItem(position);
+                Intent intent = new Intent();
+                intent.setAction(Intent.ACTION_VIEW);
+
+                intent.setData(Uri.parse("geo:0,0?q=" + mask.getAddr()));
+                startActivity(intent);
+            }
+        });
         return view;
     }
 }

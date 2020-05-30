@@ -2,6 +2,7 @@ package com.example.coronatravel.ui.bookmark;
 
 import android.content.ClipData;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.SystemClock;
 import android.view.LayoutInflater;
@@ -53,6 +54,18 @@ public class BookmarkFragment extends Fragment {
                 Intent intent = new Intent(getActivity(), Detail_view.class);
                 intent.putExtra("position", position);
                 startActivity(intent);
+            }
+        });
+        Button button= root.findViewById(R.id.testbutton111);
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent();
+                intent.setAction(Intent.ACTION_VIEW);
+                intent.setData(Uri.parse("geo:0,0?q=" + "경북대학교 북문"));
+                startActivity(intent);
+
+
             }
         });
 
