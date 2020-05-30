@@ -17,6 +17,7 @@ import android.graphics.drawable.Drawable;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Handler;
 import android.transition.AutoTransition;
 import android.transition.TransitionManager;
 import android.util.Log;
@@ -46,6 +47,7 @@ import com.example.coronatravel.myWeatherAdapter;
 import com.example.coronatravel.myWeatherListviewDecoration;
 import com.example.coronatravel.weatherListViewItem;
 import com.ismaeldivita.chipnavigation.ChipNavigationBar;
+import com.xiasuhuei321.loadingdialog.view.LoadingDialog;
 
 
 import org.jsoup.Jsoup;
@@ -58,6 +60,7 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
+import java.util.concurrent.ExecutionException;
 
 public class Detail_view extends AppCompatActivity {
 
@@ -67,7 +70,7 @@ public class Detail_view extends AppCompatActivity {
     String addr1, contentid, contenttypeid, firstimage, title;
     ConstraintLayout weatehr_expandlayout, mask_expandlayout, corona_expandlayout;
     FrameLayout frameLayout;
-    Detail_First_Fragment detail_first_fragment ;
+    Detail_First_Fragment detail_first_fragment;
     Detail_Second_Fragment detail_second_fragment = new Detail_Second_Fragment();
     Detail_Third_Fragment detail_third_fragment = new Detail_Third_Fragment();
     Detail_Fourth_Fragment detail_fourth_fragment = new Detail_Fourth_Fragment();
@@ -83,6 +86,7 @@ public class Detail_view extends AppCompatActivity {
     CardView weathercardview, maskcardview, coronacardview;
     LinearLayoutManager layoutManager;
     ArrayList<weatherListViewItem> itemList;
+    LoadingDialog l;
 
 
     private int addressCode = 0, addressIndex;
@@ -102,7 +106,8 @@ public class Detail_view extends AppCompatActivity {
         curedP = (TextView) findViewById(R.id.AddressCured);
         deathP = (TextView) findViewById(R.id.AddressDeath);
         detailRepeat.repeat_array.clear();
-        detailRepeat_32.repeat_array.clear();;
+        detailRepeat_32.repeat_array.clear();
+        ;
         detailRepeat_25.repeat_array.clear();
         detailImage.Images.clear();
         Intent intent = getIntent();
@@ -135,7 +140,9 @@ public class Detail_view extends AppCompatActivity {
         viewPager_mask = findViewById(R.id.mask_viewpager);
         frameLayout = findViewById(R.id.detail_framlayout);
 
-        final int firstnavigationclick[] ={0,0,0,0};
+        l=new LoadingDialog(this);
+
+        final int firstnavigationclick[] = {0, 0, 0, 0};
         chipNavigationBar = findViewById(R.id.chipnavigation);
         chipNavigationBar.setOnItemSelectedListener(new ChipNavigationBar.OnItemSelectedListener() {
             @Override
@@ -145,10 +152,8 @@ public class Detail_view extends AppCompatActivity {
                 if (i == R.id.first_menu) {
                     fragmentTransaction.replace(R.id.detail_framlayout, detail_first_fragment);
                     fragmentTransaction.commit();
-                }
-
-                else if (i == R.id.second_menu) {
-                    if(firstnavigationclick[1] == 0){
+                } else if (i == R.id.second_menu) {
+                    if (firstnavigationclick[1] == 0) {
 
                         String detailInfoUrl = "http://api.visitkorea.or.kr/openapi/service/rest/KorService/detailIntro?" +
                                 "ServiceKey=" + ServiceKey +
@@ -191,28 +196,26 @@ public class Detail_view extends AppCompatActivity {
                             detail_I_39 = detail_I_39.JSONParsing(JSONFromdetailInfoURL);
                         }
 
-                        Data. detail_I_12 = detail_I_12;
-                        Data. detail_I_14 = detail_I_14;
-                        Data. detail_I_15 = detail_I_15;
-                        Data. detail_I_25 = detail_I_25;
-                        Data. detail_I_28 = detail_I_28;
-                        Data. detail_I_32 = detail_I_32;
-                        Data. detail_I_38 = detail_I_38;
-                        Data. detail_I_39 = detail_I_39;
+                        Data.detail_I_12 = detail_I_12;
+                        Data.detail_I_14 = detail_I_14;
+                        Data.detail_I_15 = detail_I_15;
+                        Data.detail_I_25 = detail_I_25;
+                        Data.detail_I_28 = detail_I_28;
+                        Data.detail_I_32 = detail_I_32;
+                        Data.detail_I_38 = detail_I_38;
+                        Data.detail_I_39 = detail_I_39;
 
                         firstnavigationclick[1]++;
                     }
 
                     fragmentTransaction.replace(R.id.detail_framlayout, detail_second_fragment);
                     fragmentTransaction.commit();
-                }
-
-                else if (i == R.id.third_menu) {
+                } else if (i == R.id.third_menu) {
 
                     String detailRepeatURL = "http://api.visitkorea.or.kr/openapi/service/rest/KorService/detailInfo?" +
-                            "ServiceKey="+ServiceKey+
-                            "&contentTypeId="+contenttypeid+
-                            "&contentId="+contentid+
+                            "ServiceKey=" + ServiceKey +
+                            "&contentTypeId=" + contenttypeid +
+                            "&contentId=" + contentid +
                             "&MobileOS=AND&MobileApp=CoronaTravel&listYN=Y&_type=json";
                     String JSONFromdetailRepeat = "";
                     try {
@@ -220,22 +223,18 @@ public class Detail_view extends AppCompatActivity {
                     } catch (Exception e) {
                         ;
                     }
-                    if(contenttypeid.equals("25")){
+                    if (contenttypeid.equals("25")) {
                         detailRepeat_25.JSONParsing(JSONFromdetailRepeat);
-                    }
-                    else if(contenttypeid.equals("32")){
+                    } else if (contenttypeid.equals("32")) {
                         detailRepeat_32.JSONParsing(JSONFromdetailRepeat);
-                    }
-                    else{
+                    } else {
                         detailRepeat.JSONParsing(JSONFromdetailRepeat);
                     }
                     fragmentTransaction.replace(R.id.detail_framlayout, detail_third_fragment);
                     fragmentTransaction.commit();
-                }
-
-                else if (i == R.id.fourth_menu) {
-                    Log.d("click",String.valueOf(firstnavigationclick[3]));
-                    if(firstnavigationclick[3] == 0) {
+                } else if (i == R.id.fourth_menu) {
+                    Log.d("click", String.valueOf(firstnavigationclick[3]));
+                    if (firstnavigationclick[3] == 0) {
                         String detailImageUrl = "http://api.visitkorea.or.kr/openapi/service/rest/KorService/detailImage?" +
                                 "ServiceKey=" + ServiceKey +
                                 "&contentTypeId=" + contenttypeid +
@@ -261,7 +260,8 @@ public class Detail_view extends AppCompatActivity {
 
 
         weatherexpendbt.setOnClickListener(new View.OnClickListener() {
-            int firstclick=0;
+            int firstclick = 0;
+
             @RequiresApi(api = Build.VERSION_CODES.KITKAT)
             @Override
             public void onClick(View v) {
@@ -269,7 +269,7 @@ public class Detail_view extends AppCompatActivity {
                     TransitionManager.beginDelayedTransition(weathercardview, new AutoTransition());
                     weatehr_expandlayout.setVisibility(View.VISIBLE);
                     weatherexpendbt.setBackgroundResource(R.drawable.ic_expand_less_black_24dp);
-                    if(firstclick == 0){
+                    if (firstclick == 0) {
                         init(addressCode);
                         firstclick++;
                     }
@@ -283,7 +283,8 @@ public class Detail_view extends AppCompatActivity {
             }
         });
         maskexpandbt.setOnClickListener(new View.OnClickListener() {
-            int firstclick=0;
+            int firstclick = 0;
+
             @RequiresApi(api = Build.VERSION_CODES.KITKAT)
             @Override
             public void onClick(View v) {
@@ -291,24 +292,53 @@ public class Detail_view extends AppCompatActivity {
                     TransitionManager.beginDelayedTransition(maskcardview, new AutoTransition());
                     mask_expandlayout.setVisibility(View.VISIBLE);
                     maskexpandbt.setBackgroundResource(R.drawable.ic_expand_less_black_24dp);
-                   if(firstclick == 0) {
-                       String dist = "10000";
-                       String maskUrl = "";
-                       maskUrl = "https://8oi9s0nnth.apigw.ntruss.com/corona19-masks/v1/storesByGeo/json?" +
-                               "lat=" + detail_C.getMapy() + "&" +
-                               "lng=" + detail_C.getMapx() + "&" +
-                               "m=" + dist;
-                       String JSONFromTotalSearch = "";
-                       try {
-                           JSONFromTotalSearch = new HttpReqTask().execute(maskUrl).get();
-                       } catch (Exception e) {
-                       }
-                       Mask.JSONParsing(JSONFromTotalSearch);
-                       maskSwipeAdapter = new MaskSwipeAdapter(getSupportFragmentManager(), MainActivity.MASK_AraayList);
-                       if (MainActivity.MASK_AraayList.size() != 0)
-                           viewPager_mask.setAdapter(maskSwipeAdapter);
-                       firstclick++;
-                   }
+                    if (firstclick == 0) {
+
+                        l.setLoadingText("로딩중")
+                                .setSuccessText("완료")
+                                .setInterceptBack(true)
+                                .setLoadSpeed(LoadingDialog.Speed.SPEED_ONE)
+                                .show();
+
+
+
+                        String dist = "10000";
+                        String maskUrl = "";
+                        maskUrl = "https://8oi9s0nnth.apigw.ntruss.com/corona19-masks/v1/storesByGeo/json?" +
+                                "lat=" + detail_C.getMapy() + "&" +
+                                "lng=" + detail_C.getMapx() + "&" +
+                                "m=" + dist;
+                        final String[] JSONFromTotalSearch = {""};
+                        Log.i("delay","start");
+                        Handler delayHandler = new Handler();
+                        final String finalMaskUrl = maskUrl;
+                        delayHandler.postDelayed(new Runnable() {
+                            @Override
+                            public void run() {
+                                try {
+                                    Log.i("delay","parsingstart+"+finalMaskUrl);
+                                    JSONFromTotalSearch[0] = new HttpReqTask().execute(finalMaskUrl).get();
+                                    Log.i("delay","parsingend");
+                                    Mask.JSONParsing(JSONFromTotalSearch[0]);
+                                    maskSwipeAdapter = new MaskSwipeAdapter(getSupportFragmentManager(), MainActivity.MASK_AraayList);
+                                    if (MainActivity.MASK_AraayList.size() != 0)
+                                        viewPager_mask.setAdapter(maskSwipeAdapter);
+                                    firstclick++;
+                                    l.close();
+                                } catch (Exception e) {
+                                    e.printStackTrace();
+                                }
+                            }
+                        }, 500);
+                        /*Log.i("delay","end");
+                        try {
+                            Log.i("delay","parsingstart");
+                            JSONFromTotalSearch[0] = new HttpReqTask().execute(maskUrl).get();
+                            Log.i("delay","parsingend");
+                        } catch (Exception e) {
+                        }*/
+
+                    }
                 } else {
                     TransitionManager.beginDelayedTransition(maskcardview, new AutoTransition());
                     mask_expandlayout.setVisibility(View.GONE);
@@ -318,6 +348,7 @@ public class Detail_view extends AppCompatActivity {
         });
         coronaexpandbt.setOnClickListener(new View.OnClickListener() {
             int firstclick;
+
             @RequiresApi(api = Build.VERSION_CODES.KITKAT)
             @Override
             public void onClick(View v) {
@@ -325,7 +356,7 @@ public class Detail_view extends AppCompatActivity {
                     TransitionManager.beginDelayedTransition(coronacardview, new AutoTransition());
                     corona_expandlayout.setVisibility(View.VISIBLE);
                     coronaexpandbt.setBackgroundResource(R.drawable.ic_expand_less_black_24dp);
-                    if(firstclick == 0){
+                    if (firstclick == 0) {
                         init2();
                         firstclick++;
                     }
@@ -337,7 +368,6 @@ public class Detail_view extends AppCompatActivity {
                 }
             }
         });
-
 
 
         detail_C = new detailCommon();
@@ -387,7 +417,7 @@ public class Detail_view extends AppCompatActivity {
         detail_C = detail_C.JSONParsing(JSONFromdetailCommonUrl);
         addressCode = Integer.parseInt(detail_C.getAreacode()); // 여기
         Data.detail_C = detail_C;
-        detail_first_fragment=new Detail_First_Fragment();
+        detail_first_fragment = new Detail_First_Fragment();
 
         weatherListview = findViewById(R.id.weatherListview);
         //init(addressCode);
@@ -534,8 +564,6 @@ public class Detail_view extends AppCompatActivity {
 //        detailImage.JSONParsing(JSONFromdetailImageUrl);
 
 
-
-
 //        String dist = "10000";
 //        String maskUrl = "";
 //        maskUrl = "https://8oi9s0nnth.apigw.ntruss.com/corona19-masks/v1/storesByGeo/json?" +
@@ -553,6 +581,7 @@ public class Detail_view extends AppCompatActivity {
 //        maskSwipeAdapter = new MaskSwipeAdapter(getSupportFragmentManager(), MainActivity.MASK_AraayList);
 //        if (MainActivity.MASK_AraayList.size() != 0) viewPager_mask.setAdapter(maskSwipeAdapter);
     }
+
     public void init2() {
         String pathAddress = "http://ncov.mohw.go.kr/bdBoardList_Real.do?brdId=1&brdGubun=13&ncvContSeq=&contSeq=&board_id=&gubun=";
 
@@ -650,25 +679,20 @@ public class Detail_view extends AppCompatActivity {
             if (rainState.equals("1") || rainState.equals("4")) { //Rain or shower
                 skyIcon = ContextCompat.getDrawable(this, R.drawable.rainicon);
                 weatherString = "비";
-            }
-            else if (rainState.equals("2")) { //Rain or Snow
+            } else if (rainState.equals("2")) { //Rain or Snow
                 skyIcon = ContextCompat.getDrawable(this, R.drawable.rainsnowicon);
                 weatherString = "눈/비";
-            }
-            else if (rainState.equals("3")) { //Snow
+            } else if (rainState.equals("3")) { //Snow
                 skyIcon = ContextCompat.getDrawable(this, R.drawable.snowicon);
                 weatherString = "눈";
-            }
-            else if (rainState.equals("0")) { //nothing
+            } else if (rainState.equals("0")) { //nothing
                 if (skyState.equals("1")) { //sunny
                     skyIcon = ContextCompat.getDrawable(this, R.drawable.sunnyicon);
                     weatherString = "맑음";
-                }
-                else if (skyState.equals("3")) { //lots of cloud
+                } else if (skyState.equals("3")) { //lots of cloud
                     skyIcon = ContextCompat.getDrawable(this, R.drawable.lotsofcloudicon);
                     weatherString = "구름 많음";
-                }
-                else if (skyState.equals("4")) { //cloudy
+                } else if (skyState.equals("4")) { //cloudy
                     skyIcon = ContextCompat.getDrawable(this, R.drawable.cloudyicon);
                     weatherString = "흐림";
                 }
