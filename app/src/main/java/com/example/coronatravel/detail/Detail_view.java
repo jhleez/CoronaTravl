@@ -683,7 +683,7 @@ public class Detail_view extends AppCompatActivity {
             try {
                 Document document = Jsoup.connect(params[0].toString()).get(); // Web에서 내용을 가져온다.
                 Elements elements = document.select("div.data_table").select("td.number");
-                String now = elements.get(addressIndex * 8 + 3).text();
+                String now = elements.get(addressIndex * 8 + 4).text();
                 return now;
             } catch (IOException e) {
                 e.printStackTrace();
