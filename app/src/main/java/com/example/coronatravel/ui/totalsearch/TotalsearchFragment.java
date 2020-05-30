@@ -158,7 +158,9 @@ public class TotalsearchFragment extends Fragment implements ViewPager.OnPageCha
         });
 
 
+
         spinner_hightype = root.findViewById(R.id.spinner_totalsearch_hightype);
+
         spinner_middletype = root.findViewById(R.id.spinner_totalsearch_middletype);
         spinner_hightype.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override

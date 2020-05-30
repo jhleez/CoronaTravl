@@ -24,7 +24,8 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="80dp"
-            android:layout_marginLeft="13dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="13dp"
 
             android:orientation="horizontal">
 
@@ -35,6 +36,9 @@
 
                 <TextView
                     android:id="@+id/textview_listitem_title"
+                    android:fontFamily="@font/binggraemelona"
+                    android:textColor="#000"
+                    android:textSize="18sp"
                     android:layout_width="250dp"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
@@ -43,22 +47,25 @@
                     android:text="Title" />
 
                 <TextView
+                    android:fontFamily="@font/binggraemelonal"
+                    android:textColor="#848484"
+                    android:textSize="12sp"
                     android:id="@+id/textview_listitem_address"
                     android:layout_width="250dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="5dp"
+                    android:layout_marginTop="10dp"
                     android:ellipsize="end"
                     android:maxLines="1"
                     android:text="address" />
 
-                <TextView
-                    android:id="@+id/textview_listitem_distance"
-                    android:layout_width="250dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="5dp"
-                    android:ellipsize="end"
-                    android:maxLines="1"
-                    android:text="Distance" />
+<!--                <TextView-->
+<!--                    android:id="@+id/textview_listitem_distance"-->
+<!--                    android:layout_width="250dp"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_marginTop="5dp"-->
+<!--                    android:ellipsize="end"-->
+<!--                    android:maxLines="1"-->
+<!--                    android:text="Distance" />-->
             </LinearLayout>
 
 

@@ -105,7 +105,7 @@ public class LocationBasedList_Class {
                     addr1="";
                 }
                 try{
-                    firstimage = jsonObject_item.getString("firstimage");
+                    firstimage = jsonObject_item.getString("firstimage2");
                 }catch (JSONException e){
                     firstimage="";
                 }
