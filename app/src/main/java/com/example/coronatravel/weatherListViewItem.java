@@ -7,13 +7,22 @@ import androidx.core.content.ContextCompat;
 
 public class weatherListViewItem {
     private Drawable iconDrawble;
-    private String date;
+    private String date, weatherString;
     private String temperature;
 
-    public weatherListViewItem(Drawable icon, String date, String temperature){
+    public weatherListViewItem(Drawable icon, String date, String weatherString, String temperature){
         this.iconDrawble = icon;
         this.date = date;
+        this.weatherString = weatherString;
         this.temperature = temperature;
+    }
+
+    public void setWeatherString(String weatherString) {
+        this.weatherString = weatherString;
+    }
+
+    public String getWeatherString() {
+        return this.weatherString;
     }
 
     public Drawable getIconDrawble() {

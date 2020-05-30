@@ -641,32 +641,42 @@ public class Detail_view extends AppCompatActivity {
 //        Toast.makeText(Detail_view.this,"size is " + MainActivity.ShortWeather_ArrayList.size(), Toast.LENGTH_SHORT).show();
 
         for (int i = 0; i < 3; i++) {
-            String rainState = MainActivity.ShortWeather_ArrayList.get(i).getPTY();
-            String skyState = MainActivity.ShortWeather_ArrayList.get(i).getSKY();
-            String month = MainActivity.ShortWeather_ArrayList.get(i).getFcstDate().substring(4, 6);
-            String date = MainActivity.ShortWeather_ArrayList.get(i).getFcstDate().substring(6);
+            final String rainState = MainActivity.ShortWeather_ArrayList.get(i).getPTY();
+            final String skyState = MainActivity.ShortWeather_ArrayList.get(i).getSKY();
+            final String month = MainActivity.ShortWeather_ArrayList.get(i).getFcstDate().substring(4, 6);
+            final String date = MainActivity.ShortWeather_ArrayList.get(i).getFcstDate().substring(6);
+            String weatherString = null;
             Drawable skyIcon = null;
-            if (rainState.equals("1") || rainState.equals("4")) //Rain or shower
+            if (rainState.equals("1") || rainState.equals("4")) { //Rain or shower
                 skyIcon = ContextCompat.getDrawable(this, R.drawable.rainicon);
-            else if (rainState.equals("2")) //Rain or Snow
+                weatherString = "비";
+            }
+            else if (rainState.equals("2")) { //Rain or Snow
                 skyIcon = ContextCompat.getDrawable(this, R.drawable.rainsnowicon);
-            else if (rainState.equals("3")) //Snow
+                weatherString = "눈/비";
+            }
+            else if (rainState.equals("3")) { //Snow
                 skyIcon = ContextCompat.getDrawable(this, R.drawable.snowicon);
-                //else if(rainState.equals("4")) //Shower
-                //skyIcon = ContextCompat.getDrawable(this,R.drawable.showericon);
+                weatherString = "눈";
+            }
             else if (rainState.equals("0")) { //nothing
-                if (skyState.equals("1")) //sunny
+                if (skyState.equals("1")) { //sunny
                     skyIcon = ContextCompat.getDrawable(this, R.drawable.sunnyicon);
-                else if (skyState.equals("3")) //lots of cloud
+                    weatherString = "맑음";
+                }
+                else if (skyState.equals("3")) { //lots of cloud
                     skyIcon = ContextCompat.getDrawable(this, R.drawable.lotsofcloudicon);
-                else if (skyState.equals("4")) //cloudy
+                    weatherString = "구름 많음";
+                }
+                else if (skyState.equals("4")) { //cloudy
                     skyIcon = ContextCompat.getDrawable(this, R.drawable.cloudyicon);
-                else Toast.makeText(this, "skyState is " + skyState, Toast.LENGTH_SHORT).show();
+                    weatherString = "흐림";
+                }
             } else
                 Toast.makeText(this, "rainState is " + rainState, Toast.LENGTH_SHORT).show();
 
             itemList.add(new weatherListViewItem(skyIcon, month + "월 " + date + "일",
-                    MainActivity.ShortWeather_ArrayList.get(i).getTMN() + "/" + MainActivity.ShortWeather_ArrayList.get(i).getTMX()));
+                    weatherString, MainActivity.ShortWeather_ArrayList.get(i).getTMN() + "/" + MainActivity.ShortWeather_ArrayList.get(i).getTMX()));
         }
 
         weatherAdapter = new myWeatherAdapter(this, itemList);
