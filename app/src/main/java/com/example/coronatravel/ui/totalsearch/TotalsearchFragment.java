@@ -196,7 +196,7 @@ public class TotalsearchFragment extends Fragment implements ViewPager.OnPageCha
                 }
                 for(int i = 0; i<model_1.length;i++){
                     adapter.addItem(model_1[i]);
-                }
+            }
                 spinner_middletype.setAdapter(adapter);
 
             }
@@ -224,11 +224,10 @@ public class TotalsearchFragment extends Fragment implements ViewPager.OnPageCha
             @Override
             public void onClick(View view) {
                 service_typehigh = TypeId.cat1(spinner_hightype.getSelectedItemPosition());//대분류
-                service_typemiddle = TypeId.cat2(spinner_middletype.getSelectedItemPosition(), spinner_hightype.getSelectedItemPosition());//중분류
-
+                service_typemiddle = TypeId.cat2(spinner_hightype.getSelectedItemPosition(), spinner_middletype.getSelectedItemPosition());//중분류
                 city_big = TypeId.areacode(a);//지역선택
                 city_small = String.valueOf(b);//시군구선택
-
+                Log.d("posi",service_typehigh+service_typemiddle);
                 input = editText_input.getText().toString(); // 검색 내용
 
                 searchtype = TypeId.arrange(spinner_searchtype.getSelectedItemPosition()); // 정렬 방법

@@ -146,7 +146,7 @@ public class MainActivity extends AppCompatActivity {
                 "&numOfRows=10" +
                 "&pageNo=" +pageNo+
                 "&_type=json";
-
+        Log.d("URL",LocalSearchAddr);
         String JSONFromLocalSearch = "";
         try {
             JSONFromLocalSearch = new HttpReqTask().execute(LocalSearchAddr).get();
