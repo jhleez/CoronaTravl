@@ -69,8 +69,8 @@ public class WeatherInfo extends AppCompatActivity {
             } else
                 Toast.makeText(WeatherInfo.this, "rainState is " + rainState, Toast.LENGTH_SHORT).show();
 
-            itemList.add(new weatherListViewItem(skyIcon, month + "월 " + date + "일",
-                    MainActivity.ShortWeather_ArrayList.get(i).getTMN() + "/" + MainActivity.ShortWeather_ArrayList.get(i).getTMX()));
+            //itemList.add(new weatherListViewItem(skyIcon, month + "월 " + date + "일",
+                    //weather, MainActivity.ShortWeather_ArrayList.get(i).getTMN() + "/" + MainActivity.ShortWeather_ArrayList.get(i).getTMX()));
         }
 
         weatherAdapter = new myWeatherAdapter(this, itemList);

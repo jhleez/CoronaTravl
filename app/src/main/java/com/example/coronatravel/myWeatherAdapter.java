@@ -36,6 +36,7 @@ public class myWeatherAdapter extends RecyclerView.Adapter<myWeatherAdapter.View
     public void onBindViewHolder(ViewHolder holder, int position) {
         weatherListViewItem item = itemList.get(position);
 
+        holder.weatherStringTextview.setText(item.getWeatherString());
         holder.dateTextview.setText(item.getDate());
         holder.iconDrawable.setImageDrawable(item.getIconDrawble());
         holder.temperatureTextview.setText(item.getTemperature());
@@ -51,10 +52,12 @@ public class myWeatherAdapter extends RecyclerView.Adapter<myWeatherAdapter.View
         public TextView dateTextview;
         public TextView temperatureTextview;
         public ImageView iconDrawable;
+        public TextView weatherStringTextview;
 
         public ViewHolder(View itemView) {
             super(itemView);
 
+            weatherStringTextview = itemView.findViewById(R.id.weatherStringTextView);
             dateTextview = itemView.findViewById(R.id.dateTextview);
             temperatureTextview = itemView.findViewById(R.id.temperatureTextview);
             iconDrawable = itemView.findViewById(R.id.iconImageview);

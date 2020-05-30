@@ -69,7 +69,7 @@ public class HomeFragment extends Fragment {
     Context context;
 
     private ImageView spotImage;
-    private TextView spotName;
+    private TextView spotName, spotEventPeriod;
     private SwipeRefreshLayout mSwipeRefreshLayout;
 
     private String startdate = "", enddate = "";
@@ -107,10 +107,11 @@ public class HomeFragment extends Fragment {
 
         spotImage = root.findViewById(R.id.spotImage);
         spotName = root.findViewById(R.id.spotName);
+        spotEventPeriod = root.findViewById(R.id.spotEventPeriod);
 
         context = getActivity();
 
-//        recommendation();
+        recommendation();
 
         // 네트워크 연결상태 체크
         if (NetworkConnection() == false) NotConnected_showAlert();
@@ -217,11 +218,20 @@ public class HomeFragment extends Fragment {
         } catch (Exception e) {
             Log.d("TAG", "jsonparsing error");
         }
+        //spotEventPeriod.setText(festival.getEventstartdate() + " " + festival.getEventenddate());
+
+        final String startMonth = festival.getEventstartdate().substring(4,6);
+        final String startDate = festival.getEventstartdate().substring(6);
+        final String endMonth = festival.getEventenddate().substring(4,6);
+        final String endDate = festival.getEventenddate().substring(6);
+
         spotName.setText(festival.getTitle());
+        spotEventPeriod.setText("(" + startMonth + "월 " + startDate + "일 ~ " + endMonth + "월 "+ endDate + "일)");
+        //Toast.makeText(getActivity(), startMonth+" "+startDate+" "+endMonth+" "+endDate, Toast.LENGTH_SHORT).show();
 
         String URI = festival.getFirstimage();
         if (URI == "") URI = "http://";
-        Picasso.get().load(URI).placeholder(R.drawable.sunnyicon).into(spotImage);
+        Picasso.get().load(URI).placeholder(R.drawable.ic_launcher_background).into(spotImage);
 
     }
 
