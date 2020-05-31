@@ -667,8 +667,6 @@ public class Detail_view extends AppCompatActivity {
 
         itemList = new ArrayList<>();
 
-//        Toast.makeText(Detail_view.this,"size is " + MainActivity.ShortWeather_ArrayList.size(), Toast.LENGTH_SHORT).show();
-
         for (int i = 0; i < 3; i++) {
             final String rainState = MainActivity.ShortWeather_ArrayList.get(i).getPTY();
             final String skyState = MainActivity.ShortWeather_ArrayList.get(i).getSKY();
@@ -711,11 +709,10 @@ public class Detail_view extends AppCompatActivity {
     }
 
     private class getAddressDischarged extends AsyncTask<String, Void, String> {
-        // String 으로 값을 전달받은 값을 처리하고, Boolean 으로 doInBackground 결과를 넘겨준다.
         @Override
         protected String doInBackground(String... params) {
             try {
-                Document document = Jsoup.connect(params[0].toString()).get(); // Web에서 내용을 가져온다.
+                Document document = Jsoup.connect(params[0].toString()).get();
                 Elements elements = document.select("div.data_table").select("td.number");
                 String now = elements.get(addressIndex * 8 + 4).text();
                 return now;
@@ -732,11 +729,10 @@ public class Detail_view extends AppCompatActivity {
     }
 
     private class getAddressCured extends AsyncTask<String, Void, String> {
-        // String 으로 값을 전달받은 값을 처리하고, Boolean 으로 doInBackground 결과를 넘겨준다.
         @Override
         protected String doInBackground(String... params) {
             try {
-                Document document = Jsoup.connect(params[0].toString()).get(); // Web에서 내용을 가져온다.
+                Document document = Jsoup.connect(params[0].toString()).get();
                 Elements elements = document.select("div.data_table").select("td.number");
                 String now = elements.get(addressIndex * 8 + 5).text();
                 return now;
@@ -753,11 +749,10 @@ public class Detail_view extends AppCompatActivity {
     }
 
     private class getAddressDeath extends AsyncTask<String, Void, String> {
-        // String 으로 값을 전달받은 값을 처리하고, Boolean 으로 doInBackground 결과를 넘겨준다.
         @Override
         protected String doInBackground(String... params) {
             try {
-                Document document = Jsoup.connect(params[0].toString()).get(); // Web에서 내용을 가져온다.
+                Document document = Jsoup.connect(params[0].toString()).get();
                 Elements elements = document.select("div.data_table").select("td.number");
                 String now = elements.get(addressIndex * 8 + 6).text();
                 return now;
@@ -774,11 +769,10 @@ public class Detail_view extends AppCompatActivity {
     }
 
     private class getAddressDiagnosis extends AsyncTask<String, Void, String> {
-        // String 으로 값을 전달받은 값을 처리하고, Boolean 으로 doInBackground 결과를 넘겨준다.
         @Override
         protected String doInBackground(String... params) {
             try {
-                Document document = Jsoup.connect(params[0].toString()).get(); // Web에서 내용을 가져온다.
+                Document document = Jsoup.connect(params[0].toString()).get();
                 Elements elements = document.select("div.data_table").select("td.number");
                 String now = elements.get(addressIndex * 8 + 3).text();
                 return now;
@@ -795,11 +789,10 @@ public class Detail_view extends AppCompatActivity {
     }
 
     private class getAddressPlus extends AsyncTask<String, Void, String> {
-        // String 으로 값을 전달받은 값을 처리하고, Boolean 으로 doInBackground 결과를 넘겨준다.
         @Override
         protected String doInBackground(String... params) {
             try {
-                Document document = Jsoup.connect(params[0].toString()).get(); // Web에서 내용을 가져온다.
+                Document document = Jsoup.connect(params[0].toString()).get();
                 Elements elements = document.select("div.data_table").select("td.number");
                 String now = elements.get(addressIndex * 8).text();
                 return "+" + now;

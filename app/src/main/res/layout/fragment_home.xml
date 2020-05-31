@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
@@ -13,41 +14,131 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="center"
-            android:text="*더 많은 정보를 원하시면 사진을 클릭해주세요.*"/>
-
-        <ImageView
-            android:id="@+id/spotImage"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:scaleType="fitXY" />
+            android:textSize="5dp"
+            android:text="" />
 
         <TextView
-            android:id="@+id/spotName"
-            android:gravity="center"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-
-        <TextView
-            android:id="@+id/spotEventPeriod"
-            android:gravity="center"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-
-        <TextView
-            android:id="@+id/addLines"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/binggraemelona"
+            android:textSize="20dp"
+            android:text="  오늘의 추천 행사" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="5dp"
+            android:text="" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="400dp">
+
+            <ImageView
+                android:id="@+id/spotImage"
+                android:layout_width="match_parent"
+                android:layout_height="400dp"
+                android:scaleType="fitXY"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/spotName"
+                android:layout_width="match_parent"
+                android:layout_height="20dp"
+                android:layout_marginTop="360dp"
+                android:fontFamily="@font/binggraemelona"
+                android:gravity="end"
+                android:text="행사명"
+                android:textColor="@android:color/white"
+                android:textSize="15dp"
+                app:layout_constraintBottom_toTopOf="@+id/spotImage"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.105" />
+
+            <TextView
+                android:id="@+id/spotEventPeriod"
+                android:layout_width="match_parent"
+                android:layout_height="20dp"
+                android:layout_marginTop="380dp"
+                android:fontFamily="@font/binggraemelona"
+                android:gravity="end"
+                android:text="행사 기간"
+                android:textColor="@android:color/white"
+                android:textSize="15dp"
+                app:layout_constraintBottom_toBottomOf="@+id/spotName"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.666" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="5dp"
             android:text="\n\n" />
 
         <TextView
             android:id="@+id/patientView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="center"
+            android:fontFamily="@font/binggraemelona"
             android:text="환자 현황"
             android:textSize="20sp"
             android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="5dp"
+            android:text="" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="2">
+
+            <TextView
+                android:id="@+id/dailyDiagnosisTextview"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="3sp"
+                android:layout_weight="1"
+                android:fontFamily="@font/binggraemelona"
+                android:background="@android:color/holo_orange_dark"
+                android:gravity="center"
+                android:padding="3sp"
+                android:text="일일 확진자\n"
+                android:textColor="@android:color/white"
+                android:textSize="25sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/dailyCuredTextview"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="3sp"
+                android:layout_weight="1"
+                android:background="@android:color/holo_green_light"
+                android:gravity="center"
+                android:fontFamily="@font/binggraemelona"
+                android:padding="3sp"
+                android:text="일일 완치자\n"
+                android:textColor="@android:color/white"
+                android:textSize="25sp"
+                android:textStyle="bold" />
+
+        </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -61,10 +152,11 @@
                 android:layout_margin="3sp"
                 android:background="@android:color/holo_blue_light"
                 android:gravity="center"
+                android:fontFamily="@font/binggraemelona"
                 android:padding="10sp"
                 android:text="확진환자\n"
                 android:textColor="@android:color/white"
-                android:textSize="30sp"
+                android:textSize="25sp"
                 android:textStyle="bold" />
 
             <LinearLayout
@@ -82,6 +174,7 @@
                     android:background="@android:color/holo_blue_bright"
                     android:gravity="center"
                     android:padding="3sp"
+                    android:fontFamily="@font/binggraemelona"
                     android:text="완치\n(격리해제)"
                     android:textColor="@android:color/white"
                     android:textSize="20sp"
@@ -93,6 +186,7 @@
                     android:layout_height="wrap_content"
                     android:layout_margin="3sp"
                     android:layout_weight="1"
+                    android:fontFamily="@font/binggraemelona"
                     android:background="@android:color/holo_blue_dark"
                     android:gravity="center"
                     android:padding="3sp"
@@ -110,49 +204,22 @@
                     android:background="@android:color/darker_gray"
                     android:gravity="center"
                     android:padding="3sp"
+                    android:fontFamily="@font/binggraemelona"
                     android:text="사망\n"
                     android:textColor="@android:color/white"
                     android:textSize="20sp"
                     android:textStyle="bold" />
             </LinearLayout>
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:weightSum="2">
-
-                <TextView
-                    android:id="@+id/dailyDiagnosisTextview"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="3sp"
-                    android:layout_weight="1"
-                    android:background="@android:color/holo_orange_dark"
-                    android:gravity="center"
-                    android:padding="3sp"
-                    android:text="일일 확진자\n"
-                    android:textColor="@android:color/white"
-                    android:textSize="20sp"
-                    android:textStyle="bold" />
-
-                <TextView
-                    android:id="@+id/dailyCuredTextview"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="3sp"
-                    android:layout_weight="1"
-                    android:background="@android:color/holo_green_light"
-                    android:gravity="center"
-                    android:padding="3sp"
-                    android:text="일일 완치자\n"
-                    android:textColor="@android:color/white"
-                    android:textSize="20sp"
-                    android:textStyle="bold" />
-
-            </LinearLayout>
-
-
         </LinearLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="end"
+            android:textSize="15sp"
+            android:fontFamily="@font/binggraemelona"
+            android:text="\n출처 : http://ncov.mohw.go.kr/" />
+
     </LinearLayout>
 </ScrollView>
