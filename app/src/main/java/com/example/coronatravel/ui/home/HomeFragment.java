@@ -70,7 +70,6 @@ public class HomeFragment extends Fragment {
 
     private ImageView spotImage;
     private TextView spotName, spotEventPeriod;
-    private SwipeRefreshLayout mSwipeRefreshLayout;
 
     private String startdate = "", enddate = "";
     private String totalcount;
@@ -218,16 +217,14 @@ public class HomeFragment extends Fragment {
         } catch (Exception e) {
             Log.d("TAG", "jsonparsing error");
         }
-        //spotEventPeriod.setText(festival.getEventstartdate() + " " + festival.getEventenddate());
 
         final String startMonth = festival.getEventstartdate().substring(4,6);
         final String startDate = festival.getEventstartdate().substring(6);
         final String endMonth = festival.getEventenddate().substring(4,6);
         final String endDate = festival.getEventenddate().substring(6);
 
-        spotName.setText(festival.getTitle());
-        spotEventPeriod.setText("(" + startMonth + "월 " + startDate + "일 ~ " + endMonth + "월 "+ endDate + "일)");
-        //Toast.makeText(getActivity(), startMonth+" "+startDate+" "+endMonth+" "+endDate, Toast.LENGTH_SHORT).show();
+        spotName.setText(festival.getTitle() + "    ");
+        spotEventPeriod.setText("(" + startMonth + "월 " + startDate + "일 ~ " + endMonth + "월 "+ endDate + "일)    ");
 
         String URI = festival.getFirstimage();
         if (URI == "") URI = "http://";
@@ -255,21 +252,20 @@ public class HomeFragment extends Fragment {
 
     private void initView() {
         String path2 = "http://ncov.mohw.go.kr/";
+        new getDailyDiagnosis().execute(path2);
+        new getDailyCured().execute(path2);
         new getData1().execute(path2);
         new getData2().execute(path2);
         new getData3().execute(path2);
         new getData4().execute(path2);
         new getData5().execute(path2);
-        new getDailyDiagnosis().execute(path2);
-        new getDailyCured().execute(path2);
     }
 
     private class getDailyDiagnosis extends AsyncTask<String, Void, String> {
-        // String 으로 값을 전달받은 값을 처리하고, Boolean 으로 doInBackground 결과를 넘겨준다.
         @Override
         protected String doInBackground(String... params) {
             try {
-                Document document = Jsoup.connect(params[0].toString()).get(); // Web에서 내용을 가져온다.
+                Document document = Jsoup.connect(params[0].toString()).get();
                 Elements elements = document.select("div.liveNumOuter").select("span.data1");
                 String now = elements.get(0).text();
                 return "일일 확진자\n" + now ;
@@ -286,11 +282,10 @@ public class HomeFragment extends Fragment {
     }
 
     private class getDailyCured extends AsyncTask<String, Void, String> {
-        // String 으로 값을 전달받은 값을 처리하고, Boolean 으로 doInBackground 결과를 넘겨준다.
         @Override
         protected String doInBackground(String... params) {
             try {
-                Document document = Jsoup.connect(params[0].toString()).get(); // Web에서 내용을 가져온다.
+                Document document = Jsoup.connect(params[0].toString()).get();
                 Elements elements = document.select("div.liveNumOuter").select("span.data2");
                 String now = elements.get(0).text();
                 return "일일 완치자\n" + now ;
@@ -307,22 +302,14 @@ public class HomeFragment extends Fragment {
     }
 
     private class getData1 extends AsyncTask<String, Void, String> {
-        // String 으로 값을 전달받은 값을 처리하고, Boolean 으로 doInBackground 결과를 넘겨준다.
         @Override
         protected String doInBackground(String... params) {
                 try {
-                Document document = Jsoup.connect(params[0].toString()).get(); // Web에서 내용을 가져온다.
-                //자식으로 타고 간다고 생각하면 돼 <div class="liveNumOuter"> 에 있는 <ul class="liveNum"> 에 있는 <span class="num">을 elements에 저장
+                Document document = Jsoup.connect(params[0].toString()).get();
                 Elements elements = document.select("div.liveNumOuter").select("ul.liveNum").select("span.num");
-                //elements에 있는 첫번째(0번 index) 값을 string 으로 받아오기
                 String now = elements.get(0).text();
-                //이거는 문자열 자르는거야
                 now = now.substring(4,10);
-                Elements elements1 = document.select("div.liveNumOuter").select("ul.liveNum").select("span.before");
-                String compare = elements1.get(0).text();
-                compare = compare.substring(5,11);
-                return "확진환자\n" + now + "\n" + compare;
-                //잘 이해가 안되면 저 링크 url 소스코드 열어보고 확인해보면 이해가 빠를거야
+                return "확진환자\n" + now;
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -336,11 +323,10 @@ public class HomeFragment extends Fragment {
     }
 
     private class getData2 extends AsyncTask<String, Void, String> {
-        // String 으로 값을 전달받은 값을 처리하고, Boolean 으로 doInBackground 결과를 넘겨준다.
         @Override
         protected String doInBackground(String... params) {
             try {
-                Document document = Jsoup.connect(params[0].toString()).get(); // Web에서 내용을 가져온다.
+                Document document = Jsoup.connect(params[0].toString()).get();
                 Elements elements = document.select("div.liveNumOuter").select("ul.liveNum").select("span.num");
                 String now = elements.get(1).text();
                 Elements elements1 = document.select("div.liveNumOuter").select("ul.liveNum").select("span.before");
@@ -359,11 +345,10 @@ public class HomeFragment extends Fragment {
     }
 
     private class getData3 extends AsyncTask<String, Void, String> {
-        // String 으로 값을 전달받은 값을 처리하고, Boolean 으로 doInBackground 결과를 넘겨준다.
         @Override
         protected String doInBackground(String... params) {
             try {
-                Document document = Jsoup.connect(params[0].toString()).get(); // Web에서 내용을 가져온다.
+                Document document = Jsoup.connect(params[0].toString()).get();
                 Elements elements = document.select("div.liveNumOuter").select("ul.liveNum").select("span.num");
                 String now = elements.get(2).text();
                 Elements elements1 = document.select("div.liveNumOuter").select("ul.liveNum").select("span.before");
@@ -382,7 +367,6 @@ public class HomeFragment extends Fragment {
     }
 
     private class getData4 extends AsyncTask<String, Void, String> {
-        // String 으로 값을 전달받은 값을 처리하고, Boolean 으로 doInBackground 결과를 넘겨준다.
         @Override
         protected String doInBackground(String... params) {
             try {
@@ -405,14 +389,13 @@ public class HomeFragment extends Fragment {
     }
 
     private class getData5 extends AsyncTask<String, Void, String> {
-        // String 으로 값을 전달받은 값을 처리하고, Boolean 으로 doInBackground 결과를 넘겨준다.
         @Override
         protected String doInBackground(String... params) {
             try {
                 Document document = Jsoup.connect(params[0].toString()).get(); // Web에서 내용을 가져온다.
-                Elements elements = document.select("div.liveNumOuter").select("span.livedate"); // 내용중에서 원하는 부분을 가져온다.
+                Elements elements = document.select("div.liveNumOuter").select("span.livedate");
                 String text = elements.get(0).text();
-                return "환자현황" + text;
+                return "  환자현황" + text;
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -432,7 +415,6 @@ public class HomeFragment extends Fragment {
                 .setCancelable(false)
                 .setPositiveButton("확인", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
-                        //application 프로세스를 강제 종료
                         android.os.Process.killProcess(android.os.Process.myPid());
                     }
                 });

@@ -222,4 +222,5 @@
             android:text="\n출처 : http://ncov.mohw.go.kr/" />
 
     </LinearLayout>
+
 </ScrollView>
