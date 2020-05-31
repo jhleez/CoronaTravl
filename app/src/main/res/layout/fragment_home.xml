@@ -11,8 +11,40 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
+            <ImageView
+                android:id="@+id/spotImage"
+                android:layout_width="match_parent"
+                android:layout_height="400dp"
+                android:scaleType="fitXY"/>
+
+            <TextView
+                android:id="@+id/spotName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/binggraemelona"
+                android:text="행사명"
+                android:textColor="@android:color/black"
+                android:textSize="25dp" />
+
+            <TextView
+                android:id="@+id/spotEventPeriod"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/binggraemelona"
+                android:text="행사 기간"
+                android:textColor="@android:color/darker_gray"
+                android:textSize="14dp"/>
+
+
+        </LinearLayout>
+
+
+        <!-- <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="400dp">
 
@@ -61,12 +93,12 @@
                 app:layout_constraintVertical_bias="0.666" />
 
 
-        </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout> -->
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="5dp"
+            android:textSize="10dp"
             android:text="\n\n" />
 
         <LinearLayout
@@ -77,7 +109,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/binggraemelona"
-                android:text="환자 현황"
+                android:textColor="@android:color/black"
+                android:text=" 국내 환자 현황"
                 android:textSize="20sp"
                 android:textStyle="bold" />
 

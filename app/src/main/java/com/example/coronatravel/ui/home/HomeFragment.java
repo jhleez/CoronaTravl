@@ -222,8 +222,8 @@ public class HomeFragment extends Fragment {
         final String endMonth = festival.getEventenddate().substring(4,6);
         final String endDate = festival.getEventenddate().substring(6);
 
-        spotName.setText(festival.getTitle() + "    ");
-        spotEventPeriod.setText("(" + startMonth + "월 " + startDate + "일 ~ " + endMonth + "월 "+ endDate + "일)    ");
+        spotName.setText(" " + festival.getTitle());
+        spotEventPeriod.setText("  (" + startMonth + "월 " + startDate + "일 ~ " + endMonth + "월 "+ endDate + "일)");
 
         String URI = festival.getFirstimage();
         if (URI == "") URI = "http://";
