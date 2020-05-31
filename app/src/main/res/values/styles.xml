@@ -6,8 +6,12 @@
         parent="Theme.AppCompat.Light.DarkActionBar">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">#0A71C9CE</item>
-        <item name="colorPrimaryDark">#0F71C9CE</item>
+        <item name="colorPrimaryDark">#B5CDEDEF</item>
         <item name="colorAccent">@color/colorAccent</item>
+
+        <!-- 밑에꺼 순서대로 배경색 통일한 색깔이랑 상태바 글자색 검정색으로 만드는거  -->
+        <!-- <item name="colorPrimary">#B5CDEDEF</item> -->
+        <item name="android:windowLightStatusBar">true</item>
     </style>
 
     <style name="AppTheme.NoActionBar">
