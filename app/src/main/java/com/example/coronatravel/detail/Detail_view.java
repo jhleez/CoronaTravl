@@ -330,14 +330,6 @@ public class Detail_view extends AppCompatActivity {
                                 }
                             }
                         }, 500);
-                        /*Log.i("delay","end");
-                        try {
-                            Log.i("delay","parsingstart");
-                            JSONFromTotalSearch[0] = new HttpReqTask().execute(maskUrl).get();
-                            Log.i("delay","parsingend");
-                        } catch (Exception e) {
-                        }*/
-
                     }
                 } else {
                     TransitionManager.beginDelayedTransition(maskcardview, new AutoTransition());

@@ -56,18 +56,6 @@ public class BookmarkFragment extends Fragment {
                 startActivity(intent);
             }
         });
-        Button button= root.findViewById(R.id.testbutton111);
-        button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent();
-                intent.setAction(Intent.ACTION_VIEW);
-                intent.setData(Uri.parse("geo:0,0?q=" + "경북대학교 북문"));
-                startActivity(intent);
-
-
-            }
-        });
 
 
         return root;
