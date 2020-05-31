@@ -252,7 +252,6 @@ public class HomeFragment extends Fragment {
     private void initView() {
         String path2 = "http://ncov.mohw.go.kr/";
         new getDailyDiagnosis().execute(path2);
-        new getDailyCured().execute(path2);
         new getData1().execute(path2);
         new getData2().execute(path2);
         new getData3().execute(path2);
@@ -276,7 +275,7 @@ public class HomeFragment extends Fragment {
 
         @Override
         protected void onPostExecute(String result) {
-            dailyDiagnosisTextview.setText(result);
+            dailyDiagnosisTextview.setText("+" + result);
         }
     }
 
@@ -328,8 +327,6 @@ public class HomeFragment extends Fragment {
                 Document document = Jsoup.connect(params[0].toString()).get();
                 Elements elements = document.select("div.liveNumOuter").select("ul.liveNum").select("span.num");
                 String now = elements.get(1).text();
-                Elements elements1 = document.select("div.liveNumOuter").select("ul.liveNum").select("span.before");
-                String compare = elements1.get(1).text();
                 return now;
             } catch (IOException e) {
                 e.printStackTrace();
@@ -350,8 +347,6 @@ public class HomeFragment extends Fragment {
                 Document document = Jsoup.connect(params[0].toString()).get();
                 Elements elements = document.select("div.liveNumOuter").select("ul.liveNum").select("span.num");
                 String now = elements.get(2).text();
-                Elements elements1 = document.select("div.liveNumOuter").select("ul.liveNum").select("span.before");
-                String compare = elements1.get(2).text();
                 return now;
             } catch (IOException e) {
                 e.printStackTrace();
@@ -372,8 +367,6 @@ public class HomeFragment extends Fragment {
                 Document document = Jsoup.connect(params[0].toString()).get(); // Web에서 내용을 가져온다.
                 Elements elements = document.select("div.liveNumOuter").select("ul.liveNum").select("span.num");
                 String now = elements.get(3).text();
-                Elements elements1 = document.select("div.liveNumOuter").select("ul.liveNum").select("span.before");
-                String compare = elements1.get(3).text();
                 return now;
             } catch (IOException e) {
                 e.printStackTrace();

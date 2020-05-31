@@ -342,7 +342,7 @@
             android:gravity="end"
             android:textSize="15sp"
             android:fontFamily="@font/binggraemelona"
-            android:text="\n출처 : http://ncov.mohw.go.kr/" />
+            android:text="\n출처 : http://ncov.mohw.go.kr/  " />
 
     </LinearLayout>
 
