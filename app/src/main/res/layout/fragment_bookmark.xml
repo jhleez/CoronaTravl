@@ -14,8 +14,6 @@
         ></LinearLayout>
 
     <ListView
-        android:divider="#ffebd9"
-        android:dividerHeight="8dp"
         android:id="@+id/bookmark_listview"
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>
