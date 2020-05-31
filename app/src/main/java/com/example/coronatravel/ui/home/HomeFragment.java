@@ -394,7 +394,7 @@ public class HomeFragment extends Fragment {
                 Document document = Jsoup.connect(params[0].toString()).get(); // Web에서 내용을 가져온다.
                 Elements elements = document.select("div.liveNumOuter").select("span.livedate");
                 String text = elements.get(0).text();
-                return "  환자현황" + text;
+                return "  " + text;
             } catch (IOException e) {
                 e.printStackTrace();
             }
