@@ -6,7 +6,7 @@
     <item
         android:id="@+id/fragment_home_resetButton"
         android:title="Reset"
-        android:icon="@drawable/reset_24dp"
-        android:iconTint="@color/transparent"
+        android:icon="@drawable/reset1_24dp"
+        android:iconTint="#FFFFFF"
         app:showAsAction="always"/>
 </menu>
