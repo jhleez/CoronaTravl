@@ -102,7 +102,6 @@ public class HomeFragment extends Fragment {
         deathView = root.findViewById(R.id.death);
         patientView = root.findViewById(R.id.patientView);
         dailyDiagnosisTextview = root.findViewById(R.id.dailyDiagnosisTextview);
-        dailyCuredTextview = root.findViewById(R.id.dailyCuredTextview);
 
         spotImage = root.findViewById(R.id.spotImage);
         spotName = root.findViewById(R.id.spotName);
@@ -268,7 +267,7 @@ public class HomeFragment extends Fragment {
                 Document document = Jsoup.connect(params[0].toString()).get();
                 Elements elements = document.select("div.liveNumOuter").select("span.data1");
                 String now = elements.get(0).text();
-                return "일일 확진자\n" + now ;
+                return now ;
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -297,7 +296,7 @@ public class HomeFragment extends Fragment {
 
         @Override
         protected void onPostExecute(String result) {
-            dailyCuredTextview.setText(result);
+            //dailyCuredTextview.setText(result);
         }
     }
 
@@ -309,7 +308,7 @@ public class HomeFragment extends Fragment {
                 Elements elements = document.select("div.liveNumOuter").select("ul.liveNum").select("span.num");
                 String now = elements.get(0).text();
                 now = now.substring(4,10);
-                return "확진환자\n" + now;
+                return now;
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -331,7 +330,7 @@ public class HomeFragment extends Fragment {
                 String now = elements.get(1).text();
                 Elements elements1 = document.select("div.liveNumOuter").select("ul.liveNum").select("span.before");
                 String compare = elements1.get(1).text();
-                return "완치\n(격리해제)\n" + now + "\n" + compare;
+                return now;
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -353,7 +352,7 @@ public class HomeFragment extends Fragment {
                 String now = elements.get(2).text();
                 Elements elements1 = document.select("div.liveNumOuter").select("ul.liveNum").select("span.before");
                 String compare = elements1.get(2).text();
-                return "치료 중\n(격리 중)\n" + now + "\n" + compare;
+                return now;
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -375,7 +374,7 @@ public class HomeFragment extends Fragment {
                 String now = elements.get(3).text();
                 Elements elements1 = document.select("div.liveNumOuter").select("ul.liveNum").select("span.before");
                 String compare = elements1.get(3).text();
-                return "사망\n\n" + now + "\n" + compare;
+                return now;
             } catch (IOException e) {
                 e.printStackTrace();
             }
