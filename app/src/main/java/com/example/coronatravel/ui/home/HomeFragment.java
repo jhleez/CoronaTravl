@@ -471,7 +471,7 @@ public class HomeFragment extends Fragment {
         int id = item.getItemId();
         switch (id) {
             case R.id.fragment_home_resetButton :
-                recommendation();
+                festival = recommendation();
                 initView();
                 break;
         }
@@ -504,7 +504,7 @@ public class HomeFragment extends Fragment {
         totalcount = ShortJSONParsing(JSONFromRandomFestivalUrl);
         Random rnd = new Random();
         String randomnum = String.valueOf(rnd.nextInt((Integer.parseInt(totalcount) / 10) * 8));
-        int randomarrange =rnd.nextInt(4);
+        int randomarrange =rnd.nextInt(3);
         String arrange[] = {"O","P","Q","R"};
         RandomFestivalUrl = "http://api.visitkorea.or.kr/openapi/service/rest/KorService/searchFestival?" +
                 "ServiceKey=" + ServiceKey +
