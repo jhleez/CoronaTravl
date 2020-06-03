@@ -1,359 +1,373 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".detail.Detail_view">
+    tools:context=".detail.Detail_view"
+    >
 
-
-    <ScrollView
-
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="500dp">
+        android:layout_height="wrap_content"
+        android:gravity="top"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0"
+        >
 
-
-        <LinearLayout
+        <ScrollView
+            android:id="@+id/scrollView2"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toTopOf="@+id/linearLayout"
 
+            >
 
-            <CheckBox
-                android:id="@+id/checkbox"
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="즐겨찾기" />
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                >
 
 
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <androidx.cardview.widget.CardView
-                    android:id="@+id/weather_cardview"
+                <CheckBox
+                    android:id="@+id/checkbox"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="8dp"
-                    android:layout_marginEnd="8dp"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent">
+                    android:text="즐겨찾기"
+                    />
 
-                    <androidx.constraintlayout.widget.ConstraintLayout
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    >
+
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/weather_cardview"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
-
-                        <TextView
-                            android:id="@+id/textView3"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="5dp"
-                            android:text="날씨"
-                            android:textSize="20sp"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintHorizontal_bias="0.04"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="parent"
-                            app:layout_goneMarginLeft="5dp" />
-
-                        <Button
-                            android:id="@+id/weather_expend_bt"
-                            android:layout_width="35dp"
-                            android:layout_height="35dp"
-                            android:background="@drawable/ic_expand_more_black_24dp"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintHorizontal_bias="1.0"
-                            app:layout_constraintStart_toEndOf="@+id/textView3"
-                            app:layout_constraintTop_toTopOf="@+id/textView3" />
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginEnd="8dp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        >
 
                         <androidx.constraintlayout.widget.ConstraintLayout
-                            android:id="@+id/expend_layout_weather"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:visibility="gone"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@+id/weather_expend_bt">
+                            >
 
-                            <LinearLayout
+                            <TextView
+                                android:id="@+id/textView3"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="5dp"
+                                android:text="날씨"
+                                android:textSize="20sp"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintHorizontal_bias="0.04"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent"
+                                app:layout_goneMarginLeft="5dp"
+                                />
+
+                            <Button
+                                android:id="@+id/weather_expend_bt"
+                                android:layout_width="35dp"
+                                android:layout_height="35dp"
+                                android:background="@drawable/ic_expand_more_black_24dp"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintHorizontal_bias="1.0"
+                                app:layout_constraintStart_toEndOf="@+id/textView3"
+                                app:layout_constraintTop_toTopOf="@+id/textView3"
+                                />
+
+                            <androidx.constraintlayout.widget.ConstraintLayout
+                                android:id="@+id/expend_layout_weather"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:orientation="horizontal"
+                                android:visibility="gone"
                                 app:layout_constraintEnd_toEndOf="parent"
                                 app:layout_constraintStart_toStartOf="parent"
-                                app:layout_constraintTop_toTopOf="parent">
+                                app:layout_constraintTop_toBottomOf="@+id/weather_expend_bt"
+                                >
 
                                 <LinearLayout
-                                    android:layout_width="70sp"
-                                    android:layout_height="match_parent"
-                                    android:orientation="vertical">
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="horizontal"
+                                    app:layout_constraintEnd_toEndOf="parent"
+                                    app:layout_constraintStart_toStartOf="parent"
+                                    app:layout_constraintTop_toTopOf="parent"
+                                    >
 
-                                    <TextView
-                                        android:layout_width="match_parent"
-                                        android:layout_height="20sp"
-                                        android:layout_gravity="center"
-                                        android:gravity="center"
-                                        android:text="날짜" />
+                                    <LinearLayout
+                                        android:layout_width="70sp"
+                                        android:layout_height="match_parent"
+                                        android:orientation="vertical"
+                                        >
 
-                                    <TextView
-                                        android:layout_width="match_parent"
-                                        android:layout_height="70sp"
-                                        android:layout_gravity="center"
-                                        android:gravity="center"
-                                        android:text="날씨" />
+                                        <TextView
+                                            android:layout_width="match_parent"
+                                            android:layout_height="20sp"
+                                            android:layout_gravity="center"
+                                            android:gravity="center"
+                                            android:text="날짜"
+                                            />
 
-                                    <TextView
+                                        <TextView
+                                            android:layout_width="match_parent"
+                                            android:layout_height="70sp"
+                                            android:layout_gravity="center"
+                                            android:gravity="center"
+                                            android:text="날씨"
+                                            />
+
+                                        <TextView
+                                            android:layout_width="match_parent"
+                                            android:layout_height="40sp"
+                                            android:layout_gravity="center"
+                                            android:gravity="center"
+                                            android:text="최저/\n최고기온"
+                                            />
+
+                                    </LinearLayout>
+
+                                    <androidx.recyclerview.widget.RecyclerView
+                                        android:id="@+id/weatherListview"
                                         android:layout_width="match_parent"
-                                        android:layout_height="40sp"
-                                        android:layout_gravity="center"
-                                        android:gravity="center"
-                                        android:text="최저/\n최고기온" />
+                                        android:layout_height="wrap_content"
+                                        android:scrollbars="horizontal"
+                                        />
 
                                 </LinearLayout>
 
-                                <androidx.recyclerview.widget.RecyclerView
-                                    android:id="@+id/weatherListview"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:scrollbars="horizontal" />
 
-                            </LinearLayout>
+                            </androidx.constraintlayout.widget.ConstraintLayout>
 
 
                         </androidx.constraintlayout.widget.ConstraintLayout>
 
 
-                    </androidx.constraintlayout.widget.ConstraintLayout>
+                    </androidx.cardview.widget.CardView>
 
+                </androidx.constraintlayout.widget.ConstraintLayout>
 
-                </androidx.cardview.widget.CardView>
-
-            </androidx.constraintlayout.widget.ConstraintLayout>
-
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp">
-
-                <androidx.cardview.widget.CardView
-                    android:id="@+id/mask_cardview"
+                <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="10dp"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginEnd="10dp"
-                    android:layout_marginRight="10dp"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent">
+                    android:layout_marginTop="10dp"
+                    >
 
-                    <androidx.constraintlayout.widget.ConstraintLayout
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/mask_cardview"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
-
-                        <TextView
-                            android:id="@+id/textView4"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="5dp"
-                            android:text="공적 마스크 판매처"
-                            android:textSize="20sp"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintHorizontal_bias="0.04"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="parent"
-                            app:layout_goneMarginLeft="5dp" />
-
-                        <Button
-                            android:id="@+id/mask_expend_bt"
-                            android:layout_width="35dp"
-                            android:layout_height="35dp"
-                            android:background="@drawable/ic_expand_more_black_24dp"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintHorizontal_bias="1.0"
-                            app:layout_constraintStart_toEndOf="@+id/textView4"
-                            app:layout_constraintTop_toTopOf="@+id/textView4" />
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginEnd="10dp"
+                        android:layout_marginRight="10dp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        >
 
                         <androidx.constraintlayout.widget.ConstraintLayout
-                            android:id="@+id/expand_layout_mask"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:visibility="gone"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@+id/mask_expend_bt">
+                            >
 
-                            <LinearLayout
+                            <TextView
+                                android:id="@+id/textView4"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="5dp"
+                                android:text="공적 마스크 판매처"
+                                android:textSize="20sp"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintHorizontal_bias="0.04"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent"
+                                app:layout_goneMarginLeft="5dp"
+                                />
+
+                            <Button
+                                android:id="@+id/mask_expend_bt"
+                                android:layout_width="35dp"
+                                android:layout_height="35dp"
+                                android:background="@drawable/ic_expand_more_black_24dp"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintHorizontal_bias="1.0"
+                                app:layout_constraintStart_toEndOf="@+id/textView4"
+                                app:layout_constraintTop_toTopOf="@+id/textView4"
+                                />
+
+                            <androidx.constraintlayout.widget.ConstraintLayout
+                                android:id="@+id/expand_layout_mask"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:orientation="vertical"
+                                android:visibility="gone"
                                 app:layout_constraintEnd_toEndOf="parent"
                                 app:layout_constraintStart_toStartOf="parent"
-                                app:layout_constraintTop_toTopOf="parent">
+                                app:layout_constraintTop_toBottomOf="@+id/mask_expend_bt"
+                                >
 
                                 <LinearLayout
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
-                                    android:layout_gravity="center">
+                                    android:orientation="vertical"
+                                    app:layout_constraintEnd_toEndOf="parent"
+                                    app:layout_constraintStart_toStartOf="parent"
+                                    app:layout_constraintTop_toTopOf="parent"
+                                    >
 
-                                    <TextView
-                                        android:layout_width="0dp"
-                                        android:layout_height="wrap_content"
-                                        android:layout_weight="1"
-                                        android:drawableLeft="@drawable/plenty_24dp"
-                                        android:gravity="center_horizontal"
-                                        android:text="수량많음\n(100개 이상)"
-                                        android:textAlignment="center"
-                                        android:textSize="10sp"
-                                        android:textStyle="bold" />
-
-                                    <TextView
-                                        android:layout_width="0dp"
-                                        android:layout_height="wrap_content"
-                                        android:layout_weight="1"
-                                        android:drawableLeft="@drawable/middle_24dp"
-                                        android:gravity="center_horizontal"
-                                        android:text="수량적당\n(99개~30개)"
-                                        android:textAlignment="center"
-                                        android:textSize="10sp"
-                                        android:textStyle="bold" />
-
-                                    <TextView
-                                        android:layout_width="0dp"
-                                        android:layout_height="wrap_content"
-                                        android:layout_weight="1"
-                                        android:drawableLeft="@drawable/little_24dp"
-                                        android:gravity="center_horizontal"
-                                        android:text="수량적음\n(29개~2개)"
-                                        android:textAlignment="center"
-                                        android:textSize="10sp"
-                                        android:textStyle="bold" />
-
-                                    <TextView
-                                        android:layout_width="0dp"
-                                        android:layout_height="wrap_content"
-                                        android:layout_weight="1"
-                                        android:drawableLeft="@drawable/none_24dp"
-                                        android:gravity="center_horizontal"
-                                        android:text="수량없음\n(1개~0개)"
-                                        android:textAlignment="center"
-                                        android:textSize="10sp"
-                                        android:textStyle="bold" />
-
-
-                                </LinearLayout>
-
-                                <LinearLayout
-                                    android:layout_width="match_parent"
-                                    android:layout_height="180dp"
-                                    android:orientation="vertical">
-
-                                    <androidx.viewpager.widget.ViewPager
-                                        android:id="@+id/mask_viewpager"
+                                    <LinearLayout
                                         android:layout_width="match_parent"
-                                        android:layout_height="match_parent" />
+                                        android:layout_height="wrap_content"
+                                        android:layout_gravity="center"
+                                        >
+
+                                        <TextView
+                                            android:layout_width="0dp"
+                                            android:layout_height="wrap_content"
+                                            android:layout_weight="1"
+                                            android:drawableLeft="@drawable/plenty_24dp"
+                                            android:gravity="center_horizontal"
+                                            android:text="수량많음\n(100개 이상)"
+                                            android:textAlignment="center"
+                                            android:textSize="10sp"
+                                            android:textStyle="bold"
+                                            />
+
+                                        <TextView
+                                            android:layout_width="0dp"
+                                            android:layout_height="wrap_content"
+                                            android:layout_weight="1"
+                                            android:drawableLeft="@drawable/middle_24dp"
+                                            android:gravity="center_horizontal"
+                                            android:text="수량적당\n(99개~30개)"
+                                            android:textAlignment="center"
+                                            android:textSize="10sp"
+                                            android:textStyle="bold"
+                                            />
+
+                                        <TextView
+                                            android:layout_width="0dp"
+                                            android:layout_height="wrap_content"
+                                            android:layout_weight="1"
+                                            android:drawableLeft="@drawable/little_24dp"
+                                            android:gravity="center_horizontal"
+                                            android:text="수량적음\n(29개~2개)"
+                                            android:textAlignment="center"
+                                            android:textSize="10sp"
+                                            android:textStyle="bold"
+                                            />
+
+                                        <TextView
+                                            android:layout_width="0dp"
+                                            android:layout_height="wrap_content"
+                                            android:layout_weight="1"
+                                            android:drawableLeft="@drawable/none_24dp"
+                                            android:gravity="center_horizontal"
+                                            android:text="수량없음\n(1개~0개)"
+                                            android:textAlignment="center"
+                                            android:textSize="10sp"
+                                            android:textStyle="bold"
+                                            />
+
+
+                                    </LinearLayout>
+
+                                    <LinearLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="180dp"
+                                        android:orientation="vertical"
+                                        >
+
+                                        <androidx.viewpager.widget.ViewPager
+                                            android:id="@+id/mask_viewpager"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="match_parent"
+                                            />
+                                    </LinearLayout>
                                 </LinearLayout>
-                            </LinearLayout>
+
+
+                            </androidx.constraintlayout.widget.ConstraintLayout>
 
 
                         </androidx.constraintlayout.widget.ConstraintLayout>
 
 
-                    </androidx.constraintlayout.widget.ConstraintLayout>
+                    </androidx.cardview.widget.CardView>
 
 
-                </androidx.cardview.widget.CardView>
+                </androidx.constraintlayout.widget.ConstraintLayout>
 
-
-            </androidx.constraintlayout.widget.ConstraintLayout>
-
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp">
-
-                <androidx.cardview.widget.CardView
-                    android:id="@+id/corona_cardview"
+                <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="10dp"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginEnd="10dp"
-                    android:layout_marginRight="10dp"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent">
+                    android:layout_marginTop="10dp"
+                    >
 
-                    <androidx.constraintlayout.widget.ConstraintLayout
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/corona_cardview"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
-
-                        <TextView
-                            android:id="@+id/textView5"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="5dp"
-                            android:text="코로나"
-                            android:textSize="20sp"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintHorizontal_bias="0.04"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="parent"
-                            app:layout_goneMarginLeft="5dp" />
-
-                        <Button
-                            android:id="@+id/corona_expend_bt"
-                            android:layout_width="35dp"
-                            android:layout_height="35dp"
-                            android:background="@drawable/ic_expand_more_black_24dp"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintHorizontal_bias="1.0"
-                            app:layout_constraintStart_toEndOf="@+id/textView5"
-                            app:layout_constraintTop_toTopOf="@+id/textView5" />
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginEnd="10dp"
+                        android:layout_marginRight="10dp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        >
 
                         <androidx.constraintlayout.widget.ConstraintLayout
-                            android:id="@+id/expand_layout_corona"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:visibility="gone"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@+id/corona_expend_bt">
+                            >
 
-                            <LinearLayout
+                            <TextView
+                                android:id="@+id/textView5"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="5dp"
+                                android:text="코로나"
+                                android:textSize="20sp"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintHorizontal_bias="0.04"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent"
+                                app:layout_goneMarginLeft="5dp"
+                                />
+
+                            <Button
+                                android:id="@+id/corona_expend_bt"
+                                android:layout_width="35dp"
+                                android:layout_height="35dp"
+                                android:background="@drawable/ic_expand_more_black_24dp"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintHorizontal_bias="1.0"
+                                app:layout_constraintStart_toEndOf="@+id/textView5"
+                                app:layout_constraintTop_toTopOf="@+id/textView5"
+                                />
+
+                            <androidx.constraintlayout.widget.ConstraintLayout
+                                android:id="@+id/expand_layout_corona"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:orientation="vertical"
-                                android:padding="10dp"
+                                android:visibility="gone"
                                 app:layout_constraintEnd_toEndOf="parent"
                                 app:layout_constraintStart_toStartOf="parent"
-                                app:layout_constraintTop_toTopOf="parent">
-
-                                <!-- <TextView
-                                     android:id="@+id/testCommon"
-                                     android:layout_width="wrap_content"
-                                     android:layout_height="wrap_content"
-                                     android:text="abc" />
-
-                                 <TextView
-                                     android:id="@+id/testInfo"
-                                     android:layout_width="match_parent"
-                                     android:layout_height="wrap_content"
-                                     android:text="TextView" />
-
-                                 <TextView
-                                     android:id="@+id/testImage"
-                                     android:layout_width="match_parent"
-                                     android:layout_height="wrap_content"
-                                     android:text="TextView" />
-
-                                 <TextView
-                                     android:id="@+id/testMask"
-                                     android:layout_width="match_parent"
-                                     android:layout_height="wrap_content"
-                                     android:text="TextView" />-->
+                                app:layout_constraintTop_toBottomOf="@+id/corona_expend_bt"
+                                >
 
                                 <LinearLayout
                                     android:layout_width="match_parent"
@@ -362,176 +376,242 @@
                                     android:padding="10dp"
                                     app:layout_constraintEnd_toEndOf="parent"
                                     app:layout_constraintStart_toStartOf="parent"
-                                    app:layout_constraintTop_toTopOf="parent">
+                                    app:layout_constraintTop_toTopOf="parent"
+                                    >
+
+                                    <!-- <TextView
+                                         android:id="@+id/testCommon"
+                                         android:layout_width="wrap_content"
+                                         android:layout_height="wrap_content"
+                                         android:text="abc" />
+
+                                     <TextView
+                                         android:id="@+id/testInfo"
+                                         android:layout_width="match_parent"
+                                         android:layout_height="wrap_content"
+                                         android:text="TextView" />
+
+                                     <TextView
+                                         android:id="@+id/testImage"
+                                         android:layout_width="match_parent"
+                                         android:layout_height="wrap_content"
+                                         android:text="TextView" />
+
+                                     <TextView
+                                         android:id="@+id/testMask"
+                                         android:layout_width="match_parent"
+                                         android:layout_height="wrap_content"
+                                         android:text="TextView" />-->
 
                                     <LinearLayout
                                         android:layout_width="match_parent"
                                         android:layout_height="wrap_content"
-                                        android:orientation="horizontal"
-                                        android:weightSum="2">
+                                        android:orientation="vertical"
+                                        android:padding="10dp"
+                                        app:layout_constraintEnd_toEndOf="parent"
+                                        app:layout_constraintStart_toStartOf="parent"
+                                        app:layout_constraintTop_toTopOf="parent"
+                                        >
 
-                                        <TextView
-                                            android:layout_width="wrap_content"
+                                        <LinearLayout
+                                            android:layout_width="match_parent"
                                             android:layout_height="wrap_content"
-                                            android:layout_weight="1"
-                                            android:textSize="17sp"
-                                            android:text="지역 (시도별)" />
+                                            android:orientation="horizontal"
+                                            android:weightSum="2"
+                                            >
 
-                                        <TextView
-                                            android:id="@+id/AddressCitynameTextview"
-                                            android:layout_width="wrap_content"
+                                            <TextView
+                                                android:layout_width="wrap_content"
+                                                android:layout_height="wrap_content"
+                                                android:layout_weight="1"
+                                                android:text="지역 (시도별)"
+                                                android:textSize="17sp"
+                                                />
+
+                                            <TextView
+                                                android:id="@+id/AddressCitynameTextview"
+                                                android:layout_width="wrap_content"
+                                                android:layout_height="wrap_content"
+                                                android:layout_weight="1"
+                                                android:gravity="end"
+                                                android:textSize="17sp"
+                                                />
+
+                                        </LinearLayout>
+
+                                        <LinearLayout
+                                            android:layout_width="match_parent"
                                             android:layout_height="wrap_content"
-                                            android:layout_weight="1"
-                                            android:gravity="end"
-                                            android:textSize="17sp" />
+                                            android:orientation="horizontal"
+                                            android:weightSum="2"
+                                            >
+
+                                            <TextView
+                                                android:layout_width="wrap_content"
+                                                android:layout_height="wrap_content"
+                                                android:layout_weight="1"
+                                                android:text="누적 확진환자"
+                                                android:textSize="20sp"
+                                                />
+
+                                            <TextView
+                                                android:id="@+id/AddressTotalTextview"
+                                                android:layout_width="wrap_content"
+                                                android:layout_height="wrap_content"
+                                                android:layout_weight="1"
+                                                android:gravity="end"
+                                                android:textSize="20sp"
+                                                />
+
+                                        </LinearLayout>
+
+                                        <LinearLayout
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:orientation="horizontal"
+                                            android:weightSum="2"
+                                            >
+
+                                            <TextView
+                                                android:layout_width="wrap_content"
+                                                android:layout_height="wrap_content"
+                                                android:layout_weight="1"
+                                                android:text="전일 대비 증감"
+                                                android:textColor="@android:color/holo_blue_light"
+                                                android:textSize="15sp"
+                                                />
+
+                                            <TextView
+                                                android:id="@+id/AddressPlusTextview"
+                                                android:layout_width="wrap_content"
+                                                android:layout_height="wrap_content"
+                                                android:layout_weight="1"
+                                                android:gravity="end"
+                                                android:textColor="@android:color/holo_blue_light"
+                                                android:textSize="15sp"
+                                                />
+
+                                        </LinearLayout>
+
+                                        <LinearLayout
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:orientation="horizontal"
+                                            android:weightSum="2"
+                                            >
+
+                                            <TextView
+                                                android:layout_width="wrap_content"
+                                                android:layout_height="wrap_content"
+                                                android:layout_weight="1"
+                                                android:text="격리중"
+                                                android:textSize="20sp"
+                                                />
+
+                                            <TextView
+                                                android:id="@+id/AddressDischarged"
+                                                android:layout_width="wrap_content"
+                                                android:layout_height="wrap_content"
+                                                android:layout_weight="1"
+                                                android:gravity="end"
+                                                android:textSize="20sp"
+                                                />
+
+                                        </LinearLayout>
+
+                                        <LinearLayout
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:orientation="horizontal"
+                                            android:weightSum="2"
+                                            >
+
+                                            <TextView
+                                                android:layout_width="wrap_content"
+                                                android:layout_height="wrap_content"
+                                                android:layout_weight="1"
+                                                android:text="누적 격리해제"
+                                                android:textSize="20sp"
+                                                />
+
+                                            <TextView
+                                                android:id="@+id/AddressCured"
+                                                android:layout_width="wrap_content"
+                                                android:layout_height="wrap_content"
+                                                android:layout_weight="1"
+                                                android:gravity="end"
+                                                android:textSize="20sp"
+                                                />
+
+                                        </LinearLayout>
+
+                                        <LinearLayout
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:orientation="horizontal"
+                                            android:weightSum="2"
+                                            >
+
+                                            <TextView
+                                                android:layout_width="wrap_content"
+                                                android:layout_height="wrap_content"
+                                                android:layout_weight="1"
+                                                android:text="사망자"
+                                                android:textSize="20sp"
+                                                />
+
+                                            <TextView
+                                                android:id="@+id/AddressDeath"
+                                                android:layout_width="wrap_content"
+                                                android:layout_height="wrap_content"
+                                                android:layout_weight="1"
+                                                android:gravity="end"
+                                                android:textSize="20sp"
+                                                />
+
+                                        </LinearLayout>
 
                                     </LinearLayout>
-
-                                    <LinearLayout
-                                        android:layout_width="match_parent"
-                                        android:layout_height="wrap_content"
-                                        android:orientation="horizontal"
-                                        android:weightSum="2">
-
-                                        <TextView
-                                            android:layout_width="wrap_content"
-                                            android:layout_height="wrap_content"
-                                            android:layout_weight="1"
-                                            android:textSize="20sp"
-                                            android:text="누적 확진환자" />
-
-                                        <TextView
-                                            android:id="@+id/AddressTotalTextview"
-                                            android:layout_width="wrap_content"
-                                            android:layout_height="wrap_content"
-                                            android:layout_weight="1"
-                                            android:textSize="20sp"
-                                            android:gravity="end" />
-
-                                    </LinearLayout>
-
-                                    <LinearLayout
-                                        android:layout_width="match_parent"
-                                        android:layout_height="wrap_content"
-                                        android:orientation="horizontal"
-                                        android:weightSum="2">
-
-                                        <TextView
-                                            android:layout_width="wrap_content"
-                                            android:layout_height="wrap_content"
-                                            android:layout_weight="1"
-                                            android:textSize="15sp"
-                                            android:textColor="@android:color/holo_blue_light"
-                                            android:text="전일 대비 증감" />
-
-                                        <TextView
-                                            android:id="@+id/AddressPlusTextview"
-                                            android:layout_width="wrap_content"
-                                            android:layout_height="wrap_content"
-                                            android:layout_weight="1"
-                                            android:textSize="15sp"
-                                            android:textColor="@android:color/holo_blue_light"
-                                            android:gravity="end" />
-
-                                    </LinearLayout>
-
-                                    <LinearLayout
-                                        android:layout_width="match_parent"
-                                        android:layout_height="wrap_content"
-                                        android:orientation="horizontal"
-                                        android:weightSum="2">
-
-                                        <TextView
-                                            android:layout_width="wrap_content"
-                                            android:layout_height="wrap_content"
-                                            android:layout_weight="1"
-                                            android:textSize="20sp"
-                                            android:text="격리중" />
-
-                                        <TextView
-                                            android:id="@+id/AddressDischarged"
-                                            android:layout_width="wrap_content"
-                                            android:layout_height="wrap_content"
-                                            android:layout_weight="1"
-                                            android:gravity="end"
-                                            android:textSize="20sp" />
-
-                                    </LinearLayout>
-
-                                    <LinearLayout
-                                        android:layout_width="match_parent"
-                                        android:layout_height="wrap_content"
-                                        android:orientation="horizontal"
-                                        android:weightSum="2">
-
-                                        <TextView
-                                            android:layout_width="wrap_content"
-                                            android:layout_height="wrap_content"
-                                            android:layout_weight="1"
-                                            android:textSize="20sp"
-                                            android:text="누적 격리해제" />
-
-                                        <TextView
-                                            android:id="@+id/AddressCured"
-                                            android:layout_width="wrap_content"
-                                            android:layout_height="wrap_content"
-                                            android:layout_weight="1"
-                                            android:gravity="end"
-                                            android:textSize="20sp" />
-
-                                    </LinearLayout>
-
-                                    <LinearLayout
-                                        android:layout_width="match_parent"
-                                        android:layout_height="wrap_content"
-                                        android:orientation="horizontal"
-                                        android:weightSum="2">
-
-                                        <TextView
-                                            android:layout_width="wrap_content"
-                                            android:layout_height="wrap_content"
-                                            android:layout_weight="1"
-                                            android:textSize="20sp"
-                                            android:text="사망자" />
-
-                                        <TextView
-                                            android:id="@+id/AddressDeath"
-                                            android:layout_width="wrap_content"
-                                            android:layout_height="wrap_content"
-                                            android:layout_weight="1"
-                                            android:textSize="20sp"
-                                            android:gravity="end" />
-
-                                    </LinearLayout>
-
                                 </LinearLayout>
-                            </LinearLayout>
+
+
+                            </androidx.constraintlayout.widget.ConstraintLayout>
 
 
                         </androidx.constraintlayout.widget.ConstraintLayout>
 
 
-                    </androidx.constraintlayout.widget.ConstraintLayout>
+                    </androidx.cardview.widget.CardView>
 
 
-                </androidx.cardview.widget.CardView>
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <FrameLayout
+                    android:id="@+id/detail_framlayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    >
+
+                </FrameLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="72dp"/>
+            </LinearLayout>
+
+        </ScrollView>
 
 
-            </androidx.constraintlayout.widget.ConstraintLayout>
-
-            <FrameLayout
-                android:layout_marginTop="15dp"
-                android:id="@+id/detail_framlayout"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-            </FrameLayout>
-        </LinearLayout>
-    </ScrollView>
+    </LinearLayout>
 
     <LinearLayout
+        android:id="@+id/linearLayout"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        >
 
         <com.ismaeldivita.chipnavigation.ChipNavigationBar
             android:id="@+id/chipnavigation"
@@ -540,10 +620,11 @@
             android:background="@drawable/navigationbar"
             android:elevation="16dp"
             android:padding="8dp"
-            app:cnb_menuResource="@menu/detail_menu">
+            app:cnb_menuResource="@menu/detail_menu"
+            >
 
         </com.ismaeldivita.chipnavigation.ChipNavigationBar>
 
     </LinearLayout>
 
-</LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
