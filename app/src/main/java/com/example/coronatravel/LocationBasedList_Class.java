@@ -11,6 +11,9 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 public class LocationBasedList_Class {
+    LocationBasedList_Class(){ // 여기에 SQLite 에 저장한 내용 삽입시키면 될듯?
+
+    }
     LocationBasedList_Class(String addr1,String contentid,String contenttypeid,String firstimage,String title)
     {
         this.addr1 =addr1; //주소
@@ -18,9 +21,6 @@ public class LocationBasedList_Class {
         this.contenttypeid=contenttypeid;
         this.firstimage=firstimage; // 사진
         this.title=title; //제목
-    }
-    LocationBasedList_Class(){ // 여기에 SQLite 에 저장한 내용 삽입시키면 될듯?
-
     }
 
     public static String totalcount;

@@ -99,6 +99,7 @@ public class Detail_Second_Fragment extends Fragment {
                     "\n코스 총 소요 시간 : " + detail_I_25.getTaketime());
         }
 
+
         else if (contenttypeid.equals("28")) {
             second.setText("유모차 대여 정보: " + detail_I_28.getChkbabycarriageleports() +
                     "\n체험가능 연령 : " + detail_I_28.getExpagerangeleports() +
