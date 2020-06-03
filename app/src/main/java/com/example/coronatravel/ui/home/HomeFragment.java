@@ -5,6 +5,8 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.location.Address;
 import android.location.Geocoder;
 import android.location.LocationManager;
@@ -21,12 +23,14 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AlertDialog;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
@@ -90,6 +94,9 @@ public class HomeFragment extends Fragment {
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
+
+
+
         homeViewModel =
                 ViewModelProviders.of(this).get(HomeViewModel.class);
         View root = inflater.inflate(R.layout.fragment_home, container, false);
@@ -193,29 +200,6 @@ public class HomeFragment extends Fragment {
 
 
         Festival festival = JSONParsing(JSONFromRandomFestivalUrl);
-
-        String detailCommonUrl = "http://api.visitkorea.or.kr/openapi/service/rest/KorService/detailCommon?" +
-                "ServiceKey=" + ServiceKey +
-                "&contentTypeId=" + festival.getContenttypeid() +
-                "&contentId=" + festival.getContentid() +
-                "&MobileOS=AND&MobileApp=CoronaTravel" +
-                "&defaultYN=Y&firstImageYN=Y&areacodeYN=Y&catcodeYN=Y&addrinfoYN=Y&mapinfoYN=Y&overviewYN=Y&transGuideYN=Y" +
-                "&_type=json";
-
-//        String detailCommonUrl = "http://api.visitkorea.or.kr/openapi/service/rest/KorService/detailCommon?" +
-//                "ServiceKey=" + ServiceKey +
-//                "&contentTypeId=" + "15" +
-//                "&contentId=" + "292961" +
-//                "&MobileOS=AND&MobileApp=CoronaTravel" +
-//                "&defaultYN=Y&firstImageYN=Y&areacodeYN=Y&catcodeYN=Y&addrinfoYN=Y&mapinfoYN=Y&overviewYN=Y&transGuideYN=Y" +
-//                "&_type=json";
-
-        String JSONFromdetailCommonUrl = "";
-        try {
-            JSONFromdetailCommonUrl = new HttpReqTask().execute(detailCommonUrl).get();
-        } catch (Exception e) {
-            Log.d("TAG", "jsonparsing error");
-        }
 
         final String startMonth = festival.getEventstartdate().substring(4,6);
         final String startDate = festival.getEventstartdate().substring(6);
@@ -474,16 +458,6 @@ public class HomeFragment extends Fragment {
             JSONObject jsonArray_item = new JSONObject(item);
 
             try {
-                addr1 = jsonArray_item.getString("addr1");
-            } catch (JSONException e) {
-                addr1 = "";
-            }
-            try {
-                areacode = jsonArray_item.getString("areacode");
-            } catch (JSONException e) {
-                areacode = "";
-            }
-            try {
                 eventenddate = jsonArray_item.getString("eventenddate");
             } catch (JSONException e) {
                 eventenddate = "";
@@ -515,37 +489,4 @@ public class HomeFragment extends Fragment {
         return festival;
     }
 
-    public String OverviewJSONParsing(String JSONFromdetailCommonUrl, String title) {
-        String overview ="";
-        String removehtml = Html.fromHtml(JSONFromdetailCommonUrl).toString();
-        try {
-            JSONObject jsonObject = new JSONObject(removehtml);
-            String response = jsonObject.getString("response");
-            JSONObject jsonObject_response = new JSONObject(response);
-
-            String body = jsonObject_response.getString("body");
-            JSONObject jsonObject_body = new JSONObject(body);
-
-            String items = jsonObject_body.getString("items");
-            JSONObject jsonObject_items = new JSONObject(items);
-
-            String item = jsonObject_items.getString("item");
-            JSONObject jsonObject_item = new JSONObject(item);
-            try {
-                overview = jsonObject_item.getString("overview");
-                if(overview.startsWith("는") || overview.startsWith("은")){
-                    overview = "[" + title + "]" + overview;
-                }
-                //overview = Html.fromHtml(overview).toString();
-                //overview = overview.replaceAll("<(/)?([a-zA-Z]*)(\\s[a-zA-Z]*=[^>]*)?(\\s)*(/)?>", "");
-
-            }catch (JSONException e){
-                overview="";
-            }
-            return overview;
-        } catch (JSONException e) {
-            Log.d("TAG", "detailCommon parsing error");
-        }
-        return overview;
-    }
 }

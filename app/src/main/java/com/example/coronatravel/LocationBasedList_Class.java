@@ -128,6 +128,13 @@ public class LocationBasedList_Class {
                     }
 
                     try {
+                        dist = subJsonObject.getString("dist");
+                    } catch (JSONException e) {
+                        dist = "";
+                    }
+
+
+                    try {
                         firstimage = subJsonObject.getString("firstimage");
                     } catch (JSONException e) {
                         firstimage = "";
