@@ -188,6 +188,7 @@ public class HomeFragment extends Fragment {
         Picasso.get().load(MainActivity.LocationBasedList_ArrayList.get(4).getFirstimage()).placeholder(R.drawable.ic_launcher_background).into(historyimage5);
 
 
+
         // 네트워크 연결상태 체크
         if (NetworkConnection() == false) NotConnected_showAlert();
         checkPermissions();
