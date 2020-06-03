@@ -47,8 +47,10 @@
                         android:layout_width="0dp"
                         android:layout_height="50dp"
                         android:layout_weight="1"
+                        android:ellipsize="marquee"
                         android:fontFamily="@font/binggraemelona"
-                        android:textAlignment="textStart"
+                        android:gravity="center|start"
+                        android:singleLine="true"
                         android:textSize="30sp"
                         />
 
@@ -65,18 +67,24 @@
                 </LinearLayout>
 
                 <TextView
+                    android:textColorLink="#2C4AED"
                     android:id="@+id/detil_add_textview"
                     android:layout_width="match_parent"
-                    android:layout_height="20dp"
+                    android:layout_height="wrap_content"
                     android:layout_marginLeft="8dp"
+                    android:autoLink="web"
+                    android:ellipsize="end"
                     android:fontFamily="@font/hangeulnurir"
+                    android:maxLines="3"
                     android:textAlignment="textStart"
                     android:textSize="14sp"
+                    android:textStyle="bold"
                     />
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
                     >
 
                     <androidx.cardview.widget.CardView
@@ -95,7 +103,6 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:clickable="true"
-                            android:focusable="true"
                             android:foreground="?attr/selectableItemBackground"
                             >
 
@@ -219,7 +226,6 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:clickable="true"
-                            android:focusable="true"
                             android:foreground="?attr/selectableItemBackground"
                             >
 
@@ -374,7 +380,6 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:clickable="true"
-                            android:focusable="true"
                             android:foreground="?attr/selectableItemBackground"
                             >
 
@@ -631,6 +636,7 @@
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
                 <FrameLayout
+                    android:focusable="true"
                     android:id="@+id/detail_framlayout"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"

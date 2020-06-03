@@ -65,7 +65,7 @@ import java.util.concurrent.ExecutionException;
 public class Detail_view extends AppCompatActivity {
 
     //TextView testCommon, testInfo,testImage,testMask;
-    ConstraintLayout corona_layout, mask_layout, weather_layout;
+    ConstraintLayout corona_layout,mask_layout,weather_layout;
     CheckBox checkbox;
     DbOpenHelper mDbOpenHelper;
     String addr1, contentid, contenttypeid, firstimage, title;
@@ -78,7 +78,7 @@ public class Detail_view extends AppCompatActivity {
     ChipNavigationBar chipNavigationBar;
     String ServiceKey;
 
-    TextView titletext, addresstext;
+    TextView titletext,addresstext;
     ViewPager viewPager_mask;
     MaskSwipeAdapter maskSwipeAdapter;
 
@@ -121,13 +121,13 @@ public class Detail_view extends AppCompatActivity {
         title = MainActivity.LocationBasedList_ArrayList.get(position).getTitle();
         ServiceKey = "2YHyxt5iKCnOzEiYHMcML%2FgiOywB9tnJeL6D%2BHqsL48iMsSOXwPxQHTjCHq5dA1zAEcNIdcQUXnvFMN0aIdLsQ%3D%3D";
 
-        titletext = findViewById(R.id.detail_title_text);
-        addresstext = findViewById(R.id.detil_add_textview);
+        titletext=findViewById(R.id.detail_title_text);
+        addresstext=findViewById(R.id.detil_add_textview);
         //titletext.setText("이름 : " + Data.detail_C.getTitle());
 
-        corona_layout = findViewById(R.id.corona_layout);
-        mask_layout = findViewById(R.id.mask_layout);
-        weather_layout = findViewById(R.id.weather_layout);
+        corona_layout=findViewById(R.id.corona_layout);
+        mask_layout=findViewById(R.id.mask_layout);
+        weather_layout=findViewById(R.id.weather_layout);
 
 
         checkbox = (CheckBox) findViewById(R.id.checkbox);
@@ -149,7 +149,7 @@ public class Detail_view extends AppCompatActivity {
         viewPager_mask = findViewById(R.id.mask_viewpager);
         frameLayout = findViewById(R.id.detail_framlayout);
 
-        l = new LoadingDialog(this);
+        l=new LoadingDialog(this);
 
         final int firstnavigationclick[] = {0, 0, 0, 0};
         chipNavigationBar = findViewById(R.id.chipnavigation);
@@ -310,6 +310,7 @@ public class Detail_view extends AppCompatActivity {
                                 .show();
 
 
+
                         String dist = "10000";
                         String maskUrl = "";
                         maskUrl = "https://8oi9s0nnth.apigw.ntruss.com/corona19-masks/v1/storesByGeo/json?" +
@@ -317,16 +318,16 @@ public class Detail_view extends AppCompatActivity {
                                 "lng=" + detail_C.getMapx() + "&" +
                                 "m=" + dist;
                         final String[] JSONFromTotalSearch = {""};
-                        Log.i("delay", "start");
+                        Log.i("delay","start");
                         Handler delayHandler = new Handler();
                         final String finalMaskUrl = maskUrl;
                         delayHandler.postDelayed(new Runnable() {
                             @Override
                             public void run() {
                                 try {
-                                    Log.i("delay", "parsingstart+" + finalMaskUrl);
+                                    Log.i("delay","parsingstart+"+finalMaskUrl);
                                     JSONFromTotalSearch[0] = new HttpReqTask().execute(finalMaskUrl).get();
-                                    Log.i("delay", "parsingend");
+                                    Log.i("delay","parsingend");
                                     Mask.JSONParsing(JSONFromTotalSearch[0]);
                                     maskSwipeAdapter = new MaskSwipeAdapter(getSupportFragmentManager(), MainActivity.MASK_AraayList);
                                     if (MainActivity.MASK_AraayList.size() != 0)
@@ -475,9 +476,20 @@ public class Detail_view extends AppCompatActivity {
         }
         citynameP.setText(cityName);
 
+
         titletext.setText("" + Data.detail_C.getTitle());
-        String arr[] = Data.detail_C.getAddr1().split(" ");
-        addresstext.setText("" + arr[0] + " " + arr[1]);
+        if (titletext.length() < titletext.getMaxWidth()) titletext.setTextSize(20);
+        String hompagelink= Data.detail_C.getHomepage().contains("http")?Data.detail_C.getHomepage().substring(Data.detail_C.getHomepage().indexOf("http"), Data.detail_C.getHomepage().length())
+                :" - ";
+
+        String tellephon= Data.detail_C.getTel().contains("0") ? Data.detail_C.getTel().substring(
+                Data.detail_C.getTel().indexOf("0"),Data.detail_C.getTel().length()):" - ";
+
+        String addressstring =Data.detail_C.getAddr1().length()!=0? Data.detail_C.getAddr1():" - ";
+        addresstext.setText("※ 주소 : " + addressstring + "\n※ 전화 번호 : " + tellephon + "\n※ 홈페이지 : " + hompagelink);
+
+        chipNavigationBar.setItemSelected(R.id.first_menu, true);
+
 
 
         //init2();
