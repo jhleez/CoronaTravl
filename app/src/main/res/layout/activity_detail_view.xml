@@ -30,17 +30,49 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:gravity="center"
                 android:orientation="vertical"
                 >
 
-
-                <CheckBox
-                    android:id="@+id/checkbox"
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="즐겨찾기"
-                    />
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginTop="3dp"
+                    android:gravity="center"
+                    >
 
+                    <TextView
+                        android:id="@+id/detail_title_text"
+                        android:layout_width="0dp"
+                        android:layout_height="50dp"
+                        android:layout_weight="1"
+                        android:fontFamily="@font/binggraemelona"
+                        android:textAlignment="textStart"
+                        android:textSize="30sp"
+                        />
+
+                    <CheckBox
+                        android:id="@+id/checkbox"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:button="@drawable/bookmark_check_state"
+                        android:elevation="5dp"
+                        android:scaleX="0.7"
+                        android:scaleY="0.7"
+                        />
+
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/detil_add_textview"
+                    android:layout_width="match_parent"
+                    android:layout_height="20dp"
+                    android:layout_marginLeft="8dp"
+                    android:fontFamily="@font/hangeulnurir"
+                    android:textAlignment="textStart"
+                    android:textSize="14sp"
+                    />
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
@@ -59,8 +91,12 @@
                         >
 
                         <androidx.constraintlayout.widget.ConstraintLayout
+                            android:id="@+id/weather_layout"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+                            android:clickable="true"
+                            android:focusable="true"
+                            android:foreground="?attr/selectableItemBackground"
                             >
 
                             <TextView
@@ -179,8 +215,12 @@
                         >
 
                         <androidx.constraintlayout.widget.ConstraintLayout
+                            android:id="@+id/mask_layout"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+                            android:clickable="true"
+                            android:focusable="true"
+                            android:foreground="?attr/selectableItemBackground"
                             >
 
                             <TextView
@@ -330,8 +370,12 @@
                         >
 
                         <androidx.constraintlayout.widget.ConstraintLayout
+                            android:id="@+id/corona_layout"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+                            android:clickable="true"
+                            android:focusable="true"
+                            android:foreground="?attr/selectableItemBackground"
                             >
 
                             <TextView
@@ -594,9 +638,11 @@
                     >
 
                 </FrameLayout>
+
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="72dp"/>
+                    android:layout_height="72dp"
+                    />
             </LinearLayout>
 
         </ScrollView>

@@ -65,6 +65,7 @@ import java.util.concurrent.ExecutionException;
 public class Detail_view extends AppCompatActivity {
 
     //TextView testCommon, testInfo,testImage,testMask;
+    ConstraintLayout corona_layout,mask_layout,weather_layout;
     CheckBox checkbox;
     DbOpenHelper mDbOpenHelper;
     String addr1, contentid, contenttypeid, firstimage, title;
@@ -77,6 +78,7 @@ public class Detail_view extends AppCompatActivity {
     ChipNavigationBar chipNavigationBar;
     String ServiceKey;
 
+    TextView titletext,addresstext;
     ViewPager viewPager_mask;
     MaskSwipeAdapter maskSwipeAdapter;
 
@@ -119,8 +121,15 @@ public class Detail_view extends AppCompatActivity {
         title = MainActivity.LocationBasedList_ArrayList.get(position).getTitle();
         ServiceKey = "2YHyxt5iKCnOzEiYHMcML%2FgiOywB9tnJeL6D%2BHqsL48iMsSOXwPxQHTjCHq5dA1zAEcNIdcQUXnvFMN0aIdLsQ%3D%3D";
 
-//        testCommon = (TextView) findViewById(R.id.testCommon);
-//        testInfo = (TextView) findViewById(R.id.testInfo);
+        titletext=findViewById(R.id.detail_title_text);
+        addresstext=findViewById(R.id.detil_add_textview);
+        //titletext.setText("이름 : " + Data.detail_C.getTitle());
+
+        corona_layout=findViewById(R.id.corona_layout);
+                mask_layout=findViewById(R.id.mask_layout);
+        weather_layout=findViewById(R.id.weather_layout);
+
+
         checkbox = (CheckBox) findViewById(R.id.checkbox);
 //        testMask =(TextView) findViewById(R.id.testMask);
         mDbOpenHelper = new DbOpenHelper(this);
@@ -259,7 +268,7 @@ public class Detail_view extends AppCompatActivity {
         });
 
 
-        weatherexpendbt.setOnClickListener(new View.OnClickListener() {
+        weather_layout.setOnClickListener(new View.OnClickListener() {
             int firstclick = 0;
 
             @RequiresApi(api = Build.VERSION_CODES.KITKAT)
@@ -282,7 +291,7 @@ public class Detail_view extends AppCompatActivity {
                 }
             }
         });
-        maskexpandbt.setOnClickListener(new View.OnClickListener() {
+        mask_layout.setOnClickListener(new View.OnClickListener() {
             int firstclick = 0;
 
             @RequiresApi(api = Build.VERSION_CODES.KITKAT)
@@ -338,7 +347,7 @@ public class Detail_view extends AppCompatActivity {
                 }
             }
         });
-        coronaexpandbt.setOnClickListener(new View.OnClickListener() {
+        corona_layout.setOnClickListener(new View.OnClickListener() {
             int firstclick;
 
             @RequiresApi(api = Build.VERSION_CODES.KITKAT)
@@ -466,6 +475,13 @@ public class Detail_view extends AppCompatActivity {
             addressIndex = 17;
         }
         citynameP.setText(cityName);
+
+        titletext.setText("" + Data.detail_C.getTitle());
+        String arr[] = Data.detail_C.getAddr1().split(" ");
+        addresstext.setText(""+arr[0]+" "+arr[1]);
+
+
+
         //init2();
 
 //        String detailInfoUrl = "http://api.visitkorea.or.kr/openapi/service/rest/KorService/detailIntro?" +
@@ -757,6 +773,7 @@ public class Detail_view extends AppCompatActivity {
         @Override
         protected void onPostExecute(String result) {
             deathP.setText(result);
+
         }
     }
 

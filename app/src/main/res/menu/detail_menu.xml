@@ -4,13 +4,13 @@
 
     <item
         app:cnb_backgroundColor="#fff"
-        android:title="first"
+        android:title="소개"
         android:id="@+id/first_menu"
         android:icon="@drawable/first_menu_24dp"
         ></item>
     <item
         app:cnb_backgroundColor="#fff"
-        android:title="second"
+        android:title="운영 정보"
         android:id="@+id/second_menu"
         android:icon="@drawable/second_menu_24dp"
         ></item>
@@ -22,7 +22,7 @@
         ></item>
     <item
         app:cnb_backgroundColor="#fff"
-        android:title="forth"
+        android:title="그림"
         android:id="@+id/fourth_menu"
         android:icon="@drawable/fourth_menu_24dp"
         ></item>

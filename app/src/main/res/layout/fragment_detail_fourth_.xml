@@ -3,12 +3,17 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".detail.fragment.Detail_First_Fragment">
+    tools:context=".detail.fragment.Detail_First_Fragment"
+    >
 
     <ListView
         android:id="@+id/fourth_listview"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="match_parent"
+        android:divider="#ffffff"
+        android:dividerHeight="15dp"
+        android:scrollbars="horizontal"
+        />
 
 
 </FrameLayout>
