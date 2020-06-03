@@ -77,7 +77,7 @@ public class HomeFragment extends Fragment {
 
     private String startdate = "", enddate = "";
     private String totalcount;
-
+    ImageView card1;
     private HomeViewModel homeViewModel;
 
     PermissionListener permissionlistener = new PermissionListener() {
@@ -129,7 +129,11 @@ public class HomeFragment extends Fragment {
             }
         });
 
+
+
         return root;
+
+
     }
 
     public void moveToSpotDetailView() {

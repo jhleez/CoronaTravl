@@ -13,6 +13,7 @@
 
         <LinearLayout
             android:orientation="vertical"
+            android:background="@drawable/border4"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
@@ -36,8 +37,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/binggraemelona"
+                android:layout_marginTop="10dp"
                 android:text="행사 기간"
-                android:textColor="@android:color/darker_gray"
+                android:textColor="#666666"
                 android:textSize="14dp"/>
 
 
@@ -46,19 +48,25 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_marginTop="20dp"
-            android:layout_height="wrap_content">
+            android:layout_marginTop="40dp"
+            android:layout_height="180dp">
 
             <TextView
                 android:id="@+id/textView"
                 android:layout_width="100dp"
-                android:layout_height="300dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp"
                 android:layout_weight="1"
-                android:text="자연 \n관광지" />
+                android:textSize="15sp"
+                android:fontFamily="@font/binggraemelona"
+                android:textColor="#333333"
+                android:background="@drawable/border3"
+                android:text="자연\n관광지" />
 
             <HorizontalScrollView
+                android:layout_marginLeft="20dp"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="180dp"
                 android:layout_weight="1">
 
                 <LinearLayout
@@ -67,15 +75,200 @@
                     android:layout_height="wrap_content" >
 
                     <LinearLayout
+                        android:layout_marginLeft="15dp"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical"/>
+                        android:layout_height="180dp"
+                        android:orientation="vertical">
+
+                        <ImageView
+                            android:scaleType="fitXY"
+                            android:background="@drawable/test"
+                            android:layout_width="120dp"
+                            android:layout_height="120dp" />
+                        <TextView
+                            android:layout_marginTop="5dp"
+                            android:layout_gravity="center"
+                            android:textColor="#000"
+                            android:fontFamily="@font/binggraemelona"
+                            android:layout_width="120dp"
+                            android:layout_height="wrap_content"
+                            android:textSize="18sp"
+                            android:gravity="start"
+                            android:text="제부도"/>
+                    </LinearLayout>
 
 
 
                 </LinearLayout>
             </HorizontalScrollView>
         </LinearLayout>
+
+        <LinearLayout
+            android:layout_marginTop="20dp"
+            android:layout_width="match_parent"
+            android:orientation="vertical"
+            android:layout_height="200dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp"
+                android:textSize="15sp"
+                android:text="여행 코스 추천"
+                android:background="@drawable/border3"
+                android:fontFamily="@font/binggraemelona"
+                android:textColor="#333333">
+            </TextView>
+
+            <ImageView
+                android:layout_marginTop="15dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:scaleType="fitXY"
+                android:background="@drawable/test">
+            </ImageView>
+
+            <TextView
+                android:layout_marginTop="8dp"
+                android:layout_marginLeft="25dp"
+                android:layout_marginRight="20dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="18sp"
+                android:textColor="#000"
+                android:fontFamily="@font/binggraemelona"
+                android:text="다채로운 매력이 가득한 제주">
+            </TextView>
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_marginTop="40dp"
+            android:layout_height="180dp">
+
+            <TextView
+                android:id="@+id/textView2"
+                android:layout_width="90dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp"
+                android:layout_weight="1"
+                android:textSize="15sp"
+                android:fontFamily="@font/binggraemelona"
+                android:textColor="#333333"
+                android:background="@drawable/border3"
+                android:text="역사\n여행"/>
+
+            <HorizontalScrollView
+                android:layout_marginLeft="20dp"
+                android:layout_width="match_parent"
+                android:layout_height="180dp"
+                android:layout_weight="1">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:orientation="horizontal"
+                    android:layout_height="wrap_content" >
+
+                    <LinearLayout
+                        android:layout_marginLeft="15dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="180dp"
+                        android:orientation="vertical">
+
+                        <ImageView
+                            android:scaleType="fitXY"
+                            android:background="@drawable/test"
+                            android:layout_width="120dp"
+                            android:layout_height="120dp" />
+                        <TextView
+                            android:layout_marginTop="5dp"
+                            android:layout_gravity="center"
+                            android:textColor="#000"
+                            android:fontFamily="@font/binggraemelona"
+                            android:layout_width="120dp"
+                            android:layout_height="wrap_content"
+                            android:textSize="18sp"
+                            android:gravity="start"
+                            android:text="제부도"/>
+                    </LinearLayout>
+                </LinearLayout>
+            </HorizontalScrollView>
+        </LinearLayout>
+//홍아
+
+
+        <HorizontalScrollView
+            android:layout_marginLeft="20dp"
+            android:layout_width="match_parent"
+            android:layout_height="400dp"
+            android:layout_weight="1">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:orientation="horizontal"
+                android:layout_height="wrap_content" >
+
+                    <ImageView
+                        android:background="@drawable/card1"
+                        android:scaleType="fitXY"
+                        android:layout_width="300dp"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginRight="20dp"
+                        android:layout_marginTop="20dp"
+                        android:layout_height="300dp">
+                    </ImageView>
+                    <ImageView
+                        android:background="@drawable/card2"
+                        android:scaleType="fitXY"
+                        android:layout_width="300dp"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginRight="20dp"
+                        android:layout_marginTop="20dp"
+                        android:layout_height="300dp">
+                    </ImageView>
+                    <ImageView
+                        android:background="@drawable/card3"
+                        android:scaleType="fitXY"
+                        android:layout_width="300dp"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginRight="20dp"
+                        android:layout_marginTop="20dp"
+                        android:layout_height="300dp">
+                    </ImageView>
+                    <ImageView
+                        android:background="@drawable/card4"
+                        android:scaleType="fitXY"
+                        android:layout_width="300dp"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginRight="20dp"
+                        android:layout_marginTop="20dp"
+                        android:layout_height="300dp">
+                    </ImageView>
+                    <ImageView
+                        android:background="@drawable/card5"
+                        android:scaleType="fitXY"
+                        android:layout_width="300dp"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginRight="20dp"
+                        android:layout_marginTop="20dp"
+                        android:layout_height="300dp">
+                    </ImageView>
+                    <ImageView
+                        android:background="@drawable/card6"
+                        android:scaleType="fitXY"
+                        android:layout_width="300dp"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginRight="20dp"
+                        android:layout_marginTop="20dp"
+                        android:layout_height="300dp">
+                    </ImageView>
+            </LinearLayout>
+        </HorizontalScrollView>
+
+
 
 
         <!-- <androidx.constraintlayout.widget.ConstraintLayout

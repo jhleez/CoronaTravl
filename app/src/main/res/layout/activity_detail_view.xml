@@ -7,26 +7,11 @@
     android:orientation="vertical"
     tools:context=".detail.Detail_view">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-        <com.ismaeldivita.chipnavigation.ChipNavigationBar
-            android:id="@+id/chipnavigation"
-            android:layout_width="match_parent"
-            android:layout_height="72dp"
-            android:background="@drawable/navigationbar"
-            android:elevation="16dp"
-            android:padding="8dp"
-            app:cnb_menuResource="@menu/detail_menu">
-
-        </com.ismaeldivita.chipnavigation.ChipNavigationBar>
-
-    </LinearLayout>
 
     <ScrollView
+
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="500dp">
 
 
         <LinearLayout
@@ -543,5 +528,22 @@
             </FrameLayout>
         </LinearLayout>
     </ScrollView>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <com.ismaeldivita.chipnavigation.ChipNavigationBar
+            android:id="@+id/chipnavigation"
+            android:layout_width="match_parent"
+            android:layout_height="72dp"
+            android:background="@drawable/navigationbar"
+            android:elevation="16dp"
+            android:padding="8dp"
+            app:cnb_menuResource="@menu/detail_menu">
+
+        </com.ismaeldivita.chipnavigation.ChipNavigationBar>
+
+    </LinearLayout>
 
 </LinearLayout>
