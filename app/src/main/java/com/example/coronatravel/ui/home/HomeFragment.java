@@ -71,7 +71,8 @@ public class HomeFragment extends Fragment {
 
     TextView totalView, dischargedView, curingView, deathView, patientView, dailyCuredTextview, dailyDiagnosisTextview;
     Context context;
-
+    ImageView natureimage1,natureimage2,natureimage3,natureimage4,natureimage5,courseimage,historyimage1,historyimage2,historyimage3,historyimage4,historyimage5;
+    TextView naturetitle1,naturetitle2,naturetitle3,naturetitle4,naturetitle5,coursetitle,historytitle1,historytitle2,historytitle3,historytitle4,historytitle5;
     private ImageView spotImage;
     private TextView spotName, spotEventPeriod;
 
@@ -114,13 +115,85 @@ public class HomeFragment extends Fragment {
         spotName = root.findViewById(R.id.spotName);
         spotEventPeriod = root.findViewById(R.id.spotEventPeriod);
 
-        context = getActivity();
 
+        natureimage1 = root.findViewById(R.id.natureimage1);
+        natureimage2 = root.findViewById(R.id.natureimage2);
+        natureimage3 = root.findViewById(R.id.natureimage3);
+        natureimage4 = root.findViewById(R.id.natureimage4);
+        natureimage5 = root.findViewById(R.id.natureimage5);
+
+        naturetitle1 = root.findViewById(R.id.naturetitle1);
+        naturetitle2 = root.findViewById(R.id.naturetitle2);
+        naturetitle3 = root.findViewById(R.id.naturetitle3);
+        naturetitle4 = root.findViewById(R.id.naturetitle4);
+        naturetitle5 = root.findViewById(R.id.naturetitle5);
+
+        courseimage = root.findViewById(R.id.courseimage);
+        coursetitle = root.findViewById(R.id.coursetitle);
+
+        historyimage1 = root.findViewById(R.id.historyimage1);
+        historyimage2 = root.findViewById(R.id.historyimage2);
+        historyimage3 = root.findViewById(R.id.historyimage3);
+        historyimage4 = root.findViewById(R.id.historyimage4);
+        historyimage5 = root.findViewById(R.id.historyimage5);
+
+        historytitle1 = root.findViewById(R.id.historytitle1);
+        historytitle2 = root.findViewById(R.id.historytitle2);
+        historytitle3 = root.findViewById(R.id.historytitle3);
+        historytitle4 = root.findViewById(R.id.historytitle4);
+        historytitle5 = root.findViewById(R.id.historytitle5);
+
+        context = getActivity();
         recommendation();
+
+
+        Random rnd = new Random();
+        int randomnuber =rnd.nextInt(150);
+        String pageNo=String.valueOf(randomnuber);
+
+        ((MainActivity)getActivity()).localSearch2("12","", "", "A01", "", "","P", pageNo);
+        naturetitle1.setText(MainActivity.LocationBasedList_ArrayList.get(0).getTitle());
+        naturetitle2.setText(MainActivity.LocationBasedList_ArrayList.get(1).getTitle());
+        naturetitle3.setText(MainActivity.LocationBasedList_ArrayList.get(2).getTitle());
+        naturetitle4.setText(MainActivity.LocationBasedList_ArrayList.get(3).getTitle());
+        naturetitle5.setText(MainActivity.LocationBasedList_ArrayList.get(4).getTitle());
+
+        Picasso.get().load(MainActivity.LocationBasedList_ArrayList.get(0).getFirstimage()).placeholder(R.drawable.ic_launcher_background).into(natureimage1);
+        Picasso.get().load(MainActivity.LocationBasedList_ArrayList.get(1).getFirstimage()).placeholder(R.drawable.ic_launcher_background).into(natureimage2);
+        Picasso.get().load(MainActivity.LocationBasedList_ArrayList.get(2).getFirstimage()).placeholder(R.drawable.ic_launcher_background).into(natureimage3);
+        Picasso.get().load(MainActivity.LocationBasedList_ArrayList.get(3).getFirstimage()).placeholder(R.drawable.ic_launcher_background).into(natureimage4);
+        Picasso.get().load(MainActivity.LocationBasedList_ArrayList.get(4).getFirstimage()).placeholder(R.drawable.ic_launcher_background).into(natureimage5);
+
+        int randomnuber2 =rnd.nextInt(100);
+        String pageNo2=String.valueOf(randomnuber2);
+        ((MainActivity)getActivity()).localSearch2("","", "", "C01", "", "","P", pageNo2);
+        coursetitle.setText(MainActivity.LocationBasedList_ArrayList.get(0).getTitle());
+        Picasso.get().load(MainActivity.LocationBasedList_ArrayList.get(0).getFirstimage()).placeholder(R.drawable.ic_launcher_background).into(courseimage);
+
+
+        int randomnuber3 =rnd.nextInt(150);
+        String pageNo3=String.valueOf(randomnuber3);
+
+        ((MainActivity)getActivity()).localSearch2("","", "", "A02", "A0201", "","P", pageNo3);
+        historytitle1.setText(MainActivity.LocationBasedList_ArrayList.get(0).getTitle());
+        historytitle2.setText(MainActivity.LocationBasedList_ArrayList.get(1).getTitle());
+        historytitle3.setText(MainActivity.LocationBasedList_ArrayList.get(2).getTitle());
+        historytitle4.setText(MainActivity.LocationBasedList_ArrayList.get(3).getTitle());
+        historytitle5.setText(MainActivity.LocationBasedList_ArrayList.get(4).getTitle());
+
+        Picasso.get().load(MainActivity.LocationBasedList_ArrayList.get(0).getFirstimage()).placeholder(R.drawable.ic_launcher_background).into(historyimage1);
+        Picasso.get().load(MainActivity.LocationBasedList_ArrayList.get(1).getFirstimage()).placeholder(R.drawable.ic_launcher_background).into(historyimage2);
+        Picasso.get().load(MainActivity.LocationBasedList_ArrayList.get(2).getFirstimage()).placeholder(R.drawable.ic_launcher_background).into(historyimage3);
+        Picasso.get().load(MainActivity.LocationBasedList_ArrayList.get(3).getFirstimage()).placeholder(R.drawable.ic_launcher_background).into(historyimage4);
+        Picasso.get().load(MainActivity.LocationBasedList_ArrayList.get(4).getFirstimage()).placeholder(R.drawable.ic_launcher_background).into(historyimage5);
+
 
         // 네트워크 연결상태 체크
         if (NetworkConnection() == false) NotConnected_showAlert();
         checkPermissions();
+
+
+
 
         spotImage.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -128,7 +201,6 @@ public class HomeFragment extends Fragment {
                 moveToSpotDetailView();
             }
         });
-
 
 
         return root;
@@ -263,7 +335,7 @@ public class HomeFragment extends Fragment {
 
         @Override
         protected void onPostExecute(String result) {
-            dailyDiagnosisTextview.setText("+" + result);
+            dailyDiagnosisTextview.setText("+" + result+")");
         }
     }
 

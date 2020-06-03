@@ -49,7 +49,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_marginTop="40dp"
-            android:layout_height="180dp">
+            android:layout_height="220dp">
 
             <TextView
                 android:id="@+id/textView"
@@ -66,7 +66,7 @@
             <HorizontalScrollView
                 android:layout_marginLeft="20dp"
                 android:layout_width="match_parent"
-                android:layout_height="180dp"
+                android:layout_height="220dp"
                 android:layout_weight="1">
 
                 <LinearLayout
@@ -77,15 +77,129 @@
                     <LinearLayout
                         android:layout_marginLeft="15dp"
                         android:layout_width="wrap_content"
-                        android:layout_height="180dp"
+                        android:layout_height="220dp"
                         android:orientation="vertical">
 
                         <ImageView
+                            android:id="@+id/natureimage1"
                             android:scaleType="fitXY"
                             android:background="@drawable/test"
                             android:layout_width="120dp"
                             android:layout_height="120dp" />
                         <TextView
+                            android:id="@+id/naturetitle1"
+                            android:layout_marginTop="5dp"
+                            android:layout_gravity="center"
+                            android:textColor="#000"
+                            android:fontFamily="@font/binggraemelona"
+                            android:layout_width="120dp"
+                            android:layout_height="wrap_content"
+                            android:textSize="18sp"
+                            android:gravity="start"
+                            android:text="제부도"/>
+
+
+                    </LinearLayout>
+
+
+                    <LinearLayout
+                        android:layout_marginLeft="20dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="220dp"
+                        android:orientation="vertical">
+
+                        <ImageView
+                            android:id="@+id/natureimage2"
+                            android:scaleType="fitXY"
+                            android:background="@drawable/test"
+                            android:layout_width="120dp"
+                            android:layout_height="120dp" />
+                        <TextView
+                            android:id="@+id/naturetitle2"
+                            android:layout_marginTop="5dp"
+                            android:layout_gravity="center"
+                            android:textColor="#000"
+                            android:fontFamily="@font/binggraemelona"
+                            android:layout_width="120dp"
+                            android:layout_height="wrap_content"
+                            android:textSize="18sp"
+                            android:gravity="start"
+                            android:text="제부도"/>
+
+
+                    </LinearLayout>
+
+
+                    <LinearLayout
+                        android:layout_marginLeft="20dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="220dp"
+                        android:orientation="vertical">
+
+                        <ImageView
+                            android:id="@+id/natureimage3"
+                            android:scaleType="fitXY"
+                            android:background="@drawable/test"
+                            android:layout_width="120dp"
+                            android:layout_height="120dp" />
+                        <TextView
+                            android:id="@+id/naturetitle3"
+                            android:layout_marginTop="5dp"
+                            android:layout_gravity="center"
+                            android:textColor="#000"
+                            android:fontFamily="@font/binggraemelona"
+                            android:layout_width="120dp"
+                            android:layout_height="wrap_content"
+                            android:textSize="18sp"
+                            android:gravity="start"
+                            android:text="제부도"/>
+
+
+                    </LinearLayout>
+
+
+                    <LinearLayout
+                        android:layout_marginLeft="20dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="220dp"
+                        android:orientation="vertical">
+
+                        <ImageView
+                            android:id="@+id/natureimage4"
+                            android:scaleType="fitXY"
+                            android:background="@drawable/test"
+                            android:layout_width="120dp"
+                            android:layout_height="120dp" />
+                        <TextView
+                            android:id="@+id/naturetitle4"
+                            android:layout_marginTop="5dp"
+                            android:layout_gravity="center"
+                            android:textColor="#000"
+                            android:fontFamily="@font/binggraemelona"
+                            android:layout_width="120dp"
+                            android:layout_height="wrap_content"
+                            android:textSize="18sp"
+                            android:gravity="start"
+                            android:text="제부도"/>
+
+
+                    </LinearLayout>
+
+
+                    <LinearLayout
+                        android:layout_marginLeft="20dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="220dp"
+                        android:orientation="vertical">
+
+                        <ImageView
+                            android:id="@+id/natureimage5"
+                            android:scaleType="fitXY"
+                            android:background="@drawable/test"
+                            android:layout_width="120dp"
+                            android:layout_height="120dp" />
+                        <TextView
+                            android:id="@+id/naturetitle5"
                             android:layout_marginTop="5dp"
                             android:layout_gravity="center"
                             android:textColor="#000"
@@ -97,8 +211,11 @@
                             android:text="제부도"/>
                     </LinearLayout>
 
-
-
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_marginLeft="20dp"
+                        android:layout_height="wrap_content">
+                    </TextView>
                 </LinearLayout>
             </HorizontalScrollView>
         </LinearLayout>
@@ -121,6 +238,7 @@
             </TextView>
 
             <ImageView
+                android:id="@+id/courseimage"
                 android:layout_marginTop="15dp"
                 android:layout_marginLeft="20dp"
                 android:layout_marginRight="20dp"
@@ -131,6 +249,7 @@
             </ImageView>
 
             <TextView
+                android:id="@+id/coursetitle"
                 android:layout_marginTop="8dp"
                 android:layout_marginLeft="25dp"
                 android:layout_marginRight="20dp"
@@ -146,8 +265,8 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_marginTop="40dp"
-            android:layout_height="180dp">
+            android:layout_marginTop="80dp"
+            android:layout_height="220dp">
 
             <TextView
                 android:id="@+id/textView2"
@@ -164,7 +283,7 @@
             <HorizontalScrollView
                 android:layout_marginLeft="20dp"
                 android:layout_width="match_parent"
-                android:layout_height="180dp"
+                android:layout_height="220dp"
                 android:layout_weight="1">
 
                 <LinearLayout
@@ -175,15 +294,117 @@
                     <LinearLayout
                         android:layout_marginLeft="15dp"
                         android:layout_width="wrap_content"
-                        android:layout_height="180dp"
+                        android:layout_height="220dp"
                         android:orientation="vertical">
 
                         <ImageView
+                            android:id="@+id/historyimage1"
                             android:scaleType="fitXY"
                             android:background="@drawable/test"
                             android:layout_width="120dp"
                             android:layout_height="120dp" />
                         <TextView
+                            android:id="@+id/historytitle1"
+                            android:layout_marginTop="5dp"
+                            android:layout_gravity="center"
+                            android:textColor="#000"
+                            android:fontFamily="@font/binggraemelona"
+                            android:layout_width="120dp"
+                            android:layout_height="wrap_content"
+                            android:textSize="18sp"
+                            android:gravity="start"
+                            android:text="제부도"/>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_marginLeft="15dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="220dp"
+                        android:orientation="vertical">
+
+                        <ImageView
+                            android:id="@+id/historyimage2"
+                            android:scaleType="fitXY"
+                            android:background="@drawable/test"
+                            android:layout_width="120dp"
+                            android:layout_height="120dp" />
+                        <TextView
+                            android:id="@+id/historytitle2"
+                            android:layout_marginTop="5dp"
+                            android:layout_gravity="center"
+                            android:textColor="#000"
+                            android:fontFamily="@font/binggraemelona"
+                            android:layout_width="120dp"
+                            android:layout_height="wrap_content"
+                            android:textSize="18sp"
+                            android:gravity="start"
+                            android:text="제부도"/>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_marginLeft="15dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="220dp"
+                        android:orientation="vertical">
+
+                        <ImageView
+                            android:id="@+id/historyimage3"
+                            android:scaleType="fitXY"
+                            android:background="@drawable/test"
+                            android:layout_width="120dp"
+                            android:layout_height="120dp" />
+                        <TextView
+                            android:id="@+id/historytitle3"
+                            android:layout_marginTop="5dp"
+                            android:layout_gravity="center"
+                            android:textColor="#000"
+                            android:fontFamily="@font/binggraemelona"
+                            android:layout_width="120dp"
+                            android:layout_height="wrap_content"
+                            android:textSize="18sp"
+                            android:gravity="start"
+                            android:text="제부도"/>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_marginLeft="15dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="220dp"
+                        android:orientation="vertical">
+
+                        <ImageView
+                            android:id="@+id/historyimage4"
+                            android:scaleType="fitXY"
+                            android:background="@drawable/test"
+                            android:layout_width="120dp"
+                            android:layout_height="120dp" />
+                        <TextView
+                            android:id="@+id/historytitle4"
+                            android:layout_marginTop="5dp"
+                            android:layout_gravity="center"
+                            android:textColor="#000"
+                            android:fontFamily="@font/binggraemelona"
+                            android:layout_width="120dp"
+                            android:layout_height="wrap_content"
+                            android:textSize="18sp"
+                            android:gravity="start"
+                            android:text="제부도"/>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_marginLeft="15dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="220dp"
+                        android:orientation="vertical">
+
+                        <ImageView
+                            android:id="@+id/historyimage5"
+                            android:scaleType="fitXY"
+                            android:background="@drawable/test"
+                            android:layout_width="120dp"
+                            android:layout_height="120dp" />
+                        <TextView
+                            android:id="@+id/historytitle5"
                             android:layout_marginTop="5dp"
                             android:layout_gravity="center"
                             android:textColor="#000"
@@ -197,25 +418,42 @@
                 </LinearLayout>
             </HorizontalScrollView>
         </LinearLayout>
-//홍아
 
-
-        <HorizontalScrollView
-            android:layout_marginLeft="20dp"
+        <LinearLayout
+            android:background="@drawable/border5"
+            android:orientation="vertical"
             android:layout_width="match_parent"
-            android:layout_height="400dp"
-            android:layout_weight="1">
+            android:layout_height="wrap_content">
 
-            <LinearLayout
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_marginLeft="15dp"
+                android:textSize="15sp"
+                android:text="코로나19 예방수칙"
+                android:background="@drawable/border3"
+                android:fontFamily="@font/binggraemelona"
+                android:textColor="#333333">
+            </TextView>
+            <HorizontalScrollView
+                android:layout_marginLeft="30dp"
+                android:layout_marginTop="25dp"
+                android:layout_marginRight="30dp"
+                android:layout_gravity="center"
                 android:layout_width="match_parent"
-                android:orientation="horizontal"
-                android:layout_height="wrap_content" >
+                android:layout_height="350dp"
+                android:layout_weight="1">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:orientation="horizontal"
+                    android:layout_height="wrap_content" >
 
                     <ImageView
                         android:background="@drawable/card1"
                         android:scaleType="fitXY"
                         android:layout_width="300dp"
-                        android:layout_marginLeft="20dp"
                         android:layout_marginRight="20dp"
                         android:layout_marginTop="20dp"
                         android:layout_height="300dp">
@@ -265,8 +503,208 @@
                         android:layout_marginTop="20dp"
                         android:layout_height="300dp">
                     </ImageView>
+                </LinearLayout>
+            </HorizontalScrollView>
+
+            <LinearLayout
+                android:layout_marginTop="30dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginLeft="15dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="15sp"
+                    android:text="국내 환자 현황"
+                    android:background="@drawable/border3"
+                    android:fontFamily="@font/binggraemelona"
+                    android:textColor="#333333">
+                </TextView>
+                <TextView
+                    android:id="@+id/patientView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/binggraemelona"
+                    android:textSize="10sp"
+                    android:textStyle="bold" />
+
             </LinearLayout>
-        </HorizontalScrollView>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="5dp"
+                android:text="" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:orientation="vertical">
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="5dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:weightSum="2">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:textSize="15sp"
+                            android:textColor="#000"
+                            android:fontFamily="@font/binggraemelona"
+                            android:text="누적 확진환자" />
+
+                        <TextView
+                            android:id="@+id/totalView"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:textSize="15sp"
+                            android:textColor="#000"
+                            android:fontFamily="@font/binggraemelona"
+                            android:gravity="end" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:weightSum="2">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:textSize="10sp"
+                            android:fontFamily="@font/binggraemelona"
+                            android:textColor="@android:color/holo_blue_light"
+                            android:text="(전일 대비 증감" />
+
+                        <TextView
+                            android:id="@+id/dailyDiagnosisTextview"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:textSize="10sp"
+                            android:fontFamily="@font/binggraemelona"
+                            android:textColor="@android:color/holo_blue_light"
+                            android:gravity="end" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:weightSum="2">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:textSize="15sp"
+                            android:textColor="#000"
+                            android:fontFamily="@font/binggraemelona"
+                            android:text="격리중" />
+
+                        <TextView
+                            android:id="@+id/curing"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:gravity="end"
+                            android:textSize="15sp"
+                            android:textColor="#000"
+                            android:fontFamily="@font/binggraemelona" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:weightSum="2">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:textSize="15sp"
+                            android:textColor="#000"
+                            android:fontFamily="@font/binggraemelona"
+                            android:text="누적 격리해제" />
+
+                        <TextView
+                            android:id="@+id/discharged"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:gravity="end"
+                            android:textSize="15sp"
+                            android:textColor="#000"
+                            android:fontFamily="@font/binggraemelona" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:weightSum="2">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:textSize="15sp"
+                            android:textColor="#000"
+                            android:fontFamily="@font/binggraemelona"
+                            android:text="사망자" />
+
+                        <TextView
+                            android:id="@+id/death"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:textSize="15sp"
+                            android:textColor="#000"
+                            android:fontFamily="@font/binggraemelona"
+                            android:gravity="end" />
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="end"
+                android:textSize="8sp"
+                android:fontFamily="@font/binggraemelonal"
+                android:text="\n출처 : http://ncov.mohw.go.kr/  " />
+
+        </LinearLayout>
+
+    </LinearLayout>
 
 
 
@@ -322,289 +760,284 @@
 
         </androidx.constraintlayout.widget.ConstraintLayout> -->
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textSize="10dp"
-            android:text="\n\n" />
 
-        <LinearLayout
-            android:layout_marginTop="500dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+<!--        <LinearLayout-->
+<!--            android:layout_marginTop="50dp"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content">-->
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/binggraemelona"
-                android:textColor="@android:color/black"
-                android:text=" 국내 환자 현황"
-                android:textSize="20sp"
-                android:textStyle="bold" />
+<!--            <TextView-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:fontFamily="@font/binggraemelona"-->
+<!--                android:textColor="@android:color/black"-->
+<!--                android:text=" 국내 환자 현황"-->
+<!--                android:textSize="20sp"-->
+<!--                android:textStyle="bold" />-->
 
-            <TextView
-                android:id="@+id/patientView"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/binggraemelona"
-                android:textSize="15sp"
-                android:textStyle="bold" />
+<!--            <TextView-->
+<!--                android:id="@+id/patientView"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:fontFamily="@font/binggraemelona"-->
+<!--                android:textSize="15sp"-->
+<!--                android:textStyle="bold" />-->
 
-        </LinearLayout>
+<!--        </LinearLayout>-->
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textSize="5dp"
-            android:text="" />
+<!--        <TextView-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:textSize="5dp"-->
+<!--            android:text="" />-->
 
-        <!--<LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:weightSum="2">
+<!--        &lt;!&ndash;<LinearLayout-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:orientation="horizontal"-->
+<!--            android:weightSum="2">-->
 
-            <TextView
-                android:id="@+id/dailyDiagnosisTextview"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="3sp"
-                android:layout_weight="1"
-                android:fontFamily="@font/binggraemelona"
-                android:background="@android:color/holo_orange_dark"
-                android:gravity="center"
-                android:padding="3sp"
-                android:text="일일 확진자\n"
-                android:textColor="@android:color/white"
-                android:textSize="25sp"
-                android:textStyle="bold" />
+<!--            <TextView-->
+<!--                android:id="@+id/dailyDiagnosisTextview"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_margin="3sp"-->
+<!--                android:layout_weight="1"-->
+<!--                android:fontFamily="@font/binggraemelona"-->
+<!--                android:background="@android:color/holo_orange_dark"-->
+<!--                android:gravity="center"-->
+<!--                android:padding="3sp"-->
+<!--                android:text="일일 확진자\n"-->
+<!--                android:textColor="@android:color/white"-->
+<!--                android:textSize="25sp"-->
+<!--                android:textStyle="bold" />-->
 
-            <TextView
-                android:id="@+id/dailyCuredTextview"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="3sp"
-                android:layout_weight="1"
-                android:background="@android:color/holo_green_light"
-                android:gravity="center"
-                android:fontFamily="@font/binggraemelona"
-                android:padding="3sp"
-                android:text="일일 완치자\n"
-                android:textColor="@android:color/white"
-                android:textSize="25sp"
-                android:textStyle="bold" />
+<!--            <TextView-->
+<!--                android:id="@+id/dailyCuredTextview"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_margin="3sp"-->
+<!--                android:layout_weight="1"-->
+<!--                android:background="@android:color/holo_green_light"-->
+<!--                android:gravity="center"-->
+<!--                android:fontFamily="@font/binggraemelona"-->
+<!--                android:padding="3sp"-->
+<!--                android:text="일일 완치자\n"-->
+<!--                android:textColor="@android:color/white"-->
+<!--                android:textSize="25sp"-->
+<!--                android:textStyle="bold" />-->
 
-        </LinearLayout> -->
+<!--        </LinearLayout> &ndash;&gt;-->
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
+<!--        <LinearLayout-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="match_parent"-->
+<!--            android:orientation="vertical">-->
 
-           <!-- <TextView
-                android:id="@+id/totalView"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="3sp"
-                android:background="@android:color/holo_blue_light"
-                android:gravity="center"
-                android:fontFamily="@font/binggraemelona"
-                android:padding="10sp"
-                android:text="확진환자\n"
-                android:textColor="@android:color/white"
-                android:textSize="25sp"
-                android:textStyle="bold" />
+<!--           &lt;!&ndash; <TextView-->
+<!--                android:id="@+id/totalView"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_margin="3sp"-->
+<!--                android:background="@android:color/holo_blue_light"-->
+<!--                android:gravity="center"-->
+<!--                android:fontFamily="@font/binggraemelona"-->
+<!--                android:padding="10sp"-->
+<!--                android:text="확진환자\n"-->
+<!--                android:textColor="@android:color/white"-->
+<!--                android:textSize="25sp"-->
+<!--                android:textStyle="bold" />-->
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:weightSum="3">
+<!--            <LinearLayout-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:orientation="horizontal"-->
+<!--                android:weightSum="3">-->
 
-                <TextView
-                    android:id="@+id/discharged"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="3sp"
-                    android:layout_weight="1"
-                    android:background="@android:color/holo_blue_bright"
-                    android:gravity="center"
-                    android:padding="3sp"
-                    android:fontFamily="@font/binggraemelona"
-                    android:text="완치\n(격리해제)"
-                    android:textColor="@android:color/white"
-                    android:textSize="20sp"
-                    android:textStyle="bold" />
+<!--                <TextView-->
+<!--                    android:id="@+id/discharged"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_margin="3sp"-->
+<!--                    android:layout_weight="1"-->
+<!--                    android:background="@android:color/holo_blue_bright"-->
+<!--                    android:gravity="center"-->
+<!--                    android:padding="3sp"-->
+<!--                    android:fontFamily="@font/binggraemelona"-->
+<!--                    android:text="완치\n(격리해제)"-->
+<!--                    android:textColor="@android:color/white"-->
+<!--                    android:textSize="20sp"-->
+<!--                    android:textStyle="bold" />-->
 
-                <TextView
-                    android:id="@+id/curing"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="3sp"
-                    android:layout_weight="1"
-                    android:fontFamily="@font/binggraemelona"
-                    android:background="@android:color/holo_blue_dark"
-                    android:gravity="center"
-                    android:padding="3sp"
-                    android:text="치료 중\n(격리 중)"
-                    android:textColor="@android:color/white"
-                    android:textSize="20sp"
-                    android:textStyle="bold" />
+<!--                <TextView-->
+<!--                    android:id="@+id/curing"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_margin="3sp"-->
+<!--                    android:layout_weight="1"-->
+<!--                    android:fontFamily="@font/binggraemelona"-->
+<!--                    android:background="@android:color/holo_blue_dark"-->
+<!--                    android:gravity="center"-->
+<!--                    android:padding="3sp"-->
+<!--                    android:text="치료 중\n(격리 중)"-->
+<!--                    android:textColor="@android:color/white"-->
+<!--                    android:textSize="20sp"-->
+<!--                    android:textStyle="bold" />-->
 
-                <TextView
-                    android:id="@+id/death"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="3sp"
-                    android:layout_weight="1"
-                    android:background="@android:color/darker_gray"
-                    android:gravity="center"
-                    android:padding="3sp"
-                    android:fontFamily="@font/binggraemelona"
-                    android:text="사망\n"
-                    android:textColor="@android:color/white"
-                    android:textSize="20sp"
-                    android:textStyle="bold" />
-            </LinearLayout> -->
+<!--                <TextView-->
+<!--                    android:id="@+id/death"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_margin="3sp"-->
+<!--                    android:layout_weight="1"-->
+<!--                    android:background="@android:color/darker_gray"-->
+<!--                    android:gravity="center"-->
+<!--                    android:padding="3sp"-->
+<!--                    android:fontFamily="@font/binggraemelona"-->
+<!--                    android:text="사망\n"-->
+<!--                    android:textColor="@android:color/white"-->
+<!--                    android:textSize="20sp"-->
+<!--                    android:textStyle="bold" />-->
+<!--            </LinearLayout> &ndash;&gt;-->
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:padding="10dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent">
+<!--            <LinearLayout-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:orientation="vertical"-->
+<!--                android:padding="10dp"-->
+<!--                app:layout_constraintEnd_toEndOf="parent"-->
+<!--                app:layout_constraintStart_toStartOf="parent"-->
+<!--                app:layout_constraintTop_toTopOf="parent">-->
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:weightSum="2">
+<!--                <LinearLayout-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:orientation="horizontal"-->
+<!--                    android:weightSum="2">-->
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:textSize="20sp"
-                        android:text="누적 확진환자" />
+<!--                    <TextView-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:layout_weight="1"-->
+<!--                        android:textSize="20sp"-->
+<!--                        android:text="누적 확진환자" />-->
 
-                    <TextView
-                        android:id="@+id/totalView"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:textSize="20sp"
-                        android:gravity="end" />
+<!--                    <TextView-->
+<!--                        android:id="@+id/totalView"-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:layout_weight="1"-->
+<!--                        android:textSize="20sp"-->
+<!--                        android:gravity="end" />-->
 
-                </LinearLayout>
+<!--                </LinearLayout>-->
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:weightSum="2">
+<!--                <LinearLayout-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:orientation="horizontal"-->
+<!--                    android:weightSum="2">-->
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:textSize="15sp"
-                        android:textColor="@android:color/holo_blue_light"
-                        android:text="전일 대비 증감" />
+<!--                    <TextView-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:layout_weight="1"-->
+<!--                        android:textSize="15sp"-->
+<!--                        android:textColor="@android:color/holo_blue_light"-->
+<!--                        android:text="전일 대비 증감" />-->
 
-                    <TextView
-                        android:id="@+id/dailyDiagnosisTextview"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:textSize="15sp"
-                        android:textColor="@android:color/holo_blue_light"
-                        android:gravity="end" />
+<!--                    <TextView-->
+<!--                        android:id="@+id/dailyDiagnosisTextview"-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:layout_weight="1"-->
+<!--                        android:textSize="15sp"-->
+<!--                        android:textColor="@android:color/holo_blue_light"-->
+<!--                        android:gravity="end" />-->
 
-                </LinearLayout>
+<!--                </LinearLayout>-->
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:weightSum="2">
+<!--                <LinearLayout-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:orientation="horizontal"-->
+<!--                    android:weightSum="2">-->
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:textSize="20sp"
-                        android:text="격리중" />
+<!--                    <TextView-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:layout_weight="1"-->
+<!--                        android:textSize="20sp"-->
+<!--                        android:text="격리중" />-->
 
-                    <TextView
-                        android:id="@+id/curing"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:gravity="end"
-                        android:textSize="20sp" />
+<!--                    <TextView-->
+<!--                        android:id="@+id/curing"-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:layout_weight="1"-->
+<!--                        android:gravity="end"-->
+<!--                        android:textSize="20sp" />-->
 
-                </LinearLayout>
+<!--                </LinearLayout>-->
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:weightSum="2">
+<!--                <LinearLayout-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:orientation="horizontal"-->
+<!--                    android:weightSum="2">-->
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:textSize="20sp"
-                        android:text="누적 격리해제" />
+<!--                    <TextView-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:layout_weight="1"-->
+<!--                        android:textSize="20sp"-->
+<!--                        android:text="누적 격리해제" />-->
 
-                    <TextView
-                        android:id="@+id/discharged"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:gravity="end"
-                        android:textSize="20sp" />
+<!--                    <TextView-->
+<!--                        android:id="@+id/discharged"-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:layout_weight="1"-->
+<!--                        android:gravity="end"-->
+<!--                        android:textSize="20sp" />-->
 
-                </LinearLayout>
+<!--                </LinearLayout>-->
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:weightSum="2">
+<!--                <LinearLayout-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:orientation="horizontal"-->
+<!--                    android:weightSum="2">-->
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:textSize="20sp"
-                        android:text="사망자" />
+<!--                    <TextView-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:layout_weight="1"-->
+<!--                        android:textSize="20sp"-->
+<!--                        android:text="사망자" />-->
 
-                    <TextView
-                        android:id="@+id/death"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:textSize="20sp"
-                        android:gravity="end" />
+<!--                    <TextView-->
+<!--                        android:id="@+id/death"-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:layout_weight="1"-->
+<!--                        android:textSize="20sp"-->
+<!--                        android:gravity="end" />-->
 
-                </LinearLayout>
+<!--                </LinearLayout>-->
 
-            </LinearLayout>
+<!--            </LinearLayout>-->
 
-        </LinearLayout>
+<!--        </LinearLayout>-->
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="end"
-            android:textSize="15sp"
-            android:fontFamily="@font/binggraemelona"
-            android:text="\n출처 : http://ncov.mohw.go.kr/  " />
+<!--        <TextView-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:gravity="end"-->
+<!--            android:textSize="15sp"-->
+<!--            android:fontFamily="@font/binggraemelona"-->
+<!--            android:text="\n출처 : http://ncov.mohw.go.kr/  " />-->
 
-    </LinearLayout>
+<!--    </LinearLayout>-->
 
 </ScrollView>

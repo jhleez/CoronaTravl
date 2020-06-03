@@ -163,6 +163,37 @@ public class MainActivity extends AppCompatActivity {
         LocationBasedList_Class.JSONParsing(JSONFromLocalSearch);
     }
 
+    public void localSearch2(String contentTypeId,String areaCode, String sigunguCode, String cat1, String cat2, String cat3,String arrage, String pageNo){
+        LocationBasedList_ArrayList.clear();
+        if(sigunguCode.equals("0")){
+            sigunguCode = "";
+        }
+        if(areaCode.equals("0")){
+            areaCode="";
+        }
+        String LocalSearchAddr = "http://api.visitkorea.or.kr/openapi/service/rest/KorService/areaBasedList?" +
+                "ServiceKey="+id+
+                "&contentTypeId="+contentTypeId+
+                "&areaCode="+areaCode+
+                "&sigunguCode="+sigunguCode+
+                "&cat1="+cat1+
+                "&cat2="+cat2+
+                "&cat3="+cat3+
+                "&listYN=Y&MobileOS=AND&MobileApp=CoronaTravel" +
+                "&arrange=" +arrage+
+                "&numOfRows=5" +
+                "&pageNo=" +pageNo+
+                "&_type=json";
+        Log.d("URL",LocalSearchAddr);
+        String JSONFromLocalSearch = "";
+        try {
+            JSONFromLocalSearch = new HttpReqTask().execute(LocalSearchAddr).get();
+        } catch (Exception e) {
+            Log.d("TAG", "jsonparsing error");
+        }
+        LocationBasedList_Class.JSONParsing(JSONFromLocalSearch);
+    }
+
     public void totalSearch(String keyword,String areaCode, String sigunguCode, String cat1, String cat2, String cat3,String arrage, String pageNo){
         LocationBasedList_ArrayList.clear();
         String encodeStr="";
