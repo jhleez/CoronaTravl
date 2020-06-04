@@ -47,7 +47,7 @@
                         android:layout_width="0dp"
                         android:layout_height="50dp"
                         android:layout_weight="1"
-                        android:ellipsize="marquee"
+                        android:ellipsize="end"
                         android:fontFamily="@font/binggraemelona"
                         android:gravity="center|start"
                         android:singleLine="true"

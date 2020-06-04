@@ -35,6 +35,7 @@ import androidx.appcompat.widget.Toolbar;
 import android.view.Menu;
 import android.view.Window;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -247,6 +248,18 @@ public class MainActivity extends AppCompatActivity {
 
             LocationBasedList_Class subclass = new LocationBasedList_Class(addr1,contentid,contenttypeid,firstimage,title);
             LocationBasedList_ArrayList.add(subclass);
+        }
+    }
+    private long keyPressTime = 0;
+    @Override
+    public void onBackPressed() {
+        if (System.currentTimeMillis() > keyPressTime + 2000) {
+            keyPressTime = System.currentTimeMillis();
+            Toast.makeText(this, "버튼을 한번 더 누르시면 종료 됩니다.", Toast.LENGTH_SHORT).show();
+            return;
+        }
+        if (System.currentTimeMillis() <= keyPressTime + 2000) {
+            finish();
         }
     }
 }
