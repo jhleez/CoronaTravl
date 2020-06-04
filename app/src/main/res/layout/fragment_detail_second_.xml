@@ -14,6 +14,7 @@
         android:autoLink="web"
         android:text="second"
         android:textStyle="bold"
+        android:visibility="gone"
         />
 
     <LinearLayout
@@ -23,9 +24,11 @@
         android:layout_marginLeft="15dp"
         android:layout_marginTop="20dp"
         android:layout_marginRight="15dp"
+        android:layout_marginBottom="20dp"
         android:background="@drawable/detail_border12345"
-
         android:orientation="vertical"
+
+        android:visibility="gone"
         >
 
         <TextView
@@ -262,26 +265,445 @@
         android:id="@+id/detail_14"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginRight="15dp"
+        android:layout_marginBottom="20dp"
+        android:background="@drawable/detail_border12345"
         android:orientation="vertical"
+        android:visibility="gone"
         >
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#1E000000"
+            android:fontFamily="@font/gmarketm"
+            android:text="문의 및 안내"
+            android:textAlignment="center"
+            />
+
+        <TextView
+            android:id="@+id/detail_14_introduce"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/binggraemelonal"
+            android:textAlignment="center"
+            />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#1E000000"
+            android:fontFamily="@font/gmarketm"
+            android:text="관광 소요 시간"
+            android:textAlignment="center"
+            />
+
+        <TextView
+            android:id="@+id/detail_14_taketime"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/binggraemelonal"
+            android:textAlignment="center"
+            />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#1E000000"
+            android:fontFamily="@font/gmarketm"
+            android:text="할인 정보"
+            android:textAlignment="center"
+            />
+
+        <TextView
+            android:id="@+id/detail_14_discount"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/binggraemelonal"
+            android:textAlignment="center"
+            />
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#1E000000"
+            android:fontFamily="@font/gmarketm"
+            android:text="쉬는날"
+            android:textAlignment="center"
+            />
+
+        <TextView
+            android:id="@+id/detail_14_breakday"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/binggraemelonal"
+            android:textAlignment="center"
+            />
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#1E000000"
+            android:orientation="horizontal"
+            >
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:fontFamily="@font/gmarketm"
+                android:text="주차 시설"
+                android:textAlignment="center"
+                />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:fontFamily="@font/gmarketm"
+                android:text="수용 인원"
+                android:textAlignment="center"
+                />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            >
+
+            <TextView
+                android:id="@+id/detail_14_car"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:fontFamily="@font/binggraemelonal"
+                android:textAlignment="center"
+                />
+
+            <TextView
+                android:id="@+id/detail_14_people"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:fontFamily="@font/binggraemelonal"
+                android:textAlignment="center"
+                />
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#1E000000"
+            android:orientation="horizontal"
+            >
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:fontFamily="@font/gmarketm"
+                android:text="애완동물 동반"
+                android:textAlignment="center"
+                />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:fontFamily="@font/gmarketm"
+                android:text="유모차 대여"
+                android:textAlignment="center"
+                />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            >
+
+            <TextView
+                android:id="@+id/detail_14_pet"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:fontFamily="@font/binggraemelonal"
+                android:textAlignment="center"
+                />
+
+            <TextView
+                android:id="@+id/detail_14_babyseat"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:fontFamily="@font/binggraemelonal"
+                android:textAlignment="center"
+                />
+
+
+        </LinearLayout>
+
 
     </LinearLayout>
 
     <LinearLayout
+
         android:id="@+id/detail_15"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginRight="15dp"
+        android:layout_marginBottom="20dp"
+        android:background="@drawable/detail_border12345"
         android:orientation="vertical"
+        android:visibility="gone"
         >
 
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#1E000000"
+            android:fontFamily="@font/gmarketm"
+            android:text="행사 장소"
+            android:textAlignment="center"
+            />
+
+        <TextView
+            android:id="@+id/detail_15_place"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/binggraemelonal"
+            android:textAlignment="center"
+            />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#1E000000"
+            android:fontFamily="@font/gmarketm"
+            android:text="행사 프로그램"
+            android:textAlignment="center"
+            />
+
+        <TextView
+            android:id="@+id/detail_15_program"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/binggraemelonal"
+            android:textAlignment="center"
+            />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#1E000000"
+            android:fontFamily="@font/gmarketm"
+            android:text="공연 시간"
+            android:textAlignment="center"
+            />
+
+        <TextView
+            android:id="@+id/detail_15_fetivaltime"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/binggraemelonal"
+            android:textAlignment="center"
+            />
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#1E000000"
+            android:fontFamily="@font/gmarketm"
+            android:text="위치 안내"
+            android:textAlignment="center"
+            />
+
+        <TextView
+            android:id="@+id/detail_15_positionintroduce"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/binggraemelonal"
+            android:textAlignment="center"
+            />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#1E000000"
+            android:fontFamily="@font/gmarketm"
+            android:text="이용 요금"
+            android:textAlignment="center"
+            />
+
+        <TextView
+            android:id="@+id/detail_15_usemoney"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/binggraemelonal"
+            android:textAlignment="center"
+            />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#1E000000"
+            android:fontFamily="@font/gmarketm"
+            android:text="예매처"
+            android:textAlignment="center"
+            />
+
+
+        <TextView
+            android:id="@+id/detail_15_reservation"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/binggraemelonal"
+            android:textAlignment="center"
+            />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#1E000000"
+            android:fontFamily="@font/gmarketm"
+            android:text="할인 정보"
+            android:textAlignment="center"
+            />
+
+        <TextView
+            android:id="@+id/detail_15_discount"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/binggraemelonal"
+            android:textAlignment="center"
+            />
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#1E000000"
+            android:orientation="horizontal"
+            >
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:fontFamily="@font/gmarketm"
+                android:text="시작일"
+                android:textAlignment="center"
+                />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:fontFamily="@font/gmarketm"
+                android:text="종료일"
+                android:textAlignment="center"
+                />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            >
+
+            <TextView
+                android:id="@+id/detail_15_start"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:fontFamily="@font/binggraemelonal"
+                android:textAlignment="center"
+                />
+
+            <TextView
+                android:id="@+id/detail_15_end"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:fontFamily="@font/binggraemelonal"
+                android:textAlignment="center"
+                />
+
+
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#1E000000"
+            android:fontFamily="@font/gmarketm"
+            android:text="관람 가능 연령"
+            android:textAlignment="center"
+            />
+
+        <TextView
+            android:id="@+id/detail_15_age"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/binggraemelonal"
+            android:textAlignment="center"
+            />
     </LinearLayout>
 
     <LinearLayout
         android:id="@+id/detail_25"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginRight="15dp"
+        android:layout_marginBottom="20dp"
+        android:background="@drawable/detail_border12345"
         android:orientation="vertical"
+        android:visibility="gone"
         >
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#1E000000"
+            android:fontFamily="@font/gmarketm"
+            android:text="코스 총 거리"
+            android:textAlignment="center"
+            />
+
+        <TextView
+            android:id="@+id/detail_25_distance"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/binggraemelonal"
+            android:textAlignment="center"
+            />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#1E000000"
+            android:fontFamily="@font/gmarketm"
+            android:text="코스 총 소요 시간"
+            android:textAlignment="center"
+            />
+
+        <TextView
+            android:id="@+id/detail_25_taketime"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/binggraemelonal"
+            android:textAlignment="center"
+            />
 
     </LinearLayout>
 
@@ -289,17 +711,328 @@
         android:id="@+id/detail_28"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginRight="15dp"
+        android:layout_marginBottom="20dp"
+        android:background="@drawable/detail_border12345"
         android:orientation="vertical"
-        >
 
+        android:visibility="gone"
+        >
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#1E000000"
+            android:fontFamily="@font/gmarketm"
+            android:text="문의 및 안내"
+            android:textAlignment="center"
+            />
+
+        <TextView
+            android:id="@+id/detail_28_introduce"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/binggraemelonal"
+            android:textAlignment="center"
+            />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#1E000000"
+            android:fontFamily="@font/gmarketm"
+            android:text="개장 기간"
+            android:textAlignment="center"
+            />
+
+        <TextView
+            android:id="@+id/detail_28_openday"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/binggraemelonal"
+            android:textAlignment="center"
+            />
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#1E000000"
+            android:fontFamily="@font/gmarketm"
+            android:text="이용 시간"
+            android:textAlignment="center"
+            />
+
+        <TextView
+            android:id="@+id/detail_28_usingtime"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/binggraemelonal"
+            android:textAlignment="center"
+            />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#1E000000"
+            android:fontFamily="@font/gmarketm"
+            android:text="쉬는날"
+            android:textAlignment="center"
+            />
+
+
+        <TextView
+            android:id="@+id/detail_28_breakday"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/binggraemelonal"
+            android:textAlignment="center"
+            />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#1E000000"
+            android:fontFamily="@font/gmarketm"
+            android:text="입장료"
+            android:textAlignment="center"
+            />
+
+        <TextView
+            android:id="@+id/detail_28_inputmoney"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/binggraemelonal"
+            android:textAlignment="center"
+            />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#1E000000"
+            android:fontFamily="@font/gmarketm"
+            android:text="예약 안내"
+            android:textAlignment="center"
+            />
+
+        <TextView
+            android:id="@+id/detail_28_reservation"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/binggraemelonal"
+            android:textAlignment="center"
+            />
+
+
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#1E000000"
+            android:orientation="horizontal"
+            >
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:fontFamily="@font/gmarketm"
+                android:text="수용 인원"
+                android:textAlignment="center"
+                />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:fontFamily="@font/gmarketm"
+                android:text="유모차 대여"
+                android:textAlignment="center"
+                />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            >
+
+            <TextView
+                android:id="@+id/detail_28_people"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:fontFamily="@font/binggraemelonal"
+                android:textAlignment="center"
+                />
+
+            <TextView
+                android:id="@+id/detail_28_babyseat"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:fontFamily="@font/binggraemelonal"
+                android:textAlignment="center"
+                />
+
+
+        </LinearLayout>
+
+        <TextView
+
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#1E000000"
+            android:fontFamily="@font/gmarketm"
+            android:text="체험 가능 연령"
+            android:textAlignment="center"
+            />
+
+        <TextView
+            android:id="@+id/detail_28_age"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/binggraemelonal"
+            android:textAlignment="center"
+            />
     </LinearLayout>
 
     <LinearLayout
         android:id="@+id/detail_32"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginRight="15dp"
+        android:layout_marginBottom="20dp"
+        android:background="@drawable/detail_border12345"
         android:orientation="vertical"
+
+        android:visibility="gone"
         >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#1E000000"
+            android:orientation="horizontal"
+            >
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:fontFamily="@font/gmarketm"
+                android:text="입실 시간"
+                android:textAlignment="center"
+                />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:fontFamily="@font/gmarketm"
+                android:text="퇴실 시간"
+                android:textAlignment="center"
+                />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            >
+
+            <TextView
+                android:id="@+id/detail_32_intime"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:fontFamily="@font/binggraemelonal"
+                android:textAlignment="center"
+                />
+
+            <TextView
+                android:id="@+id/detail_32_outtime"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:fontFamily="@font/binggraemelonal"
+                android:textAlignment="center"
+                />
+
+
+
+        </LinearLayout>
+        <TextView
+
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#1E000000"
+            android:fontFamily="@font/gmarketm"
+            android:text="픽업 여부"
+            android:textAlignment="center"
+            />
+
+        <TextView
+            android:id="@+id/detail_32_pickup"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/binggraemelonal"
+            android:textAlignment="center"
+            />
+        <TextView
+
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#1E000000"
+            android:fontFamily="@font/gmarketm"
+            android:text="예약 홈페이지"
+            android:textAlignment="center"
+            />
+
+        <TextView
+            android:id="@+id/detail_32_reservation"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/binggraemelonal"
+            android:textAlignment="center"
+            />
+        <TextView
+
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#1E000000"
+            android:fontFamily="@font/gmarketm"
+            android:text="환불 규정"
+            android:textAlignment="center"
+            />
+
+        <TextView
+            android:id="@+id/detail_32_payback"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/binggraemelonal"
+            android:textAlignment="center"
+            />
+        <TextView
+
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#1E000000"
+            android:fontFamily="@font/gmarketm"
+            android:text="문의 및 안내"
+            android:textAlignment="center"
+            />
+
+        <TextView
+            android:id="@+id/detail_32_introuduce"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/binggraemelonal"
+            android:textAlignment="center"
+            />
 
     </LinearLayout>
 
@@ -307,8 +1040,184 @@
         android:id="@+id/detail_38"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginRight="15dp"
+        android:layout_marginBottom="20dp"
+        android:background="@drawable/detail_border12345"
         android:orientation="vertical"
+        android:visibility="gone"
         >
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#1E000000"
+            android:fontFamily="@font/gmarketm"
+            android:text="문의 및 안내"
+            android:textAlignment="center"
+            />
+
+        <TextView
+            android:id="@+id/detail_38_introduce"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/binggraemelonal"
+            android:textAlignment="center"
+            />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#1E000000"
+            android:fontFamily="@font/gmarketm"
+            android:text="개장일"
+            android:textAlignment="center"
+            />
+
+        <TextView
+            android:id="@+id/detail_38_opendays"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/binggraemelonal"
+            android:textAlignment="center"
+            />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#1E000000"
+            android:fontFamily="@font/gmarketm"
+            android:text="장 서는 날"
+            android:textAlignment="center"
+            />
+
+        <TextView
+            android:id="@+id/detail_38_jangday"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/binggraemelonal"
+            android:textAlignment="center"
+            />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#1E000000"
+            android:fontFamily="@font/gmarketm"
+            android:text="쉬는 날"
+            android:textAlignment="center"
+            />
+
+        <TextView
+            android:id="@+id/detail_38_breakday"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/binggraemelonal"
+            android:textAlignment="center"
+            />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#1E000000"
+            android:fontFamily="@font/gmarketm"
+            android:text="매장 안내"
+            android:textAlignment="center"
+            />
+
+        <TextView
+            android:id="@+id/detail_38_storeintroduce"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/binggraemelonal"
+            android:textAlignment="center"
+            />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#1E000000"
+            android:fontFamily="@font/gmarketm"
+            android:text="판매 품목"
+            android:textAlignment="center"
+            />
+
+        <TextView
+            android:id="@+id/detail_38_sellproduct"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/binggraemelonal"
+            android:textAlignment="center"
+            />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#1E000000"
+            android:fontFamily="@font/gmarketm"
+            android:text="신용카드 가능 정보"
+            android:textAlignment="center"
+            />
+
+        <TextView
+            android:id="@+id/detail_38_card"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/binggraemelonal"
+            android:textAlignment="center"
+            />
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#1E000000"
+            android:orientation="horizontal"
+            >
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:fontFamily="@font/gmarketm"
+                android:text="애완동물 동반"
+                android:textAlignment="center"
+                />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:fontFamily="@font/gmarketm"
+                android:text="유모차 대여"
+                android:textAlignment="center"
+                />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            >
+
+            <TextView
+                android:id="@+id/detail_38_pet"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:fontFamily="@font/binggraemelonal"
+                android:textAlignment="center"
+                />
+
+            <TextView
+                android:id="@+id/detail_38_babyseat"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:fontFamily="@font/binggraemelonal"
+                android:textAlignment="center"
+                />
+
+
+        </LinearLayout>
 
     </LinearLayout>
 
@@ -316,8 +1225,166 @@
         android:id="@+id/detail_39"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginRight="15dp"
+        android:layout_marginBottom="20dp"
+        android:background="@drawable/detail_border12345"
         android:orientation="vertical"
+        android:visibility="gone"
         >
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#1E000000"
+            android:fontFamily="@font/gmarketm"
+            android:text="문의 및 안내"
+            android:textAlignment="center"
+            />
+
+        <TextView
+            android:id="@+id/detail_39_introduce"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/binggraemelonal"
+            android:textAlignment="center"
+            />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#1E000000"
+            android:fontFamily="@font/gmarketm"
+            android:text="대표 메뉴"
+            android:textAlignment="center"
+            />
+
+        <TextView
+            android:id="@+id/detail_39_represent"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/binggraemelonal"
+            android:textAlignment="center"
+            />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#1E000000"
+            android:fontFamily="@font/gmarketm"
+            android:text="취급 메뉴"
+            android:textAlignment="center"
+            />
+
+        <TextView
+            android:id="@+id/detail_39_addition"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/binggraemelonal"
+            android:textAlignment="center"
+            />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#1E000000"
+            android:fontFamily="@font/gmarketm"
+            android:text="영업일"
+            android:textAlignment="center"
+            />
+
+        <TextView
+            android:id="@+id/detail_39_opendays"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/binggraemelonal"
+            android:textAlignment="center"
+            />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#1E000000"
+            android:fontFamily="@font/gmarketm"
+            android:text="영업 시간"
+            android:textAlignment="center"
+            />
+
+        <TextView
+            android:id="@+id/detail_39_opentime"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/binggraemelonal"
+            android:textAlignment="center"
+            />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#1E000000"
+            android:fontFamily="@font/gmarketm"
+            android:text="신용카드 가능 여부"
+            android:textAlignment="center"
+            />
+
+        <TextView
+            android:id="@+id/detail_39_card"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/binggraemelonal"
+            android:textAlignment="center"
+            />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#1E000000"
+            android:orientation="horizontal"
+            >
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:fontFamily="@font/gmarketm"
+                android:text="어린이 놀이방"
+                android:textAlignment="center"
+                />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:fontFamily="@font/gmarketm"
+                android:text="포장"
+                android:textAlignment="center"
+                />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            >
+
+            <TextView
+                android:id="@+id/detail_39_play"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:fontFamily="@font/binggraemelonal"
+                android:textAlignment="center"
+                />
+
+            <TextView
+                android:id="@+id/detail_39_package"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:fontFamily="@font/binggraemelonal"
+                android:textAlignment="center"
+                />
+
+
+        </LinearLayout>
 
     </LinearLayout>
 
