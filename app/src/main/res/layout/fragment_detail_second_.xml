@@ -524,7 +524,7 @@
             android:layout_height="wrap_content"
             android:background="#1E000000"
             android:fontFamily="@font/gmarketm"
-            android:text="위치 안내"
+            android:text="행사 장소"
             android:textAlignment="center"
             />
 
