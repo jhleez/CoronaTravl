@@ -173,7 +173,7 @@ public class HomeFragment extends Fragment {
 
 
         Random rnd = new Random();
-        int randomnuber =rnd.nextInt(150);
+        int randomnuber =rnd.nextInt(150) + 1;
         String pageNo=String.valueOf(randomnuber);
 
         ((MainActivity)getActivity()).localSearch2("12","", "", "A01", "", "","P", pageNo);
@@ -193,7 +193,7 @@ public class HomeFragment extends Fragment {
         Picasso.get().load(MainActivity.LocationBasedList_ArrayList.get(4).getFirstimage()).placeholder(R.drawable.ic_launcher_background).into(natureimage5);
 
 
-        int randomnuber2 =rnd.nextInt(100);
+        int randomnuber2 =rnd.nextInt(100) + 1;
         String pageNo2=String.valueOf(randomnuber2);
         ((MainActivity)getActivity()).localSearch2("","", "", "C01", "", "","P", pageNo2);
         Course[0] = MainActivity.LocationBasedList_ArrayList.get(0);
@@ -201,7 +201,7 @@ public class HomeFragment extends Fragment {
         Picasso.get().load(MainActivity.LocationBasedList_ArrayList.get(0).getFirstimage()).placeholder(R.drawable.ic_launcher_background).into(courseimage);
 
 
-        int randomnuber3 =rnd.nextInt(150);
+        int randomnuber3 =rnd.nextInt(150) + 1;
         String pageNo3=String.valueOf(randomnuber3);
 
         ((MainActivity)getActivity()).localSearch2("","", "", "A02", "A0201", "","P", pageNo3);
@@ -220,7 +220,7 @@ public class HomeFragment extends Fragment {
         Picasso.get().load(MainActivity.LocationBasedList_ArrayList.get(3).getFirstimage()).placeholder(R.drawable.ic_launcher_background).into(historyimage4);
         Picasso.get().load(MainActivity.LocationBasedList_ArrayList.get(4).getFirstimage()).placeholder(R.drawable.ic_launcher_background).into(historyimage5);
 
-        int randomnuber4 =rnd.nextInt(100);
+        int randomnuber4 =rnd.nextInt(80) + 1;
         String pageNo4=String.valueOf(randomnuber4);
 
         ((MainActivity)getActivity()).localSearch2("","", "", "A03", "", "","P", pageNo4);
@@ -494,7 +494,6 @@ public class HomeFragment extends Fragment {
                 "&areaCode=&sigunguCode=&cat1=A02&cat2=A0207&cat3=&listYN=Y" +
                 "&MobileOS=AND&MobileApp=CoronaTravel" +
                 "&arrange=O&numOfRows=1&pageNo=1&_type=json";
-        Log.d("RND",RandomFestivalUrl);
         String JSONFromRandomFestivalUrl = "";
         try {
             JSONFromRandomFestivalUrl = new HttpReqTask().execute(RandomFestivalUrl).get();
@@ -503,7 +502,7 @@ public class HomeFragment extends Fragment {
         }
         totalcount = ShortJSONParsing(JSONFromRandomFestivalUrl);
         Random rnd = new Random();
-        String randomnum = String.valueOf(rnd.nextInt((Integer.parseInt(totalcount) / 10) * 8));
+        String randomnum = String.valueOf(rnd.nextInt((Integer.parseInt(totalcount) / 10) * 8) + 1);
         int randomarrange =rnd.nextInt(3);
         String arrange[] = {"O","P","Q","R"};
         RandomFestivalUrl = "http://api.visitkorea.or.kr/openapi/service/rest/KorService/searchFestival?" +
@@ -515,7 +514,7 @@ public class HomeFragment extends Fragment {
                 "&arrange=" + arrange[randomarrange] +
                 "&numOfRows=1&pageNo=" + randomnum + "&_type=json";
 
-
+        Log.d("RND",RandomFestivalUrl);
         try {
             JSONFromRandomFestivalUrl = new HttpReqTask().execute(RandomFestivalUrl).get();
         } catch (Exception e) {

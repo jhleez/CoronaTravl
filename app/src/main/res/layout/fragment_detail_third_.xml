@@ -7,8 +7,12 @@
 
     <!-- TODO: Update blank fragment layout -->
     <TextView
-        android:textStyle="bold"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="10dp"
+        android:textColor="#000"
         android:id="@+id/third"
+        android:fontFamily="@font/binggraemelonal"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:text="third" />
