@@ -374,6 +374,7 @@
                     android:layout_marginTop="10dp"
                     >
 
+
                     <androidx.cardview.widget.CardView
                         app:cardBackgroundColor="#f9f9f9"
                         android:id="@+id/corona_cardview"

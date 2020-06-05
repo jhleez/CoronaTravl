@@ -22,7 +22,6 @@ public class Detail_First_Fragment extends Fragment {
     public Detail_First_Fragment() {
     }
 
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
