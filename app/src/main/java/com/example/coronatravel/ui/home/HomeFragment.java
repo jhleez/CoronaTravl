@@ -172,6 +172,7 @@ public class HomeFragment extends Fragment {
         festival = recommendation();
 
 
+/*
         Random rnd = new Random();
         int randomnuber =rnd.nextInt(150) + 1;
         String pageNo=String.valueOf(randomnuber);
@@ -238,7 +239,7 @@ public class HomeFragment extends Fragment {
         Picasso.get().load(MainActivity.LocationBasedList_ArrayList.get(2).getFirstimage()).placeholder(R.drawable.ic_launcher_background).into(shoppingimage3);
         Picasso.get().load(MainActivity.LocationBasedList_ArrayList.get(3).getFirstimage()).placeholder(R.drawable.ic_launcher_background).into(shoppingimage4);
         Picasso.get().load(MainActivity.LocationBasedList_ArrayList.get(4).getFirstimage()).placeholder(R.drawable.ic_launcher_background).into(shoppingimage5);
-
+*/
 
         // 네트워크 연결상태 체크
         if (NetworkConnection() == false) NotConnected_showAlert();
@@ -260,6 +261,294 @@ public class HomeFragment extends Fragment {
         leportsLayout3=root.findViewById(R.id.leportsLayout3);
         leportsLayout4=root.findViewById(R.id.leportsLayout4);
         leportsLayout5=root.findViewById(R.id.leportsLayout5);
+
+        randomSpotRecommendation();
+
+        /*festivalLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ((MainActivity)getActivity()).totalSearch(festival.getTitle(),"", "", "", "", "","", "1");
+                Intent intent = new Intent(getContext(), Detail_view.class);
+                intent.putExtra("position", 0);
+                startActivity(intent);
+            }
+        });
+        natureLayout1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getContext(), Detail_view.class);
+                MainActivity.LocationBasedList_ArrayList.clear();
+                MainActivity.LocationBasedList_ArrayList.add(Nature[0]);
+                intent.putExtra("position", 0);
+                startActivity(intent);
+            }
+        });
+
+        natureLayout2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getContext(), Detail_view.class);
+                MainActivity.LocationBasedList_ArrayList.clear();
+                MainActivity.LocationBasedList_ArrayList.add(Nature[1]);
+                intent.putExtra("position", 0);
+                startActivity(intent);
+            }
+        });
+        natureLayout3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getContext(), Detail_view.class);
+                MainActivity.LocationBasedList_ArrayList.clear();
+                MainActivity.LocationBasedList_ArrayList.add(Nature[2]);
+                intent.putExtra("position", 0);
+                startActivity(intent);
+            }
+        });
+        natureLayout4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getContext(), Detail_view.class);
+                MainActivity.LocationBasedList_ArrayList.clear();
+                MainActivity.LocationBasedList_ArrayList.add(Nature[3]);
+                intent.putExtra("position", 0);
+                startActivity(intent);
+            }
+        });
+        natureLayout5.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getContext(), Detail_view.class);
+                MainActivity.LocationBasedList_ArrayList.clear();
+                MainActivity.LocationBasedList_ArrayList.add(Nature[4]);
+                intent.putExtra("position", 0);
+                startActivity(intent);
+            }
+        });
+
+        courseimage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getContext(), Detail_view.class);
+                MainActivity.LocationBasedList_ArrayList.clear();
+                MainActivity.LocationBasedList_ArrayList.add(Course[0]);
+                intent.putExtra("position", 0);
+                startActivity(intent);
+            }
+        });
+
+        coursetitle.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getContext(), Detail_view.class);
+                MainActivity.LocationBasedList_ArrayList.clear();
+                MainActivity.LocationBasedList_ArrayList.add(Course[0]);
+                intent.putExtra("position", 0);
+                startActivity(intent);
+            }
+        });
+
+        historyLayout1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getContext(), Detail_view.class);
+                MainActivity.LocationBasedList_ArrayList.clear();
+                MainActivity.LocationBasedList_ArrayList.add(History[0]);
+                intent.putExtra("position", 0);
+                startActivity(intent);
+            }
+        });
+        historyLayout2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getContext(), Detail_view.class);
+                MainActivity.LocationBasedList_ArrayList.clear();
+                MainActivity.LocationBasedList_ArrayList.add(History[1]);
+                intent.putExtra("position", 0);
+                startActivity(intent);
+            }
+        });
+        historyLayout3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getContext(), Detail_view.class);
+                MainActivity.LocationBasedList_ArrayList.clear();
+                MainActivity.LocationBasedList_ArrayList.add(History[2]);
+                intent.putExtra("position", 0);
+                startActivity(intent);
+            }
+        });
+        historyLayout4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getContext(), Detail_view.class);
+                MainActivity.LocationBasedList_ArrayList.clear();
+                MainActivity.LocationBasedList_ArrayList.add(History[3]);
+                intent.putExtra("position", 0);
+                startActivity(intent);
+            }
+        });
+        historyLayout5.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getContext(), Detail_view.class);
+                MainActivity.LocationBasedList_ArrayList.clear();
+                MainActivity.LocationBasedList_ArrayList.add(History[4]);
+                intent.putExtra("position", 0);
+                startActivity(intent);
+            }
+        });
+
+        leportsLayout1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getContext(), Detail_view.class);
+                MainActivity.LocationBasedList_ArrayList.clear();
+                MainActivity.LocationBasedList_ArrayList.add(Leports[0]);
+                intent.putExtra("position", 0);
+                startActivity(intent);
+            }
+        });
+
+        leportsLayout2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getContext(), Detail_view.class);
+                MainActivity.LocationBasedList_ArrayList.clear();
+                MainActivity.LocationBasedList_ArrayList.add(Leports[1]);
+                intent.putExtra("position", 0);
+                startActivity(intent);
+            }
+        });
+
+        leportsLayout3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getContext(), Detail_view.class);
+                MainActivity.LocationBasedList_ArrayList.clear();
+                MainActivity.LocationBasedList_ArrayList.add(Leports[2]);
+                intent.putExtra("position", 0);
+                startActivity(intent);
+            }
+        });
+
+        leportsLayout4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getContext(), Detail_view.class);
+                MainActivity.LocationBasedList_ArrayList.clear();
+                MainActivity.LocationBasedList_ArrayList.add(Leports[3]);
+                intent.putExtra("position", 0);
+                startActivity(intent);
+            }
+        });
+
+        leportsLayout5.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getContext(), Detail_view.class);
+                MainActivity.LocationBasedList_ArrayList.clear();
+                MainActivity.LocationBasedList_ArrayList.add(Leports[4]);
+                intent.putExtra("position", 0);
+                startActivity(intent);
+            }
+        });*/
+
+
+        return root;
+
+
+    }
+
+    public void moveToSpotDetailView() {
+
+    }
+
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        super.onCreateOptionsMenu(menu, inflater);
+        inflater.inflate(R.menu.fragment_home_menu, menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item){
+        int id = item.getItemId();
+        switch (id) {
+            case R.id.fragment_home_resetButton :
+                festival = recommendation();
+                randomSpotRecommendation();
+                initView();
+                break;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+    private void randomSpotRecommendation(){
+        Random rnd = new Random();
+        int randomnuber =rnd.nextInt(150) + 1;
+        String pageNo=String.valueOf(randomnuber);
+
+        ((MainActivity)getActivity()).localSearch2("12","", "", "A01", "", "","P", pageNo);
+        for(int i=0;i<5;i++){
+            Nature[i] = MainActivity.LocationBasedList_ArrayList.get(i);
+        }
+        naturetitle1.setText(MainActivity.LocationBasedList_ArrayList.get(0).getTitle());
+        naturetitle2.setText(MainActivity.LocationBasedList_ArrayList.get(1).getTitle());
+        naturetitle3.setText(MainActivity.LocationBasedList_ArrayList.get(2).getTitle());
+        naturetitle4.setText(MainActivity.LocationBasedList_ArrayList.get(3).getTitle());
+        naturetitle5.setText(MainActivity.LocationBasedList_ArrayList.get(4).getTitle());
+
+        Picasso.get().load(MainActivity.LocationBasedList_ArrayList.get(0).getFirstimage()).placeholder(R.drawable.ic_launcher_background).into(natureimage1);
+        Picasso.get().load(MainActivity.LocationBasedList_ArrayList.get(1).getFirstimage()).placeholder(R.drawable.ic_launcher_background).into(natureimage2);
+        Picasso.get().load(MainActivity.LocationBasedList_ArrayList.get(2).getFirstimage()).placeholder(R.drawable.ic_launcher_background).into(natureimage3);
+        Picasso.get().load(MainActivity.LocationBasedList_ArrayList.get(3).getFirstimage()).placeholder(R.drawable.ic_launcher_background).into(natureimage4);
+        Picasso.get().load(MainActivity.LocationBasedList_ArrayList.get(4).getFirstimage()).placeholder(R.drawable.ic_launcher_background).into(natureimage5);
+
+
+        int randomnuber2 =rnd.nextInt(100) + 1;
+        String pageNo2=String.valueOf(randomnuber2);
+        ((MainActivity)getActivity()).localSearch2("","", "", "C01", "", "","P", pageNo2);
+        Course[0] = MainActivity.LocationBasedList_ArrayList.get(0);
+        coursetitle.setText(MainActivity.LocationBasedList_ArrayList.get(0).getTitle());
+        Picasso.get().load(MainActivity.LocationBasedList_ArrayList.get(0).getFirstimage()).placeholder(R.drawable.ic_launcher_background).into(courseimage);
+
+
+        int randomnuber3 =rnd.nextInt(150) + 1;
+        String pageNo3=String.valueOf(randomnuber3);
+
+        ((MainActivity)getActivity()).localSearch2("","", "", "A02", "A0201", "","P", pageNo3);
+        for(int i=0;i<5;i++){
+            History[i] = MainActivity.LocationBasedList_ArrayList.get(i);
+        }
+        historytitle1.setText(MainActivity.LocationBasedList_ArrayList.get(0).getTitle());
+        historytitle2.setText(MainActivity.LocationBasedList_ArrayList.get(1).getTitle());
+        historytitle3.setText(MainActivity.LocationBasedList_ArrayList.get(2).getTitle());
+        historytitle4.setText(MainActivity.LocationBasedList_ArrayList.get(3).getTitle());
+        historytitle5.setText(MainActivity.LocationBasedList_ArrayList.get(4).getTitle());
+
+        Picasso.get().load(MainActivity.LocationBasedList_ArrayList.get(0).getFirstimage()).placeholder(R.drawable.ic_launcher_background).into(historyimage1);
+        Picasso.get().load(MainActivity.LocationBasedList_ArrayList.get(1).getFirstimage()).placeholder(R.drawable.ic_launcher_background).into(historyimage2);
+        Picasso.get().load(MainActivity.LocationBasedList_ArrayList.get(2).getFirstimage()).placeholder(R.drawable.ic_launcher_background).into(historyimage3);
+        Picasso.get().load(MainActivity.LocationBasedList_ArrayList.get(3).getFirstimage()).placeholder(R.drawable.ic_launcher_background).into(historyimage4);
+        Picasso.get().load(MainActivity.LocationBasedList_ArrayList.get(4).getFirstimage()).placeholder(R.drawable.ic_launcher_background).into(historyimage5);
+
+        int randomnuber4 =rnd.nextInt(80) + 1;
+        String pageNo4=String.valueOf(randomnuber4);
+
+        ((MainActivity)getActivity()).localSearch2("","", "", "A03", "", "","P", pageNo4);
+        for(int i=0;i<5;i++){
+            Leports[i] = MainActivity.LocationBasedList_ArrayList.get(i);
+        }
+        shoppingtitle1.setText(MainActivity.LocationBasedList_ArrayList.get(0).getTitle());
+        shoppingtitle2.setText(MainActivity.LocationBasedList_ArrayList.get(1).getTitle());
+        shoppingtitle3.setText(MainActivity.LocationBasedList_ArrayList.get(2).getTitle());
+        shoppingtitle4.setText(MainActivity.LocationBasedList_ArrayList.get(3).getTitle());
+        shoppingtitle5.setText(MainActivity.LocationBasedList_ArrayList.get(4).getTitle());
+
+        Picasso.get().load(MainActivity.LocationBasedList_ArrayList.get(0).getFirstimage()).placeholder(R.drawable.ic_launcher_background).into(shoppingimage1);
+        Picasso.get().load(MainActivity.LocationBasedList_ArrayList.get(1).getFirstimage()).placeholder(R.drawable.ic_launcher_background).into(shoppingimage2);
+        Picasso.get().load(MainActivity.LocationBasedList_ArrayList.get(2).getFirstimage()).placeholder(R.drawable.ic_launcher_background).into(shoppingimage3);
+        Picasso.get().load(MainActivity.LocationBasedList_ArrayList.get(3).getFirstimage()).placeholder(R.drawable.ic_launcher_background).into(shoppingimage4);
+        Picasso.get().load(MainActivity.LocationBasedList_ArrayList.get(4).getFirstimage()).placeholder(R.drawable.ic_launcher_background).into(shoppingimage5);
 
         festivalLayout.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -449,33 +738,6 @@ public class HomeFragment extends Fragment {
                 startActivity(intent);
             }
         });
-
-
-        return root;
-
-
-    }
-
-    public void moveToSpotDetailView() {
-
-    }
-
-    @Override
-    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
-        super.onCreateOptionsMenu(menu, inflater);
-        inflater.inflate(R.menu.fragment_home_menu, menu);
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item){
-        int id = item.getItemId();
-        switch (id) {
-            case R.id.fragment_home_resetButton :
-                festival = recommendation();
-                initView();
-                break;
-        }
-        return super.onOptionsItemSelected(item);
     }
 
     private Festival recommendation() {
