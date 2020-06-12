@@ -32,6 +32,7 @@
         >
 
         <TextView
+            android:textSize="18sp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="#1E000000"
@@ -41,6 +42,7 @@
             />
 
         <TextView
+            android:textSize="18sp"
             android:id="@+id/detail_12_introduce"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -49,6 +51,7 @@
             />
 
         <TextView
+            android:textSize="18sp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="#1E000000"
@@ -58,6 +61,7 @@
             />
 
         <TextView
+            android:textSize="18sp"
             android:id="@+id/detail_12_experience"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -66,6 +70,7 @@
             />
 
         <TextView
+            android:textSize="18sp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="#1E000000"
@@ -75,6 +80,7 @@
             />
 
         <TextView
+            android:textSize="18sp"
             android:id="@+id/detail_12_openday"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -83,6 +89,7 @@
             />
 
         <TextView
+            android:textSize="18sp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="#1E000000"
@@ -92,6 +99,7 @@
             />
 
         <TextView
+            android:textSize="18sp"
             android:id="@+id/detail_12_useingdays"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -100,6 +108,7 @@
             />
 
         <TextView
+            android:textSize="18sp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="#1E000000"
@@ -109,6 +118,7 @@
             />
 
         <TextView
+            android:textSize="18sp"
             android:id="@+id/detail_12_usingtime"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -117,6 +127,7 @@
             />
 
         <TextView
+            android:textSize="18sp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="#1E000000"
@@ -126,6 +137,7 @@
             />
 
         <TextView
+            android:textSize="18sp"
             android:id="@+id/detail_12_breakday"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -142,6 +154,7 @@
             >
 
             <TextView
+                android:textSize="18sp"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -151,6 +164,7 @@
                 />
 
             <TextView
+                android:textSize="18sp"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -167,6 +181,7 @@
             >
 
             <TextView
+                android:textSize="18sp"
                 android:id="@+id/detail_12_car"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -176,6 +191,8 @@
                 />
 
             <TextView
+
+                android:textSize="18sp"
                 android:id="@+id/detail_12_people"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -195,6 +212,7 @@
             >
 
             <TextView
+                android:textSize="18sp"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -204,6 +222,7 @@
                 />
 
             <TextView
+                android:textSize="18sp"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -220,6 +239,7 @@
             >
 
             <TextView
+                android:textSize="18sp"
                 android:id="@+id/detail_12_pet"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -229,6 +249,7 @@
                 />
 
             <TextView
+                android:textSize="18sp"
                 android:id="@+id/detail_12_babyseat"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -241,7 +262,7 @@
         </LinearLayout>
 
         <TextView
-
+            android:textSize="18sp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="#1E000000"
@@ -251,6 +272,7 @@
             />
 
         <TextView
+            android:textSize="18sp"
             android:id="@+id/detail_12_age"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -275,6 +297,7 @@
         >
 
         <TextView
+            android:textSize="18sp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="#1E000000"
@@ -284,6 +307,7 @@
             />
 
         <TextView
+            android:textSize="18sp"
             android:id="@+id/detail_14_introduce"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -292,6 +316,7 @@
             />
 
         <TextView
+            android:textSize="18sp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="#1E000000"
@@ -301,6 +326,7 @@
             />
 
         <TextView
+            android:textSize="18sp"
             android:id="@+id/detail_14_taketime"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -309,6 +335,7 @@
             />
 
         <TextView
+            android:textSize="18sp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="#1E000000"
@@ -318,6 +345,7 @@
             />
 
         <TextView
+            android:textSize="18sp"
             android:id="@+id/detail_14_discount"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -327,6 +355,7 @@
 
 
         <TextView
+            android:textSize="18sp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="#1E000000"
@@ -336,6 +365,7 @@
             />
 
         <TextView
+            android:textSize="18sp"
             android:id="@+id/detail_14_breakday"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -352,6 +382,7 @@
             >
 
             <TextView
+                android:textSize="18sp"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -361,6 +392,7 @@
                 />
 
             <TextView
+                android:textSize="18sp"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -377,6 +409,7 @@
             >
 
             <TextView
+                android:textSize="18sp"
                 android:id="@+id/detail_14_car"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -386,6 +419,7 @@
                 />
 
             <TextView
+                android:textSize="18sp"
                 android:id="@+id/detail_14_people"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -405,6 +439,7 @@
             >
 
             <TextView
+                android:textSize="18sp"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -414,6 +449,7 @@
                 />
 
             <TextView
+                android:textSize="18sp"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -430,6 +466,7 @@
             >
 
             <TextView
+                android:textSize="18sp"
                 android:id="@+id/detail_14_pet"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -439,6 +476,7 @@
                 />
 
             <TextView
+                android:textSize="18sp"
                 android:id="@+id/detail_14_babyseat"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -468,6 +506,7 @@
         >
 
         <TextView
+            android:textSize="18sp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="#1E000000"
@@ -477,6 +516,7 @@
             />
 
         <TextView
+            android:textSize="18sp"
             android:id="@+id/detail_15_place"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -485,6 +525,7 @@
             />
 
         <TextView
+            android:textSize="18sp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="#1E000000"
@@ -494,6 +535,7 @@
             />
 
         <TextView
+            android:textSize="18sp"
             android:id="@+id/detail_15_program"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -502,6 +544,7 @@
             />
 
         <TextView
+            android:textSize="18sp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="#1E000000"
@@ -511,6 +554,7 @@
             />
 
         <TextView
+            android:textSize="18sp"
             android:id="@+id/detail_15_fetivaltime"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -520,6 +564,7 @@
 
 
         <TextView
+            android:textSize="18sp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="#1E000000"
@@ -529,6 +574,7 @@
             />
 
         <TextView
+            android:textSize="18sp"
             android:id="@+id/detail_15_positionintroduce"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -537,6 +583,7 @@
             />
 
         <TextView
+            android:textSize="18sp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="#1E000000"
@@ -546,6 +593,7 @@
             />
 
         <TextView
+            android:textSize="18sp"
             android:id="@+id/detail_15_usemoney"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -554,6 +602,7 @@
             />
 
         <TextView
+            android:textSize="18sp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="#1E000000"
@@ -564,6 +613,7 @@
 
 
         <TextView
+            android:textSize="18sp"
             android:id="@+id/detail_15_reservation"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -572,6 +622,7 @@
             />
 
         <TextView
+            android:textSize="18sp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="#1E000000"
@@ -581,6 +632,7 @@
             />
 
         <TextView
+            android:textSize="18sp"
             android:id="@+id/detail_15_discount"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -590,6 +642,7 @@
 
 
         <LinearLayout
+
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="#1E000000"
@@ -597,6 +650,7 @@
             >
 
             <TextView
+                android:textSize="18sp"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -606,6 +660,7 @@
                 />
 
             <TextView
+                android:textSize="18sp"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -622,6 +677,7 @@
             >
 
             <TextView
+                android:textSize="18sp"
                 android:id="@+id/detail_15_start"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -631,6 +687,7 @@
                 />
 
             <TextView
+                android:textSize="18sp"
                 android:id="@+id/detail_15_end"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -643,6 +700,7 @@
         </LinearLayout>
 
         <TextView
+            android:textSize="18sp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="#1E000000"
@@ -652,6 +710,7 @@
             />
 
         <TextView
+            android:textSize="18sp"
             android:id="@+id/detail_15_age"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -673,6 +732,7 @@
         android:visibility="gone"
         >
         <TextView
+            android:textSize="18sp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="#1E000000"
@@ -682,6 +742,7 @@
             />
 
         <TextView
+            android:textSize="18sp"
             android:id="@+id/detail_25_distance"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -689,6 +750,7 @@
             android:textAlignment="center"
             />
         <TextView
+            android:textSize="18sp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="#1E000000"
@@ -698,6 +760,7 @@
             />
 
         <TextView
+            android:textSize="18sp"
             android:id="@+id/detail_25_taketime"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -721,6 +784,7 @@
         android:visibility="gone"
         >
         <TextView
+            android:textSize="18sp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="#1E000000"
@@ -730,6 +794,7 @@
             />
 
         <TextView
+            android:textSize="18sp"
             android:id="@+id/detail_28_introduce"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -738,6 +803,7 @@
             />
 
         <TextView
+            android:textSize="18sp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="#1E000000"
@@ -747,6 +813,7 @@
             />
 
         <TextView
+            android:textSize="18sp"
             android:id="@+id/detail_28_openday"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -756,6 +823,7 @@
 
 
         <TextView
+            android:textSize="18sp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="#1E000000"
@@ -765,6 +833,7 @@
             />
 
         <TextView
+            android:textSize="18sp"
             android:id="@+id/detail_28_usingtime"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -773,6 +842,7 @@
             />
 
         <TextView
+            android:textSize="18sp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="#1E000000"
@@ -783,6 +853,7 @@
 
 
         <TextView
+            android:textSize="18sp"
             android:id="@+id/detail_28_breakday"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -791,6 +862,7 @@
             />
 
         <TextView
+            android:textSize="18sp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="#1E000000"
@@ -800,6 +872,7 @@
             />
 
         <TextView
+            android:textSize="18sp"
             android:id="@+id/detail_28_inputmoney"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -807,6 +880,7 @@
             android:textAlignment="center"
             />
         <TextView
+            android:textSize="18sp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="#1E000000"
@@ -816,6 +890,7 @@
             />
 
         <TextView
+            android:textSize="18sp"
             android:id="@+id/detail_28_reservation"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -834,6 +909,7 @@
             >
 
             <TextView
+                android:textSize="18sp"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -843,6 +919,7 @@
                 />
 
             <TextView
+                android:textSize="18sp"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -859,6 +936,7 @@
             >
 
             <TextView
+                android:textSize="18sp"
                 android:id="@+id/detail_28_people"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -868,6 +946,7 @@
                 />
 
             <TextView
+                android:textSize="18sp"
                 android:id="@+id/detail_28_babyseat"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -880,7 +959,7 @@
         </LinearLayout>
 
         <TextView
-
+            android:textSize="18sp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="#1E000000"
@@ -890,6 +969,7 @@
             />
 
         <TextView
+            android:textSize="18sp"
             android:id="@+id/detail_28_age"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -920,6 +1000,7 @@
             >
 
             <TextView
+                android:textSize="18sp"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -929,6 +1010,7 @@
                 />
 
             <TextView
+                android:textSize="18sp"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -945,6 +1027,7 @@
             >
 
             <TextView
+                android:textSize="18sp"
                 android:id="@+id/detail_32_intime"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -954,6 +1037,7 @@
                 />
 
             <TextView
+                android:textSize="18sp"
                 android:id="@+id/detail_32_outtime"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -966,7 +1050,7 @@
 
         </LinearLayout>
         <TextView
-
+            android:textSize="18sp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="#1E000000"
@@ -976,6 +1060,7 @@
             />
 
         <TextView
+            android:textSize="18sp"
             android:id="@+id/detail_32_pickup"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -983,7 +1068,7 @@
             android:textAlignment="center"
             />
         <TextView
-
+            android:textSize="18sp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="#1E000000"
@@ -993,6 +1078,7 @@
             />
 
         <TextView
+            android:textSize="18sp"
             android:id="@+id/detail_32_reservation"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -1000,7 +1086,7 @@
             android:textAlignment="center"
             />
         <TextView
-
+            android:textSize="18sp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="#1E000000"
@@ -1010,6 +1096,7 @@
             />
 
         <TextView
+            android:textSize="18sp"
             android:id="@+id/detail_32_payback"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -1017,7 +1104,7 @@
             android:textAlignment="center"
             />
         <TextView
-
+            android:textSize="18sp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="#1E000000"
@@ -1027,6 +1114,7 @@
             />
 
         <TextView
+            android:textSize="18sp"
             android:id="@+id/detail_32_introuduce"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -1050,6 +1138,7 @@
         >
 
         <TextView
+            android:textSize="18sp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="#1E000000"
@@ -1059,6 +1148,7 @@
             />
 
         <TextView
+            android:textSize="18sp"
             android:id="@+id/detail_38_introduce"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -1067,6 +1157,7 @@
             />
 
         <TextView
+            android:textSize="18sp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="#1E000000"
@@ -1076,6 +1167,7 @@
             />
 
         <TextView
+            android:textSize="18sp"
             android:id="@+id/detail_38_opendays"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -1084,6 +1176,7 @@
             />
 
         <TextView
+            android:textSize="18sp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="#1E000000"
@@ -1093,6 +1186,7 @@
             />
 
         <TextView
+            android:textSize="18sp"
             android:id="@+id/detail_38_jangday"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -1101,6 +1195,7 @@
             />
 
         <TextView
+            android:textSize="18sp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="#1E000000"
@@ -1110,6 +1205,7 @@
             />
 
         <TextView
+            android:textSize="18sp"
             android:id="@+id/detail_38_breakday"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -1117,6 +1213,7 @@
             android:textAlignment="center"
             />
         <TextView
+            android:textSize="18sp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="#1E000000"
@@ -1126,6 +1223,7 @@
             />
 
         <TextView
+            android:textSize="18sp"
             android:id="@+id/detail_38_storeintroduce"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -1133,6 +1231,7 @@
             android:textAlignment="center"
             />
         <TextView
+            android:textSize="18sp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="#1E000000"
@@ -1142,6 +1241,7 @@
             />
 
         <TextView
+            android:textSize="18sp"
             android:id="@+id/detail_38_sellproduct"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -1149,6 +1249,7 @@
             android:textAlignment="center"
             />
         <TextView
+            android:textSize="18sp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="#1E000000"
@@ -1158,6 +1259,7 @@
             />
 
         <TextView
+            android:textSize="18sp"
             android:id="@+id/detail_38_card"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -1167,6 +1269,7 @@
 
 
         <LinearLayout
+
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="#1E000000"
@@ -1174,6 +1277,7 @@
             >
 
             <TextView
+                android:textSize="18sp"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -1183,6 +1287,7 @@
                 />
 
             <TextView
+                android:textSize="18sp"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -1199,6 +1304,7 @@
             >
 
             <TextView
+                android:textSize="18sp"
                 android:id="@+id/detail_38_pet"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -1208,6 +1314,7 @@
                 />
 
             <TextView
+                android:textSize="18sp"
                 android:id="@+id/detail_38_babyseat"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -1235,6 +1342,7 @@
         >
 
         <TextView
+            android:textSize="18sp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="#1E000000"
@@ -1244,6 +1352,7 @@
             />
 
         <TextView
+            android:textSize="18sp"
             android:id="@+id/detail_39_introduce"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -1252,6 +1361,7 @@
             />
 
         <TextView
+            android:textSize="18sp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="#1E000000"
@@ -1261,6 +1371,7 @@
             />
 
         <TextView
+            android:textSize="18sp"
             android:id="@+id/detail_39_represent"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -1269,6 +1380,7 @@
             />
 
         <TextView
+            android:textSize="18sp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="#1E000000"
@@ -1278,6 +1390,7 @@
             />
 
         <TextView
+            android:textSize="18sp"
             android:id="@+id/detail_39_addition"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -1285,6 +1398,7 @@
             android:textAlignment="center"
             />
         <TextView
+            android:textSize="18sp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="#1E000000"
@@ -1294,6 +1408,7 @@
             />
 
         <TextView
+            android:textSize="18sp"
             android:id="@+id/detail_39_opendays"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -1301,6 +1416,7 @@
             android:textAlignment="center"
             />
         <TextView
+            android:textSize="18sp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="#1E000000"
@@ -1310,6 +1426,7 @@
             />
 
         <TextView
+            android:textSize="18sp"
             android:id="@+id/detail_39_opentime"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -1317,6 +1434,7 @@
             android:textAlignment="center"
             />
         <TextView
+            android:textSize="18sp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="#1E000000"
@@ -1326,6 +1444,7 @@
             />
 
         <TextView
+            android:textSize="18sp"
             android:id="@+id/detail_39_card"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -1341,6 +1460,7 @@
             >
 
             <TextView
+                android:textSize="18sp"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -1350,6 +1470,7 @@
                 />
 
             <TextView
+                android:textSize="18sp"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -1366,6 +1487,7 @@
             >
 
             <TextView
+                android:textSize="18sp"
                 android:id="@+id/detail_39_play"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"

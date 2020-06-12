@@ -56,7 +56,7 @@ public class ItemAdapter extends BaseAdapter {
         String URI = data.getFirstimage();
 
         if (URI == "") URI = "http://";
-        Picasso.get().load(URI).placeholder(R.drawable.sunnyicon).into(imageView);
+        Picasso.get().load(URI).placeholder(R.drawable.luggageicon).into(imageView);
 
         title.setText(data.getTitle());
         addreess.setText(data.getAddr1());

@@ -640,8 +640,8 @@
 
 
     <string-array name="searchtype">
-        <item>제목순</item>
         <item>인기순</item>
+        <item>제목순</item>
         <item>최근수정순</item>
         <item>등록순</item>
     </string-array>

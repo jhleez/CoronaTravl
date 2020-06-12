@@ -12,4 +12,15 @@
         android:id="@+id/list_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
+    <LinearLayout
+        android:id="@+id/listlayout"
+        android:visibility="gone"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <TextView
+            android:text="데이터가 없습니다."
+            android:textAlignment="center"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+    </LinearLayout>
 </LinearLayout>

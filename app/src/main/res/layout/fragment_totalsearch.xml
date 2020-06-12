@@ -150,6 +150,20 @@
         android:layout_width="match_parent"
         android:background="#fff"
         android:layout_height="match_parent">
+        <LinearLayout
+            android:id="@+id/listlinearlayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+            <TextView
+                android:textAlignment="center"
+                android:text="데이터가 없습니다."
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"/>
+        </LinearLayout>
+
 
         <androidx.viewpager.widget.ViewPager
             android:id="@+id/viewpager_totalsearch_page"

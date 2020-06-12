@@ -497,11 +497,11 @@ public class HomeFragment extends Fragment {
         naturetitle4.setText(MainActivity.LocationBasedList_ArrayList.get(3).getTitle());
         naturetitle5.setText(MainActivity.LocationBasedList_ArrayList.get(4).getTitle());
 
-        Picasso.get().load(MainActivity.LocationBasedList_ArrayList.get(0).getFirstimage()).placeholder(R.drawable.ic_launcher_background).into(natureimage1);
-        Picasso.get().load(MainActivity.LocationBasedList_ArrayList.get(1).getFirstimage()).placeholder(R.drawable.ic_launcher_background).into(natureimage2);
-        Picasso.get().load(MainActivity.LocationBasedList_ArrayList.get(2).getFirstimage()).placeholder(R.drawable.ic_launcher_background).into(natureimage3);
-        Picasso.get().load(MainActivity.LocationBasedList_ArrayList.get(3).getFirstimage()).placeholder(R.drawable.ic_launcher_background).into(natureimage4);
-        Picasso.get().load(MainActivity.LocationBasedList_ArrayList.get(4).getFirstimage()).placeholder(R.drawable.ic_launcher_background).into(natureimage5);
+        Picasso.get().load(MainActivity.LocationBasedList_ArrayList.get(0).getFirstimage()).placeholder(R.drawable.luggageicon).into(natureimage1);
+        Picasso.get().load(MainActivity.LocationBasedList_ArrayList.get(1).getFirstimage()).placeholder(R.drawable.luggageicon).into(natureimage2);
+        Picasso.get().load(MainActivity.LocationBasedList_ArrayList.get(2).getFirstimage()).placeholder(R.drawable.luggageicon).into(natureimage3);
+        Picasso.get().load(MainActivity.LocationBasedList_ArrayList.get(3).getFirstimage()).placeholder(R.drawable.luggageicon).into(natureimage4);
+        Picasso.get().load(MainActivity.LocationBasedList_ArrayList.get(4).getFirstimage()).placeholder(R.drawable.luggageicon).into(natureimage5);
 
 
         int randomnuber2 =rnd.nextInt(100) + 1;
@@ -509,7 +509,7 @@ public class HomeFragment extends Fragment {
         ((MainActivity)getActivity()).localSearch2("","", "", "C01", "", "","P", pageNo2);
         Course[0] = MainActivity.LocationBasedList_ArrayList.get(0);
         coursetitle.setText(MainActivity.LocationBasedList_ArrayList.get(0).getTitle());
-        Picasso.get().load(MainActivity.LocationBasedList_ArrayList.get(0).getFirstimage()).placeholder(R.drawable.ic_launcher_background).into(courseimage);
+        Picasso.get().load(MainActivity.LocationBasedList_ArrayList.get(0).getFirstimage()).placeholder(R.drawable.luggageicon).into(courseimage);
 
 
         int randomnuber3 =rnd.nextInt(150) + 1;
@@ -525,11 +525,11 @@ public class HomeFragment extends Fragment {
         historytitle4.setText(MainActivity.LocationBasedList_ArrayList.get(3).getTitle());
         historytitle5.setText(MainActivity.LocationBasedList_ArrayList.get(4).getTitle());
 
-        Picasso.get().load(MainActivity.LocationBasedList_ArrayList.get(0).getFirstimage()).placeholder(R.drawable.ic_launcher_background).into(historyimage1);
-        Picasso.get().load(MainActivity.LocationBasedList_ArrayList.get(1).getFirstimage()).placeholder(R.drawable.ic_launcher_background).into(historyimage2);
-        Picasso.get().load(MainActivity.LocationBasedList_ArrayList.get(2).getFirstimage()).placeholder(R.drawable.ic_launcher_background).into(historyimage3);
-        Picasso.get().load(MainActivity.LocationBasedList_ArrayList.get(3).getFirstimage()).placeholder(R.drawable.ic_launcher_background).into(historyimage4);
-        Picasso.get().load(MainActivity.LocationBasedList_ArrayList.get(4).getFirstimage()).placeholder(R.drawable.ic_launcher_background).into(historyimage5);
+        Picasso.get().load(MainActivity.LocationBasedList_ArrayList.get(0).getFirstimage()).placeholder(R.drawable.luggageicon).into(historyimage1);
+        Picasso.get().load(MainActivity.LocationBasedList_ArrayList.get(1).getFirstimage()).placeholder(R.drawable.luggageicon).into(historyimage2);
+        Picasso.get().load(MainActivity.LocationBasedList_ArrayList.get(2).getFirstimage()).placeholder(R.drawable.luggageicon).into(historyimage3);
+        Picasso.get().load(MainActivity.LocationBasedList_ArrayList.get(3).getFirstimage()).placeholder(R.drawable.luggageicon).into(historyimage4);
+        Picasso.get().load(MainActivity.LocationBasedList_ArrayList.get(4).getFirstimage()).placeholder(R.drawable.luggageicon).into(historyimage5);
 
         int randomnuber4 =rnd.nextInt(80) + 1;
         String pageNo4=String.valueOf(randomnuber4);
@@ -544,11 +544,11 @@ public class HomeFragment extends Fragment {
         shoppingtitle4.setText(MainActivity.LocationBasedList_ArrayList.get(3).getTitle());
         shoppingtitle5.setText(MainActivity.LocationBasedList_ArrayList.get(4).getTitle());
 
-        Picasso.get().load(MainActivity.LocationBasedList_ArrayList.get(0).getFirstimage()).placeholder(R.drawable.ic_launcher_background).into(shoppingimage1);
-        Picasso.get().load(MainActivity.LocationBasedList_ArrayList.get(1).getFirstimage()).placeholder(R.drawable.ic_launcher_background).into(shoppingimage2);
-        Picasso.get().load(MainActivity.LocationBasedList_ArrayList.get(2).getFirstimage()).placeholder(R.drawable.ic_launcher_background).into(shoppingimage3);
-        Picasso.get().load(MainActivity.LocationBasedList_ArrayList.get(3).getFirstimage()).placeholder(R.drawable.ic_launcher_background).into(shoppingimage4);
-        Picasso.get().load(MainActivity.LocationBasedList_ArrayList.get(4).getFirstimage()).placeholder(R.drawable.ic_launcher_background).into(shoppingimage5);
+        Picasso.get().load(MainActivity.LocationBasedList_ArrayList.get(0).getFirstimage()).placeholder(R.drawable.luggageicon).into(shoppingimage1);
+        Picasso.get().load(MainActivity.LocationBasedList_ArrayList.get(1).getFirstimage()).placeholder(R.drawable.luggageicon).into(shoppingimage2);
+        Picasso.get().load(MainActivity.LocationBasedList_ArrayList.get(2).getFirstimage()).placeholder(R.drawable.luggageicon).into(shoppingimage3);
+        Picasso.get().load(MainActivity.LocationBasedList_ArrayList.get(3).getFirstimage()).placeholder(R.drawable.luggageicon).into(shoppingimage4);
+        Picasso.get().load(MainActivity.LocationBasedList_ArrayList.get(4).getFirstimage()).placeholder(R.drawable.luggageicon).into(shoppingimage5);
 
         festivalLayout.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -796,7 +796,7 @@ public class HomeFragment extends Fragment {
 
         String URI = festival.getFirstimage();
         if (URI == "") URI = "http://";
-        Picasso.get().load(URI).placeholder(R.drawable.ic_launcher_background).into(spotImage);
+        Picasso.get().load(URI).placeholder(R.drawable.luggageicon).into(spotImage);
 
         return festival;
 
@@ -1075,5 +1075,7 @@ public class HomeFragment extends Fragment {
         Festival festival = new Festival(addr1, areacode, eventenddate, eventstartdate, firstimage, title, contentid, contenttypeid, "");
         return festival;
     }
+
+
 
 }

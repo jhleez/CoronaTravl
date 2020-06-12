@@ -65,69 +65,88 @@ public class TotalsearchFragment extends Fragment implements ViewPager.OnPageCha
     ViewPager viewPager;
     EditText editText_input;
     LinearLayout local_select;
-    ImageButton next,pre;
+    ImageButton next, pre;
+    LinearLayout linearLayout;
     int a = 0, b = 0;
 
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
+
         totalsearchViewModel =
                 ViewModelProviders.of(this).get(TotalsearchViewModel.class);
         View root = inflater.inflate(R.layout.fragment_totalsearch, container, false);
 
+        linearLayout = root.findViewById(R.id.listlinearlayout);
         viewPager = root.findViewById(R.id.viewpager_totalsearch_page);
         viewPager.addOnPageChangeListener(this);
         local_select = root.findViewById(R.id.button_totalsearch_local);
         local_select.setOnClickListener(this);
         local_result_text = root.findViewById(R.id.select_local_textview);
-        next= root.findViewById(R.id.floatbt_next);
+        next = root.findViewById(R.id.floatbt_next);
         next.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 try {
+                    int temp = spinner_searchtype.getSelectedItemPosition();
+                    if (temp == 0) temp = 1;
+                    else if (temp == 1) temp = 0;
+                    searchtype = TypeId.arrange(temp);
                     if (input.length() >= 2) {
                         ((MainActivity) getActivity()).totalSearch(input, city_big, city_small, service_typehigh, service_typemiddle, "", searchtype, String.valueOf((viewPager.getCurrentItem() + 1)));
                         if (Integer.parseInt(LocationBasedList_Class.totalcount) != 0) {
                             ItemAdapter itemAdapter = new ItemAdapter(MainActivity.LocationBasedList_ArrayList);
                             ListViewFragment.listView.setAdapter(itemAdapter);
+                            ListViewFragment.linearLayout.setVisibility(View.GONE);
+                        } else {
+                            ListViewFragment.linearLayout.setVisibility(View.VISIBLE);
                         }
                     } else if (input.length() == 0) {
                         ((MainActivity) getActivity()).localSearch("", city_big, city_small, service_typehigh, service_typemiddle, "", searchtype, String.valueOf((viewPager.getCurrentItem() + 1)));
                         if (Integer.parseInt(LocationBasedList_Class.totalcount) != 0) {
                             ItemAdapter itemAdapter = new ItemAdapter(MainActivity.LocationBasedList_ArrayList);
                             ListViewFragment.listView.setAdapter(itemAdapter);
+                            ListViewFragment.linearLayout.setVisibility(View.GONE);
+                        } else {
+                            ListViewFragment.linearLayout.setVisibility(View.VISIBLE);
                         }
                     }
-                }catch (Exception e){
+                } catch (Exception e) {
                     e.printStackTrace();
                 }
-                viewPager.setCurrentItem(viewPager.getCurrentItem()+1);
+                viewPager.setCurrentItem(viewPager.getCurrentItem() + 1);
                 ItemAdapter itemAdapter = new ItemAdapter(MainActivity.LocationBasedList_ArrayList);
                 ListViewFragment.listView.setAdapter(itemAdapter);
             }
         });
-        pre=root.findViewById(R.id.floatbt_previous);
+        pre = root.findViewById(R.id.floatbt_previous);
         pre.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 try {
+                    int temp = spinner_searchtype.getSelectedItemPosition();
+                    if (temp == 0)temp = 1;
+                    else if (temp == 1) temp = 0;
+                    searchtype = TypeId.arrange(temp);
                     if (input.length() >= 2) {
                         ((MainActivity) getActivity()).totalSearch(input, city_big, city_small, service_typehigh, service_typemiddle, "", searchtype, String.valueOf((viewPager.getCurrentItem())));
                         if (Integer.parseInt(LocationBasedList_Class.totalcount) != 0) {
                             ItemAdapter itemAdapter = new ItemAdapter(MainActivity.LocationBasedList_ArrayList);
+                            ListViewFragment.linearLayout.setVisibility(View.GONE);
                             ListViewFragment.listView.setAdapter(itemAdapter);
                         }
                     } else if (input.length() == 0) {
                         ((MainActivity) getActivity()).localSearch("", city_big, city_small, service_typehigh, service_typemiddle, "", searchtype, String.valueOf((viewPager.getCurrentItem())));
                         if (Integer.parseInt(LocationBasedList_Class.totalcount) != 0) {
                             ItemAdapter itemAdapter = new ItemAdapter(MainActivity.LocationBasedList_ArrayList);
+                            ListViewFragment.linearLayout.setVisibility(View.GONE);
                             ListViewFragment.listView.setAdapter(itemAdapter);
                         }
                     }
-                }catch (Exception e){
+                } catch (Exception e) {
                     e.printStackTrace();
                 }
-                viewPager.setCurrentItem(viewPager.getCurrentItem()-1);
+                viewPager.setCurrentItem(viewPager.getCurrentItem() - 1);
                 ItemAdapter itemAdapter = new ItemAdapter(MainActivity.LocationBasedList_ArrayList);
                 ListViewFragment.listView.setAdapter(itemAdapter);
 
@@ -160,12 +179,11 @@ public class TotalsearchFragment extends Fragment implements ViewPager.OnPageCha
         });
 
 
-
         final SpinnerAdapter2 adapter = new SpinnerAdapter2(getContext());
-        final  SpinnerAdapter2 adapter1 = new SpinnerAdapter2(getContext());
+        final SpinnerAdapter2 adapter1 = new SpinnerAdapter2(getContext());
         String[] model = null;
         model = getResources().getStringArray(R.array.hightype);
-        for(int i = 0;i <model.length;i++){
+        for (int i = 0; i < model.length; i++) {
             adapter1.addItem(model[i]);
         }
         spinner_hightype = root.findViewById(R.id.spinner_totalsearch_hightype);
@@ -194,9 +212,9 @@ public class TotalsearchFragment extends Fragment implements ViewPager.OnPageCha
                 } else if (position == 7) {
                     model_1 = getResources().getStringArray(R.array.middle_7);
                 }
-                for(int i = 0; i<model_1.length;i++){
+                for (int i = 0; i < model_1.length; i++) {
                     adapter.addItem(model_1[i]);
-            }
+                }
                 spinner_middletype.setAdapter(adapter);
 
             }
@@ -208,11 +226,10 @@ public class TotalsearchFragment extends Fragment implements ViewPager.OnPageCha
         });
 
 
-
         spinner_searchtype = root.findViewById(R.id.spinner_totalsearch_searchtype);
         SpinnerAdapter2 adapter3 = new SpinnerAdapter2(getContext());
         String[] asd = getResources().getStringArray(R.array.searchtype);
-        for(int i=0; i<asd.length;i++){
+        for (int i = 0; i < asd.length; i++) {
             adapter3.addItem(asd[i]);
         }
         spinner_searchtype.setAdapter(adapter3);
@@ -227,45 +244,69 @@ public class TotalsearchFragment extends Fragment implements ViewPager.OnPageCha
                 service_typemiddle = TypeId.cat2(spinner_hightype.getSelectedItemPosition(), spinner_middletype.getSelectedItemPosition());//중분류
                 city_big = TypeId.areacode(a);//지역선택
                 city_small = String.valueOf(b);//시군구선택
-                Log.d("posi",service_typehigh+service_typemiddle);
+                Log.d("posi", service_typehigh + service_typemiddle);
                 input = editText_input.getText().toString(); // 검색 내용
 
-                searchtype = TypeId.arrange(spinner_searchtype.getSelectedItemPosition()); // 정렬 방법
+                int temp = spinner_searchtype.getSelectedItemPosition();
+                if (temp == 0) {
+                    temp = 1;
+                } else if (temp == 1) {
+                    temp = 0;
+                }
+                searchtype = TypeId.arrange(temp); // 정렬 방법
                 if (input.length() >= 2) {
                     ((MainActivity) getActivity()).totalSearch(input, city_big, city_small, service_typehigh, service_typemiddle, "", searchtype, "1");
-                    int pagecount= (Integer.parseInt(LocationBasedList_Class.totalcount)%10==0)?
-                            (Integer.parseInt(LocationBasedList_Class.totalcount)/10):(Integer.parseInt(LocationBasedList_Class.totalcount)/10)+1;
-                    swipeAdapter = new SwipeAdapter(getChildFragmentManager(), pagecount);
+                    if (LocationBasedList_Class.totalcount.equals("0")) {
+                        next.setVisibility(View.GONE);
+                        pre.setVisibility(View.GONE);
+                        viewPager.setVisibility(View.GONE);
+                        linearLayout.setVisibility(View.VISIBLE);
+                    } else {
+                        viewPager.setVisibility(View.VISIBLE);
+                        linearLayout.setVisibility(View.GONE);
+                        int pagecount = (Integer.parseInt(LocationBasedList_Class.totalcount) % 10 == 0) ?
+                                (Integer.parseInt(LocationBasedList_Class.totalcount) / 10) : (Integer.parseInt(LocationBasedList_Class.totalcount) / 10) + 1;
+                        swipeAdapter = new SwipeAdapter(getChildFragmentManager(), pagecount);
 
-                    viewPager.setOffscreenPageLimit(1);
-                    viewPager.setAdapter(swipeAdapter);
-                    viewPager.setCurrentItem(0);
+                        viewPager.setOffscreenPageLimit(1);
+                        viewPager.setAdapter(swipeAdapter);
+                        viewPager.setCurrentItem(0);
 
-                    pre.setVisibility(View.GONE);
-                    if(1!=pagecount){
-                        next.setVisibility(View.VISIBLE);
+                        pre.setVisibility(View.GONE);
+                        if (1 != pagecount) {
+                            next.setVisibility(View.VISIBLE);
+                        }
+
+                        ItemAdapter itemAdapter = new ItemAdapter(MainActivity.LocationBasedList_ArrayList);
+                        ListViewFragment.listView.setAdapter(itemAdapter);
                     }
-
-                    ItemAdapter itemAdapter = new ItemAdapter(MainActivity.LocationBasedList_ArrayList);
-                    ListViewFragment.listView.setAdapter(itemAdapter);
 
                 } else if (input.length() == 0) {
                     ((MainActivity) getActivity()).localSearch("", city_big, city_small, service_typehigh, service_typemiddle, "", searchtype, "1");
-                    int pagecount= (Integer.parseInt(LocationBasedList_Class.totalcount)%10==0)?
-                            (Integer.parseInt(LocationBasedList_Class.totalcount)/10):(Integer.parseInt(LocationBasedList_Class.totalcount)/10)+1;
-                    swipeAdapter = new SwipeAdapter(getChildFragmentManager(), pagecount);
+                    if (LocationBasedList_Class.totalcount.equals("0")) {
+                        next.setVisibility(View.GONE);
+                        pre.setVisibility(View.GONE);
+                        viewPager.setVisibility(View.GONE);
+                        linearLayout.setVisibility(View.VISIBLE);
+                    } else {
+                        viewPager.setVisibility(View.VISIBLE);
+                        linearLayout.setVisibility(View.GONE);
+                        int pagecount = (Integer.parseInt(LocationBasedList_Class.totalcount) % 10 == 0) ?
+                                (Integer.parseInt(LocationBasedList_Class.totalcount) / 10) : (Integer.parseInt(LocationBasedList_Class.totalcount) / 10) + 1;
+                        swipeAdapter = new SwipeAdapter(getChildFragmentManager(), pagecount);
 
-                    viewPager.setOffscreenPageLimit(1);
-                    viewPager.setAdapter(swipeAdapter);
-                    viewPager.setCurrentItem(0);
+                        viewPager.setOffscreenPageLimit(1);
+                        viewPager.setAdapter(swipeAdapter);
+                        viewPager.setCurrentItem(0);
 
-                    pre.setVisibility(View.GONE);
-                    if(1!=pagecount){
-                        next.setVisibility(View.VISIBLE);
+                        pre.setVisibility(View.GONE);
+                        if (1 != pagecount) {
+                            next.setVisibility(View.VISIBLE);
+                        }
+
+                        ItemAdapter itemAdapter = new ItemAdapter(MainActivity.LocationBasedList_ArrayList);
+                        ListViewFragment.listView.setAdapter(itemAdapter);
                     }
-
-                    ItemAdapter itemAdapter = new ItemAdapter(MainActivity.LocationBasedList_ArrayList);
-                    ListViewFragment.listView.setAdapter(itemAdapter);
 
 
                 } else {
@@ -299,13 +340,13 @@ public class TotalsearchFragment extends Fragment implements ViewPager.OnPageCha
     @SuppressLint("RestrictedApi")
     @Override
     public void onPageSelected(int position) {
-        int pagecount= (Integer.parseInt(LocationBasedList_Class.totalcount)%10==0)?
-                (Integer.parseInt(LocationBasedList_Class.totalcount)/10):(Integer.parseInt(LocationBasedList_Class.totalcount)/10)+1;
-        if(position==0){
+        int pagecount = (Integer.parseInt(LocationBasedList_Class.totalcount) % 10 == 0) ?
+                (Integer.parseInt(LocationBasedList_Class.totalcount) / 10) : (Integer.parseInt(LocationBasedList_Class.totalcount) / 10) + 1;
+        if (position == 0) {
             pre.setVisibility(View.GONE);
-        }else if(position+1==pagecount){
+        } else if (position + 1 == pagecount) {
             next.setVisibility(View.GONE);
-        }else{
+        } else {
             pre.setVisibility(View.VISIBLE);
             next.setVisibility(View.VISIBLE);
         }
@@ -317,7 +358,10 @@ public class TotalsearchFragment extends Fragment implements ViewPager.OnPageCha
         city_big = TypeId.areacode(a);//지역선택
         city_small = String.valueOf(b);//시군구선택
         input = editText_input.getText().toString(); // 검색 내용
-        searchtype = TypeId.arrange(spinner_searchtype.getSelectedItemPosition()); // 정렬 방법
+        int temp = spinner_searchtype.getSelectedItemPosition();
+        if(temp==0) temp=1;
+        else if(temp==1) temp=0;
+        searchtype = TypeId.arrange(temp); // 정렬 방법
         if (input.length() >= 2) {
             ((MainActivity) getActivity()).totalSearch(input, city_big, city_small, service_typehigh, service_typemiddle, "", searchtype, String.valueOf((position + 1)));
             if (Integer.parseInt(LocationBasedList_Class.totalcount) != 0) {
@@ -338,7 +382,7 @@ public class TotalsearchFragment extends Fragment implements ViewPager.OnPageCha
     @Override
     public void onPageScrollStateChanged(int state) {
 
-        Log.i("state",state+"");
+        Log.i("state", state + "");
 
     }
 
@@ -418,7 +462,8 @@ public class TotalsearchFragment extends Fragment implements ViewPager.OnPageCha
         builder.setPositiveButton("확인", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                a=temp1[0]; b=temp2[0];
+                a = temp1[0];
+                b = temp2[0];
                 local_result_text.setText(bigcity_string[0] + " " + smallcity_string[0]);
             }
         });

@@ -36,10 +36,10 @@
                 >
 
                 <LinearLayout
-                    android:background="#B5CDEDEF"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="3dp"
+                    android:background="#B5CDEDEF"
                     android:gravity="center"
                     >
 
@@ -47,14 +47,24 @@
                         android:id="@+id/detail_title_text"
                         android:layout_width="0dp"
                         android:layout_height="50dp"
-                        android:layout_weight="1"
                         android:layout_marginLeft="20dp"
+                        android:layout_weight="1"
                         android:ellipsize="end"
-                        android:textColor="#000"
                         android:fontFamily="@font/binggraemelona"
                         android:gravity="center|start"
                         android:singleLine="true"
+                        android:textColor="#000"
                         android:textSize="30sp"
+                        />
+
+                    <ImageButton
+                        android:id="@+id/findstreet"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:elevation="5dp"
+                        android:scaleX="0.7"
+                        android:scaleY="0.7"
+                        android:background="@drawable/ic_edit_location_black_24dp"
                         />
 
                     <CheckBox
@@ -70,17 +80,17 @@
                 </LinearLayout>
 
                 <TextView
-                    android:background="@drawable/border6"
-                    android:textColorLink="#2C4AED"
                     android:id="@+id/detil_add_textview"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:autoLink="web"
+                    android:background="@drawable/border6"
                     android:ellipsize="end"
                     android:fontFamily="@font/hangeulnurir"
-                    android:maxLines="3"
                     android:textAlignment="textStart"
-                    android:textSize="14sp"
+
+                    android:textColorLink="#2C4AED"
+                    android:textSize="18sp"
                     android:textStyle="bold"
                     />
 
@@ -91,13 +101,13 @@
                     >
 
                     <androidx.cardview.widget.CardView
-                        app:cardBackgroundColor="#f9f9f9"
                         android:id="@+id/weather_cardview"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:background="@drawable/border7"
                         android:layout_marginStart="8dp"
                         android:layout_marginEnd="8dp"
+                        android:background="@drawable/border7"
+                        app:cardBackgroundColor="#f9f9f9"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
@@ -105,9 +115,9 @@
 
                         <androidx.constraintlayout.widget.ConstraintLayout
                             android:id="@+id/weather_layout"
-                            android:background="@drawable/border7"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+                            android:background="@drawable/border7"
                             android:clickable="true"
                             android:foreground="?attr/selectableItemBackground"
                             >
@@ -117,9 +127,9 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="5dp"
+                                android:fontFamily="@font/binggraemelona"
                                 android:text="날씨"
                                 android:textColor="#000"
-                                android:fontFamily="@font/binggraemelona"
                                 android:textSize="20sp"
                                 app:layout_constraintEnd_toEndOf="parent"
                                 app:layout_constraintHorizontal_bias="0.04"
@@ -128,7 +138,7 @@
                                 app:layout_goneMarginLeft="5dp"
                                 />
 
-                            <Button
+                            <androidx.appcompat.widget.AppCompatImageView
                                 android:id="@+id/weather_expend_bt"
                                 android:layout_width="35dp"
                                 android:layout_height="35dp"
@@ -217,7 +227,6 @@
                     >
 
                     <androidx.cardview.widget.CardView
-                        app:cardBackgroundColor="#f9f9f9"
                         android:id="@+id/mask_cardview"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -225,6 +234,7 @@
                         android:layout_marginLeft="10dp"
                         android:layout_marginEnd="10dp"
                         android:layout_marginRight="10dp"
+                        app:cardBackgroundColor="#f9f9f9"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
@@ -232,9 +242,9 @@
 
                         <androidx.constraintlayout.widget.ConstraintLayout
                             android:id="@+id/mask_layout"
-                            android:background="@drawable/border7"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+                            android:background="@drawable/border7"
                             android:clickable="true"
                             android:foreground="?attr/selectableItemBackground"
                             >
@@ -243,10 +253,10 @@
                                 android:id="@+id/textView4"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:textColor="#000"
-                                android:fontFamily="@font/binggraemelona"
                                 android:layout_marginTop="5dp"
+                                android:fontFamily="@font/binggraemelona"
                                 android:text="공적 마스크 판매처"
+                                android:textColor="#000"
                                 android:textSize="20sp"
                                 app:layout_constraintEnd_toEndOf="parent"
                                 app:layout_constraintHorizontal_bias="0.04"
@@ -255,7 +265,7 @@
                                 app:layout_goneMarginLeft="5dp"
                                 />
 
-                            <Button
+                            <androidx.appcompat.widget.AppCompatImageView
                                 android:id="@+id/mask_expend_bt"
                                 android:layout_width="35dp"
                                 android:layout_height="35dp"
@@ -376,7 +386,6 @@
 
 
                     <androidx.cardview.widget.CardView
-                        app:cardBackgroundColor="#f9f9f9"
                         android:id="@+id/corona_cardview"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -384,6 +393,7 @@
                         android:layout_marginLeft="10dp"
                         android:layout_marginEnd="10dp"
                         android:layout_marginRight="10dp"
+                        app:cardBackgroundColor="#f9f9f9"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
@@ -391,9 +401,9 @@
 
                         <androidx.constraintlayout.widget.ConstraintLayout
                             android:id="@+id/corona_layout"
-                            android:background="@drawable/border7"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+                            android:background="@drawable/border7"
                             android:clickable="true"
                             android:foreground="?attr/selectableItemBackground"
                             >
@@ -404,8 +414,8 @@
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="5dp"
                                 android:fontFamily="@font/binggraemelona"
-                                android:textColor="#000"
                                 android:text="코로나"
+                                android:textColor="#000"
                                 android:textSize="20sp"
                                 app:layout_constraintEnd_toEndOf="parent"
                                 app:layout_constraintHorizontal_bias="0.04"
@@ -414,7 +424,7 @@
                                 app:layout_goneMarginLeft="5dp"
                                 />
 
-                            <Button
+                            <androidx.appcompat.widget.AppCompatImageView
                                 android:id="@+id/corona_expend_bt"
                                 android:layout_width="35dp"
                                 android:layout_height="35dp"
@@ -653,15 +663,15 @@
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
                 <FrameLayout
-                    android:focusable="true"
-                    android:background="@drawable/border7"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginRight="10dp"
-                    android:layout_marginBottom="15dp"
                     android:id="@+id/detail_framlayout"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
                     android:layout_marginTop="15dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginBottom="15dp"
+                    android:background="@drawable/border7"
+                    android:focusable="true"
                     >
 
                 </FrameLayout>

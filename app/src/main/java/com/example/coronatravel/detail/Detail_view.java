@@ -14,6 +14,7 @@ import androidx.viewpager.widget.ViewPager;
 import android.content.Intent;
 import android.database.Cursor;
 import android.graphics.drawable.Drawable;
+import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
@@ -27,6 +28,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.FrameLayout;
+import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -77,6 +80,7 @@ public class Detail_view extends AppCompatActivity {
     Detail_Fourth_Fragment detail_fourth_fragment = new Detail_Fourth_Fragment();
     ChipNavigationBar chipNavigationBar;
     String ServiceKey;
+    ImageButton street;
 
     TextView titletext,addresstext;
     ViewPager viewPager_mask;
@@ -84,7 +88,7 @@ public class Detail_view extends AppCompatActivity {
 
     private RecyclerView weatherListview;
     private myWeatherAdapter weatherAdapter;
-    Button weatherexpendbt, maskexpandbt, coronaexpandbt;
+    ImageView weatherexpendbt, maskexpandbt, coronaexpandbt;
     CardView weathercardview, maskcardview, coronacardview;
     LinearLayoutManager layoutManager;
     ArrayList<weatherListViewItem> itemList;
@@ -100,6 +104,8 @@ public class Detail_view extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail_view);
+
+
 
         totalP = (TextView) findViewById(R.id.AddressTotalTextview);
         citynameP = (TextView) findViewById(R.id.AddressCitynameTextview);
@@ -131,6 +137,7 @@ public class Detail_view extends AppCompatActivity {
 
 
         checkbox = (CheckBox) findViewById(R.id.checkbox);
+        street = findViewById(R.id.findstreet);
 //        testMask =(TextView) findViewById(R.id.testMask);
         mDbOpenHelper = new DbOpenHelper(this);
 
@@ -148,6 +155,16 @@ public class Detail_view extends AppCompatActivity {
 
         viewPager_mask = findViewById(R.id.mask_viewpager);
         frameLayout = findViewById(R.id.detail_framlayout);
+
+        street.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent();
+                intent.setAction(Intent.ACTION_VIEW);
+                intent.setData(Uri.parse("geo:0,0?q=" + addr1));
+                startActivity(intent);
+            }
+        });
 
         l=new LoadingDialog(this);
 
@@ -279,8 +296,23 @@ public class Detail_view extends AppCompatActivity {
                     weatehr_expandlayout.setVisibility(View.VISIBLE);
                     weatherexpendbt.setBackgroundResource(R.drawable.ic_expand_less_black_24dp);
                     if (firstclick == 0) {
-                        init(addressCode);
+                        l.setLoadingText("로딩중")
+                                .setSuccessText("완료")
+                                .setInterceptBack(true)
+                                .setLoadSpeed(LoadingDialog.Speed.SPEED_ONE)
+                                .show();
+
+                        Handler delayHandler = new Handler();
+                        delayHandler.postDelayed(new Runnable() {
+                            @Override
+                            public void run() {
+                                init(addressCode);
+                                l.close();
+                            }
+                        }, 500);
+
                         firstclick++;
+
                     }
 
 
@@ -308,6 +340,8 @@ public class Detail_view extends AppCompatActivity {
                                 .setInterceptBack(true)
                                 .setLoadSpeed(LoadingDialog.Speed.SPEED_ONE)
                                 .show();
+
+
 
 
 

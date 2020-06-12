@@ -250,16 +250,5 @@ public class MainActivity extends AppCompatActivity {
             LocationBasedList_ArrayList.add(subclass);
         }
     }
-    private long keyPressTime = 0;
-    @Override
-    public void onBackPressed() {
-        if (System.currentTimeMillis() > keyPressTime + 2000) {
-            keyPressTime = System.currentTimeMillis();
-            Toast.makeText(this, "버튼을 한번 더 누르시면 종료 됩니다.", Toast.LENGTH_SHORT).show();
-            return;
-        }
-        if (System.currentTimeMillis() <= keyPressTime + 2000) {
-            finish();
-        }
-    }
+
 }

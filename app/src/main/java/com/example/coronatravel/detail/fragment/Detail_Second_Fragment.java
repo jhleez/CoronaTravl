@@ -36,7 +36,6 @@ public class Detail_Second_Fragment extends Fragment {
     TextView second;
 
     LinearLayout detail12, detail14, detail15, detail25, detail28, detail32, detail38, detail39;
-
     TextView Babyseat12, Car12, Pet12, Experience12, People12, Age12, Openday12, Useingdays12, Break12, Useingtime12, Introduce12;
     TextView Babyseat14, Car14, Pet14, People14, Taketime14, Discount14, Break14, Introduce14;
     TextView Age15, Place15, Start15, End15, Program15, Positionintroduce15, Festival15, Reservation15, Discount15, Usemoney15;

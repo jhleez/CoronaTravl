@@ -5,12 +5,14 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import android.content.Intent;
+import android.graphics.LinearGradient;
 import android.os.Bundle;
 import android.os.SystemClock;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -22,6 +24,7 @@ import com.example.coronatravel.detail.Detail_view;
 public class ListViewFragment extends Fragment {
 
     public static ListView listView;
+    public static LinearLayout linearLayout;
     long mLastClickTime = 0;
     @Nullable
     @Override
@@ -33,11 +36,13 @@ public class ListViewFragment extends Fragment {
 
         view= inflater.inflate(R.layout.activity_list_view,container,false);
         listView = view.findViewById(R.id.list_view);
+        linearLayout=view.findViewById(R.id.listlayout);
 
       //  ((MainActivity)getActivity()).aroundSearch("12","1000","A","126.981611","37.568477","1");
         //변수에 우리가 선택한 스피너, 위도경도, 정렬이 드가면 됨
         ItemAdapter itemAdapter = new ItemAdapter(MainActivity.LocationBasedList_ArrayList);
         listView.setAdapter(itemAdapter);
+
 
 
 
