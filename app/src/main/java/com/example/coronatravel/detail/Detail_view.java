@@ -526,112 +526,6 @@ public class Detail_view extends AppCompatActivity {
 
 
 
-        //init2();
-
-//        String detailInfoUrl = "http://api.visitkorea.or.kr/openapi/service/rest/KorService/detailIntro?" +
-//                "ServiceKey=" + ServiceKey +
-//                "&contentTypeId=" + contenttypeid +
-//                "&contentId=" + contentid +
-//                "&MobileOS=ETC&MobileApp=TourAPI3.0_Guide&introYN=Y&_type=json";
-//
-//        String JSONFromdetailInfoURL = "";
-//        try {
-//            JSONFromdetailInfoURL = new HttpReqTask().execute(detailInfoUrl).get();
-//        } catch (Exception e) {
-//        }
-//
-//        detailInfo_12 detail_I_12 = new detailInfo_12();
-//        detailInfo_14 detail_I_14 = new detailInfo_14();
-//        detailInfo_15 detail_I_15 = new detailInfo_15();
-//        detailInfo_25 detail_I_25 = new detailInfo_25();
-//        detailInfo_28 detail_I_28 = new detailInfo_28();
-//        detailInfo_32 detail_I_32 = new detailInfo_32();
-//        detailInfo_38 detail_I_38 = new detailInfo_38();
-//        detailInfo_39 detail_I_39 = new detailInfo_39();
-//        Data.contentid = contentid;
-//        Data.contenttypeid = contenttypeid;
-//
-//        if (contenttypeid.equals("12")) {
-//            detail_I_12 = detail_I_12.JSONParsing(JSONFromdetailInfoURL);
-//        } else if (contenttypeid.equals("14")) {
-//            detail_I_14 = detail_I_14.JSONParsing(JSONFromdetailInfoURL);
-//        } else if (contenttypeid.equals("15")) {
-//            detail_I_15 = detail_I_15.JSONParsing(JSONFromdetailInfoURL);
-//        } else if (contenttypeid.equals("25")) {
-//            detail_I_25 = detail_I_25.JSONParsing(JSONFromdetailInfoURL);
-//        } else if (contenttypeid.equals("28")) {
-//            detail_I_28 = detail_I_28.JSONParsing(JSONFromdetailInfoURL);
-//        } else if (contenttypeid.equals("32")) {
-//            detail_I_32 = detail_I_32.JSONParsing(JSONFromdetailInfoURL);
-//        } else if (contenttypeid.equals("38")) {
-//            detail_I_38 = detail_I_38.JSONParsing(JSONFromdetailInfoURL);
-//        } else if (contenttypeid.equals("39")) {
-//            detail_I_39 = detail_I_39.JSONParsing(JSONFromdetailInfoURL);
-//        }
-//
-//        Data. detail_I_12 = detail_I_12;
-//        Data. detail_I_14 = detail_I_14;
-//        Data. detail_I_15 = detail_I_15;
-//        Data. detail_I_25 = detail_I_25;
-//        Data. detail_I_28 = detail_I_28;
-//        Data. detail_I_32 = detail_I_32;
-//        Data. detail_I_38 = detail_I_38;
-//        Data. detail_I_39 = detail_I_39;
-//
-//        String detailRepeatURL = "http://api.visitkorea.or.kr/openapi/service/rest/KorService/detailInfo?" +
-//                "ServiceKey="+ServiceKey+
-//                "&contentTypeId="+contenttypeid+
-//                "&contentId="+contentid+
-//                "&MobileOS=AND&MobileApp=CoronaTravel&listYN=Y&_type=json";
-//        String JSONFromdetailRepeat = "";
-//        try {
-//            JSONFromdetailRepeat = new HttpReqTask().execute(detailRepeatURL).get();
-//        } catch (Exception e) {
-//            ;
-//        }
-//        if(contenttypeid.equals("25")){
-//            detailRepeat_25.JSONParsing(JSONFromdetailRepeat);
-//        }
-//        else if(contenttypeid.equals("32")){
-//            detailRepeat_32.JSONParsing(JSONFromdetailRepeat);
-//        }
-//        else{
-//            detailRepeat.JSONParsing(JSONFromdetailRepeat);
-//        }
-
-
-//        String detailImageUrl = "http://api.visitkorea.or.kr/openapi/service/rest/KorService/detailImage?" +
-//                "ServiceKey=" + ServiceKey +
-//                "&contentTypeId=" + contenttypeid +
-//                "&MobileOS=AND&MobileApp=CoronaTravel" +
-//                "&contentId=" + contentid +
-//                "&imageYN=Y&_type=json";
-//        String JSONFromdetailImageUrl = "";
-//        String image;
-//        try {
-//            JSONFromdetailImageUrl = new HttpReqTask().execute(detailImageUrl).get();
-//        } catch (Exception e) {
-//            ;
-//        }
-//        detailImage.JSONParsing(JSONFromdetailImageUrl);
-
-
-//        String dist = "10000";
-//        String maskUrl = "";
-//        maskUrl = "https://8oi9s0nnth.apigw.ntruss.com/corona19-masks/v1/storesByGeo/json?" +
-//                "lat=" + detail_C.getMapy() + "&" +
-//                "lng=" + detail_C.getMapx() + "&" +
-//                "m=" + dist;
-//        String JSONFromTotalSearch = "";
-//        try {
-//            JSONFromTotalSearch = new HttpReqTask().execute(maskUrl).get();
-//        } catch (Exception e) {
-//            Log.d("TAG", "jsonparsing error");
-//        }
-//        Mask.JSONParsing(JSONFromTotalSearch);
-//
-//        maskSwipeAdapter = new MaskSwipeAdapter(getSupportFragmentManager(), MainActivity.MASK_AraayList);
-//        if (MainActivity.MASK_AraayList.size() != 0) viewPager_mask.setAdapter(maskSwipeAdapter);
     }
 
     public void init2() {
@@ -673,8 +567,14 @@ public class Detail_view extends AppCompatActivity {
         } catch (Exception e) {
             Log.d("TAG", "jsonparsing error");
         }
-        String totalCount = ShortWeather.JSONParsing(JSONFromShortWeatherURL);
-        int totalPage = (Integer.parseInt(totalCount) / 50) + 1;
+
+        String totalCount = "260";
+        int totalPage=7;
+        totalCount = ShortWeather.JSONParsing(JSONFromShortWeatherURL);
+        if(totalCount.isEmpty()){
+            totalCount ="260";
+        }
+        totalPage = (Integer.parseInt(totalCount) / 50) + 1;
         pagenumber = String.valueOf(Integer.parseInt(pagenumber) + 1);
 
         while (Integer.parseInt(pagenumber) <= totalPage) {
