@@ -155,7 +155,8 @@ public class Detail_view extends AppCompatActivity {
 
         viewPager_mask = findViewById(R.id.mask_viewpager);
         frameLayout = findViewById(R.id.detail_framlayout);
-
+        Data.contentid = contentid;
+        Data.contenttypeid = contenttypeid;
         street.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -201,8 +202,6 @@ public class Detail_view extends AppCompatActivity {
                         detailInfo_32 detail_I_32 = new detailInfo_32();
                         detailInfo_38 detail_I_38 = new detailInfo_38();
                         detailInfo_39 detail_I_39 = new detailInfo_39();
-                        Data.contentid = contentid;
-                        Data.contenttypeid = contenttypeid;
 
                         if (contenttypeid.equals("12")) {
                             detail_I_12 = detail_I_12.JSONParsing(JSONFromdetailInfoURL);

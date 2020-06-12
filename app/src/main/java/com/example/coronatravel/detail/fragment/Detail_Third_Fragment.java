@@ -11,10 +11,12 @@ import androidx.fragment.app.Fragment;
 
 import com.example.coronatravel.R;
 import com.example.coronatravel.detail.detailRepeat;
+import com.example.coronatravel.detail.detailRepeat_25;
 
 
 public class Detail_Third_Fragment extends Fragment {
 
+    String contentid,contenttypeid;
     TextView third;
     public Detail_Third_Fragment() {
         // Required empty public constructor
@@ -27,15 +29,24 @@ public class Detail_Third_Fragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_detail_third_, container, false);
         // Inflate the layout for this fragment
 
-
+        contentid = Data.contentid;
+        contenttypeid = Data.contenttypeid;
 
         third = view.findViewById(R.id.third);
         third.setText("");
-        String repeat="";
-        for(int i =0;i<detailRepeat.repeat_array.size();i++){
-            repeat = repeat + detailRepeat.repeat_array.get(i).getInfoname() +": "+detailRepeat.repeat_array.get(i).getInfotext() + "\n\n";
+
+        if(contenttypeid.equals("25")){
+            third.setText(detailRepeat_25.repeat_array.get(0).getSubdetailalt() +"\n"+ detailRepeat_25.repeat_array.get(0).getSubdetailoverview());
         }
-        third.setText(repeat);
+        else {
+            String repeat = "";
+            for (int i = 0; i < detailRepeat.repeat_array.size(); i++) {
+                repeat = repeat + detailRepeat.repeat_array.get(i).getInfoname() + ": " + detailRepeat.repeat_array.get(i).getInfotext() + "\n\n";
+            }
+            third.setText(repeat);
+        }
+
+
         Toast.makeText(getContext(), detailRepeat.repeat_array.size()+"", Toast.LENGTH_SHORT).show();
         return view;
     }

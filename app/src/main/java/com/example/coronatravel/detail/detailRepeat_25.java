@@ -95,6 +95,7 @@ public class detailRepeat_25 {
 
                 subclass = new detailRepeat_25(subdetailalt, subdetailimg,subdetailoverview);
                 repeat_array.add(subclass);
+                Log.d("코스반복정보",repeat_array.get(i).getSubdetailalt());
             }
         } catch (JSONException e) {
             Log.d("TAG", "parsing error");
