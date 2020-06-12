@@ -446,6 +446,7 @@ public class TotalsearchFragment extends Fragment implements ViewPager.OnPageCha
                 bigcity_string[0] = (String) listView1.getAdapter().getItem(position);
                 temp1[0] = (int) listView1.getAdapter().getItemId(position);
                 temp2[0] = 0;
+                smallcity_string[0]="";
                 textView.setText(bigcity_string[0]);
                 TotalsearchCityAdapter totalsearchCityAdapter = new TotalsearchCityAdapter(smallarraylist);
                 listView2.setAdapter(totalsearchCityAdapter);

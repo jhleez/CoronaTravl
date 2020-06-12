@@ -120,7 +120,7 @@
 
 
     <string-array name="total_middle">
-        <item>전체</item>
+       <!-- <item>전체</item>
         <item>강서구</item>
         <item>중구</item>
         <item>괴산군</item>
@@ -350,7 +350,7 @@
         <item>평택시</item>
         <item>포천시</item>
         <item>하남시</item>
-        <item>화성시</item>
+        <item>화성시</item>-->
     </string-array>
     <string-array name="seoul_middle">
         <item>전체</item>
