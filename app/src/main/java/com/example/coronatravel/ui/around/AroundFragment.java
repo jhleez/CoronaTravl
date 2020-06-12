@@ -175,9 +175,8 @@ public class AroundFragment extends Fragment implements ViewPager.OnPageChangeLi
 
         contentTypeId = TypeId.ContentTypeId(spinner.getSelectedItemPosition());
 
-
         ((MainActivity) getActivity()).aroundSearch(contentTypeId, "10000", "E",  String.valueOf(longitude),String.valueOf(latitude), "1");
-        Log.d("totalcount", LocationBasedList_Class.totalcount);
+        Log.d("거리","거리" + MainActivity.LocationBasedList_ArrayList.get(1).getDist());
         if (Integer.parseInt(LocationBasedList_Class.totalcount) != 0) {
 
             int pagecount= (Integer.parseInt(LocationBasedList_Class.totalcount)%10==0)?

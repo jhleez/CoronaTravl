@@ -14,13 +14,14 @@ public class LocationBasedList_Class {
     LocationBasedList_Class(){ // 여기에 SQLite 에 저장한 내용 삽입시키면 될듯?
 
     }
-    LocationBasedList_Class(String addr1,String contentid,String contenttypeid,String firstimage,String title)
+    LocationBasedList_Class(String addr1,String contentid,String contenttypeid,String firstimage,String title,String dist)
     {
         this.addr1 =addr1; //주소
         this.contentid=contentid;
         this.contenttypeid=contenttypeid;
         this.firstimage=firstimage; // 사진
         this.title=title; //제목
+        this.dist =dist;
     }
 
     public static String totalcount;
@@ -29,7 +30,15 @@ public class LocationBasedList_Class {
     private String contenttypeid;
     private String firstimage;
     private String title;
+    private String dist;
 
+    public String getDist() {
+        return dist;
+    }
+
+    public void setDist(String dist) {
+        this.dist = dist;
+    }
 
     public String getAddr1() {
         return addr1;
@@ -109,11 +118,16 @@ public class LocationBasedList_Class {
                 }catch (JSONException e){
                     firstimage="";
                 }
+                try {
+                    dist = jsonObject_item.getString("dist");
+                } catch (JSONException e) {
+                    dist = "";
+                }
                 contentid =jsonObject_item.getString("contentid");
                 contenttypeid = jsonObject_item.getString("contenttypeid");
                 title = jsonObject_item.getString("title");
 
-                LocationBasedList_Class subclass = new LocationBasedList_Class(addr1,contentid,contenttypeid,firstimage,title);
+                LocationBasedList_Class subclass = new LocationBasedList_Class(addr1,contentid,contenttypeid,firstimage,title,dist);
                 MainActivity.LocationBasedList_ArrayList.add(subclass);
             }
             else {
@@ -143,7 +157,7 @@ public class LocationBasedList_Class {
                     contenttypeid = subJsonObject.getString("contenttypeid");
                     title = subJsonObject.getString("title");
 
-                    LocationBasedList_Class subclass = new LocationBasedList_Class(addr1, contentid, contenttypeid, firstimage, title);
+                    LocationBasedList_Class subclass = new LocationBasedList_Class(addr1, contentid, contenttypeid, firstimage, title,dist);
                     MainActivity.LocationBasedList_ArrayList.add(subclass);
                 }
             }

@@ -246,7 +246,7 @@ public class MainActivity extends AppCompatActivity {
             firstimage = iCursor.getString(iCursor.getColumnIndex("firstimage"));
             title = iCursor.getString(iCursor.getColumnIndex("title"));
 
-            LocationBasedList_Class subclass = new LocationBasedList_Class(addr1,contentid,contenttypeid,firstimage,title);
+            LocationBasedList_Class subclass = new LocationBasedList_Class(addr1,contentid,contenttypeid,firstimage,title,"");
             LocationBasedList_ArrayList.add(subclass);
         }
     }
