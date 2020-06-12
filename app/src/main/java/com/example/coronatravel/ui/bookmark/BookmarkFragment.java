@@ -57,7 +57,14 @@ public class BookmarkFragment extends Fragment {
             }
         });
 
-
         return root;
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        ((MainActivity) getActivity()).bookMarkList();
+        itemAdapter = new ItemAdapter(MainActivity.LocationBasedList_ArrayList);
+        listView.setAdapter(itemAdapter);
     }
 }
