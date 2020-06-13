@@ -117,6 +117,13 @@ public class Detail_Third_Fragment extends Fragment {
 
             }
             Log.i("course","course");
+            try{
+                Picasso.get().load(detailRepeat_25.repeat_array.get(0).getSubdetailimg()).placeholder(R.drawable.luggageicon).into(presentimageview);
+                third.setText(detailRepeat_25.repeat_array.get(0).getSubdetailoverview());
+                title.setText(detailRepeat_25.repeat_array.get(0).getSubdetailalt());
+            }catch (Exception e){
+                presentimageview.setImageResource(R.drawable.luggageicon);
+            }
 
         }
         else {
@@ -127,7 +134,7 @@ public class Detail_Third_Fragment extends Fragment {
             third.setText(repeat);
         }
 
-        Toast.makeText(getContext(), detailRepeat.repeat_array.size()+"", Toast.LENGTH_SHORT).show();
+        //Toast.makeText(getContext(), detailRepeat.repeat_array.size()+"", Toast.LENGTH_SHORT).show();
         return view;
     }
     public void addView(TextView textView,ImageView imageView,int width, int height){
