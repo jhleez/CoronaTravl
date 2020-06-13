@@ -177,6 +177,9 @@ public class ShortWeather {
                     MainActivity.sub_shortweather.setTMX(TMX);
                     MainActivity.ShortWeather_ArrayList.add(MainActivity.sub_shortweather);
                     MainActivity.sub_shortweather = new ShortWeather();
+                    if(MainActivity.ShortWeather_ArrayList.size() == 2){
+                        return "";
+                    }
                 }
             }
         } catch (JSONException e) {

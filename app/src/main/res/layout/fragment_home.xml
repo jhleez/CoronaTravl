@@ -676,6 +676,8 @@
                 android:textColor="#333333">
             </TextView>
             <HorizontalScrollView
+                android:scrollbarFadeDuration = "0"
+                android:scrollbarAlwaysDrawHorizontalTrack="true"
                 android:layout_marginLeft="30dp"
                 android:layout_marginTop="25dp"
                 android:layout_marginRight="30dp"

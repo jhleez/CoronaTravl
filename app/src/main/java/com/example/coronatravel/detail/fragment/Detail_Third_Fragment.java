@@ -21,6 +21,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.coronatravel.R;
 import com.example.coronatravel.detail.detailRepeat;
 import com.example.coronatravel.detail.detailRepeat_25;
+import com.example.coronatravel.detail.detailRepeat_32;
 import com.squareup.picasso.Picasso;
 
 
@@ -125,6 +126,9 @@ public class Detail_Third_Fragment extends Fragment {
                 presentimageview.setImageResource(R.drawable.luggageicon);
             }
 
+        }
+        else if(contenttypeid.equals("32")){
+            third.setText(detailRepeat_32.repeat_array.get(0).getRoomtitle() + "\n" + detailRepeat_32.repeat_array.get(0).getRoombasecount());
         }
         else {
             String repeat = "";

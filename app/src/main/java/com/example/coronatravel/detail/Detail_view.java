@@ -167,6 +167,8 @@ public class Detail_view extends AppCompatActivity {
             }
         });
 
+
+
         l=new LoadingDialog(this);
 
         final int firstnavigationclick[] = {0, 0, 0, 0};
@@ -367,13 +369,41 @@ public class Detail_view extends AppCompatActivity {
                                         viewPager_mask.setAdapter(maskSwipeAdapter);
                                     firstclick++;
                                     l.close();
+                                    new Handler().postDelayed(new Runnable()
+                                    {
+                                        TextView mask_next = (TextView)findViewById(R.id.mask_next);
+                                        TextView mask_pre = (TextView)findViewById(R.id.mask_pre);
+                                        @Override
+                                        public void run()
+                                        {
+                                            mask_pre.setVisibility(View.INVISIBLE);
+                                            mask_next.setVisibility(View.INVISIBLE);
+                                        }
+                                    }, 2000);
                                 } catch (Exception e) {
                                     e.printStackTrace();
                                 }
                             }
                         }, 500);
+
+
                     }
                 } else {
+                    TextView mask_next = (TextView)findViewById(R.id.mask_next);
+                    TextView mask_pre = (TextView)findViewById(R.id.mask_pre);
+                    mask_pre.setVisibility(View.VISIBLE);
+                    mask_next.setVisibility(View.VISIBLE);
+                    new Handler().postDelayed(new Runnable()
+                    {
+                        TextView mask_next = (TextView)findViewById(R.id.mask_next);
+                        TextView mask_pre = (TextView)findViewById(R.id.mask_pre);
+                        @Override
+                        public void run()
+                        {
+                            mask_pre.setVisibility(View.INVISIBLE);
+                            mask_next.setVisibility(View.INVISIBLE);
+                        }
+                    }, 2000);
                     TransitionManager.beginDelayedTransition(maskcardview, new AutoTransition());
                     mask_expandlayout.setVisibility(View.GONE);
                     maskexpandbt.setBackgroundResource(R.drawable.ic_expand_more_black_24dp);
