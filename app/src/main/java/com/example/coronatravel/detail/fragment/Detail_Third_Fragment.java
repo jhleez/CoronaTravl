@@ -161,7 +161,7 @@ public class Detail_Third_Fragment extends Fragment {
                 Picasso.get().load(detailRepeat_32.repeat_array.get(0).getRoomimg1()).placeholder(R.drawable.luggageicon).into(presentimageview);
                 third.setText("방 사이즈(평수) : "+detailRepeat_32.repeat_array.get(0).getRoomsize1()+
                         " 평\n기준 인원 : "+detailRepeat_32.repeat_array.get(0).getRoombasecount()+
-                        " 명\n최대 인원"+ detailRepeat_32.repeat_array.get(0).getRoommaxcount()+
+                        " 명\n최대 인원 : "+ detailRepeat_32.repeat_array.get(0).getRoommaxcount()+
                         " 명\n비수기 주중 최소 가격 : "+detailRepeat_32.repeat_array.get(0).getRoomoffseasonminfee1()+
                         " 원\n비수기 주말 최소 가격 : "+ detailRepeat_32.repeat_array.get(0).getRoomoffseasonminfee2()+
                         " 원\n성수기 주중 최소 가격 : "+ detailRepeat_32.repeat_array.get(0).getRoompeakseasonminfee1()+
