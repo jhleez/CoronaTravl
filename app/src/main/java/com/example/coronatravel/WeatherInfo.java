@@ -21,7 +21,6 @@ import java.util.Date;
 import java.util.Locale;
 
 public class WeatherInfo extends AppCompatActivity {
-    TextView test;
     private RecyclerView weatherListview;
     private myWeatherAdapter weatherAdapter;
     LinearLayoutManager layoutManager;

@@ -140,7 +140,7 @@ public class AroundFragment extends Fragment implements ViewPager.OnPageChangeLi
 
     @Override
     public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
-        Log.d("ITPANGPANG", "onPageScrolled : " + position);
+        //Log.d("ITPANGPANG", "onPageScrolled : " + position);
     }
 
     @Override
@@ -156,7 +156,7 @@ public class AroundFragment extends Fragment implements ViewPager.OnPageChangeLi
             next.setVisibility(View.VISIBLE);
         }
 
-        Log.d("ITPANGPANG", "onPageSelected : " + position);
+       // Log.d("ITPANGPANG", "onPageSelected : " + position);
         ((MainActivity) getActivity()).aroundSearch(contentTypeId, "10000", "E", String.valueOf(longitude), String.valueOf(latitude), String.valueOf(position + 1));
         //변수에 우리가 선택한 스피너, 위도경도, 정렬이 드가면 됨
         ItemAdapter itemAdapter = new ItemAdapter(MainActivity.LocationBasedList_ArrayList);
@@ -166,7 +166,7 @@ public class AroundFragment extends Fragment implements ViewPager.OnPageChangeLi
 
     @Override
     public void onPageScrollStateChanged(int state) {
-        Log.d("ITPANGPANG", "onPageScrollStateChanged : " + state);
+        //Log.d("ITPANGPANG", "onPageScrollStateChanged : " + state);
 
     }
 
@@ -176,7 +176,7 @@ public class AroundFragment extends Fragment implements ViewPager.OnPageChangeLi
         contentTypeId = TypeId.ContentTypeId(spinner.getSelectedItemPosition());
 
         ((MainActivity) getActivity()).aroundSearch(contentTypeId, "10000", "E",  String.valueOf(longitude),String.valueOf(latitude), "1");
-        Log.d("거리","거리" + MainActivity.LocationBasedList_ArrayList.get(1).getDist());
+        //Log.d("거리","거리" + MainActivity.LocationBasedList_ArrayList.get(1).getDist());
         if (Integer.parseInt(LocationBasedList_Class.totalcount) != 0) {
 
             int pagecount= (Integer.parseInt(LocationBasedList_Class.totalcount)%10==0)?
@@ -330,7 +330,7 @@ public class AroundFragment extends Fragment implements ViewPager.OnPageChangeLi
                 if (checkLocationServicesStatus()) {
                     if (checkLocationServicesStatus()) {
 
-                        Log.d("@@@", "onActivityResult : GPS 활성화 되있음");
+                       // Log.d("@@@", "onActivityResult : GPS 활성화 되있음");
                         checkRunTimePermission();
                         return;
                     }

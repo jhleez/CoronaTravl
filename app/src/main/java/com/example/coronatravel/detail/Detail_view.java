@@ -166,7 +166,7 @@ public class Detail_view extends AppCompatActivity {
 
             @Override
             public void onPageSelected(int position) {
-                pageTextview.setText("< "+(position+1)+" of "+maskSwipeAdapter.getCount()+" >");
+                pageTextview.setText("< " + (position + 1) + " of " + maskSwipeAdapter.getCount() + " >");
             }
 
             @Override
@@ -279,7 +279,7 @@ public class Detail_view extends AppCompatActivity {
                     fragmentTransaction.replace(R.id.detail_framlayout, detail_third_fragment);
                     fragmentTransaction.commit();
                 } else if (i == R.id.fourth_menu) {
-                    Log.d("click", String.valueOf(firstnavigationclick[3]));
+                 //   Log.d("click", String.valueOf(firstnavigationclick[3]));
                     if (firstnavigationclick[3] == 0) {
                         String detailImageUrl = "http://api.visitkorea.or.kr/openapi/service/rest/KorService/detailImage?" +
                                 "ServiceKey=" + ServiceKey +
@@ -369,21 +369,21 @@ public class Detail_view extends AppCompatActivity {
                                 "lng=" + detail_C.getMapx() + "&" +
                                 "m=" + dist;
                         final String[] JSONFromTotalSearch = {""};
-                        Log.i("delay", "start");
+                       // Log.i("delay", "start");
                         Handler delayHandler = new Handler();
                         final String finalMaskUrl = maskUrl;
                         delayHandler.postDelayed(new Runnable() {
                             @Override
                             public void run() {
                                 try {
-                                    Log.i("delay", "parsingstart+" + finalMaskUrl);
+                                   // Log.i("delay", "parsingstart+" + finalMaskUrl);
                                     JSONFromTotalSearch[0] = new HttpReqTask().execute(finalMaskUrl).get();
-                                    Log.i("delay", "parsingend");
+                                   // Log.i("delay", "parsingend");
                                     Mask.JSONParsing(JSONFromTotalSearch[0]);
                                     maskSwipeAdapter = new MaskSwipeAdapter(getSupportFragmentManager(), MainActivity.MASK_AraayList);
                                     if (MainActivity.MASK_AraayList.size() != 0)
                                         viewPager_mask.setAdapter(maskSwipeAdapter);
-                                    pageTextview.setText("< 1"+" of "+maskSwipeAdapter.getCount()+" >");
+                                    pageTextview.setText("< 1" + " of " + maskSwipeAdapter.getCount() + " >");
                                     firstclick++;
                                     l.close();
                                 } catch (Exception e) {
@@ -557,17 +557,34 @@ public class Detail_view extends AppCompatActivity {
     }
 
     public void init(int addressCode) {
-        Date currentTime = Calendar.getInstance().getTime();
+        Calendar cal = Calendar.getInstance();
+        Date currentTime = cal.getTime();
         SimpleDateFormat dayFormat = new SimpleDateFormat("dd", Locale.getDefault());
         SimpleDateFormat monthFormat = new SimpleDateFormat("MM", Locale.getDefault());
         SimpleDateFormat yearFormat = new SimpleDateFormat("yyyy", Locale.getDefault());
+        SimpleDateFormat timeFormat = new SimpleDateFormat("HH", Locale.getDefault());
 
         String year = yearFormat.format(currentTime);
         String month1 = monthFormat.format(currentTime);
         String day = dayFormat.format(currentTime);
-
+        String time = timeFormat.format(currentTime);
         String today = year + month1 + day;
 
+        Toast.makeText(Detail_view.this, "" + time, Toast.LENGTH_SHORT).show();
+        int temp = Integer.parseInt(time);
+       // Log.d("시간", String.valueOf(temp));
+        temp++;
+       // Log.d("시간", String.valueOf(temp));
+        if (Integer.parseInt(time) < 5) {
+            cal.add(Calendar.DATE, -1);
+            currentTime = cal.getTime();
+            year = yearFormat.format(currentTime);
+            month1 = monthFormat.format(currentTime);
+            day = dayFormat.format(currentTime);
+            time = timeFormat.format(currentTime);
+            today = year + month1 + day;
+           // Log.d("시간", today);
+        }
         String pagenumber = "1";
         String ShortWeatherURL = "http://apis.data.go.kr/1360000/VilageFcstInfoService/getVilageFcst?serviceKey=LuQHzrmd0D8xz9tDN8srTETgDoVfSeUV%2FAvFrhKX%2BtTdNMG7GJINi%2B6INCB7yMFJXXIO%2FKb7JfNeFdA%2BNmEIqA%3D%3D" +
                 "&numOfRows=50" +
@@ -577,7 +594,7 @@ public class Detail_view extends AppCompatActivity {
                 "&base_time=0500&" + TypeId.nxny(String.valueOf(addressCode));
         //"&nx=55&ny=127";
 
-        Log.d("TAG", ShortWeatherURL);
+        //Log.d("TAG", ShortWeatherURL);
 
         String JSONFromShortWeatherURL = "a";
         try {
@@ -785,6 +802,7 @@ public class Detail_view extends AppCompatActivity {
         menuInflater.inflate(R.menu.detail_menu, menu);
         return true;
     }
+
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         if (item.getItemId() == R.id.third_menu) {

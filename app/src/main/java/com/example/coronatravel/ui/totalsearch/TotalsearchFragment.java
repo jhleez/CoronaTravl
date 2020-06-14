@@ -244,7 +244,6 @@ public class TotalsearchFragment extends Fragment implements ViewPager.OnPageCha
                 service_typemiddle = TypeId.cat2(spinner_hightype.getSelectedItemPosition(), spinner_middletype.getSelectedItemPosition());//중분류
                 city_big = TypeId.areacode(a);//지역선택
                 city_small = String.valueOf(b);//시군구선택
-                Log.d("posi", service_typehigh + service_typemiddle);
                 input = editText_input.getText().toString(); // 검색 내용
 
                 int temp = spinner_searchtype.getSelectedItemPosition();
@@ -382,7 +381,6 @@ public class TotalsearchFragment extends Fragment implements ViewPager.OnPageCha
     @Override
     public void onPageScrollStateChanged(int state) {
 
-        Log.i("state", state + "");
 
     }
 

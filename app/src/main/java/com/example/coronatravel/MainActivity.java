@@ -161,7 +161,6 @@ public class MainActivity extends AppCompatActivity {
                 "&numOfRows=10" +
                 "&pageNo=" +pageNo+
                 "&_type=json";
-        Log.d("URL",LocalSearchAddr);
         String JSONFromLocalSearch = "";
         try {
             JSONFromLocalSearch = new HttpReqTask().execute(LocalSearchAddr).get();
@@ -192,7 +191,6 @@ public class MainActivity extends AppCompatActivity {
                 "&numOfRows=5" +
                 "&pageNo=" +pageNo+
                 "&_type=json";
-        Log.d("URL",LocalSearchAddr);
         String JSONFromLocalSearch = "";
         try {
             JSONFromLocalSearch = new HttpReqTask().execute(LocalSearchAddr).get();
@@ -229,7 +227,7 @@ public class MainActivity extends AppCompatActivity {
                 "&numOfRows=10&" +
                 "pageNo="+pageNo+
                 "&_type=json";
-        Log.d("TAG",TotalSearchAddr);
+
         String JSONFromTotalSearch = "";
         try {
             JSONFromTotalSearch = new HttpReqTask().execute(TotalSearchAddr).get();

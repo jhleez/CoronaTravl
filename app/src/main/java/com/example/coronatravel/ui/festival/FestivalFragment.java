@@ -47,16 +47,6 @@ public class FestivalFragment extends Fragment implements ViewPager.OnPageChange
         spinner_term = root.findViewById(R.id.spinner_festival_term);
         spinner_searchtype=root.findViewById(R.id.spinner_festival_searchtype);
 
-        /* listView = root.findViewById(R.id.listview_festival_dataview);
-
-        spinner_hightype=root.findViewById(R.id.spinner_festival_hightype);
-        spinner_middletype=root.findViewById(R.id.spinner_festival_middletype);
-        spinner_lowtype=root.findViewById(R.id.spinner_festival_lowtype);
-        spinner_bigcity=root.findViewById(R.id.spinner_festival_bigcity);
-        spinner_smallcity=root.findViewById(R.id.spinner_festival_smallcity);
-        spinner_searchtype=root.findViewById(R.id.spinner_festival_searchtype);
-
-       */
         Button button = root.findViewById(R.id.button_festival_search);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -65,9 +55,6 @@ public class FestivalFragment extends Fragment implements ViewPager.OnPageChange
                 term = spinner_term.getSelectedItemPosition();
                 searchtype = spinner_searchtype.getSelectedItemPosition();
 
-                //여기에 MainAcitivity.Festival()생성
-
-                Log.d("totalcount", LocationBasedList_Class.totalcount);
                 if (Integer.parseInt(LocationBasedList_Class.totalcount) != 0) {
                     swipeAdapter = new SwipeAdapter(getChildFragmentManager(), (Integer.parseInt(LocationBasedList_Class.totalcount) / 5) + 1);
 

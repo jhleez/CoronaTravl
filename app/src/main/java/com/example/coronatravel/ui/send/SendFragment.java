@@ -21,14 +21,6 @@ import com.example.coronatravel.R;
 
 public class SendFragment extends Fragment {
 
-  /*  private static final String URL_DAUM_MAP = "http://m.map.daum.net/";
-    private static final String URL_NAVER_MAP = "http://m.map.naver.com/";
-    private static final String TAG = MainActivityTest.class.getSimpleName();
-    private static final int MY_PERMISSION_REQUEST_LOCATION = 0;
-    private WebView webView;
-*/
-
-
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
 

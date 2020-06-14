@@ -68,7 +68,6 @@ public class Mask {
         String remain_stat="";
         String type="";
         String stock_at="";
-        Log.d("마스크","함수 진입");
         MainActivity.MASK_AraayList.clear();
         try {
             JSONObject jsonObject = new JSONObject(JSONFROMMASK);
@@ -86,7 +85,6 @@ public class Mask {
                 if(remain_stat.equals("null"))continue;
                 type = subJsonObject.getString("type");
                 stock_at = subJsonObject.getString("stock_at");
-                Log.d("마스크","어레이리스트 추가");
                 Mask subclass = new Mask(addr,name,remain_stat,type,stock_at);
                 MainActivity.MASK_AraayList.add(subclass);
             }
