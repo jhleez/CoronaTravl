@@ -1,5 +1,6 @@
 package com.example.coronatravel.detail;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
@@ -23,6 +24,7 @@ import android.transition.AutoTransition;
 import android.transition.TransitionManager;
 import android.util.Log;
 import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
@@ -68,7 +70,7 @@ import java.util.concurrent.ExecutionException;
 public class Detail_view extends AppCompatActivity {
 
     //TextView testCommon, testInfo,testImage,testMask;
-    ConstraintLayout corona_layout,mask_layout,weather_layout;
+    ConstraintLayout corona_layout, mask_layout, weather_layout;
     CheckBox checkbox;
     DbOpenHelper mDbOpenHelper;
     String addr1, contentid, contenttypeid, firstimage, title;
@@ -81,8 +83,9 @@ public class Detail_view extends AppCompatActivity {
     ChipNavigationBar chipNavigationBar;
     String ServiceKey;
     ImageButton street;
+    Menu menu;
 
-    TextView titletext,addresstext;
+    TextView titletext, addresstext;
     ViewPager viewPager_mask;
     MaskSwipeAdapter maskSwipeAdapter;
 
@@ -93,6 +96,7 @@ public class Detail_view extends AppCompatActivity {
     LinearLayoutManager layoutManager;
     ArrayList<weatherListViewItem> itemList;
     LoadingDialog l;
+    TextView pageTextview;
 
 
     private int addressCode = 0, addressIndex;
@@ -105,8 +109,9 @@ public class Detail_view extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail_view);
 
+        // menuItem=findViewById(R.id.third_menu);
 
-
+        pageTextview = findViewById(R.id.mask_page_textview);
         totalP = (TextView) findViewById(R.id.AddressTotalTextview);
         citynameP = (TextView) findViewById(R.id.AddressCitynameTextview);
         plusP = (TextView) findViewById(R.id.AddressPlusTextview);
@@ -127,13 +132,12 @@ public class Detail_view extends AppCompatActivity {
         title = MainActivity.LocationBasedList_ArrayList.get(position).getTitle();
         ServiceKey = "2YHyxt5iKCnOzEiYHMcML%2FgiOywB9tnJeL6D%2BHqsL48iMsSOXwPxQHTjCHq5dA1zAEcNIdcQUXnvFMN0aIdLsQ%3D%3D";
 
-        titletext=findViewById(R.id.detail_title_text);
-        addresstext=findViewById(R.id.detil_add_textview);
-        //titletext.setText("이름 : " + Data.detail_C.getTitle());
+        titletext = findViewById(R.id.detail_title_text);
+        addresstext = findViewById(R.id.detil_add_textview);
 
-        corona_layout=findViewById(R.id.corona_layout);
-        mask_layout=findViewById(R.id.mask_layout);
-        weather_layout=findViewById(R.id.weather_layout);
+        corona_layout = findViewById(R.id.corona_layout);
+        mask_layout = findViewById(R.id.mask_layout);
+        weather_layout = findViewById(R.id.weather_layout);
 
 
         checkbox = (CheckBox) findViewById(R.id.checkbox);
@@ -154,6 +158,22 @@ public class Detail_view extends AppCompatActivity {
         coronacardview = findViewById(R.id.corona_cardview);
 
         viewPager_mask = findViewById(R.id.mask_viewpager);
+        viewPager_mask.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            @Override
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+
+            }
+
+            @Override
+            public void onPageSelected(int position) {
+                pageTextview.setText("< "+(position+1)+" of "+maskSwipeAdapter.getCount()+" >");
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int state) {
+
+            }
+        });
         frameLayout = findViewById(R.id.detail_framlayout);
         Data.contentid = contentid;
         Data.contenttypeid = contenttypeid;
@@ -168,8 +188,7 @@ public class Detail_view extends AppCompatActivity {
         });
 
 
-
-        l=new LoadingDialog(this);
+        l = new LoadingDialog(this);
 
         final int firstnavigationclick[] = {0, 0, 0, 0};
         chipNavigationBar = findViewById(R.id.chipnavigation);
@@ -343,9 +362,6 @@ public class Detail_view extends AppCompatActivity {
                                 .show();
 
 
-
-
-
                         String dist = "10000";
                         String maskUrl = "";
                         maskUrl = "https://8oi9s0nnth.apigw.ntruss.com/corona19-masks/v1/storesByGeo/json?" +
@@ -353,57 +369,31 @@ public class Detail_view extends AppCompatActivity {
                                 "lng=" + detail_C.getMapx() + "&" +
                                 "m=" + dist;
                         final String[] JSONFromTotalSearch = {""};
-                        Log.i("delay","start");
+                        Log.i("delay", "start");
                         Handler delayHandler = new Handler();
                         final String finalMaskUrl = maskUrl;
                         delayHandler.postDelayed(new Runnable() {
                             @Override
                             public void run() {
                                 try {
-                                    Log.i("delay","parsingstart+"+finalMaskUrl);
+                                    Log.i("delay", "parsingstart+" + finalMaskUrl);
                                     JSONFromTotalSearch[0] = new HttpReqTask().execute(finalMaskUrl).get();
-                                    Log.i("delay","parsingend");
+                                    Log.i("delay", "parsingend");
                                     Mask.JSONParsing(JSONFromTotalSearch[0]);
                                     maskSwipeAdapter = new MaskSwipeAdapter(getSupportFragmentManager(), MainActivity.MASK_AraayList);
                                     if (MainActivity.MASK_AraayList.size() != 0)
                                         viewPager_mask.setAdapter(maskSwipeAdapter);
+                                    pageTextview.setText("< 1"+" of "+maskSwipeAdapter.getCount()+" >");
                                     firstclick++;
                                     l.close();
-                                    new Handler().postDelayed(new Runnable()
-                                    {
-                                        TextView mask_next = (TextView)findViewById(R.id.mask_next);
-                                        TextView mask_pre = (TextView)findViewById(R.id.mask_pre);
-                                        @Override
-                                        public void run()
-                                        {
-                                            mask_pre.setVisibility(View.INVISIBLE);
-                                            mask_next.setVisibility(View.INVISIBLE);
-                                        }
-                                    }, 2000);
                                 } catch (Exception e) {
                                     e.printStackTrace();
                                 }
                             }
                         }, 500);
 
-
                     }
                 } else {
-                    TextView mask_next = (TextView)findViewById(R.id.mask_next);
-                    TextView mask_pre = (TextView)findViewById(R.id.mask_pre);
-                    mask_pre.setVisibility(View.VISIBLE);
-                    mask_next.setVisibility(View.VISIBLE);
-                    new Handler().postDelayed(new Runnable()
-                    {
-                        TextView mask_next = (TextView)findViewById(R.id.mask_next);
-                        TextView mask_pre = (TextView)findViewById(R.id.mask_pre);
-                        @Override
-                        public void run()
-                        {
-                            mask_pre.setVisibility(View.INVISIBLE);
-                            mask_next.setVisibility(View.INVISIBLE);
-                        }
-                    }, 2000);
                     TransitionManager.beginDelayedTransition(maskcardview, new AutoTransition());
                     mask_expandlayout.setVisibility(View.GONE);
                     maskexpandbt.setBackgroundResource(R.drawable.ic_expand_more_black_24dp);
@@ -542,17 +532,16 @@ public class Detail_view extends AppCompatActivity {
 
         titletext.setText("" + Data.detail_C.getTitle());
         if (titletext.length() < titletext.getMaxWidth()) titletext.setTextSize(20);
-        String hompagelink= Data.detail_C.getHomepage().contains("http")?Data.detail_C.getHomepage().substring(Data.detail_C.getHomepage().indexOf("http"), Data.detail_C.getHomepage().length())
-                :" - ";
+        String hompagelink = Data.detail_C.getHomepage().contains("http") ? Data.detail_C.getHomepage().substring(Data.detail_C.getHomepage().indexOf("http"), Data.detail_C.getHomepage().length())
+                : " - ";
 
-        String tellephon= Data.detail_C.getTel().contains("0") ? Data.detail_C.getTel().substring(
-                Data.detail_C.getTel().indexOf("0"),Data.detail_C.getTel().length()):" - ";
+        String tellephon = Data.detail_C.getTel().contains("0") ? Data.detail_C.getTel().substring(
+                Data.detail_C.getTel().indexOf("0"), Data.detail_C.getTel().length()) : " - ";
 
-        String addressstring =Data.detail_C.getAddr1().length()!=0? Data.detail_C.getAddr1():" - ";
+        String addressstring = Data.detail_C.getAddr1().length() != 0 ? Data.detail_C.getAddr1() : " - ";
         addresstext.setText("※ 주소 : " + addressstring + "\n※ 전화 번호 : " + tellephon + "\n※ 홈페이지 : " + hompagelink);
 
         chipNavigationBar.setItemSelected(R.id.first_menu, true);
-
 
 
     }
@@ -598,10 +587,10 @@ public class Detail_view extends AppCompatActivity {
         }
 
         String totalCount = "260";
-        int totalPage=7;
+        int totalPage = 7;
         totalCount = ShortWeather.JSONParsing(JSONFromShortWeatherURL);
-        if(totalCount.isEmpty()){
-            totalCount ="260";
+        if (totalCount.isEmpty()) {
+            totalCount = "260";
         }
         totalPage = (Integer.parseInt(totalCount) / 50) + 1;
         pagenumber = String.valueOf(Integer.parseInt(pagenumber) + 1);
@@ -788,5 +777,26 @@ public class Detail_view extends AppCompatActivity {
         protected void onPostExecute(String result) {
             plusP.setText(result);
         }
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater menuInflater = getMenuInflater();
+        menuInflater.inflate(R.menu.detail_menu, menu);
+        return true;
+    }
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId() == R.id.third_menu) {
+            Toast.makeText(this, "abc", Toast.LENGTH_SHORT).show();
+            if (contenttypeid.equals("25")) {
+                item.setTitle("여행 코스");
+            } else if (contenttypeid.equals("32")) {
+                item.setTitle("숙박 정보");
+            } else {
+                item.setTitle("추가 정보");
+            }
+        }
+        return true;
     }
 }

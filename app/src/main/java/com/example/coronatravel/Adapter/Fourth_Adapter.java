@@ -36,7 +36,7 @@ public class Fourth_Adapter extends BaseAdapter {
         ImageView imageView;
         imageView=convertView.findViewById(R.id.detail_image_view);
 
-        Picasso.get().load(URI).placeholder(R.drawable.sunnyicon).into(imageView);
+        Picasso.get().load(URI).placeholder(R.drawable.luggageicon).into(imageView);
         return convertView;
     }
 }
