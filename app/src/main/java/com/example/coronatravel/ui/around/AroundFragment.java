@@ -198,7 +198,7 @@ public class AroundFragment extends Fragment implements ViewPager.OnPageChangeLi
 
             ListViewFragment.listView.setAdapter(itemAdapter);
             ListViewFragment.linearLayout.setVisibility(View.GONE);
-            Toast.makeText(getActivity(), Integer.parseInt(LocationBasedList_Class.totalcount) + "\n" + "현재위치 \n위도 " + latitude + "\n경도 " + longitude + "\n" + address, Toast.LENGTH_LONG).show();
+           // Toast.makeText(getActivity(), Integer.parseInt(LocationBasedList_Class.totalcount) + "\n" + "현재위치 \n위도 " + latitude + "\n경도 " + longitude + "\n" + address, Toast.LENGTH_LONG).show();
         }else{
             ListViewFragment.linearLayout.setVisibility(View.VISIBLE);
         }

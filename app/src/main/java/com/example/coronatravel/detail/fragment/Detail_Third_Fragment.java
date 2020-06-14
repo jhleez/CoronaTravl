@@ -1,5 +1,6 @@
 package com.example.coronatravel.detail.fragment;
 
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -15,6 +16,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.cardview.widget.CardView;
+import androidx.core.content.res.ResourcesCompat;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -45,28 +47,6 @@ public class Detail_Third_Fragment extends Fragment {
         linearLayout=view.findViewById(R.id.fragment_linearlayout);
 
         title=view.findViewById(R.id.third_title);
-        scrollView=view.findViewById(R.id.third_scrollview);
-        scrollView.setOnTouchListener(new ListView.OnTouchListener() {
-            @Override
-            public boolean onTouch(View v, MotionEvent event) {
-                int action = event.getAction();
-                switch (action) {
-                    case MotionEvent.ACTION_DOWN:
-                        // Disallow ScrollView to intercept touch events.
-                        v.getParent().requestDisallowInterceptTouchEvent(true);
-                        break;
-
-                    case MotionEvent.ACTION_UP:
-                        // Allow ScrollView to intercept touch events.
-                        v.getParent().requestDisallowInterceptTouchEvent(false);
-                        break;
-                }
-
-                // Handle ListView touch events.
-                v.onTouchEvent(event);
-                return true;
-            }
-        });
         contentid = Data.contentid;
         contenttypeid = Data.contenttypeid;
     /*    String subdetailalt; // 이름
@@ -84,7 +64,12 @@ public class Detail_Third_Fragment extends Fragment {
         }*/
 
         if(contenttypeid.equals("25")){
+
+            title.setVisibility(View.VISIBLE);
+            presentimageview.setVisibility(View.VISIBLE);
+
             LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(200,200);
+            Typeface typeface = ResourcesCompat.getFont(getContext(),R.font.binggraemelona);
 
             //third.setText(detailRepeat_25.repeat_array.get(0).getSubdetailalt() +"\n"+ detailRepeat_25.repeat_array.get(0).getSubdetailoverview());
             for(int i=0;i<detailRepeat_25.repeat_array.size();i++){
@@ -93,6 +78,7 @@ public class Detail_Third_Fragment extends Fragment {
                 TextView textView = new TextView(getContext());
                 imageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
                 textView.setText((i+1)+"번 코스");
+                textView.setTypeface(typeface);
 
                 textView.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
 

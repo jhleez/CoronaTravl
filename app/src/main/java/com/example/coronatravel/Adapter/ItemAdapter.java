@@ -50,7 +50,7 @@ public class ItemAdapter extends BaseAdapter {
 
         TextView title = convertView.findViewById(R.id.textview_listitem_title);
         TextView addreess = convertView.findViewById(R.id.textview_listitem_address);
-        //TextView distance = convertView.findViewById(R.id.textview_listitem_distance);
+        TextView distance = convertView.findViewById(R.id.textview_listitem_distance);
         ImageView imageView = convertView.findViewById(R.id.imageview_listitem);
 
         String URI = data.getFirstimage();
@@ -60,9 +60,8 @@ public class ItemAdapter extends BaseAdapter {
 
         title.setText(data.getTitle());
         addreess.setText(data.getAddr1());
-        //distance.setText(data.getDist());
-
-
+        if(!data.getDist().equals("")) distance.setText(data.getDist()+" M");
+        else distance.setText("");
         return convertView;
     }
 
