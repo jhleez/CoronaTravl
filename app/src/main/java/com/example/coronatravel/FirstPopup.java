@@ -24,7 +24,7 @@ public class FirstPopup extends Activity {
         String notice3 = "* 인터넷 연결상태가 고르지 않을 경우, 어플 작동에 오류가 발생 할 수 있습니다\n\n";
         String notice4 = "* 이 안내 메시지는 앱 설치후 최초 1회 만 자동으로 실행됩니다";
 
-        contents.setText(notice1+notice2+notice3+notice4);
+        contents.setText(notice1+notice3+notice4);
         closebtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
