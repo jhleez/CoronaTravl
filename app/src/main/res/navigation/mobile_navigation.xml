@@ -7,43 +7,43 @@
 
     <fragment
         android:id="@+id/nav_home"
-        android:name="com.example.coronatravel.ui.home.HomeFragment"
+        android:name="com.rammus.covidtravel.ui.home.HomeFragment"
         android:label=" "
         tools:layout="@layout/fragment_home" />
 
     <fragment
         android:id="@+id/nav_around"
-        android:name="com.example.coronatravel.ui.around.AroundFragment"
+        android:name="com.rammus.covidtravel.ui.around.AroundFragment"
         android:label="@string/menu_around"
         tools:layout="@layout/fragment_around" />
 
     <fragment
         android:id="@+id/nav_totalsearch"
-        android:name="com.example.coronatravel.ui.totalsearch.TotalsearchFragment"
+        android:name="com.rammus.covidtravel.ui.totalsearch.TotalsearchFragment"
         android:label="@string/menu_totalsearch"
         tools:layout="@layout/fragment_festival" />
 
     <fragment
         android:id="@+id/nav_festival"
-        android:name="com.example.coronatravel.ui.festival.FestivalFragment"
+        android:name="com.rammus.covidtravel.ui.festival.FestivalFragment"
         android:label="@string/menu_festival"
         tools:layout="@layout/fragment_festival" />
 
     <fragment
         android:id="@+id/nav_bookmark"
-        android:name="com.example.coronatravel.ui.bookmark.BookmarkFragment"
+        android:name="com.rammus.covidtravel.ui.bookmark.BookmarkFragment"
         android:label="@string/menu_bookmark"
         tools:layout="@layout/fragment_bookmark" />
 
     <fragment
         android:id="@+id/nav_share"
-        android:name="com.example.coronatravel.ui.share.ShareFragment"
+        android:name="com.rammus.covidtravel.ui.share.ShareFragment"
         android:label="@string/menu_share"
         tools:layout="@layout/fragment_share" />
 
     <fragment
         android:id="@+id/nav_send"
-        android:name="com.example.coronatravel.ui.send.SendFragment"
+        android:name="com.rammus.covidtravel.ui.send.SendFragment"
         android:label="@string/menu_send"
         tools:layout="@layout/fragment_send" />
 </navigation>

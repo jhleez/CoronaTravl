@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.coronatravel">
+    package="com.rammus.covidtravel">
 
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.INTERNET" />
@@ -15,14 +15,14 @@
         android:allowBackup="true"
         android:icon="@drawable/luggageicon"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:roundIcon="@drawable/luggageicon"
         android:supportsRtl="true"
         android:theme="@style/AppTheme.NoActionBar"
         android:usesCleartextTraffic="true">
         <activity
-            android:name=".FirstPopup"
+            android:name="com.rammus.covidtravel.FirstPopup"
             android:theme="@android:style/Theme.DeviceDefault.Light.Dialog" />
-        <activity android:name=".SplashActivity"
+        <activity android:name="com.rammus.covidtravel.SplashActivity"
             android:theme="@style/Splash">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -30,14 +30,14 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".WeatherInfo" />
-        <activity android:name=".DbOpenHelper" />
-        <activity android:name=".ui.ListViewFragment" />
+        <activity android:name="com.rammus.covidtravel.WeatherInfo" />
+        <activity android:name="com.rammus.covidtravel.DbOpenHelper" />
+        <activity android:name="com.rammus.covidtravel.ui.ListViewFragment" />
         <activity
-            android:name=".detail.Detail_view"
+            android:name="com.rammus.covidtravel.detail.Detail_view"
             android:theme="@style/AppTheme.NoActionBar"></activity>
         <activity
-            android:name=".MainActivity"
+            android:name="com.rammus.covidtravel.MainActivity"
             android:label="@string/app_name"
             android:theme="@style/AppTheme.NoActionBar">
 
