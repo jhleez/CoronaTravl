@@ -3,6 +3,7 @@ package com.example.coronatravel;
 import android.animation.ObjectAnimator;
 import android.animation.StateListAnimator;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.graphics.Color;
 import android.graphics.PorterDuff;
@@ -84,16 +85,19 @@ public class MainActivity extends AppCompatActivity {
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(navigationView, navController);
 
-
+        SharedPreferences preferences;
+        preferences = getSharedPreferences("Prefers", MODE_PRIVATE);
+        boolean isFirstRun = preferences.getBoolean("isFirstRun", true);
+        if(isFirstRun){
+            Intent intent = new Intent(this,FirstPopup.class);
+            startActivity(intent);
+            preferences.edit().putBoolean("isFirstRun", false).apply();
+        }
 
         // sqlite example data set
 
         mDbOpenHelper.open();
         mDbOpenHelper.create();
-
-        mDbOpenHelper.deleteAllColumns();
-        mDbOpenHelper.insertColumn("서울특별시 종로구 북촌로 52", "130446","14", "http://tong.visitkorea.or.kr/cms/resource/75/2550575_image2_1.jpg", "가회민화박물관");
-        mDbOpenHelper.insertColumn("서울특별시 종로구 창경궁로 88", "132183","38", "http://tong.visitkorea.or.kr/cms/resource/11/710311_image2_1.jpg", "광장시장");
 
 
     }
