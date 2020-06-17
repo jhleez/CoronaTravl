@@ -127,7 +127,7 @@ public class Detail_view extends AppCompatActivity {
         addr1 = MainActivity.LocationBasedList_ArrayList.get(position).getAddr1();
         firstimage = MainActivity.LocationBasedList_ArrayList.get(position).getFirstimage();
         title = MainActivity.LocationBasedList_ArrayList.get(position).getTitle();
-        ServiceKey = "2YHyxt5iKCnOzEiYHMcML%2FgiOywB9tnJeL6D%2BHqsL48iMsSOXwPxQHTjCHq5dA1zAEcNIdcQUXnvFMN0aIdLsQ%3D%3D";
+        ServiceKey = "LuQHzrmd0D8xz9tDN8srTETgDoVfSeUV%2FAvFrhKX%2BtTdNMG7GJINi%2B6INCB7yMFJXXIO%2FKb7JfNeFdA%2BNmEIqA%3D%3D";
 
         titletext = findViewById(R.id.detail_title_text);
         addresstext = findViewById(R.id.detil_add_textview);
@@ -276,7 +276,7 @@ public class Detail_view extends AppCompatActivity {
                     fragmentTransaction.replace(R.id.detail_framlayout, detail_third_fragment);
                     fragmentTransaction.commit();
                 } else if (i == R.id.fourth_menu) {
-                 //   Log.d("click", String.valueOf(firstnavigationclick[3]));
+                    //   Log.d("click", String.valueOf(firstnavigationclick[3]));
                     if (firstnavigationclick[3] == 0) {
                         String detailImageUrl = "http://api.visitkorea.or.kr/openapi/service/rest/KorService/detailImage?" +
                                 "ServiceKey=" + ServiceKey +
@@ -366,16 +366,16 @@ public class Detail_view extends AppCompatActivity {
                                 "lng=" + detail_C.getMapx() + "&" +
                                 "m=" + dist;
                         final String[] JSONFromTotalSearch = {""};
-                       // Log.i("delay", "start");
+                        // Log.i("delay", "start");
                         Handler delayHandler = new Handler();
                         final String finalMaskUrl = maskUrl;
                         delayHandler.postDelayed(new Runnable() {
                             @Override
                             public void run() {
                                 try {
-                                   // Log.i("delay", "parsingstart+" + finalMaskUrl);
+                                    // Log.i("delay", "parsingstart+" + finalMaskUrl);
                                     JSONFromTotalSearch[0] = new HttpReqTask().execute(finalMaskUrl).get();
-                                   // Log.i("delay", "parsingend");
+                                    // Log.i("delay", "parsingend");
                                     Mask.JSONParsing(JSONFromTotalSearch[0]);
                                     maskSwipeAdapter = new MaskSwipeAdapter(getSupportFragmentManager(), MainActivity.MASK_AraayList);
                                     if (MainActivity.MASK_AraayList.size() != 0)
@@ -567,11 +567,10 @@ public class Detail_view extends AppCompatActivity {
         String time = timeFormat.format(currentTime);
         String today = year + month1 + day;
 
-        Toast.makeText(Detail_view.this, "" + time, Toast.LENGTH_SHORT).show();
         int temp = Integer.parseInt(time);
-       // Log.d("시간", String.valueOf(temp));
+        // Log.d("시간", String.valueOf(temp));
         temp++;
-       // Log.d("시간", String.valueOf(temp));
+        // Log.d("시간", String.valueOf(temp));
         if (Integer.parseInt(time) < 5) {
             cal.add(Calendar.DATE, -1);
             currentTime = cal.getTime();
@@ -580,7 +579,7 @@ public class Detail_view extends AppCompatActivity {
             day = dayFormat.format(currentTime);
             time = timeFormat.format(currentTime);
             today = year + month1 + day;
-           // Log.d("시간", today);
+            // Log.d("시간", today);
         }
         String pagenumber = "1";
         String ShortWeatherURL = "http://apis.data.go.kr/1360000/VilageFcstInfoService/getVilageFcst?serviceKey=LuQHzrmd0D8xz9tDN8srTETgDoVfSeUV%2FAvFrhKX%2BtTdNMG7GJINi%2B6INCB7yMFJXXIO%2FKb7JfNeFdA%2BNmEIqA%3D%3D" +
@@ -678,9 +677,7 @@ public class Detail_view extends AppCompatActivity {
                     skyIcon = ContextCompat.getDrawable(this, R.drawable.cloudyicon);
                     weatherString = "흐림";
                 }
-            } else
-                Toast.makeText(this, "rainState is " + rainState, Toast.LENGTH_SHORT).show();
-
+            }
             itemList.add(new weatherListViewItem(skyIcon, month + "월 " + date + "일",
                     weatherString, MainActivity.ShortWeather_ArrayList.get(i).getTMN() + "/" + MainActivity.ShortWeather_ArrayList.get(i).getTMX()));
         }

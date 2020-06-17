@@ -36,7 +36,7 @@ public class MainActivity extends AppCompatActivity {
     public static ArrayList<ShortWeather> ShortWeather_ArrayList = new ArrayList<>();
     public static ShortWeather sub_shortweather = new ShortWeather();
     private AppBarConfiguration mAppBarConfiguration;
-    String id = "2YHyxt5iKCnOzEiYHMcML%2FgiOywB9tnJeL6D%2BHqsL48iMsSOXwPxQHTjCHq5dA1zAEcNIdcQUXnvFMN0aIdLsQ%3D%3D";
+    String id = "LuQHzrmd0D8xz9tDN8srTETgDoVfSeUV%2FAvFrhKX%2BtTdNMG7GJINi%2B6INCB7yMFJXXIO%2FKb7JfNeFdA%2BNmEIqA%3D%3D";
     DbOpenHelper mDbOpenHelper;
 
 
@@ -55,6 +55,14 @@ public class MainActivity extends AppCompatActivity {
             stateListAnimator.addState(new int[0], ObjectAnimator.ofFloat(appBarLayout, "elevation", 0.1f));
             appBarLayout.setStateListAnimator(stateListAnimator);
         }
+        SharedPreferences preferences;
+        preferences = getSharedPreferences("Prefers", MODE_PRIVATE);
+        boolean isFirstRun = preferences.getBoolean("isFirstRun", true);
+        if(isFirstRun){
+            Intent intent = new Intent(this,FirstPopup.class);
+            startActivity(intent);
+            preferences.edit().putBoolean("isFirstRun", false).apply();
+        }
 
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         NavigationView navigationView = findViewById(R.id.nav_view);
@@ -69,14 +77,6 @@ public class MainActivity extends AppCompatActivity {
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(navigationView, navController);
 
-        SharedPreferences preferences;
-        preferences = getSharedPreferences("Prefers", MODE_PRIVATE);
-        boolean isFirstRun = preferences.getBoolean("isFirstRun", true);
-        if(isFirstRun){
-            Intent intent = new Intent(this,FirstPopup.class);
-            startActivity(intent);
-            preferences.edit().putBoolean("isFirstRun", false).apply();
-        }
 
         // sqlite example data set
 

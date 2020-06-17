@@ -100,10 +100,11 @@ public class Detail_Third_Fragment extends Fragment {
             Log.i("course","course");
             try{
                 Picasso.get().load(detailRepeat_25.repeat_array.get(0).getSubdetailimg()).placeholder(R.drawable.luggageicon).into(presentimageview);
-                third.setText(detailRepeat_25.repeat_array.get(0).getSubdetailoverview());
-                title.setText(detailRepeat_25.repeat_array.get(0).getSubdetailalt());
             }catch (Exception e){
                 presentimageview.setImageResource(R.drawable.luggageicon);
+            }finally {
+                third.setText(detailRepeat_25.repeat_array.get(0).getSubdetailoverview());
+                title.setText(detailRepeat_25.repeat_array.get(0).getSubdetailalt());
             }
 
         }
@@ -133,7 +134,7 @@ public class Detail_Third_Fragment extends Fragment {
                         }
                         third.setText("방 사이즈(평수) : "+item.getRoomsize1()+
                                 " 평\n기준 인원 : "+item.getRoombasecount()+
-                                " 명\n최대 인원"+ item.getRoommaxcount()+
+                                " 명\n최대 인원 : "+ item.getRoommaxcount()+
                                 " 명\n비수기 주중 최소 가격 : "+item.getRoomoffseasonminfee1()+
                                 " 원\n비수기 주말 최소 가격 : "+ item.getRoomoffseasonminfee2()+
                                 " 원\n비수기 주중 최소 가격 : "+ item.getRoompeakseasonminfee1()+
@@ -147,12 +148,14 @@ public class Detail_Third_Fragment extends Fragment {
                     imageView.setImageResource(R.drawable.luggageicon);
                 }
                 addView(textView,imageView,200,200);
-
             }
-
             Log.i("course","course");
             try{
                 Picasso.get().load(detailRepeat_32.repeat_array.get(0).getRoomimg1()).placeholder(R.drawable.luggageicon).into(presentimageview);
+
+            }catch (Exception e){
+                presentimageview.setImageResource(R.drawable.luggageicon);
+            }finally {
                 third.setText("방 사이즈(평수) : "+detailRepeat_32.repeat_array.get(0).getRoomsize1()+
                         " 평\n기준 인원 : "+detailRepeat_32.repeat_array.get(0).getRoombasecount()+
                         " 명\n최대 인원 : "+ detailRepeat_32.repeat_array.get(0).getRoommaxcount()+
@@ -161,8 +164,6 @@ public class Detail_Third_Fragment extends Fragment {
                         " 원\n성수기 주중 최소 가격 : "+ detailRepeat_32.repeat_array.get(0).getRoompeakseasonminfee1()+
                         " 원\n성수기 주말 최소 가격 : "+detailRepeat_32.repeat_array.get(0).getRoompeakseasonminfee2()+" 원");
                 title.setText(detailRepeat_32.repeat_array.get(0).getRoomtitle());
-            }catch (Exception e){
-                presentimageview.setImageResource(R.drawable.luggageicon);
             }
         }
         else {
@@ -172,8 +173,6 @@ public class Detail_Third_Fragment extends Fragment {
             }
             third.setText(repeat);
         }
-
-        //Toast.makeText(getContext(), detailRepeat.repeat_array.size()+"", Toast.LENGTH_SHORT).show();
         return view;
     }
     public void addView(TextView textView,ImageView imageView,int width, int height){

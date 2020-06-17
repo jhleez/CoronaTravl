@@ -1,5 +1,6 @@
 package com.rammus.covidtravel.ui.home;
 
+import android.Manifest;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -462,7 +463,7 @@ public class HomeFragment extends Fragment {
         enddate = df.format(cal.getTime());
 
 
-        String ServiceKey = "2YHyxt5iKCnOzEiYHMcML%2FgiOywB9tnJeL6D%2BHqsL48iMsSOXwPxQHTjCHq5dA1zAEcNIdcQUXnvFMN0aIdLsQ%3D%3D";
+        String ServiceKey = "LuQHzrmd0D8xz9tDN8srTETgDoVfSeUV%2FAvFrhKX%2BtTdNMG7GJINi%2B6INCB7yMFJXXIO%2FKb7JfNeFdA%2BNmEIqA%3D%3D";
         String RandomFestivalUrl = "http://api.visitkorea.or.kr/openapi/service/rest/KorService/searchFestival?" +
                 "ServiceKey=" + ServiceKey +
                 "&eventStartDate=" + startdate +
@@ -470,6 +471,7 @@ public class HomeFragment extends Fragment {
                 "&areaCode=&sigunguCode=&cat1=A02&cat2=A0207&cat3=&listYN=Y" +
                 "&MobileOS=AND&MobileApp=CoronaTravel" +
                 "&arrange=O&numOfRows=1&pageNo=1&_type=json";
+        Log.d("TAG",RandomFestivalUrl);
         String JSONFromRandomFestivalUrl = "";
         try {
             JSONFromRandomFestivalUrl = new HttpReqTask().execute(RandomFestivalUrl).get();
@@ -520,13 +522,14 @@ public class HomeFragment extends Fragment {
         if (Build.VERSION.SDK_INT >= 23) { // 마시멜로(안드로이드 6.0) 이상 권한 체크
             TedPermission.with(context)
                     .setPermissionListener(permissionlistener)
-                    .setRationaleMessage("앱을 이용하기 위해서는 접근 권한이 필요합니다")
+                    .setRationaleMessage("[필수적 접근권한]\n\n* 위치 권한 : 포그라운드에서만 위치정보에 접근 합니다.\n\nCorona Travel 사용을 위해 다음 권한을 허용해주시기 바랍니다.")
                     .setDeniedMessage("앱에서 요구하는 권한설정이 필요합니다...\n [설정] > [권한] 에서 사용으로 활성화해주세요.")
                     .setPermissions(new String[]{
-                            android.Manifest.permission.WRITE_CONTACTS, // 주소록 액세스 권한
-                            android.Manifest.permission.READ_EXTERNAL_STORAGE,
-                            android.Manifest.permission.WRITE_EXTERNAL_STORAGE // 기기, 사진, 미디어, 파일 엑세스 권한
-                    })
+                            Manifest.permission.ACCESS_COARSE_LOCATION,
+                            Manifest.permission.ACCESS_FINE_LOCATION,
+                            Manifest.permission.INTERNET,
+                            Manifest.permission.ACCESS_NETWORK_STATE,
+        })
                     .check();
 
         } else {
