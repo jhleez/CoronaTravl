@@ -538,13 +538,13 @@ public class HomeFragment extends Fragment {
     }
 
     private void initView() {
-//        String path2 = "http://ncov.mohw.go.kr/";
-//        new getDailyDiagnosis().execute(path2);
-//        new getData1().execute(path2);
-//        new getData2().execute(path2);
-//        new getData3().execute(path2);
-//        new getData4().execute(path2);
-//        new getData5().execute(path2);
+        String coronaPath = "http://ncov.mohw.go.kr/";
+        new getDailyDiagnosis().execute(coronaPath);
+        new getData1().execute(coronaPath);
+        new getData2().execute(coronaPath);
+        new getData3().execute(coronaPath);
+        new getData4().execute(coronaPath);
+        new getData5().execute(coronaPath);
     }
 
     private class getDailyDiagnosis extends AsyncTask<String, Void, String> {
@@ -552,8 +552,9 @@ public class HomeFragment extends Fragment {
         protected String doInBackground(String... params) {
             try {
                 Document document = Jsoup.connect(params[0].toString()).get();
-                Elements elements = document.select("div.liveNumOuter").select("span.data1");
+                Elements elements = document.select("div.liveNum").select("ul.liveNum").select("span.before");
                 String now = elements.get(0).text();
+                now = now.substring(6);
                 return now ;
             } catch (IOException e) {
                 e.printStackTrace();
@@ -563,27 +564,7 @@ public class HomeFragment extends Fragment {
 
         @Override
         protected void onPostExecute(String result) {
-            dailyDiagnosisTextview.setText("+" + result+")");
-        }
-    }
-
-    private class getDailyCured extends AsyncTask<String, Void, String> {
-        @Override
-        protected String doInBackground(String... params) {
-            try {
-                Document document = Jsoup.connect(params[0].toString()).get();
-                Elements elements = document.select("div.liveNumOuter").select("span.data2");
-                String now = elements.get(0).text();
-                return "일일 완치자\n" + now ;
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-            return null;
-        }
-
-        @Override
-        protected void onPostExecute(String result) {
-            //dailyCuredTextview.setText(result);
+            dailyDiagnosisTextview.setText(result);
         }
     }
 
@@ -592,9 +573,9 @@ public class HomeFragment extends Fragment {
         protected String doInBackground(String... params) {
                 try {
                 Document document = Jsoup.connect(params[0].toString()).get();
-                Elements elements = document.select("div.liveNumOuter").select("ul.liveNum").select("span.num");
+                Elements elements = document.select("div.liveNum").select("ul.liveNum").select("span.num");
                 String now = elements.get(0).text();
-                now = now.substring(4,10);
+                now = now.substring(4);
                 return now;
             } catch (IOException e) {
                 e.printStackTrace();
@@ -613,7 +594,7 @@ public class HomeFragment extends Fragment {
         protected String doInBackground(String... params) {
             try {
                 Document document = Jsoup.connect(params[0].toString()).get();
-                Elements elements = document.select("div.liveNumOuter").select("ul.liveNum").select("span.num");
+                Elements elements = document.select("div.liveNum").select("ul.liveNum").select("span.num");
                 String now = elements.get(1).text();
                 return now;
             } catch (IOException e) {
@@ -633,7 +614,7 @@ public class HomeFragment extends Fragment {
         protected String doInBackground(String... params) {
             try {
                 Document document = Jsoup.connect(params[0].toString()).get();
-                Elements elements = document.select("div.liveNumOuter").select("ul.liveNum").select("span.num");
+                Elements elements = document.select("div.liveNum").select("ul.liveNum").select("span.num");
                 String now = elements.get(2).text();
                 return now;
             } catch (IOException e) {
@@ -653,7 +634,7 @@ public class HomeFragment extends Fragment {
         protected String doInBackground(String... params) {
             try {
                 Document document = Jsoup.connect(params[0].toString()).get(); // Web에서 내용을 가져온다.
-                Elements elements = document.select("div.liveNumOuter").select("ul.liveNum").select("span.num");
+                Elements elements = document.select("div.liveNum").select("ul.liveNum").select("span.num");
                 String now = elements.get(3).text();
                 return now;
             } catch (IOException e) {
