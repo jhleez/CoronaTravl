@@ -540,11 +540,11 @@ public class HomeFragment extends Fragment {
     private void initView() {
         String coronaPath = "http://ncov.mohw.go.kr/";
         new getDailyDiagnosis().execute(coronaPath);
-        new getData1().execute(coronaPath);
-        new getData2().execute(coronaPath);
-        new getData3().execute(coronaPath);
-        new getData4().execute(coronaPath);
-        new getData5().execute(coronaPath);
+        new getTotalData().execute(coronaPath);
+        new getDischargedData().execute(coronaPath);
+        new getCuringData().execute(coronaPath);
+        new getDeathData().execute(coronaPath);
+        new getSourceData().execute(coronaPath);
     }
 
     private class getDailyDiagnosis extends AsyncTask<String, Void, String> {
@@ -568,7 +568,7 @@ public class HomeFragment extends Fragment {
         }
     }
 
-    private class getData1 extends AsyncTask<String, Void, String> {
+    private class getTotalData extends AsyncTask<String, Void, String> {
         @Override
         protected String doInBackground(String... params) {
                 try {
@@ -589,7 +589,7 @@ public class HomeFragment extends Fragment {
         }
     }
 
-    private class getData2 extends AsyncTask<String, Void, String> {
+    private class getDischargedData extends AsyncTask<String, Void, String> {
         @Override
         protected String doInBackground(String... params) {
             try {
@@ -609,7 +609,7 @@ public class HomeFragment extends Fragment {
         }
     }
 
-    private class getData3 extends AsyncTask<String, Void, String> {
+    private class getCuringData extends AsyncTask<String, Void, String> {
         @Override
         protected String doInBackground(String... params) {
             try {
@@ -629,7 +629,7 @@ public class HomeFragment extends Fragment {
         }
     }
 
-    private class getData4 extends AsyncTask<String, Void, String> {
+    private class getDeathData extends AsyncTask<String, Void, String> {
         @Override
         protected String doInBackground(String... params) {
             try {
@@ -649,7 +649,7 @@ public class HomeFragment extends Fragment {
         }
     }
 
-    private class getData5 extends AsyncTask<String, Void, String> {
+    private class getSourceData extends AsyncTask<String, Void, String> {
         @Override
         protected String doInBackground(String... params) {
             try {
