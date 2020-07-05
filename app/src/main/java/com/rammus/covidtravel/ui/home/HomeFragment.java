@@ -538,13 +538,13 @@ public class HomeFragment extends Fragment {
     }
 
     private void initView() {
-        String path2 = "http://ncov.mohw.go.kr/";
-        new getDailyDiagnosis().execute(path2);
-        new getData1().execute(path2);
-        new getData2().execute(path2);
-        new getData3().execute(path2);
-        new getData4().execute(path2);
-        new getData5().execute(path2);
+//        String path2 = "http://ncov.mohw.go.kr/";
+//        new getDailyDiagnosis().execute(path2);
+//        new getData1().execute(path2);
+//        new getData2().execute(path2);
+//        new getData3().execute(path2);
+//        new getData4().execute(path2);
+//        new getData5().execute(path2);
     }
 
     private class getDailyDiagnosis extends AsyncTask<String, Void, String> {

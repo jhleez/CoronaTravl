@@ -189,7 +189,7 @@ public class ShortWeather {
     }
 
     public static String JSONParsing2(String JSONFromLocationBasedListaddr) {
-        String TMN="A";
+        String TMN="*";
         try {
             JSONObject jsonObject = new JSONObject(JSONFromLocationBasedListaddr);
             String response = jsonObject.getString("response");
